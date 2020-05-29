@@ -30,6 +30,9 @@
                                     <segment title="RGB"/>
                                     <segment title="HSB"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="LDJ-be-pPl"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="93R-OO-yFV">
                                 <rect key="frame" x="64" y="116.66666666666669" width="768" height="221"/>
@@ -115,15 +118,20 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <variation key="heightClass=compact-widthClass=compact"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S14-g5-z5Q">
                                 <rect key="frame" x="64" y="353" width="64" height="30"/>
                                 <state key="normal" title="Set Color"/>
+                                <connections>
+                                    <action selector="setColorBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSj-co-Fqg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-BG-3UV">
                                 <rect key="frame" x="793" y="353" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VP9-S5-qQB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,6 +154,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="colorNameLabel" destination="ecL-1J-QMX" id="kdL-Q8-blq"/>
+                        <outlet property="firstColorComponentLabel" destination="y9R-zv-0gt" id="SKN-Ea-FhQ"/>
+                        <outlet property="firstColorComponentSlider" destination="WbM-IX-2Vn" id="68Q-i3-Wd3"/>
+                        <outlet property="firstColorNumberLabel" destination="fxn-Cq-pp5" id="jV7-Ou-Hni"/>
+                        <outlet property="secondColorComponentLabel" destination="weo-Up-oeG" id="62S-RC-Oaz"/>
+                        <outlet property="secondColorComponentSlider" destination="xU9-c7-hYP" id="1p2-Er-rNz"/>
+                        <outlet property="secondColorNumberLabel" destination="veQ-6M-77T" id="Kfs-v9-8mk"/>
+                        <outlet property="segmentedControl" destination="G77-Hf-SKS" id="nF5-Lb-UgC"/>
+                        <outlet property="thirdColorComponentLabel" destination="7Km-Cy-eWK" id="O6X-tL-3yv"/>
+                        <outlet property="thirdColorComponentSlider" destination="lfC-Cr-eut" id="g6T-zx-g9r"/>
+                        <outlet property="thirdColorNumberLabel" destination="hiy-lq-DMw" id="ORY-f2-ZRm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
