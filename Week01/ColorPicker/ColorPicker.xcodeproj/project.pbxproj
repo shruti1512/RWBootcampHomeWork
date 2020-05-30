@@ -12,6 +12,7 @@
 		33AFE6232481893000BFC6E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE6212481893000BFC6E5 /* Main.storyboard */; };
 		33AFE6252481893200BFC6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE6242481893200BFC6E5 /* Assets.xcassets */; };
 		33AFE6282481893200BFC6E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE6262481893200BFC6E5 /* LaunchScreen.storyboard */; };
+		33D463D32482FDE000EE3A42 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D463D22482FDE000EE3A42 /* WebKit.framework */; };
 		33EE852B2481E96B00801814 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852A2481E96B00801814 /* InfoViewController.swift */; };
 		33EE852D2481F20F00801814 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852C2481F20F00801814 /* ColorModel.swift */; };
 		33EE852F2481F42900801814 /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852E2481F42900801814 /* ColorValue.swift */; };
@@ -25,6 +26,7 @@
 		33AFE6242481893200BFC6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33AFE6272481893200BFC6E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33AFE6292481893200BFC6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33D463D22482FDE000EE3A42 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		33EE852A2481E96B00801814 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		33EE852C2481F20F00801814 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		33EE852E2481F42900801814 /* ColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D463D32482FDE000EE3A42 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				33AFE61C2481893000BFC6E5 /* ColorPicker */,
 				33AFE61B2481893000BFC6E5 /* Products */,
+				33D463D12482FDE000EE3A42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +75,14 @@
 				33EE852E2481F42900801814 /* ColorValue.swift */,
 			);
 			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		33D463D12482FDE000EE3A42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33D463D22482FDE000EE3A42 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +117,7 @@
 				TargetAttributes = {
 					33AFE6192481893000BFC6E5 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -303,7 +316,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrutiapps.ColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -321,7 +334,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrutiapps.ColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

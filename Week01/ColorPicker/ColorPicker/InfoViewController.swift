@@ -12,22 +12,33 @@ import WebKit
 class InfoViewController: UIViewController {
 
   @IBOutlet private weak var webView: WKWebView!
-  var colorModelStr: String?
+  var colorModelType: ColorModel.ModelType?
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
       
-      guard let colorModelStr = colorModelStr else {
+    guard let colorModelType = colorModelType else {
         return
+    }
+      
+      var url: URL!
+      if colorModelType == .rgb {
+         url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model")
       }
-      if let wikipediaURL = URL(string: "https://en.wikipedia.org/wiki/" + colorModelStr + "_color_model") {
+      else {
+         url = URL(string: "https://en.wikipedia.org/wiki/HSL_and_HSV")
+      }
+      if let wikipediaURL = url {
         let urlRequest = URLRequest(url: wikipediaURL)
         webView.load(urlRequest)
       }
-      
-    }
+  }
   
   @IBAction func closeBtnPressed(_ sender: UIButton) {
     self.dismiss(animated: true, completion: nil)
   }
+    
+    deinit {
+        webView.stopLoading()
+    }
 }
