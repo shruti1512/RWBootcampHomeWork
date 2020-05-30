@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct ColorValue {
   var name: String
-  var minRange: Int
-  var maxRange: Int
+  var minRange: CGFloat
+  var maxRange: CGFloat
 }
