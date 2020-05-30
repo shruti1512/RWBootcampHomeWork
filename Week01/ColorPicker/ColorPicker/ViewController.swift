@@ -166,15 +166,19 @@ class ViewController: UIViewController {
   }
   
   @IBAction func resetBtnPressed(_ sender: UIButton) {
-    firstColorComponentSlider.value = 0
-    secondColorComponentSlider.value = 0
-    thirdColorComponentSlider.value = 0
-    
-    firstColorNumberLabel.text = String(0)
-    secondColorNumberLabel.text = String(0)
-    thirdColorNumberLabel.text = String(0)
+    resetValues()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destinationVC = segue.destination as? InfoViewController {
+      if currentColorModel == .rgb {
+        destinationVC.colorModelStr = "RGB"
+      }
+      else {
+        destinationVC.colorModelStr = "HSB"
+      }
+    }
+  }
   func resetValues() {
     
     firstColorComponentSlider.value = 0
@@ -185,6 +189,7 @@ class ViewController: UIViewController {
     secondColorNumberLabel.text = String(0)
     thirdColorNumberLabel.text = String(0)
     
+    colorNameLabel.text = "Color Name"
     if currentColorModel == .hsb {
       view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: defaultAlpha)
     }
