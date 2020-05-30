@@ -8,65 +8,59 @@
 
 import UIKit
 
-enum ColorModel: Int {
-  case rgb = 0
-  case hsb = 1
-}
-
 class ViewController: UIViewController {
-
-  var currentColorModel: ColorModel!
-  let defaultAlpha: CGFloat = 1.0
-  
-  let colorModelRGBComponents = ["Red", "Green", "Blue"]
-  let colorModelHSBComponents = ["Hue", "Saturation", "Brightness"]
   
   @IBOutlet weak var segmentedControl: UISegmentedControl!
-  
   @IBOutlet weak var colorNameLabel: UILabel!
-  
   @IBOutlet weak var firstColorComponentSlider: UISlider!
   @IBOutlet weak var firstColorComponentLabel: UILabel!
   @IBOutlet weak var firstColorNumberLabel: UILabel!
-  
   @IBOutlet weak var secondColorComponentLabel: UILabel!
   @IBOutlet weak var secondColorComponentSlider: UISlider!
   @IBOutlet weak var secondColorNumberLabel: UILabel!
-
   @IBOutlet weak var thirdColorComponentLabel: UILabel!
   @IBOutlet weak var thirdColorComponentSlider: UISlider!
   @IBOutlet weak var thirdColorNumberLabel: UILabel!
 
+  var rgbColorModel: ColorModel!
+  var hsbColorModel: ColorModel!
+  var currentColorModel: ColorModel!
+
+  //known values
+  let min = 0
+  let rgbMax = 255
+  let hueMax = 366
+  let saturationMax = 100
+  let brightnessMax = 100
+  let red = "Red"
+  let green = "Green"
+  let blue = "Blue"
+  let hue = "Hue"
+  let saturation = "Saturation"
+  let brightness = "Brightness"
+  let rgb = "RGB"
+  let hsb = "HSB"
+  let defaultAlpha: CGFloat = 1.0
+
   override func viewDidLoad() {
     
     super.viewDidLoad()
+    
+    let redColor = ColorValue.init(name: red, minRange: min, maxRange: rgbMax)
+    let greenColor = ColorValue.init(name: green, minRange: min, maxRange: rgbMax)
+    let blueColor = ColorValue.init(name: blue, minRange: min, maxRange: rgbMax)
+    rgbColorModel = ColorModel.init(name: rgb, type: .rgb, colorValues: [redColor, greenColor, blueColor])
+    
+    let hueVal = ColorValue.init(name: hsb, minRange: min, maxRange: hueMax)
+    let saturationVal = ColorValue.init(name: saturation, minRange: min, maxRange: saturationMax)
+    let brightnessVal = ColorValue.init(name: brightness, minRange: min, maxRange: brightnessMax)
+    hsbColorModel = ColorModel.init(name: hsb, type: .rgb, colorValues: [hueVal, saturationVal, brightnessVal])
+    
     //default selected color model is 'RGB'
-    currentColorModel = .rgb
-    setUpView()
+    currentColorModel = rgbColorModel
+    setBackgroundColor(firstValue: 0.0, secondValue: 0.0, thirdValue: 0.0)
   }
   
-  func setUpView() {
-    firstColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Normal"), for: .normal)
-    firstColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Highlighted"), for: .highlighted)
-    secondColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Normal"), for: .normal)
-    secondColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Highlighted"), for: .highlighted)
-    thirdColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Normal"), for: .normal)
-    thirdColorComponentSlider.setThumbImage(#imageLiteral(resourceName: "SliderThumb-Highlighted"), for: .highlighted)
-
-    let edgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
-    let trackeLeftResizableImage = #imageLiteral(resourceName: "SliderTrackLeft").resizableImage(withCapInsets: edgeInsets)
-    firstColorComponentSlider.setMinimumTrackImage(trackeLeftResizableImage, for: .normal)
-    secondColorComponentSlider.setMinimumTrackImage(trackeLeftResizableImage, for: .normal)
-    thirdColorComponentSlider.setMinimumTrackImage(trackeLeftResizableImage, for: .normal)
-
-    let trackeRightResizableImage = #imageLiteral(resourceName: "SliderTrackRight").resizableImage(withCapInsets: edgeInsets)
-    firstColorComponentSlider.setMaximumTrackImage(trackeRightResizableImage, for: .normal)
-    secondColorComponentSlider.setMaximumTrackImage(trackeRightResizableImage, for: .normal)
-    thirdColorComponentSlider.setMaximumTrackImage(trackeRightResizableImage, for: .normal)
-
-    setColorForBackground()
-  }
-
   @IBAction func firstColorSliderValueChanged(_ slider: UISlider) {
     firstColorNumberLabel.text = String(Int(slider.value.rounded()))
   }
@@ -81,58 +75,32 @@ class ViewController: UIViewController {
 
   @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
     
-    currentColorModel = ColorModel(rawValue: sender.selectedSegmentIndex)
-    
-    resetValues()
-    
-    //User selected 'RGB' Color Model
-    if currentColorModel == .rgb {
-      firstColorComponentLabel.text = colorModelRGBComponents[0]
-      secondColorComponentLabel.text = colorModelRGBComponents[1]
-      thirdColorComponentLabel.text = colorModelRGBComponents[2]
-      
-      firstColorComponentSlider.minimumValue = 0
-      firstColorComponentSlider.maximumValue = 255
-      
-      secondColorComponentSlider.minimumValue = 0
-      secondColorComponentSlider.maximumValue = 255
-
-      thirdColorComponentSlider.minimumValue = 0
-      thirdColorComponentSlider.maximumValue = 255
+    if sender.selectedSegmentIndex == 0 {
+      currentColorModel = rgbColorModel
     }
-    //User selected 'HSB' Color Model
     else {
-      firstColorComponentLabel.text = colorModelHSBComponents[0]
-      secondColorComponentLabel.text = colorModelHSBComponents[1]
-      thirdColorComponentLabel.text = colorModelHSBComponents[2]
-      
-      firstColorComponentSlider.minimumValue = 0
-      firstColorComponentSlider.maximumValue = 360
-      
-      secondColorComponentSlider.minimumValue = 0
-      secondColorComponentSlider.maximumValue = 100
-      
-      thirdColorComponentSlider.minimumValue = 0
-      thirdColorComponentSlider.maximumValue = 100
-
+      currentColorModel = hsbColorModel
     }
+    resetValues()
   }
   
   @IBAction func setColorBtnPressed(_ sender: UIButton) {
     
-    let alert = UIAlertController(title: "Enter a color name", message: "Please enter a color name for your selection.", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Enter a color name",
+                                  message: "Please enter a color name of your choice.",
+                                  preferredStyle: .alert)
     alert.addTextField { textField in
       textField.placeholder = "Color Name"
     }
     let action = UIAlertAction(title: "OK", style: .default) { action in
-      self.setColorForBackground()
+      self.processChosenColorValues()
       self.colorNameLabel.text = alert.textFields![0].text
     }
     alert.addAction(action)
     present(alert, animated: true, completion: nil)
   }
   
-  func setColorForBackground() {
+  func processChosenColorValues() {
     
     //change background color of the view
     let firstSelectedColorInt = Int(firstColorNumberLabel.text!)
@@ -144,25 +112,12 @@ class ViewController: UIViewController {
     let thirdSelectedColorInt = Int(thirdColorNumberLabel.text!)
     let thirdSelectedColorFloat = CGFloat(thirdSelectedColorInt!)
     
-    let selectedColor: UIColor!
-    if currentColorModel == .rgb {
-      let redColor = firstSelectedColorFloat/255
-      let greenColor = secondSelectedColorFloat/255
-      let blueColor = thirdSelectedColorFloat/255
-      
-      selectedColor = UIColor(red: redColor,
-                              green: greenColor,
-                              blue: blueColor,
-                              alpha: defaultAlpha)
-    }
-    else {
-      let hue = firstSelectedColorFloat/360
-      let saturation = secondSelectedColorFloat/100
-      let brightness = thirdSelectedColorFloat/100
-      
-      selectedColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: defaultAlpha)
-    }
-    view.backgroundColor = selectedColor
+    let colorValues = currentColorModel.colorValues
+    let firstColorVal = firstSelectedColorFloat/CGFloat(colorValues[0].maxRange)
+    let secondColorVal = secondSelectedColorFloat/CGFloat(colorValues[1].maxRange)
+    let thirdColorVal = thirdSelectedColorFloat/CGFloat(colorValues[2].maxRange)
+
+    setBackgroundColor(firstValue: firstColorVal, secondValue: secondColorVal, thirdValue: thirdColorVal)
   }
   
   @IBAction func resetBtnPressed(_ sender: UIButton) {
@@ -171,14 +126,10 @@ class ViewController: UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let destinationVC = segue.destination as? InfoViewController {
-      if currentColorModel == .rgb {
-        destinationVC.colorModelStr = "RGB"
-      }
-      else {
-        destinationVC.colorModelStr = "HSB"
-      }
+      destinationVC.colorModelStr = currentColorModel.name
     }
   }
+  
   func resetValues() {
     
     firstColorComponentSlider.value = 0
@@ -190,11 +141,17 @@ class ViewController: UIViewController {
     thirdColorNumberLabel.text = String(0)
     
     colorNameLabel.text = "Color Name"
-    if currentColorModel == .hsb {
-      view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: defaultAlpha)
+    
+    setBackgroundColor(firstValue: 0.0, secondValue: 0.0, thirdValue: 0.0)
+  }
+  
+  func setBackgroundColor(firstValue: CGFloat, secondValue: CGFloat, thirdValue: CGFloat) {
+    
+    if currentColorModel.type == .hsb {
+      view.backgroundColor = UIColor(hue: firstValue, saturation: secondValue, brightness: thirdValue, alpha: defaultAlpha)
     }
     else {
-      view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: defaultAlpha)
+      view.backgroundColor = UIColor(red: firstValue, green: secondValue, blue: thirdValue, alpha: defaultAlpha)
     }
   }
 }

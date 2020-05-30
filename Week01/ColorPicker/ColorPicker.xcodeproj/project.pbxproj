@@ -13,6 +13,8 @@
 		33AFE6252481893200BFC6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE6242481893200BFC6E5 /* Assets.xcassets */; };
 		33AFE6282481893200BFC6E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE6262481893200BFC6E5 /* LaunchScreen.storyboard */; };
 		33EE852B2481E96B00801814 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852A2481E96B00801814 /* InfoViewController.swift */; };
+		33EE852D2481F20F00801814 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852C2481F20F00801814 /* ColorModel.swift */; };
+		33EE852F2481F42900801814 /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE852E2481F42900801814 /* ColorValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		33AFE6272481893200BFC6E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33AFE6292481893200BFC6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33EE852A2481E96B00801814 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		33EE852C2481F20F00801814 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		33EE852E2481F42900801814 /* ColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				33AFE6262481893200BFC6E5 /* LaunchScreen.storyboard */,
 				33AFE6292481893200BFC6E5 /* Info.plist */,
 				33EE852A2481E96B00801814 /* InfoViewController.swift */,
+				33EE852C2481F20F00801814 /* ColorModel.swift */,
+				33EE852E2481F42900801814 /* ColorValue.swift */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				33AFE6202481893000BFC6E5 /* ViewController.swift in Sources */,
 				33EE852B2481E96B00801814 /* InfoViewController.swift in Sources */,
+				33EE852F2481F42900801814 /* ColorValue.swift in Sources */,
 				33AFE61E2481893000BFC6E5 /* AppDelegate.swift in Sources */,
+				33EE852D2481F20F00801814 /* ColorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
