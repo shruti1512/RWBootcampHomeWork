@@ -47,6 +47,7 @@ class ViewController: UIViewController {
   let alertMessage = "Please enter a color name of your choice."
   let alertOkBtnText = "OK"
   let alertCancelBtnText = "Cancel"
+  let noNameColorText = "(No name)"
   let defaultColorVal: CGFloat = 0.0
 
   override func viewDidLoad() {
@@ -120,7 +121,16 @@ class ViewController: UIViewController {
     }
     let okAction = UIAlertAction(title: alertOkBtnText, style: .default) { action in
       self.setViewColor(true)
-      self.colorNameLabel.text = alert.textFields![0].text
+        if let textFieldText = alert.textFields![0].text {
+            let charSet = NSCharacterSet.whitespaces
+            let trimmedString = textFieldText.trimmingCharacters(in: charSet)
+            if trimmedString.count > 0 {
+                self.colorNameLabel.text = trimmedString
+            }
+            else {
+                self.colorNameLabel.text  = self.noNameColorText
+            }
+        }
     }
     alert.addAction(okAction)
     let cancelAction = UIAlertAction(title: alertCancelBtnText, style: .default) { action in
