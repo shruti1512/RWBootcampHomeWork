@@ -26,3 +26,9 @@ struct ColorValue {
   var minRange: CGFloat
   var maxRange: CGFloat
 }
+
+struct UserColor {
+  var name: String
+  var model: ColorModel.ModelType
+  var color: UIColor
+}

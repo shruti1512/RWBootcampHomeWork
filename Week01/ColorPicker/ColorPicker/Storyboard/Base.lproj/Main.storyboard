@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,18 +13,36 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecL-1J-QMX">
-                                <rect key="frame" x="20" y="20" width="324" height="23.333333333333329"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAS-RK-zPl" userLabel="Top View">
+                                <rect key="frame" x="20" y="0.0" width="627" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecL-1J-QMX">
+                                        <rect key="frame" x="256" y="8.5" width="115" height="23.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ecL-1J-QMX" firstAttribute="centerX" secondItem="qAS-RK-zPl" secondAttribute="centerX" id="9Dr-kS-Epv"/>
+                                    <constraint firstItem="ecL-1J-QMX" firstAttribute="centerY" secondItem="qAS-RK-zPl" secondAttribute="centerY" id="Y2X-Bx-lOM"/>
+                                    <constraint firstItem="ecL-1J-QMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qAS-RK-zPl" secondAttribute="leading" constant="20" id="bpD-VS-ldG"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ecL-1J-QMX" secondAttribute="trailing" constant="20" id="id0-9g-nZX"/>
+                                    <constraint firstAttribute="height" constant="40" id="qlF-Om-RtN">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G77-Hf-SKS">
-                                <rect key="frame" x="41.333333333333343" y="63.333333333333343" width="331.33333333333326" height="32"/>
+                                <rect key="frame" x="20" y="50" width="587" height="32"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="RGB"/>
@@ -36,109 +54,136 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="93R-OO-yFV">
-                                <rect key="frame" x="20" y="256.66666666666669" width="374" height="223"/>
+                                <rect key="frame" x="20" y="103.5" width="627" height="208"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yTw-sd-8xd" userLabel="Slider1-Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yTw-sd-8xd" userLabel="Slider1-Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="627" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-zv-0gt">
-                                                <rect key="frame" x="169.66666666666666" y="0.0" width="34.666666666666657" height="21"/>
+                                                <rect key="frame" x="296.5" y="0.0" width="34.5" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                                </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-CR-Cx2" userLabel="StackView">
-                                                <rect key="frame" x="36.666666666666657" y="31" width="300.66666666666674" height="30"/>
+                                                <rect key="frame" x="87.5" y="26" width="452" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="WbM-IX-2Vn">
-                                                        <rect key="frame" x="-2" y="0.0" width="252.66666666666666" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="404" height="31"/>
                                                         <connections>
                                                             <action selector="firstColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wzX-2t-fIb"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxn-Cq-pp5">
-                                                        <rect key="frame" x="268.66666666666663" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="420" y="0.0" width="32" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="fCE-Dk-Gr1"/>
+                                                            <constraint firstAttribute="width" constant="32" id="fCE-Dk-Gr1">
+                                                                <variation key="heightClass=regular-widthClass=regular" constant="64"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                                        </variation>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=compact-widthClass=compact" spacing="5"/>
+                                        <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-uc-NHl" userLabel="Slider2-StackView">
-                                        <rect key="frame" x="0.0" y="81" width="374" height="61"/>
+                                        <rect key="frame" x="0.0" y="76" width="627" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weo-Up-oeG">
-                                                <rect key="frame" x="160" y="0.0" width="54" height="21"/>
+                                                <rect key="frame" x="286.5" y="0.0" width="54" height="21"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                                </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JJO-Cw-ojV" userLabel="StackView">
-                                                <rect key="frame" x="36.666666666666657" y="31" width="300.66666666666674" height="30"/>
+                                                <rect key="frame" x="87.5" y="26" width="452" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="xU9-c7-hYP">
-                                                        <rect key="frame" x="-2" y="0.0" width="252.66666666666666" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="404" height="31"/>
                                                         <connections>
                                                             <action selector="secondColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jqh-Uo-ETw"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veQ-6M-77T">
-                                                        <rect key="frame" x="268.66666666666663" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="420" y="0.0" width="32" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="dkB-QF-FXU"/>
+                                                            <constraint firstAttribute="width" constant="32" id="dkB-QF-FXU">
+                                                                <variation key="heightClass=regular-widthClass=regular" constant="64"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                                        </variation>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=compact-widthClass=compact" spacing="5"/>
+                                        <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-bi-f5J" userLabel="Slider3-StackView">
-                                        <rect key="frame" x="0.0" y="162" width="374" height="61"/>
+                                        <rect key="frame" x="0.0" y="152" width="627" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Km-Cy-eWK">
-                                                <rect key="frame" x="167.33333333333334" y="0.0" width="39.666666666666657" height="21"/>
+                                                <rect key="frame" x="294" y="0.0" width="39.5" height="21"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                                </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-PB-qPu" userLabel="StackView">
-                                                <rect key="frame" x="36.666666666666657" y="31" width="300.66666666666674" height="30"/>
+                                                <rect key="frame" x="87.5" y="26" width="452" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="lfC-Cr-eut">
-                                                        <rect key="frame" x="-2" y="0.0" width="252.66666666666666" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="404" height="31"/>
                                                         <connections>
                                                             <action selector="thirdColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="qcn-cK-Kue"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-lq-DMw">
-                                                        <rect key="frame" x="268.66666666666663" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="420" y="0.0" width="32" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="ktG-aj-Nc1"/>
+                                                            <constraint firstAttribute="width" constant="32" id="ktG-aj-Nc1">
+                                                                <variation key="heightClass=regular-widthClass=regular" constant="64"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                                        </variation>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=compact-widthClass=compact" spacing="5"/>
+                                        <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,9 +191,21 @@
                                     <constraint firstItem="xU9-c7-hYP" firstAttribute="width" secondItem="WbM-IX-2Vn" secondAttribute="width" id="8UX-EV-AJR"/>
                                     <constraint firstItem="lfC-Cr-eut" firstAttribute="width" secondItem="WbM-IX-2Vn" secondAttribute="width" id="XqA-ol-3XA"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="60"/>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2n-0f-6a6" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="175" width="667" height="200"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="WtS-nW-tgJ"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S14-g5-z5Q">
-                                <rect key="frame" x="20" y="679" width="100" height="37"/>
+                                <rect key="frame" x="20" y="328" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="QeH-tG-YAW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Set Color" backgroundImage="Button-Normal">
@@ -161,7 +218,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-BG-3UV">
-                                <rect key="frame" x="294" y="679" width="100" height="37"/>
+                                <rect key="frame" x="547" y="328" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Tca-GJ-dMK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Reset" backgroundImage="Button-Normal">
@@ -173,48 +233,240 @@
                                     <action selector="resetBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VP9-S5-qQB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-wK-ROe">
-                                <rect key="frame" x="364" y="20" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="8df-ky-vjO"/>
-                                    <constraint firstAttribute="width" constant="30" id="oBw-kU-DlR"/>
-                                </constraints>
-                                <state key="normal" image="InfoButton" backgroundImage="SmallButton"/>
-                                <connections>
-                                    <segue destination="4Tk-y0-hOr" kind="presentation" modalTransitionStyle="flipHorizontal" id="1xB-wp-bTH"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95T-4c-8o5">
-                                <rect key="frame" x="187" y="676" width="40" height="40"/>
+                                <rect key="frame" x="313.5" y="325" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="95T-4c-8o5" secondAttribute="height" multiplier="1:1" id="4ZU-1M-01Z"/>
                                     <constraint firstAttribute="width" constant="40" id="9ww-9w-IqZ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-wK-ROe" userLabel="Info Button">
+                                <rect key="frame" x="617" y="50" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="S3O-4B-vW6"/>
+                                    <constraint firstAttribute="width" constant="30" id="WQQ-Hc-Jh1"/>
+                                </constraints>
+                                <state key="normal" image="InfoButton" backgroundImage="SmallButton"/>
+                                <connections>
+                                    <segue destination="4Tk-y0-hOr" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="1xB-wp-bTH"/>
+                                </connections>
+                            </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-nC-sA5" userLabel="Recents Stack View">
+                                <rect key="frame" x="80" y="221.5" width="507.5" height="73.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-eb-Phi">
+                                        <rect key="frame" x="0.0" y="24" width="87.5" height="25.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YpA-MC-0Th">
+                                        <rect key="frame" x="107.5" y="0.0" width="400" height="73.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="8xF-17-A5Y">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y8-Sx-TfP" userLabel="Recent Btn1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Aby-nw-Nsf"/>
+                                                            <constraint firstAttribute="width" secondItem="7y8-Sx-TfP" secondAttribute="height" multiplier="1:1" id="ICo-9U-pir"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Aby-nw-Nsf"/>
+                                                                <exclude reference="ICo-9U-pir"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <include reference="Aby-nw-Nsf"/>
+                                                                <include reference="ICo-9U-pir"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0R-dg-alw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mde-8i-dYl" userLabel="Recent Btn2">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="mde-8i-dYl" secondAttribute="height" multiplier="1:1" id="TPK-fm-fAc"/>
+                                                            <constraint firstAttribute="height" constant="40" id="gF8-cW-cbS"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="TPK-fm-fAc"/>
+                                                                <exclude reference="gF8-cW-cbS"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <include reference="TPK-fm-fAc"/>
+                                                                <include reference="gF8-cW-cbS"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c9K-YY-nAg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovT-M8-UxI" userLabel="Recent Btn3">
+                                                        <rect key="frame" x="180" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="ovT-M8-UxI" secondAttribute="height" multiplier="1:1" id="Ss3-Xu-B1R"/>
+                                                            <constraint firstAttribute="height" constant="40" id="gc8-SO-zZe"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Ss3-Xu-B1R"/>
+                                                                <exclude reference="gc8-SO-zZe"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <include reference="Ss3-Xu-B1R"/>
+                                                                <include reference="gc8-SO-zZe"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75f-mY-DDV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-XD-ydB" userLabel="Recent Btn4">
+                                                        <rect key="frame" x="270" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="9aV-ji-HlW"/>
+                                                            <constraint firstAttribute="width" secondItem="wG7-XD-ydB" secondAttribute="height" multiplier="1:1" id="mVs-nu-7eb"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GHB-wZ-D47"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSS-px-A77" userLabel="Recent Btn5">
+                                                        <rect key="frame" x="360" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="6gx-TD-ALA"/>
+                                                            <constraint firstAttribute="width" secondItem="dSS-px-A77" secondAttribute="height" multiplier="1:1" id="xXL-DU-FEK"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="6gx-TD-ALA"/>
+                                                                <exclude reference="xXL-DU-FEK"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <include reference="6gx-TD-ALA"/>
+                                                                <include reference="xXL-DU-FEK"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEd-km-nOx"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oKO-6m-RXB">
+                                                <rect key="frame" x="0.0" y="50" width="400" height="23.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6T-SQ-OXY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="68" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-98-wl7">
+                                                        <rect key="frame" x="83" y="0.0" width="68" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oV7-WY-w84">
+                                                        <rect key="frame" x="166" y="0.0" width="68" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpY-6a-F3t">
+                                                        <rect key="frame" x="249" y="0.0" width="68" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9X-KQ-e5M">
+                                                        <rect key="frame" x="332" y="0.0" width="68" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
+                            </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6J-b8-efK">
+                                <rect key="frame" x="208.5" y="332.5" width="85" height="25.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FnO-BG-3UV" secondAttribute="bottom" constant="20" id="0BT-fP-Mrb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FnO-BG-3UV" secondAttribute="bottom" constant="20" id="0BT-fP-Mrb">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="qAS-RK-zPl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Pz-gj-Qc0"/>
+                            <constraint firstItem="lBD-wK-ROe" firstAttribute="top" secondItem="qAS-RK-zPl" secondAttribute="bottom" constant="10" id="7iH-je-nMU">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
+                            <constraint firstItem="95T-4c-8o5" firstAttribute="leading" secondItem="W6J-b8-efK" secondAttribute="trailing" constant="20" id="9VB-6b-Tlr"/>
                             <constraint firstItem="S14-g5-z5Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Alb-8o-J0n"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S14-g5-z5Q" secondAttribute="bottom" constant="20" id="E1j-SE-rAc"/>
+                            <constraint firstItem="lBD-wK-ROe" firstAttribute="leading" secondItem="G77-Hf-SKS" secondAttribute="trailing" constant="10" id="CtK-yO-YPA">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S14-g5-z5Q" secondAttribute="bottom" constant="20" id="E1j-SE-rAc">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="93R-OO-yFV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E3h-fj-8qO">
                                 <variation key="heightClass=compact" constant="20"/>
                             </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M2n-0f-6a6" secondAttribute="trailing" id="Iwq-yr-DbO"/>
+                            <constraint firstItem="G77-Hf-SKS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kfp-V9-RKj">
+                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                            </constraint>
+                            <constraint firstItem="95T-4c-8o5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S14-g5-z5Q" secondAttribute="trailing" constant="8" symbolic="YES" id="Km9-zg-2J5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FnO-BG-3UV" secondAttribute="trailing" constant="20" id="LL0-uh-lrM"/>
-                            <constraint firstItem="FnO-BG-3UV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S14-g5-z5Q" secondAttribute="trailing" constant="8" symbolic="YES" id="SUQ-lX-zkM"/>
-                            <constraint firstItem="lBD-wK-ROe" firstAttribute="leading" secondItem="ecL-1J-QMX" secondAttribute="trailing" constant="20" id="Urx-4Z-66V"/>
-                            <constraint firstItem="G77-Hf-SKS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="Ygx-br-hwl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="95T-4c-8o5" secondAttribute="bottom" constant="20" id="cpI-5L-Hvr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lBD-wK-ROe" secondAttribute="trailing" constant="20" id="f3b-mF-Suh"/>
-                            <constraint firstItem="ecL-1J-QMX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="fio-qL-Nt5"/>
-                            <constraint firstItem="G77-Hf-SKS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gvk-CT-M07"/>
-                            <constraint firstItem="lBD-wK-ROe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="hGg-5X-2Mo"/>
+                            <constraint firstItem="W6J-b8-efK" firstAttribute="centerY" secondItem="95T-4c-8o5" secondAttribute="centerY" id="Oh8-Rp-o2G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lBD-wK-ROe" secondAttribute="trailing" constant="20" id="QRQ-N7-bbw"/>
+                            <constraint firstItem="JCc-nC-sA5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SXG-Gd-xna"/>
+                            <constraint firstItem="95T-4c-8o5" firstAttribute="top" secondItem="JCc-nC-sA5" secondAttribute="bottom" constant="30" id="UYx-oM-C8K"/>
+                            <constraint firstItem="M2n-0f-6a6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vni-0e-i6S"/>
+                            <constraint firstItem="W6J-b8-efK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="c7O-40-cXj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="95T-4c-8o5" secondAttribute="bottom" constant="20" id="cpI-5L-Hvr">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="qAS-RK-zPl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="egn-i8-AYG"/>
+                            <constraint firstItem="FnO-BG-3UV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="95T-4c-8o5" secondAttribute="trailing" constant="47.5" id="j8T-qi-VFN"/>
+                            <constraint firstAttribute="bottom" secondItem="M2n-0f-6a6" secondAttribute="bottom" id="jOK-TY-SN3"/>
                             <constraint firstItem="WbM-IX-2Vn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="nyd-QK-s10"/>
-                            <constraint firstItem="G77-Hf-SKS" firstAttribute="top" secondItem="ecL-1J-QMX" secondAttribute="bottom" constant="20" id="o13-3w-dm7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="93R-OO-yFV" secondAttribute="trailing" constant="20" id="oYF-2J-10s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qAS-RK-zPl" secondAttribute="trailing" constant="20" id="pod-uW-776"/>
                             <constraint firstItem="93R-OO-yFV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rbP-So-L4B"/>
-                            <constraint firstItem="ecL-1J-QMX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vNn-o0-pS0"/>
+                            <constraint firstItem="G77-Hf-SKS" firstAttribute="top" secondItem="qAS-RK-zPl" secondAttribute="bottom" constant="10" id="sbG-wP-cph">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
                             <constraint firstItem="95T-4c-8o5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zYe-xk-HrS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -225,6 +477,7 @@
                         <outlet property="firstColorComponentSlider" destination="WbM-IX-2Vn" id="68Q-i3-Wd3"/>
                         <outlet property="firstColorNumberLabel" destination="fxn-Cq-pp5" id="jV7-Ou-Hni"/>
                         <outlet property="previewView" destination="95T-4c-8o5" id="845-Az-S6E"/>
+                        <outlet property="recentsStackView" destination="JCc-nC-sA5" id="UMe-BJ-9wa"/>
                         <outlet property="secondColorComponentLabel" destination="weo-Up-oeG" id="62S-RC-Oaz"/>
                         <outlet property="secondColorComponentSlider" destination="xU9-c7-hYP" id="1p2-Er-rNz"/>
                         <outlet property="secondColorNumberLabel" destination="veQ-6M-77T" id="Kfs-v9-8mk"/>
@@ -232,22 +485,32 @@
                         <outlet property="thirdColorComponentLabel" destination="7Km-Cy-eWK" id="O6X-tL-3yv"/>
                         <outlet property="thirdColorComponentSlider" destination="lfC-Cr-eut" id="g6T-zx-g9r"/>
                         <outlet property="thirdColorNumberLabel" destination="hiy-lq-DMw" id="ORY-f2-ZRm"/>
+                        <outletCollection property="recentColorLabels" destination="B6T-SQ-OXY" collectionClass="NSMutableArray" id="vzK-ej-iAk"/>
+                        <outletCollection property="recentColorLabels" destination="0FV-98-wl7" collectionClass="NSMutableArray" id="0OV-H2-tYF"/>
+                        <outletCollection property="recentColorLabels" destination="oV7-WY-w84" collectionClass="NSMutableArray" id="NMS-QZ-9xH"/>
+                        <outletCollection property="recentColorLabels" destination="bpY-6a-F3t" collectionClass="NSMutableArray" id="yIR-XV-ayp"/>
+                        <outletCollection property="recentColorLabels" destination="Q9X-KQ-e5M" collectionClass="NSMutableArray" id="fYY-mE-xnA"/>
+                        <outletCollection property="recentColorBtns" destination="7y8-Sx-TfP" collectionClass="NSMutableArray" id="OqM-MY-9lE"/>
+                        <outletCollection property="recentColorBtns" destination="mde-8i-dYl" collectionClass="NSMutableArray" id="2KN-wh-bKk"/>
+                        <outletCollection property="recentColorBtns" destination="ovT-M8-UxI" collectionClass="NSMutableArray" id="4Nx-C7-Y8S"/>
+                        <outletCollection property="recentColorBtns" destination="wG7-XD-ydB" collectionClass="NSMutableArray" id="HEO-qx-xUJ"/>
+                        <outletCollection property="recentColorBtns" destination="dSS-px-A77" collectionClass="NSMutableArray" id="uB6-H3-Xov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410.14492753623193" y="-43.206521739130437"/>
+            <point key="canvasLocation" x="-412" y="-44.527736131934034"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="vuv-K0-qjG">
             <objects>
                 <viewController id="4Tk-y0-hOr" customClass="InfoViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z9x-I1-M6I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvA-ZR-s2d">
-                                <rect key="frame" x="20" y="20" width="374" height="619"/>
+                                <rect key="frame" x="20" y="20" width="627" height="278"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -255,7 +518,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97D-6G-OKa">
-                                <rect key="frame" x="157" y="659" width="100" height="37"/>
+                                <rect key="frame" x="283.5" y="318" width="100" height="37"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Close" backgroundImage="Button-Normal">
