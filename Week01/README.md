@@ -3,12 +3,17 @@ This app allows user to pick a color with either "RGB" or "HSB" values. The sele
 
 ### Student Details:- 
 
-Name - Shruti Sharma <br/>
-Discord Name - TK: Shruti <br/>
-Basic Location (Country, State/Province or City) - USA, CA, LA <br/>
-Programming experience - 6 yrs as iOS Developer in Objective C <br/>
-Goals - <br/> 
-Hobbies and Interests - Reading, Cooking, Playing lawn tennis
+#### Name - Shruti Sharma
+#### Discord Name - TK:Shruti
+#### Basic Location (Country, State/Province or City) - Los Angeles (USA/CA)
+#### Programming experience - 6 yrs as iOS Developer in Objective C
+#### Goals
+- [x] Get proficient in iOS Development.
+- [x] Learn how to drive.
+- [x] Workout more often.
+- [x] Practise mediation more.
+- [x] Travel around the world.
+#### Hobbies and Interests - Reading, Cooking, Playing tennis
 
 ### App Details
 
@@ -57,6 +62,6 @@ The UI consists of the following: <br/>
 <img src="Screenshots/iPhone/iPhone-Potrait.png" width="200" height="400">
 <img src="Screenshots/iPhone/iPhone-Landscape.png" width="400" height="200">
 <img src="Screenshots/iPhone/Iphone-Wikipedia.png" width="200" height="400">
-<img src="Screenshots/iPad/iPad-Potrait.png" width="400" height="300">
+<img src="Screenshots/iPad/iPad-Potrait.png" width="300" height="400">
 <img src="Screenshots/iPad/iPad-Landscape.png" width="400" height="300">
-<img src="Screenshots/iPad/iPad-ColorHistory.png" width="400" height="300">
+<img src="Screenshots/iPad/iPad-ColorHistory.png" width="300" height="400">
