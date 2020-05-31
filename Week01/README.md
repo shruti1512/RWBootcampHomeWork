@@ -2,7 +2,7 @@
 This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background.
 
 ### Biography 
-<img src="../Bio-Image.png" width="300" height="400">
+<img src="../Bio-Image.png" width="300" height="400"><br/>
 #### Name - Shruti Sharma
 #### Discord Name - TK:Shruti
 #### Basic Location (Country, State/Province or City) - Los Angeles (USA/CA)
