@@ -156,9 +156,6 @@ class ViewController: UIViewController {
     @IBAction func recentColorBtnBtnPressed(_ sender: UIButton) {
       
       let index = sender.tag%100
-//      guard let recentUserColors = recentUserColors else {
-//            return
-//      }
       let colors = recentUserColors.filter{ $0.model ==  currentColorModel.type}
       if index < colors.count && colors.count > 0 {
           let userColor = colors[index]
@@ -228,9 +225,6 @@ class ViewController: UIViewController {
   //MARK: - Set Color History
   func saveColorInHistory(_ userColor: UserColor) {
         
-//    if recentUserColors == nil {
-//        recentUserColors = [UserColor]()
-//    }
     var colors = recentUserColors.filter{ $0.model ==  userColor.model}
     if colors.count == 5 {
         let color = colors.removeLast()
@@ -296,9 +290,7 @@ class ViewController: UIViewController {
 
   func resetColorHistory() {
     recentColorBtns.forEach { $0.backgroundColor = UIColor.clear }
-//    if recentUserColors !=  nil {
-        recentUserColors.removeAll()
-//    }
+    recentUserColors.removeAll()
   }
     
   func resetSliders() {
