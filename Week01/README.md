@@ -57,6 +57,6 @@ The UI consists of the following: <br/>
 <img src="Screenshots/iPhone/iPhone-Potrait.png" width="200" height="400">
 <img src="Screenshots/iPhone/iPhone-Landscape.png" width="400" height="200">
 <img src="Screenshots/iPhone/Iphone-Wikipedia.png" width="200" height="400">
-<img src="Screenshots/iPad/iPad-Potrait.png" width="400" height="300">
+<img src="Screenshots/iPad/iPad-Potrait.png" width="300" height="400">
 <img src="Screenshots/iPad/iPad-Landscape.png" width="400" height="300">
-<img src="Screenshots/iPad/iPad-ColorHistory.png" width="400" height="300">
+<img src="Screenshots/iPad/iPad-ColorHistory.png" width="300" height="400">
