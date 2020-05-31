@@ -3,12 +3,17 @@ This app allows user to pick a color with either "RGB" or "HSB" values. The sele
 
 ### Student Details:- 
 
-Name - Shruti Sharma <br/>
-Discord Name - TK: Shruti <br/>
-Basic Location (Country, State/Province or City) - USA, CA, LA <br/>
-Programming experience - 6 yrs as iOS Developer in Objective C <br/>
-Goals - <br/> 
-Hobbies and Interests - Reading, Cooking, Playing lawn tennis
+#### Name - Shruti Sharma
+#### Discord Name - TK:Shruti
+#### Basic Location (Country, State/Province or City) - Los Angeles (USA/CA)
+#### Programming experience - 6 yrs as iOS Developer in Objective C
+#### Goals
+- [x] Get proficient in iOS Development.
+- [x] Learn how to drive.
+- [x] Workout more often.
+- [x] Practise mediation more.
+- [x] Travel around the world.
+#### Hobbies and Interests - Reading, Cooking, Playing tennis
 
 ### App Details
 
