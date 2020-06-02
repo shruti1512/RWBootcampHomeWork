@@ -1,10 +1,11 @@
 # Color Picker App
+[About](#about)<br/>
 [Biography](#bio)<br/>
 [App Details](#app)<br/>
 [Screenshots](#screenshots)<br/>
 </br>
-This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background.
-This app supports iPhone and iPad in both the orientations. There is a 'Recent Color History' feature which is avaialble only in iPad.
+## About
+<a name = "about" />This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background. This app supports iPhone and iPad in both the orientations. There is a 'Recent Color History' feature which is available only in iPad.
 
 ## Biography 
 <a name = "bio" /> 
