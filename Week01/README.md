@@ -1,22 +1,29 @@
 ## Color Picker App
+[Biography](#bio)<br/>
+[App Details](#app)<br/>
+[Screenshots](#screenshots)<br/>
+
+</br>
 This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background.
 
 ### Biography 
+<a name = "bio" /> 
 <img align = "right" src="../Bio-Image.png" width="245" height="350">  
 
-#### Name - Shruti Sharma
-#### Discord Name - TK:Shruti
-#### Basic Location (Country, State/Province or City) - Los Angeles (USA/CA)
-#### Programming experience - 6 yrs as iOS Developer in Objective C
-#### Goals
+**Name** - Shruti Sharma <br/>
+**Discord Name** - TK:Shruti <br/>
+**Basic Location** - Los Angeles (USA/CA) <br/>
+**Programming experience** - 6 yrs as iOS Developer in Objective C <br/>
+**Goals**
 - Get proficient in iOS Development 
 - Learn how to drive 
 - Workout more often 
 - Practise mediation more 
 - Travel around the world 
-#### Hobbies and Interests - Reading, Cooking, Playing tennis
+**Hobbies and Interests** - Reading, Cooking, Playing tennis
 
 ### App Details
+<a name = "app" />
 
 #### Basic UI Requirements
 
@@ -60,6 +67,8 @@ The UI consists of the following: <br/>
 - [x] Recent Color History (interactive) upto 5 colors for "RGB" and "HSB" each is visible in iPad.
 
 #### Screenshots
+<a name = "screenshots" />
+
 ##### iPhone
 <img src="Screenshots/iPhone/iPhone-Potrait.png" width="200" height="400"> <img src="Screenshots/iPhone/iPhone-Landscape.png" width="400" height="200"> <img src="Screenshots/iPhone/Iphone-Wikipedia.png" width="200" height="400">
 
