@@ -2,7 +2,7 @@
 This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background.
 
 ### Biography 
-<img src="../Bio-Image.png" width="300" height="400"><br/>
+<img align = "right" src="../Bio-Image.png" width="286" height="408"></br>
 #### Name - Shruti Sharma
 #### Discord Name - TK:Shruti
 #### Basic Location (Country, State/Province or City) - Los Angeles (USA/CA)
@@ -59,9 +59,11 @@ The UI consists of the following: <br/>
 - [x] Recent Color History (interactive) upto 5 colors for "RGB" and "HSB" each is visible in iPad.
 
 #### Screenshots
+####iPhone
 <img src="Screenshots/iPhone/iPhone-Potrait.png" width="200" height="400">
 <img src="Screenshots/iPhone/iPhone-Landscape.png" width="400" height="200">
 <img src="Screenshots/iPhone/Iphone-Wikipedia.png" width="200" height="400">
+####iPad
 <img src="Screenshots/iPad/iPad-Potrait.png" width="300" height="400">
 <img src="Screenshots/iPad/iPad-Landscape.png" width="400" height="300">
 <img src="Screenshots/iPad/iPad-ColorHistory.png" width="300" height="400">
