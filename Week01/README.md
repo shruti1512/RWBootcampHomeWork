@@ -5,7 +5,7 @@
 [Screenshots](#screenshots)<br/>
 </br>
 ## About
-<a name = "about" />This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background. This app supports iPhone and iPad in both the orientations. There is a 'Recent Color History' feature which is available only in iPad.
+<a name = "about" />This app allows user to pick a color with either "RGB" or "HSB" values. The selected color is set as background of the main view. The preview area at the bottom helps user to see the selected color before naming and setting it on the background. This app supports iPhone and iPad in both the orientations. There is an 'Interactive Recent Color History' feature which is available only in iPad.
 
 ## Biography 
 <a name = "bio" /> 
