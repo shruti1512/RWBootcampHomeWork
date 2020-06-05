@@ -7,18 +7,18 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
+
+enum ColorModelType {
+  case rgb
+  case hsb
+}
 
 struct ColorModel {
-  
-  enum ModelType: Int {
-    case rgb = 0
-    case hsb = 1
-  }
-  
   var name: String
-  var type: ModelType
+  var type: ColorModelType
   var colorValues: [ColorValue]
+  var wikiUrlString: String
 }
 
 struct ColorValue {
@@ -29,6 +29,8 @@ struct ColorValue {
 
 struct UserColor {
   var name: String
-  var model: ColorModel.ModelType
-  var color: UIColor
+  var model: ColorModelType
+  var color1: CGFloat
+  var color2: CGFloat
+  var color3: CGFloat
 }

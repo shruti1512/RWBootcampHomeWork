@@ -12,23 +12,17 @@ import WebKit
 class InfoViewController: UIViewController {
 
   @IBOutlet private weak var webView: WKWebView!
-  var colorModelType: ColorModel.ModelType?
+  public var wikiURLString: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
       
-    guard let colorModelType = colorModelType else {
+    guard let wikiURLString = wikiURLString else {
         return
     }
       
-      var url: URL!
-      if colorModelType == .rgb {
-         url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model")
-      }
-      else {
-         url = URL(string: "https://en.wikipedia.org/wiki/HSL_and_HSV")
-      }
-      if let wikipediaURL = url {
+    let url = URL(string: wikiURLString)
+    if let wikipediaURL = url {
         let urlRequest = URLRequest(url: wikipediaURL)
         webView.load(urlRequest)
       }

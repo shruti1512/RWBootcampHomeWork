@@ -46,3 +46,8 @@ enum ColorNameStrings {
     static let colorPlaceholder = "Color Name"
     static let noNameColorText = "(No name)"
 }
+
+enum WikiURLStrings {
+    static let rgbURL = "https://en.wikipedia.org/wiki/RGB_color_model"
+    static let hsbURL = "https://en.wikipedia.org/wiki/HSL_and_HSV"
+}

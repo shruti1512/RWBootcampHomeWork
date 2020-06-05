@@ -91,20 +91,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		330A8A402483232E00D0D527 /* App */ = {
+		330A8A402483232E00D0D527 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				33AFE61D2481893000BFC6E5 /* AppDelegate.swift */,
 			);
-			path = App;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		330A8A4324838A8C00D0D527 /* Constants */ = {
+		3377F71A2485B36700ED1A7D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				330A8A4424838A9B00D0D527 /* Constants.swift */,
 			);
-			path = Constants;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		33AFE6112481893000BFC6E5 = {
@@ -127,8 +127,8 @@
 		33AFE61C2481893000BFC6E5 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				330A8A4324838A8C00D0D527 /* Constants */,
-				330A8A402483232E00D0D527 /* App */,
+				330A8A402483232E00D0D527 /* AppDelegate */,
+				3377F71A2485B36700ED1A7D /* Helper */,
 				330A8A382483224000D0D527 /* Extensions */,
 				330A8A392483224800D0D527 /* Model */,
 				330A8A3A2483226400D0D527 /* Controller */,
