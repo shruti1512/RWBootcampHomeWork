@@ -10,6 +10,10 @@ import Foundation
 
 class GameLogic {
     
+    static func getRandomNumber(in range: CountableClosedRange<Int>) -> Int {
+        Int.random(in: range)
+    }
+    
     private(set) var round = 0
     private(set) var gameScore = 0
     var roundScore = 0

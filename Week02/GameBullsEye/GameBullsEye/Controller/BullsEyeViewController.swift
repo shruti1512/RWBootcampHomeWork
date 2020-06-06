@@ -12,8 +12,10 @@ class BullsEyeViewController: UIViewController {
 
     //MARK: - IBOutlets
     
+    @IBOutlet private weak var userHelpView: UIView!
+    @IBOutlet private weak var userHelpLabel: UILabel!
     @IBOutlet private weak var hitMeBtn: UIButton!
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet private weak var displayText: UILabel!
     @IBOutlet private weak var targetLabel: UILabel!
     @IBOutlet private weak var slider: UISlider!
@@ -21,10 +23,11 @@ class BullsEyeViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var sliderMinLabel: UILabel!
     @IBOutlet weak var sliderMaxLabel: UILabel!
-    
+    @IBOutlet weak var sliderContainerView: UIView!
+
     //MARK: - Properties
     var gameModel: GameModel!
-    let game = BullsEyeGame()
+    let game = BullsEyeGameLogic()
     var currentValue = 0
     var quickDiff: Int {
         return abs(game.targetValue - currentValue)
@@ -51,6 +54,8 @@ class BullsEyeViewController: UIViewController {
     
     func setupView() {
         
+        sliderContainerView.addCornerRadius(cornerRadius: 5.0)
+
         textField.addTarget(self, action: #selector(textFielddDidChange(_:)), for: .editingChanged)
         
         let thumbImageNormal = #imageLiteral(resourceName: "SliderThumb-Normal")
@@ -60,16 +65,14 @@ class BullsEyeViewController: UIViewController {
         slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
         
         let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
-        
         let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft")
         let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
         slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
-        
         let trackRightImage = #imageLiteral(resourceName: "SliderTrackRight")
         let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
         slider.setMaximumTrackImage(trackRightResizable, for: .normal)
 
-        displayText.text = gameModel.displayText
+        displayText.text = gameModel.promptText
         sliderMinLabel.text = String(gameModel.minValue)
         sliderMaxLabel.text = String(gameModel.maxValue)
 
@@ -77,11 +80,13 @@ class BullsEyeViewController: UIViewController {
             textField.isHidden = false
             targetLabel.isHidden = true
             slider.isUserInteractionEnabled = false
+            userHelpView.isHidden = false
         }
         else {
             textField.isHidden = true
             targetLabel.isHidden = false
             slider.isUserInteractionEnabled = true
+            userHelpView.isHidden = true
         }
     }
 
@@ -95,36 +100,60 @@ class BullsEyeViewController: UIViewController {
         let passRange = gameModel.minValue...gameModel.maxValue
         if let textInputInt = Int(textFieldText), passRange.contains(textInputInt) {
             currentValue = textInputInt
-            textField.backgroundColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+            updateUserHelpView(for: nil)
             hitMeBtn.isEnabled = true
         }
         else {
             textField.text = String(textFieldText.dropLast())
             if textFieldText.isEmpty {
-                textField.backgroundColor = UIColor.white
+                updateUserHelpView(for: UIColor.clear)
                 hitMeBtn.isEnabled = false
             }
         }
     }
     
+    func updateUserHelpView(for defaultColor: UIColor?) {
+
+        if defaultColor != nil {
+            userHelpView.backgroundColor = defaultColor
+        }
+        else {
+            switch currentValue {
+            case game.targetValue-10...game.targetValue+10:
+                userHelpLabel.text = "Warmer"
+                break
+            case game.targetValue-20...game.targetValue+20:
+                self.userHelpLabel.text = "Warm"
+                break
+            case game.targetValue-30...game.targetValue+30:
+                userHelpLabel.text = "Colder"
+                 break
+            default:
+                userHelpLabel.text = "Colder"
+            }
+
+            print("quickDiff: \(quickDiff)")
+            let val = CGFloat(Double(quickDiff)/50.0)
+            print("val: \(val)")
+            userHelpView.backgroundColor = UIColor(red: 1.0-val, green: 0.0, blue: val, alpha: 1.0)
+        }
+    }
     //MARK: - updateView Method
 
     func updateView() {
         if gameModel.type == .bullsEye {
             currentValue = 50
             slider.value = Float(currentValue)
-            slider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
         }
         else {
             currentValue = 0
             slider.value = Float(game.targetValue)
             textField.text = ""
             hitMeBtn.isEnabled = false
-            textField.backgroundColor = UIColor.white
         }
       targetLabel.text = String(game.targetValue)
-      scoreLabel.text = String(game.gameScore)
-      roundLabel.text = String(game.round)
+      scoreLabel.text = "Score: " + String(game.gameScore)
+      roundLabel.text = "Round: " + String(game.round)
     }
 
     //MARK: - showAlertForScore Method
@@ -162,21 +191,37 @@ class BullsEyeViewController: UIViewController {
             self.game.calculateGameScore()
             self.game.startNewRound()
             self.updateView()
+            self.updateSliderContainerViewColor(to: UIColor.white)
+            self.updateUserHelpView(for: UIColor.clear)
         })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
 
+    func updateSliderContainerViewColor(to defaultColor: UIColor?) {
+        if defaultColor != nil {
+            sliderContainerView.backgroundColor = defaultColor
+        }
+        else {
+            print("quickDiff: \(quickDiff)")
+            let val = CGFloat(Double(quickDiff)/50.0)
+            print("val: \(val)")
+            sliderContainerView.backgroundColor = UIColor(red: 1.0-val, green: 0.0, blue: val, alpha: 1.0)
+        }
+    }
+    
     //MARK: - Slider Moved Method
 
     @IBAction func sliderMoved(_ slider: UISlider) {
       currentValue = Int(slider.value.rounded())
-      slider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+      updateSliderContainerViewColor(to: nil)
     }
           
     //MARK: - ResetBtnPressed Method
 
     @IBAction func resetBtnPressed() {
+      updateSliderContainerViewColor(to: UIColor.white)
+      updateUserHelpView(for: UIColor.clear)
       game.startNewGame()
       updateView()
     }

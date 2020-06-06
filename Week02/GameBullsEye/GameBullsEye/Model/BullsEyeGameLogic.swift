@@ -15,7 +15,7 @@ class BullsEyeGameLogic: GameLogic {
     
     override func startNewRound() {
         super.startNewRound()
-        targetValue = Int.random(in: 1...100)
+        targetValue = GameLogic.getRandomNumber(in: 0...100)
     }
 
     func calculateRoundScore(for guessValue: Int) {

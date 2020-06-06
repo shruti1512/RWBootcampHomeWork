@@ -13,18 +13,18 @@ class MenuViewController: UIViewController {
 
     let bullsEyeGameModel = GameModel(name: "BullsEye",
                                       type: .bullsEye,
-                                      displayText: "Put the Bulls's Eye as close as to:",
+                                      promptText: "Put the Bulls's Eye as close as to:",
                                       minValue: 0,
                                       maxValue: 100)
     let rgbBullsEyeGameModel = GameModel(name: "RGBulls Eye",
                                       type: .rgbBullsEye,
-                                      displayText: "Match this color",
+                                      promptText: "Match this color",
                                       minValue: 0,
                                       maxValue: 255)
 
     let revBullsEyeGameModel = GameModel(name: "RevBullsEye",
                                       type: .revBullsEye,
-                                      displayText: "Guess where the slider is:",
+                                      promptText: "Guess where the slider is:",
                                       minValue: 1,
                                       maxValue: 100)
 
@@ -36,11 +36,20 @@ class MenuViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destinationVC = segue.destination as? BullsEyeViewController {
-            destinationVC.gameModel = revBullsEyeGameModel
-       }
-        else  if let destinationVC = segue.destination as? RGBullsEyeViewController {
-             destinationVC.gameModel = rgbBullsEyeGameModel
+        switch segue.identifier {
+            case "BullsEyeSegue":
+             if let destinationVC = segue.destination as? BullsEyeViewController {
+                 destinationVC.gameModel = bullsEyeGameModel
+            }
+            case "RGBullsEyeSegue":
+             if let destinationVC = segue.destination as? RGBullsEyeViewController {
+                 destinationVC.gameModel = rgbBullsEyeGameModel
+            }
+            case "RevBullsEyeSegue":
+             if let destinationVC = segue.destination as? BullsEyeViewController {
+                 destinationVC.gameModel = revBullsEyeGameModel
+            }
+            default: print("Case not handled")
         }
     }
 

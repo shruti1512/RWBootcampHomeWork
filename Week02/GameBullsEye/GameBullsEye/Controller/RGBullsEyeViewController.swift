@@ -34,7 +34,7 @@ class RGBullsEyeViewController: UIViewController {
   @IBOutlet weak var roundLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
   
-  let game = RGBGameLogic()
+  let game = RGBullsEyeGameLogic()
   var currentValue = RGB()
   var gameModel: GameModel!
     
@@ -57,7 +57,7 @@ class RGBullsEyeViewController: UIViewController {
     
 func setupView() {
     
-    targetTextLabel.text = gameModel.displayText
+    targetTextLabel.text = gameModel.promptText
     redSliderMinValueLbl.text = String(gameModel.minValue)
     redSliderMaxValueLbl.text = String(gameModel.maxValue)
     greenSliderMinValueLbl.text = String(gameModel.minValue)
@@ -150,6 +150,10 @@ func showAlertForScore() {
     game.startNewGame()
     updateView()
   }
+    
+    @IBAction func backToMainBtnPressed(sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 

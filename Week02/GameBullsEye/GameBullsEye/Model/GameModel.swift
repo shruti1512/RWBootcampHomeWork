@@ -8,16 +8,16 @@
 
 import Foundation
 
-enum GameType {
-    case bullsEye
-    case rgbBullsEye
-    case revBullsEye
+enum GameType: Int {
+    case bullsEye = 0
+    case rgbBullsEye = 1
+    case revBullsEye = 2
 }
 
 struct GameModel {
     var name: String
     var type: GameType
-    var displayText: String
+    var promptText: String
     var minValue: Int
     var maxValue: Int
 }
