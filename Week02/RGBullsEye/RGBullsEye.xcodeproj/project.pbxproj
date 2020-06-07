@@ -54,6 +54,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33734E39248CBFA600B1D9AD /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB57E41BED8F4800003224 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		33734E3A248CBFB700B1D9AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB57F61BED941D00003224 /* BullsEyeGame.swift */,
+				CDCB57F71BED941D00003224 /* RGB.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33734E3B248CBFC200B1D9AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB57E61BED8F4800003224 /* ViewController.swift */,
+				CDCB57FA1BED986300003224 /* AboutViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33734E3C248CBFCF00B1D9AD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB57E81BED8F4800003224 /* Main.storyboard */,
+				181A114E22AD925B003EA9CF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		33734E3D248CBFDA00B1D9AD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB57EB1BED8F4800003224 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CDCB57D81BED8F4800003224 = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +116,11 @@
 		CDCB57E31BED8F4800003224 /* RGBullsEye */ = {
 			isa = PBXGroup;
 			children = (
-				CDCB57E41BED8F4800003224 /* AppDelegate.swift */,
-				CDCB57E61BED8F4800003224 /* ViewController.swift */,
-				CDCB57F61BED941D00003224 /* BullsEyeGame.swift */,
-				CDCB57F71BED941D00003224 /* RGB.swift */,
-				CDCB57FA1BED986300003224 /* AboutViewController.swift */,
-				CDCB57E81BED8F4800003224 /* Main.storyboard */,
-				181A114E22AD925B003EA9CF /* LaunchScreen.storyboard */,
-				CDCB57EB1BED8F4800003224 /* Assets.xcassets */,
+				33734E39248CBFA600B1D9AD /* AppDelegate */,
+				33734E3A248CBFB700B1D9AD /* Model */,
+				33734E3B248CBFC200B1D9AD /* Controller */,
+				33734E3D248CBFDA00B1D9AD /* Resources */,
+				33734E3C248CBFCF00B1D9AD /* Storyboard */,
 				CDCB57F01BED8F4800003224 /* Info.plist */,
 			);
 			path = RGBullsEye;
