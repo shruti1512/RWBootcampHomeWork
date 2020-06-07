@@ -41,6 +41,12 @@ struct RGB {
     let rDiff = Double(r - target.r)
     let gDiff = Double(g - target.g)
     let bDiff = Double(b - target.b)
-    return sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff) / 255.0
+    
+    //Adding maxValue of the sqrt expression for scaling
+    //255 doesn't scale the value correctly as that's the max for a single color component
+    let max = Double(sqrt(Double(255*255 * 3)))
+    
+    //Updating formual to use max for correct scaling
+    return sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff) / max
   }
 }
