@@ -39,7 +39,17 @@ class ViewController: UIViewController {
   @IBOutlet weak var scoreLabel: UILabel!
   
   var game = BullsEyeGame()
-  var currentValue = RGB(r: 127, g: 127, b: 127)
+  var currentValue = RGB(r: 127, g: 127, b: 127) {
+    didSet {
+        guessLabel.backgroundColor = UIColor(rgbStruct: currentValue)
+        redLabel.text = String(currentValue.r)
+        greenLabel.text = String(currentValue.g)
+        blueLabel.text = String(currentValue.b)
+        redSlider.value = Float(currentValue.r)
+        greenSlider.value = Float(currentValue.g)
+        blueSlider.value = Float(currentValue.b)
+    }
+  }
 
   override func viewDidLoad() {
     
@@ -94,18 +104,11 @@ func showAlertForScore() {
       
   func updateView() {
     currentValue = RGB(r: 127, g: 127, b: 127)
-    redSlider.value = Float(currentValue.r)
-    greenSlider.value = Float(currentValue.g)
-    blueSlider.value = Float(currentValue.b)
     targetLabel.backgroundColor = UIColor(rgbStruct: game.targetValue)
     scoreLabel.text = "Score: " + String(game.gameScore)
     roundLabel.text = "Round: " + String(game.round)
-    guessLabel.backgroundColor = UIColor(rgbStruct: currentValue)
-    redLabel.text = String(currentValue.r)
-    greenLabel.text = String(currentValue.g)
-    blueLabel.text = String(currentValue.b)
   }
-
+    
   @IBAction func aSliderMoved(sender: UISlider) {
     if sender == redSlider {
         currentValue.r = Int(redSlider.value.rounded())
@@ -116,7 +119,6 @@ func showAlertForScore() {
     else if sender == blueSlider {
         currentValue.b = Int(blueSlider.value.rounded())
     }
-    guessLabel.backgroundColor = UIColor(rgbStruct: currentValue)
   }
   
   @IBAction func startOver(sender: AnyObject) {

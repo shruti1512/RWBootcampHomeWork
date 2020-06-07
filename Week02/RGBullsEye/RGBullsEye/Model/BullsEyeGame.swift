@@ -40,7 +40,7 @@ struct BullsEyeGame {
     }
     
     mutating func calculateRoundScore(for guessValue: RGB) {
-        let difference = Int(abs(guessValue.difference(target: targetValue)))
+        let difference = Int(abs(guessValue.difference(target: targetValue))*100)
         roundScore = 100 - difference
     }
     
