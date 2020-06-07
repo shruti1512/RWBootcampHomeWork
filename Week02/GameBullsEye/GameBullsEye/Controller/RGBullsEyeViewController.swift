@@ -111,7 +111,7 @@ func showAlertForScore() {
 }
 
   func updateView() {
-    currentValue = RGB(r: 127, g: 127, b: 127)
+    currentValue = RGB(r: gameModel.defaultValue, g: gameModel.defaultValue, b: gameModel.defaultValue)
     redSlider.value = Float(currentValue.r)
     greenSlider.value = Float(currentValue.g)
     blueSlider.value = Float(currentValue.b)

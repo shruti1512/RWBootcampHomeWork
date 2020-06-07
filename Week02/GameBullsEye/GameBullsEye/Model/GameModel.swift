@@ -20,4 +20,5 @@ struct GameModel {
     var promptText: String
     var minValue: Int
     var maxValue: Int
+    var defaultValue: Int
 }

@@ -15,18 +15,21 @@ class MenuViewController: UIViewController {
                                       type: .bullsEye,
                                       promptText: "Put the Bulls's Eye as close as to:",
                                       minValue: 0,
-                                      maxValue: 100)
+                                      maxValue: 100,
+                                      defaultValue: 50)
     let rgbBullsEyeGameModel = GameModel(name: "RGBulls Eye",
                                       type: .rgbBullsEye,
                                       promptText: "Match this color",
                                       minValue: 0,
-                                      maxValue: 255)
+                                      maxValue: 255,
+                                      defaultValue: 127)
 
     let revBullsEyeGameModel = GameModel(name: "RevBullsEye",
                                       type: .revBullsEye,
                                       promptText: "Guess where the slider is:",
                                       minValue: 1,
-                                      maxValue: 100)
+                                      maxValue: 100,
+                                      defaultValue: 1)
 
 
     override func viewDidLoad() {
