@@ -15,31 +15,6 @@ protocol GameProtocol {
 
 extension Int: GameProtocol { }
 
-extension RGB: GameProtocol {
-  
-  static func - (lhs: RGB, rhs: RGB) -> Int {
-    let rDiff = Double(lhs.r - rhs.r)
-    let gDiff = Double(lhs.g - rhs.g)
-    let bDiff = Double(lhs.b - rhs.b)
-    
-    //Adding maxValue of the sqrt expression for scaling
-    //255 doesn't scale the value correctly as that's the max for a single color component
-    let max = (255.0 * 255.0 * 3.0).squareRoot()
-    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff).squareRoot()
-    
-    //Updating formual to use max for correct scaling
-    return Int((dividend / max)*100)
-  }
-  
-  static func random(in range: ClosedRange<Int>) -> RGB {
-      return RGB( r:   Int.random(in: range),
-                  g:   Int.random(in: range),
-                  b:   Int.random(in: range)
-                )
-  }
-
-}
-
 struct BullsEyeGame<T: GameProtocol> {
     
     private(set) lazy var targetValue = T.random(in: targetRange)

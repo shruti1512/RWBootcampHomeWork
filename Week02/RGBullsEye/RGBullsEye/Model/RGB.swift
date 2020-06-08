@@ -44,11 +44,11 @@ struct RGB {
     
     //Adding maxValue of the sqrt expression for scaling
     //255 doesn't scale the value correctly as that's the max for a single color component
-    let max = Double(sqrt(Double(255*255 * 3)))
+    let max = (255.0 * 255.0 * 3.0).squareRoot()
+    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff).squareRoot()
     
     //Updating formual to use max for correct scaling
-    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff)
-    return Int(sqrt(dividend) / max)
+    return Int((dividend / max)*100)
   }
   
 }

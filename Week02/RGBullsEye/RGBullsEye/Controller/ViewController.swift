@@ -38,7 +38,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var roundLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
   
-  var game = BullsEyeGame<RGB>(targetRange: 0...255)
+  var game = BullsEyeGame()
   var currentValue = RGB(r: 127, g: 127, b: 127) {
     didSet {
         guessLabel.backgroundColor = UIColor(rgbStruct: currentValue)
@@ -68,7 +68,7 @@ func showAlertForScore() {
     
     var points = 0
     var alertTitle = ""
-    switch abs(game.targetValue - currentValue) {
+    switch abs(currentValue.difference(target: game.targetValue)) {
       case 0:
            alertTitle = "Perfect!"
            points = 100

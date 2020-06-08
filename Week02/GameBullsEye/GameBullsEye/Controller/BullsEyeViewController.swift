@@ -131,7 +131,9 @@ class BullsEyeViewController: UIViewController {
           points = ScoreConstants.perfectMatchBonus
             break
         case 1:
+          alertTitle = ScoreConstants.closeMatch
           points = ScoreConstants.closeMatchBonus
+          break
         case ..<5:
           alertTitle = ScoreConstants.closeMatch
            break

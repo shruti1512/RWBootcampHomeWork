@@ -28,19 +28,30 @@ struct RGB {
   var r = 127
   var g = 127
   var b = 127
-  
-  func difference(target: RGB) -> Int {
-    let rDiff = Double(r - target.r)
-    let gDiff = Double(g - target.g)
-    let bDiff = Double(b - target.b)
-    
-    //Adding maxValue of the sqrt expression for scaling
-    //255 doesn't scale the value correctly as that's the max for a single color component
-    let max = Double(sqrt(Double(255*255 * 3)))
-    
-    //Updating formual to use max for correct scaling
-    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff)
-    return Int(sqrt(dividend) / max)
-  }
-  
 }
+
+extension RGB: GameProtocol {
+  
+    static func - (lhs: RGB, rhs: RGB) -> Int {
+      let rDiff = Double(lhs.r - rhs.r)
+      let gDiff = Double(lhs.g - rhs.g)
+      let bDiff = Double(lhs.b - rhs.b)
+      
+      //Adding maxValue of the sqrt expression for scaling
+      //255 doesn't scale the value correctly as that's the max for a single color component
+      let max = (255.0 * 255.0 * 3.0).squareRoot()
+      let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff).squareRoot()
+      
+      //Updating formual to use max for correct scaling
+      return Int((dividend / max)*100)
+    }
+    
+    static func random(in range: ClosedRange<Int>) -> RGB {
+        return RGB( r:   Int.random(in: range),
+                    g:   Int.random(in: range),
+                    b:   Int.random(in: range)
+                  )
+    }
+
+ }
+

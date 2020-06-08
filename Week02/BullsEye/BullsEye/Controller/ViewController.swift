@@ -65,6 +65,8 @@ func showAlertForScore() {
         break
     case 1:
         points = 50
+      alertTitle = "You almost had it!"
+      break
     case ..<5:
          alertTitle = "You almost had it!"
         break
