@@ -225,5 +225,13 @@ class BullsEyeViewController: UIViewController {
     textField.resignFirstResponder()
   }
   
+  //MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let destinationVC = segue.destination as? InfoViewController {
+          destinationVC.htmFile = gameModel.htmlFileName
+      }
+  }
+
 }
 
