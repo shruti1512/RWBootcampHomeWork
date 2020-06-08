@@ -52,15 +52,18 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     
     super.viewDidLoad()
-    
-    setColorModels()
     setUIControls()
-    
-    //set default selected color model to 'RGB'
-    currentColorModel = rgbColorModel
     refresh()
   }
   
+  required init?(coder: NSCoder) {
+      super.init(coder: coder)
+      setColorModels()
+     //set default selected color model to 'RGB'
+     currentColorModel = rgbColorModel
+  }
+  //MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let destinationVC = segue.destination as? InfoViewController {
         destinationVC.wikiURLString = currentColorModel.wikiUrlString
