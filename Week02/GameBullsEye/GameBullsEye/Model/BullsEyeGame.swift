@@ -65,7 +65,7 @@ struct BullsEyeGame<T: GameProtocol> {
     }
     
     mutating func calculateRoundScore(for guessValue: T) {
-      let diff = guessValue - targetValue
+      let diff = abs(guessValue - targetValue)
       roundScore = 100 - diff
     }
     

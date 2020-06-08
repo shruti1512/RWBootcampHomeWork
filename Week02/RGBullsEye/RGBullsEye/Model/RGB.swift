@@ -37,7 +37,7 @@ struct RGB {
   var g = 127
   var b = 127
   
-  func difference(target: RGB) -> Double {
+  func difference(target: RGB) -> Int {
     let rDiff = Double(r - target.r)
     let gDiff = Double(g - target.g)
     let bDiff = Double(b - target.b)
@@ -47,6 +47,8 @@ struct RGB {
     let max = Double(sqrt(Double(255*255 * 3)))
     
     //Updating formual to use max for correct scaling
-    return sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff) / max
+    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff)
+    return Int(sqrt(dividend) / max)
   }
+  
 }

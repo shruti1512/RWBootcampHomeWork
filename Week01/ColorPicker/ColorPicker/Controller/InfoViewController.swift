@@ -12,7 +12,7 @@ import WebKit
 class InfoViewController: UIViewController {
 
   @IBOutlet private weak var webView: WKWebView!
-  public var wikiURLString: String?
+  var wikiURLString: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()

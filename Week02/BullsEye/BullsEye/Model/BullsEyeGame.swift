@@ -10,7 +10,7 @@ import Foundation
 
 struct BullsEyeGame {
     
-    private static func getRandomNumber(in range: CountableClosedRange<Int>) -> Int {
+    private static func randomNumberGenerator(in range: CountableClosedRange<Int>) -> Int {
         Int.random(in: range)
     }
 
@@ -22,7 +22,7 @@ struct BullsEyeGame {
 
     mutating func startNewRound() {
         round += 1
-        targetValue = BullsEyeGame.getRandomNumber(in: 1...100)
+        targetValue = BullsEyeGame.randomNumberGenerator(in: 1...100)
     }
      
     mutating func startNewGame() {

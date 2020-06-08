@@ -23,24 +23,24 @@
 import Foundation
 import UIKit
 
-extension UIColor {
-  convenience init(rgbStruct rgb: RGB) {
-    let r = CGFloat(rgb.r) / 255.0
-    let g = CGFloat(rgb.g) / 255.0
-    let b = CGFloat(rgb.b) / 255.0
-    self.init(red: r, green: g, blue: b, alpha:1.0)
-  }
-}
 
 struct RGB {
   var r = 127
   var g = 127
   var b = 127
   
-  func difference(target: RGB) -> Double {
+  func difference(target: RGB) -> Int {
     let rDiff = Double(r - target.r)
     let gDiff = Double(g - target.g)
     let bDiff = Double(b - target.b)
-    return sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff) / 255.0
+    
+    //Adding maxValue of the sqrt expression for scaling
+    //255 doesn't scale the value correctly as that's the max for a single color component
+    let max = Double(sqrt(Double(255*255 * 3)))
+    
+    //Updating formual to use max for correct scaling
+    let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff)
+    return Int(sqrt(dividend) / max)
   }
+  
 }

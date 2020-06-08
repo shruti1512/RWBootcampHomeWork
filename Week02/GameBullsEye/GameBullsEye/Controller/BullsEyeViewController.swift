@@ -26,10 +26,14 @@ class BullsEyeViewController: UIViewController {
     @IBOutlet weak var sliderContainerView: UIView!
 
     //MARK: - Properties
-    var gameModel: GameModel!
-    let game = BullsEyeGameLogic()
-    var currentValue = 0
-    var quickDiff: Int {
+    var gameModel: GameModel! {
+      didSet {
+        game = BullsEyeGame<Int>(targetRange: gameModel.minValue...gameModel.maxValue)
+      }
+    }
+    private var game: BullsEyeGame<Int>!
+    private var currentValue = 0
+    private var quickDiff: Int {
         return abs(game.targetValue - currentValue)
     }
 
@@ -44,13 +48,13 @@ class BullsEyeViewController: UIViewController {
     
     //MARK: - Setup View Methods
 
-    func setupNvaigationItemView() {
+    private func setupNvaigationItemView() {
         self.navigationItem.title = gameModel.name
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.setHidesBackButton(true, animated: false);
     }
     
-    func setupView() {
+    private func setupView() {
         
         sliderContainerView.addCornerRadius(cornerRadius: 5.0)
         
@@ -73,7 +77,7 @@ class BullsEyeViewController: UIViewController {
         setupViewForGameType(type: gameModel.type)
     }
     
-    func setupViewForGameType(type: GameType) {
+    private func setupViewForGameType(type: GameType) {
         if type == .bullsEye {
             textField.isHidden = true
             targetLabel.isHidden = false
@@ -90,7 +94,7 @@ class BullsEyeViewController: UIViewController {
     
     //MARK: - updateView Method
 
-    func updateView() {
+    private func updateView() {
         currentValue = gameModel.defaultValue
         if gameModel.type == .bullsEye {
             slider.value = Float(currentValue)
@@ -101,49 +105,47 @@ class BullsEyeViewController: UIViewController {
             hitMeBtn.isEnabled = false
         }
       targetLabel.text = String(game.targetValue)
-      scoreLabel.text = "Score: " + String(game.gameScore)
-      roundLabel.text = "Round: " + String(game.round)
-      updateSliderContainerColor(to: UIColor.white)
+      scoreLabel.text = LabelConstants.scoreText + String(game.gameScore)
+      roundLabel.text = LabelConstants.roundText + String(game.round)
+      updateSliderContainerColor(to: UIColor.clear)
       updateUserHelpView(color: UIColor.clear, text: "")
     }
 
-    func updateUserHelpView(color: UIColor, text: String) {
+    private func updateUserHelpView(color: UIColor, text: String) {
         userHelpView.backgroundColor = color
         userHelpLabel.text = text
     }
 
-    func updateSliderContainerColor(to color: UIColor) {
+    private func updateSliderContainerColor(to color: UIColor) {
         sliderContainerView.backgroundColor = color
     }
     
     //MARK: - showAlertForScore Method
 
-    func showAlertForScore() {
+    private func showAlertForScore() {
         
-        let difference = gameModel.maxValue - game.roundScore
         var points = 0, alertTitle = ""
-        switch difference {
+        switch quickDiff {
         case 0:
-             alertTitle = "Perfect!"
-             points = 100
+          alertTitle = ScoreConstants.perfectMatch
+          points = ScoreConstants.perfectMatchBonus
             break
         case 1:
-            alertTitle = "You almost had it!"
-            points = 50
+          points = ScoreConstants.closeMatchBonus
         case ..<5:
-             alertTitle = "You almost had it!"
-            break
+          alertTitle = ScoreConstants.closeMatch
+           break
         case ..<10:
-             alertTitle = "Pretty good!"
+             alertTitle = ScoreConstants.goodMatch
             break
         default:
-            alertTitle = "Not even close..."
+            alertTitle = ScoreConstants.noMatch
         }
         game.addBonus(points: points)
 
-        let message = "You scored \(game.roundScore) points"
+        let message = ScoreConstants.messagePart1  + String(game.roundScore) +  ScoreConstants.messagePart2
         let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: {
+        let action = UIAlertAction(title: ScoreConstants.ok, style: .default, handler: {
           action in
             self.game.calculateGameScore()
             self.game.startNewRound()
@@ -152,6 +154,7 @@ class BullsEyeViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+
 
     //MARK: - Slider Moved Method
 
@@ -188,23 +191,21 @@ class BullsEyeViewController: UIViewController {
         let passRange = gameModel.minValue...gameModel.maxValue
         if let textInputInt = Int(text), passRange.contains(textInputInt) {
             currentValue = textInputInt
-//            print("targetValue: \(game.targetValue)")
-//            print("quickDiff: \(quickDiff)")
             let val = CGFloat(Double(quickDiff)/50.0)
             let helpColor = UIColor(red: 1.0-val, green: 0.0, blue: val, alpha: 1.0)
             var helpText = ""
-            switch currentValue {
-            case game.targetValue-10...game.targetValue+10:
-                helpText = "Warmer"
+            switch quickDiff {
+            case ...10:
+               helpText = UserHelpViewConstants.warmerText
                 break
-            case game.targetValue-20...game.targetValue+20:
-                helpText = "Warm"
+            case ...20:
+                helpText = UserHelpViewConstants.warmText
                 break
-            case game.targetValue-30...game.targetValue+30:
-                helpText = "Colder"
+            case ...30:
+              helpText = UserHelpViewConstants.coldText
                  break
             default:
-                helpText = "Colder"
+                helpText = UserHelpViewConstants.colderText
             }
             updateUserHelpView(color: helpColor, text: helpText)
             hitMeBtn.isEnabled = true
@@ -217,6 +218,10 @@ class BullsEyeViewController: UIViewController {
             }
         }
     }
-    
+  
+  @IBAction func tapGestureEventSent(_ sender: Any) {
+    textField.resignFirstResponder()
+  }
+  
 }
 
