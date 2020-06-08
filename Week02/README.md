@@ -10,7 +10,7 @@
 
 __Bonus__: The third app **ThreeInOneBullsEye** combines all three apps into one to demonstrate the UI independence of the model and to introduce some advanced concepts. 
 
-#### The big question: Struct or Class for BullsEyeGame model?
+### The big question: Struct or Class for BullsEyeGame model?
 
 In this app, Game model is a data structure to hold data and methods related to the game logic. 
 
