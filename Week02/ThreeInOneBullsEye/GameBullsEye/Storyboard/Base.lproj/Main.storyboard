@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there! Which game do you want to play today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSL-gh-kbL">
-                                <rect key="frame" x="20" y="108" width="394" height="60"/>
+                                <rect key="frame" x="20" y="108" width="374" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3w7-W6-JfV" firstAttribute="trailing" secondItem="rSL-gh-kbL" secondAttribute="trailing" id="2KY-YU-6cW"/>
+                            <constraint firstItem="3w7-W6-JfV" firstAttribute="trailing" secondItem="rSL-gh-kbL" secondAttribute="trailing" constant="20" id="2KY-YU-6cW"/>
                             <constraint firstItem="rSL-gh-kbL" firstAttribute="top" secondItem="3w7-W6-JfV" secondAttribute="top" constant="20" id="3xP-WS-DuF"/>
                             <constraint firstItem="3w7-W6-JfV" firstAttribute="bottom" secondItem="FDI-UU-lJ2" secondAttribute="bottom" constant="20" id="4Zm-ae-xAl"/>
                             <constraint firstItem="2Sv-4J-kR1" firstAttribute="leading" secondItem="3w7-W6-JfV" secondAttribute="leading" constant="20" id="Iqf-s2-62c"/>
