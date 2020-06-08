@@ -10,11 +10,29 @@
 
 __Bonus__: The third app **ThreeInOneBullsEye** combines all three apps into one to demonstrate the UI independence of the model and to introduce some advanced concepts. 
 
-#### Struct or Class for BullsEyeGame model
+#### The big question: Struct or Class for BullsEyeGame model?
 
+In this app, Game model is a data structure to hold data and methods related to the game logic. 
 
+As per the [Apple documentation](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) below are the following recommendations to help choose which option makes sense when adding a new data type to your app.
 
+- Use structures by default.
+- Use classes when you need Objective-C interoperability.
+- Use classes when you need to control the identity of the data you are modeling.
+- Use structures along with protocols to adopt behavior by sharing implementations.
 
+Major difference between Structures and Classes
+
+1. 1. Structures are ‘Value Types’ and don’t live in the heap (live in the stack) as we pass around or assign to another instance of same type it gets copied using copy-on write semantics
+   2. On the other hand Classes are ‘reference types’(which live in the heap) wherein everytime it is assigned or passed around then the two instances are referencing the same data. Making a change to one instance also changes the other instance.
+
+I started with ‘class’ as the game logic model for my app but then later on I changed it to ‘struct’. **I chose ’struct’ as the data type for my Game model because** -
+
+1. Game object does not need to be shared across the app and even if there is a use case for this we do not want changes made to that instance by one view controller to be visible to every part of the code that holds a reference to that instance.
+2. No two classes need to use the same instance of game object.
+3. Game model do not have to use any Objective C interoperability.
+4. Game object is declared private in the ViewController class thus no other class can access and modify it.
+5. In the ‘ThreeInOne’ BullsEye app I wanted to use one BullsEyeGame model for all the three games. In order to achieve this functionality I needed to use some kind of inheritance so as to model a slight different behaviour(generate a random target value and calculate difference between guess and target value) based on the type of game selected. Thus I tried building the hierarchy of data types using protocol inheritance first, then adopt those protocols in my structures.
 
 
 
