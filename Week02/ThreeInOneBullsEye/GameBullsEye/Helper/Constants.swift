@@ -9,7 +9,7 @@
 import Foundation
 
 struct BullsEyeConstants {
-  
+  private init() { } //preventing accidental initialization
   static let name = "Bull's Eye"
   static let promptText = "Put the Bulls's Eye as close as to:"
   static let sliderMinValue = 1
@@ -21,7 +21,7 @@ struct BullsEyeConstants {
 }
 
 struct RGBullsEyeConstants {
-  
+  private init() { } //preventing accidental initialization
   static let name = "RGB Bull's Eye"
   static let promptText = "Match this color"
   static let sliderMinValue = 0
@@ -32,7 +32,7 @@ struct RGBullsEyeConstants {
 }
 
 struct RevBullsEyeConstants {
-  
+  private init() { } //preventing accidental initialization
   static let name = "Reverse Bull's Eye"
   static let promptText = "Guess where the slider is:"
   static let sliderMinValue = 1
@@ -43,7 +43,7 @@ struct RevBullsEyeConstants {
 }
 
 struct UserHelpViewConstants {
-  
+  private init() { } //preventing accidental initialization
   static let warmerText = "Warmer"
   static let warmerMax = 10
   static let warmText = "Warm"
@@ -55,7 +55,7 @@ struct UserHelpViewConstants {
 }
 
 struct ScoreConstants {
-  
+  private init() { } //preventing accidental initialization
   static let perfectMatch = "Perfect!"
   static let closeMatch = "You almost had it!"
   static let goodMatch = "Pretty good!"
@@ -68,7 +68,7 @@ struct ScoreConstants {
 }
 
 struct LabelConstants {
-  
+  private init() { } //preventing accidental initialization
   static let scoreText = "Score: "
   static let roundText = "Round: "
 }
