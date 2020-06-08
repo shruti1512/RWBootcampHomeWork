@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 
-enum ColorDefaults {
+struct ColorDefaults {
+    private init() { } //preventing accidental initialization
     static let min: CGFloat = 0.0
     static let rgbMax: CGFloat = 255.0
     static let hueMax: CGFloat = 366.0
@@ -18,20 +19,23 @@ enum ColorDefaults {
     static let alpha: CGFloat = 1.0
 }
 
-enum BorderValues {
+struct BorderValues {
+    private init() { } //preventing accidental initialization
     static let borderWidth: CGFloat = 1.0
     static let segmentedControlCornerRadius: CGFloat = 8.0
     static let cornerRadius: CGFloat = 3.0
 }
 
-enum AlertValues {
+struct AlertValues {
+    private init() { } //preventing accidental initialization
     static let alertTitle = "Enter a color name"
     static let alertMessage = "Please enter a color name of your choice."
     static let alertOkBtnText = "OK"
     static let alertCancelBtnText = "Cancel"
 }
 
-enum ColorStrings {
+struct ColorStrings {
+    private init() { } //preventing accidental initialization
     static let red = "Red"
     static let green = "Green"
     static let blue = "Blue"
@@ -42,12 +46,14 @@ enum ColorStrings {
     static let hsb = "HSB"
 }
 
-enum ColorNameStrings {
+struct ColorNameStrings {
+    private init() { } //preventing accidental initialization
     static let colorPlaceholder = "Color Name"
     static let noNameColorText = "(No name)"
 }
 
-enum WikiURLStrings {
+struct WikiURLStrings {
+    private init() { } //preventing accidental initialization
     static let rgbURL = "https://en.wikipedia.org/wiki/RGB_color_model"
     static let hsbURL = "https://en.wikipedia.org/wiki/HSL_and_HSV"
 }
