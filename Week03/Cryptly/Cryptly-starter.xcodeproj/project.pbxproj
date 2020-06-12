@@ -68,19 +68,59 @@
 		185CB1FA23C78CE6009F7571 /* Cryptly-starter */ = {
 			isa = PBXGroup;
 			children = (
+				3381980D24934F2E0084BF56 /* AppDelegate */,
 				A1F9E0552492697800323226 /* ThemeManager */,
 				A1F9E0542492696200323226 /* Data */,
-				185CB1FB23C78CE6009F7571 /* AppDelegate.swift */,
-				185CB1FD23C78CE6009F7571 /* SceneDelegate.swift */,
-				A1F9E048249267DB00323226 /* HomeViewController.swift */,
-				185CB20123C78CE6009F7571 /* Main.storyboard */,
-				A1F9E04E249268D200323226 /* Model.swift */,
-				A1F9E0522492690B00323226 /* Theme.swift */,
-				185CB20423C78CE8009F7571 /* Assets.xcassets */,
-				180DC61423C78D9800486B1A /* LaunchScreen.storyboard */,
+				3381980C24934F200084BF56 /* Model */,
+				3381981024934F500084BF56 /* Controller */,
+				3381980F24934F420084BF56 /* Storyboard */,
+				3381980E24934F380084BF56 /* Resources */,
 				185CB20923C78CE8009F7571 /* Info.plist */,
 			);
 			path = "Cryptly-starter";
+			sourceTree = "<group>";
+		};
+		3381980C24934F200084BF56 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9E0522492690B00323226 /* Theme.swift */,
+				A1F9E04E249268D200323226 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3381980D24934F2E0084BF56 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				185CB1FB23C78CE6009F7571 /* AppDelegate.swift */,
+				185CB1FD23C78CE6009F7571 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		3381980E24934F380084BF56 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				185CB20423C78CE8009F7571 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3381980F24934F420084BF56 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				185CB20123C78CE6009F7571 /* Main.storyboard */,
+				180DC61423C78D9800486B1A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3381981024934F500084BF56 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9E048249267DB00323226 /* HomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A1F9E0542492696200323226 /* Data */ = {
