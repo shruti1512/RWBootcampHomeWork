@@ -50,6 +50,9 @@ class HomeViewController: UIViewController{
   @IBOutlet weak var mostFallingLabel: UILabel!
   @IBOutlet weak var mostFallingDataTextLabel: UILabel!
   @IBOutlet weak var mostRisingDataTextLabel: UILabel!
+  @IBOutlet weak var tapGestureAllCurrencies: UITapGestureRecognizer!
+  @IBOutlet weak var tapGestureRisingCurrencies: UITapGestureRecognizer!
+  @IBOutlet weak var tapGestureFallingCurrencies: UITapGestureRecognizer!
 
   //MARK: - Properties
   let cryptoData = DataGenerator.shared.generateData()
@@ -131,7 +134,33 @@ class HomeViewController: UIViewController{
     }
   }
 
+  @IBAction func tapGestureSent(sender: UITapGestureRecognizer) {
+    //performSegue(withIdentifier: "ChartsSegue", sender: nil)
+  }
+
+  //MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destinationVC = segue.destination as? BarChartsViewController {
+      switch segue.identifier {
+      case "AllCurrenciesSegue":
+        destinationVC.xAxisData = cryptoData!.map{ $0.name }
+        destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
+      case "RisingCurrenciesSegue":
+        let risingCurrencies = cryptoData!.filter{ $0.trend == .rising }
+        destinationVC.xAxisData = risingCurrencies.map{ $0.name }
+        destinationVC.yAxisData = risingCurrencies.map{ $0.currentValue }
+      case "FallingCurrenciesSegue":
+        let fallingCurrencies = cryptoData!.filter{ $0.trend == .falling }
+        destinationVC.xAxisData = fallingCurrencies.map{ $0.name }
+        destinationVC.yAxisData = fallingCurrencies.map{ $0.currentValue }
+      default:
+        break
+      }
+    }
+  }
 }
+
+
 
 //MARK: - Themeable
 

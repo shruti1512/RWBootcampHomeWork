@@ -60,7 +60,13 @@ struct LightTheme: Theme {
 
   var borderColor: UIColor = .gray
 
-  var widgetBackgroundColor: UIColor = .systemGray6
+  var widgetBackgroundColor: UIColor = .gray
+//  if #available(iOS 13.0, *) {
+//    var widgetBackgroundColor: UIColor = .systemGray6
+//  } else {
+//   ar widgetBackgroundColor: UIColor = .gray
+//  }
+
 }
 
 protocol Themeable {

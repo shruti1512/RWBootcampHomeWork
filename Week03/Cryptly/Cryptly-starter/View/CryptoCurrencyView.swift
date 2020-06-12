@@ -36,7 +36,11 @@ class CryptoCurrencyView: UIView {
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    backgroundColor = .systemGray6
+    if #available(iOS 13.0, *) {
+      backgroundColor = .systemGray6
+    } else {
+      // Fallback on earlier versions
+    }
     layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1.0
     layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor

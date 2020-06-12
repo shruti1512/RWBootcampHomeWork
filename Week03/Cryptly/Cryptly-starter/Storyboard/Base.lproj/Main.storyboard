@@ -50,6 +50,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="2pP-O3-GIK" secondAttribute="bottom" constant="20" id="4P0-xe-m67"/>
                                     <constraint firstItem="2pP-O3-GIK" firstAttribute="top" secondItem="4oo-MW-3FZ" secondAttribute="top" constant="20" id="7o4-Ym-D5O"/>
@@ -57,6 +58,9 @@
                                     <constraint firstItem="2pP-O3-GIK" firstAttribute="leading" secondItem="4oo-MW-3FZ" secondAttribute="leading" constant="20" id="kqZ-7S-eKw"/>
                                     <constraint firstAttribute="trailing" secondItem="2pP-O3-GIK" secondAttribute="trailing" constant="20" id="sqv-6S-XbB"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GY3-3Q-45B" appends="YES" id="llq-Wu-h9b"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpI-h7-D97" customClass="CryptoCurrencyView" customModule="Cryptly_starter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="328.33333333333331" width="374" height="120"/>
@@ -69,6 +73,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tPy-T8-YB9" secondAttribute="trailing" constant="20" id="1ql-Tt-cGH"/>
                                     <constraint firstAttribute="bottom" secondItem="tPy-T8-YB9" secondAttribute="bottom" constant="20" id="359-yj-Td6"/>
@@ -76,6 +81,9 @@
                                     <constraint firstAttribute="height" constant="120" id="f5J-mZ-3FK"/>
                                     <constraint firstItem="tPy-T8-YB9" firstAttribute="leading" secondItem="DpI-h7-D97" secondAttribute="leading" constant="20" id="mZE-Af-Pi5"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="A8A-R8-dFE" appends="YES" id="25f-Fp-zPs"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNM-6D-sSb" customClass="CryptoCurrencyView" customModule="Cryptly_starter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="468.33333333333326" width="374" height="120"/>
@@ -88,6 +96,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="UCh-Bb-EWS" firstAttribute="leading" secondItem="DNM-6D-sSb" secondAttribute="leading" constant="20" id="1p9-aR-qPh"/>
                                     <constraint firstAttribute="trailing" secondItem="UCh-Bb-EWS" secondAttribute="trailing" constant="20" id="IgN-uY-5HW"/>
@@ -95,6 +104,9 @@
                                     <constraint firstAttribute="bottom" secondItem="UCh-Bb-EWS" secondAttribute="bottom" constant="20" id="i6d-aW-V9D"/>
                                     <constraint firstItem="UCh-Bb-EWS" firstAttribute="top" secondItem="DNM-6D-sSb" secondAttribute="top" constant="20" id="yJk-b2-7eV"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="e7Y-s7-7NQ" appends="YES" id="x43-lo-mAC"/>
+                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="V9U-tj-Tup">
                                 <rect key="frame" x="20" y="608.33333333333337" width="374" height="120"/>
@@ -178,7 +190,7 @@
                         <viewLayoutGuide key="safeArea" id="Fco-UW-GoN"/>
                     </view>
                     <navigationItem key="navigationItem" id="mL2-rx-U9s">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ug4-v8-lt1">
+                        <barButtonItem key="rightBarButtonItem" id="ug4-v8-lt1">
                             <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kW6-Ms-UCP">
                                 <rect key="frame" x="343" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -196,6 +208,9 @@
                         <outlet property="mostRisingDataTextLabel" destination="btT-VH-be4" id="yXT-Fr-rfE"/>
                         <outlet property="mostRisingLabel" destination="KxR-MA-qYH" id="YTr-ll-GSY"/>
                         <outlet property="mostRisingView" destination="2ec-AK-Qm2" id="uJ3-1h-ELO"/>
+                        <outlet property="tapGestureAllCurrencies" destination="GY3-3Q-45B" id="eIF-ZH-gKr"/>
+                        <outlet property="tapGestureFallingCurrencies" destination="e7Y-s7-7NQ" id="IOl-Ws-JYR"/>
+                        <outlet property="tapGestureRisingCurrencies" destination="A8A-R8-dFE" id="QDf-DJ-ha0"/>
                         <outlet property="themeSwitch" destination="kW6-Ms-UCP" id="Vpv-W6-XtS"/>
                         <outlet property="view1" destination="4oo-MW-3FZ" id="7mY-sa-8ZH"/>
                         <outlet property="view1TextLabel" destination="2pP-O3-GIK" id="V4d-72-p0L"/>
@@ -206,8 +221,62 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szC-q4-zjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GY3-3Q-45B" userLabel="Tap Gesture Recognizer All Currencies">
+                    <connections>
+                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="QJH-xB-4zI"/>
+                        <segue destination="frg-6c-DHO" kind="show" identifier="AllCurrenciesSegue" id="jpv-Jo-cnC"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="A8A-R8-dFE" userLabel="Tap Gesture Recognizer Rising Currencies">
+                    <connections>
+                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="ok5-Nn-5rJ"/>
+                        <segue destination="frg-6c-DHO" kind="show" identifier="RisingCurrenciesSegue" id="cnY-x4-oRD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="e7Y-s7-7NQ" userLabel="Tap Gesture Recognizer Falling Currencies">
+                    <connections>
+                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="Dd5-br-Egl"/>
+                        <segue destination="frg-6c-DHO" kind="show" identifier="FallingCurrenciesSegue" id="2ab-mb-a04"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1437.68115942029" y="37.5"/>
         </scene>
+        <!--Bar Charts View Controller-->
+        <scene sceneID="njV-jX-hhY">
+            <objects>
+                <viewController storyboardIdentifier="BarChartViewController" id="frg-6c-DHO" customClass="BarChartsViewController" customModule="Cryptly_starter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FL1-2M-eer">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqz-jS-Dxz" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20.666666666666657" y="261.66666666666663" width="372.66666666666674" height="372.66666666666663"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Kqz-jS-Dxz" secondAttribute="height" multiplier="1:1" id="JaD-Gw-1dK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kqz-jS-Dxz" firstAttribute="width" secondItem="FL1-2M-eer" secondAttribute="width" multiplier="0.9" id="1mJ-g9-95f"/>
+                            <constraint firstItem="Kqz-jS-Dxz" firstAttribute="centerY" secondItem="FL1-2M-eer" secondAttribute="centerY" id="PFA-TY-4PV"/>
+                            <constraint firstItem="Kqz-jS-Dxz" firstAttribute="centerX" secondItem="FL1-2M-eer" secondAttribute="centerX" id="vtA-h3-CRy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wet-WH-AUj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="n57-DJ-MF3"/>
+                    <connections>
+                        <outlet property="barChartView" destination="Kqz-jS-Dxz" id="kil-Og-v7z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MNw-JV-f1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2703" y="38"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2ab-mb-a04"/>
+    </inferredMetricsTieBreakers>
 </document>
