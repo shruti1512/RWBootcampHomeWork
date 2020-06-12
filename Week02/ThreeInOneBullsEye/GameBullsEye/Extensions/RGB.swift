@@ -42,7 +42,7 @@ extension RGB: GameProtocol {
       let max = (255.0 * 255.0 * 3.0).squareRoot()
       let dividend = (rDiff * rDiff + gDiff * gDiff + bDiff * bDiff).squareRoot()
       
-      //Updating formual to use max for correct scaling
+      //Updating formula to use max for correct scaling
       return Int((dividend / max)*100)
     }
     

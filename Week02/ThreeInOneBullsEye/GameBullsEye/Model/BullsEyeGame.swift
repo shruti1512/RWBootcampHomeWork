@@ -13,11 +13,12 @@ protocol GameProtocol {
   static func - (lhs: Self, rhs: Self) -> Int
 }
 
-extension Int: GameProtocol { }
+extension Int: GameProtocol {
+}
 
 struct BullsEyeGame<T: GameProtocol> {
     
-    private(set) lazy var targetValue = T.random(in: targetRange)
+    private(set) var targetValue: T!
     private(set) var gameScore = 0
     private(set) var roundScore = 0
     private(set) var round = 0

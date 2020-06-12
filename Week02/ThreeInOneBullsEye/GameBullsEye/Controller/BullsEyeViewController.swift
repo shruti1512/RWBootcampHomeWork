@@ -37,7 +37,7 @@ class BullsEyeViewController: UIViewController {
         return abs(game.targetValue - currentValue)
     }
 
-    //MARK: - UIViewController Methods
+    //MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNvaigationItemView()
@@ -46,7 +46,7 @@ class BullsEyeViewController: UIViewController {
         updateView()
     }
     
-    //MARK: - Setup View Methods
+    //MARK: - Intial Setup
 
     private func setupNvaigationItemView() {
         self.navigationItem.title = gameModel.name
@@ -92,7 +92,7 @@ class BullsEyeViewController: UIViewController {
         }
     }
     
-    //MARK: - updateView Method
+    //MARK: - updateView
 
     private func updateView() {
         currentValue = gameModel.defaultValue
@@ -120,7 +120,7 @@ class BullsEyeViewController: UIViewController {
         sliderContainerView.backgroundColor = color
     }
     
-    //MARK: - showAlertForScore Method
+    //MARK: - showAlertForScore
 
     private func showAlertForScore() {
         
@@ -157,8 +157,7 @@ class BullsEyeViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-
-    //MARK: - Slider Moved Method
+  //MARK: - IBActions
 
     @IBAction func sliderMoved(_ slider: UISlider) {
       currentValue = Int(slider.value.rounded())
@@ -166,21 +165,15 @@ class BullsEyeViewController: UIViewController {
       updateSliderContainerColor(to: UIColor(red: 1.0-val, green: 0.0, blue: val, alpha: 1.0))
     }
           
-    //MARK: - ResetBtnPressed Method
-
     @IBAction func resetBtnPressed() {
       game.startNewGame()
       updateView()
     }
 
-    //MARK: - Go Back To Main View Method
-
     @IBAction func goBackBtnPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK: - HitMeBtnPressed Method
-
     @IBAction func hitMeBtnPressed() {
       game.calculateRoundScore(for: currentValue)
       showAlertForScore()

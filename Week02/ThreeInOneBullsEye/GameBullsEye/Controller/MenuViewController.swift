@@ -53,21 +53,23 @@ class MenuViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       
       switch segue.identifier {
-      case BullsEyeConstants.segueIdentifier:
-           if let destinationVC = segue.destination as? BullsEyeViewController {
-               destinationVC.gameModel = bullsEyeGameModel
-          }
-      case RGBullsEyeConstants.segueIdentifier:
-           if let destinationVC = segue.destination as? RGBullsEyeViewController {
-               destinationVC.gameModel = rgbBullsEyeGameModel
-          }
-      case RevBullsEyeConstants.segueIdentifier:
-           if let destinationVC = segue.destination as? BullsEyeViewController {
-               destinationVC.gameModel = revBullsEyeGameModel
-          }
-          default: print("Case not handled")
-      }
+        case BullsEyeConstants.segueIdentifier:
+             if let destinationVC = segue.destination as? BullsEyeViewController {
+                 destinationVC.gameModel = bullsEyeGameModel
+            }
+        case RGBullsEyeConstants.segueIdentifier:
+             if let destinationVC = segue.destination as? RGBullsEyeViewController {
+                 destinationVC.gameModel = rgbBullsEyeGameModel
+            }
+        case RevBullsEyeConstants.segueIdentifier:
+             if let destinationVC = segue.destination as? BullsEyeViewController {
+                 destinationVC.gameModel = revBullsEyeGameModel
+            }
+        default:
+            break
+     }
   }
 
 }
+
 
