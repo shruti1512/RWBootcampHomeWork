@@ -31,7 +31,41 @@
 /// THE SOFTWARE.
 
 import Foundation
+import UIKit
 
 protocol Theme {
   
+  var backgroundColor: UIColor { get }
+  var textColor: UIColor { get }
+  var borderColor: UIColor { get }
+  var widgetBackgroundColor: UIColor { get }
+}
+
+struct DarkTheme: Theme {
+  
+  var backgroundColor: UIColor = .black
+  
+  var textColor: UIColor = .white
+  
+  var borderColor: UIColor = .gray
+  
+  var widgetBackgroundColor: UIColor = .lightGray
+}
+
+struct LightTheme: Theme {
+
+  var backgroundColor: UIColor = .white
+
+  var textColor: UIColor = .black
+
+  var borderColor: UIColor = .gray
+
+  var widgetBackgroundColor: UIColor = .systemGray6
+}
+
+protocol Themeable {
+  
+  func registerForTheme()
+  func unregisterForTheme()
+  func themeChanged()
 }
