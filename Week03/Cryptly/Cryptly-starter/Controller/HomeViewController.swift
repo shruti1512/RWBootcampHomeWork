@@ -143,13 +143,16 @@ class HomeViewController: UIViewController{
     if let destinationVC = segue.destination as? BarChartsViewController {
       switch segue.identifier {
       case "AllCurrenciesSegue":
-        destinationVC.xAxisData = cryptoData!.map{ $0.name }
+        destinationVC.barChartColor = UIColor.orange
+        destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
         destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
       case "RisingCurrenciesSegue":
+        destinationVC.barChartColor = UIColor.green
         let risingCurrencies = cryptoData!.filter{ $0.trend == .rising }
-        destinationVC.xAxisData = risingCurrencies.map{ $0.name }
+        destinationVC.xAxisData = risingCurrencies.map{ $0.symbol }
         destinationVC.yAxisData = risingCurrencies.map{ $0.currentValue }
       case "FallingCurrenciesSegue":
+        destinationVC.barChartColor = UIColor.red
         let fallingCurrencies = cryptoData!.filter{ $0.trend == .falling }
         destinationVC.xAxisData = fallingCurrencies.map{ $0.name }
         destinationVC.yAxisData = fallingCurrencies.map{ $0.currentValue }

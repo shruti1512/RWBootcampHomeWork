@@ -39,10 +39,11 @@ class BarChartsViewController: UIViewController {
   
       var xAxisData = [String]()
       var yAxisData = [Double]()
+      var barChartColor = UIColor()
 
       override func viewDidLoad() {
       super.viewDidLoad()
-      
+              
       barChartView.animate(yAxisDuration: 2.0)
       barChartView.pinchZoomEnabled = false
       barChartView.drawBarShadowEnabled = false
@@ -53,11 +54,12 @@ class BarChartsViewController: UIViewController {
       barChartView.xAxis.labelPosition = .bottom
       
       setChart(dataPoints: xAxisData, values: yAxisData)
+      setupViewForCurrentTheme()
     }
     
     
     func setChart(dataPoints: [String], values: [Double]) {
-      
+            
       var dataEntries: [BarChartDataEntry] = []
       
       for i in 0..<dataPoints.count {
@@ -67,10 +69,21 @@ class BarChartsViewController: UIViewController {
       
       barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
       barChartView.xAxis.granularity = 1
-
-      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
+      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "CryptoCurrency current value in USD")
+      chartDataSet.colors = [barChartColor]
       let chartData = BarChartData(dataSet: chartDataSet)
       barChartView.data = chartData
     }
 
+  func setupViewForCurrentTheme() {
+    
+    guard let currentTheme = ThemeManager.shared.currentTheme else {
+      return
+    }
+    view.backgroundColor = currentTheme.backgroundColor
+    barChartView.legend.textColor = currentTheme.textColor
+    barChartView.xAxis.labelTextColor = currentTheme.textColor
+    barChartView.leftAxis.labelTextColor = currentTheme.textColor
+  }
 }
+

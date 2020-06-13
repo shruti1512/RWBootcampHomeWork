@@ -47,7 +47,7 @@ struct DarkTheme: Theme {
   
   var textColor: UIColor = .white
   
-  var borderColor: UIColor = .gray
+  var borderColor: UIColor = .white
   
   var widgetBackgroundColor: UIColor = .lightGray
 }
@@ -59,13 +59,8 @@ struct LightTheme: Theme {
   var textColor: UIColor = .black
 
   var borderColor: UIColor = .gray
-
-  var widgetBackgroundColor: UIColor = .gray
-//  if #available(iOS 13.0, *) {
-//    var widgetBackgroundColor: UIColor = .systemGray6
-//  } else {
-//   ar widgetBackgroundColor: UIColor = .gray
-//  }
+  
+  var widgetBackgroundColor: UIColor = .systemGray6
 
 }
 
