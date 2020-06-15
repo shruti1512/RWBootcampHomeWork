@@ -32,37 +32,19 @@
 
 import UIKit
 
-class CryptoCurrencyView: UIView {
+class CryptoCurrencyView: UIView, Roundable {
+  
+  var cornerRadius: CGFloat = 10.0
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    if #available(iOS 13.0, *) {
-      backgroundColor = .systemGray6
-    } else {
-      // Fallback on earlier versions
-    }
+    backgroundColor = .systemGray6
     layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1.0
     layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
     layer.shadowOffset = CGSize(width: 0, height: 2)
     layer.shadowRadius = 4
     layer.shadowOpacity = 0.8
-    round(cornerRadius: 10.0)
-  }
-}
-
-extension CryptoCurrencyView: Roundable {
-  
-  var cornerRadius : CGFloat {
-      set {
-          layer.cornerRadius = newValue
-      }
-      get {
-          return layer.cornerRadius
-      }
-  }
-  
-  func round(cornerRadius: CGFloat) {
-    layer.cornerRadius = cornerRadius
+    round()
   }
 }

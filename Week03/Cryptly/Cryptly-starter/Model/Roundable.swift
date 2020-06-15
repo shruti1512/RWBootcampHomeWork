@@ -35,6 +35,11 @@ import UIKit
 
 protocol Roundable: UIView {
   var cornerRadius: CGFloat { get set }
-  func round(cornerRadius: CGFloat)
+  func round()
 }
 
+extension Roundable {
+  func round() {
+    self.layer.cornerRadius = cornerRadius
+  }
+}
