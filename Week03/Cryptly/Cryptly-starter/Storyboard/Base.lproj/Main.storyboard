@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2oH-6U-eHC">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -197,9 +196,6 @@
                         <outlet property="mostRisingDataTextLabel" destination="btT-VH-be4" id="yXT-Fr-rfE"/>
                         <outlet property="mostRisingLabel" destination="KxR-MA-qYH" id="YTr-ll-GSY"/>
                         <outlet property="mostRisingView" destination="2ec-AK-Qm2" id="uJ3-1h-ELO"/>
-                        <outlet property="tapGestureAllCurrencies" destination="GY3-3Q-45B" id="eIF-ZH-gKr"/>
-                        <outlet property="tapGestureFallingCurrencies" destination="e7Y-s7-7NQ" id="IOl-Ws-JYR"/>
-                        <outlet property="tapGestureRisingCurrencies" destination="A8A-R8-dFE" id="QDf-DJ-ha0"/>
                         <outlet property="themeSwitch" destination="kW6-Ms-UCP" id="Vpv-W6-XtS"/>
                         <outlet property="view1" destination="4oo-MW-3FZ" id="7mY-sa-8ZH"/>
                         <outlet property="view1TextLabel" destination="2pP-O3-GIK" id="V4d-72-p0L"/>
@@ -212,19 +208,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szC-q4-zjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="GY3-3Q-45B" userLabel="Tap Gesture Recognizer All Currencies">
                     <connections>
-                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="QJH-xB-4zI"/>
                         <segue destination="frg-6c-DHO" kind="show" identifier="AllCurrenciesSegue" id="jpv-Jo-cnC"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="A8A-R8-dFE" userLabel="Tap Gesture Recognizer Rising Currencies">
                     <connections>
-                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="ok5-Nn-5rJ"/>
                         <segue destination="frg-6c-DHO" kind="show" identifier="RisingCurrenciesSegue" id="cnY-x4-oRD"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="e7Y-s7-7NQ" userLabel="Tap Gesture Recognizer Falling Currencies">
                     <connections>
-                        <action selector="tapGestureSentWithSender:" destination="5r6-eT-R08" id="Dd5-br-Egl"/>
                         <segue destination="frg-6c-DHO" kind="show" identifier="FallingCurrenciesSegue" id="2ab-mb-a04"/>
                     </connections>
                 </tapGestureRecognizer>

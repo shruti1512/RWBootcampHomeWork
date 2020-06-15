@@ -44,9 +44,9 @@ struct CryptoCurrency: Codable {
   let currentValue: Double
   let previousValue: Double
   var trend: Trend {
-    return percentageRise > 0 ? .rising : .falling
+    return valueRise > 0 ? .rising : .falling
   }
-  var percentageRise: Float {
+  var valueRise: Float {
     Float(currentValue - previousValue)
   }
 }

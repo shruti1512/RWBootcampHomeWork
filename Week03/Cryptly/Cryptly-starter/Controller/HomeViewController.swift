@@ -50,13 +50,15 @@ class HomeViewController: UIViewController{
   @IBOutlet weak var mostFallingLabel: UILabel!
   @IBOutlet weak var mostFallingDataTextLabel: UILabel!
   @IBOutlet weak var mostRisingDataTextLabel: UILabel!
-  @IBOutlet weak var tapGestureAllCurrencies: UITapGestureRecognizer!
-  @IBOutlet weak var tapGestureRisingCurrencies: UITapGestureRecognizer!
-  @IBOutlet weak var tapGestureFallingCurrencies: UITapGestureRecognizer!
+  let allCurrenciesSegueID = "AllCurrenciesSegue"
+  let risingCurrenciesSegueID = "RisingCurrenciesSegue"
+  let fallingCurrenciesSegueID = "FallingCurrenciesSegue"
 
   //MARK: - Properties
   let cryptoData = DataGenerator.shared.generateData()
-  
+  var risingCurrencies = [CryptoCurrency]()
+  var fallingCurrencies = [CryptoCurrency]()
+
   //MARK:- View Lifecycle
 
   override func viewDidLoad() {
@@ -66,16 +68,24 @@ class HomeViewController: UIViewController{
     guard let _ = cryptoData else {
       return
     }
-    switchPressed(themeSwitch!)
     setView1Data()
     setView2Data()
     setView3Data()
     setMostFallingMostRisingData()
   }
-    
+   
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    if cryptoData != nil {
+      risingCurrencies = cryptoData!.filter{ $0.trend == .rising }
+      fallingCurrencies = cryptoData!.filter{ $0.trend == .falling }
+    }
+  }
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     registerForTheme()
+    switchPressed(themeSwitch!)
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -92,35 +102,31 @@ class HomeViewController: UIViewController{
   }
   
   func setView1Data() {
-    guard let cryptoData = cryptoData else {
-      return
+    if cryptoData != nil  {
+      view1TextLabel.text = cryptoData!.map{ $0.name }.joined(separator: ", ")
     }
-    view1TextLabel.text = cryptoData.map{ $0.name }.joined(separator: ", ")
   }
   
   func setView2Data() {
-    guard let cryptoData = cryptoData else {
-      return
+    if cryptoData != nil  {
+      view2TextLabel.text = risingCurrencies.map{ $0.name }.joined(separator: ", ")
     }
-    view2TextLabel.text = cryptoData.filter{ $0.currentValue > $0.previousValue }.map{ $0.name }.joined(separator: ", ")
   }
   
   func setView3Data() {
-    guard let cryptoData = cryptoData else {
-      return
+    if cryptoData != nil  {
+      view3TextLabel.text = fallingCurrencies.map{ $0.name }.joined(separator: ", ")
     }
-    view3TextLabel.text = cryptoData.filter{ $0.currentValue < $0.previousValue }.map{ $0.name }.joined(separator: ", ")
   }
   
   func setMostFallingMostRisingData() {
-    guard let cryptoData = cryptoData else {
-      return
-    }
-    let mostRising = cryptoData.filter{ $0.trend == .rising }.map{ $0.percentageRise }.max()
-    mostRisingDataTextLabel.text = "\(mostRising!)"
+    if cryptoData != nil  {
+       let mostRising = risingCurrencies.map{ $0.valueRise }.max()
+       mostRisingDataTextLabel.text = "\(mostRising!)"
     
-    let mostFalling = cryptoData.filter{ $0.trend == .falling }.map{ $0.percentageRise }.min()
-    mostFallingDataTextLabel.text = "\(mostFalling!)"
+       let mostFalling = fallingCurrencies.map{ $0.valueRise }.min()
+       mostFallingDataTextLabel.text = "\(mostFalling!)"
+    }
   }
   
   //MARK:- IBActions
@@ -134,26 +140,22 @@ class HomeViewController: UIViewController{
     }
   }
 
-  @IBAction func tapGestureSent(sender: UITapGestureRecognizer) {
-    //performSegue(withIdentifier: "ChartsSegue", sender: nil)
-  }
-
   //MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
     if let destinationVC = segue.destination as? BarChartsViewController {
+      
       switch segue.identifier {
-      case "AllCurrenciesSegue":
-        destinationVC.barChartColor = UIColor.orange
+      case allCurrenciesSegueID:
+        destinationVC.barChartColor = UIColor.blue
         destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
         destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
-      case "RisingCurrenciesSegue":
+      case risingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor.green
-        let risingCurrencies = cryptoData!.filter{ $0.trend == .rising }
         destinationVC.xAxisData = risingCurrencies.map{ $0.symbol }
         destinationVC.yAxisData = risingCurrencies.map{ $0.currentValue }
-      case "FallingCurrenciesSegue":
+      case fallingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor.red
-        let fallingCurrencies = cryptoData!.filter{ $0.trend == .falling }
         destinationVC.xAxisData = fallingCurrencies.map{ $0.name }
         destinationVC.yAxisData = fallingCurrencies.map{ $0.currentValue }
       default:
