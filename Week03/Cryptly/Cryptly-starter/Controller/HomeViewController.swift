@@ -56,8 +56,12 @@ class HomeViewController: UIViewController{
 
   //MARK: - Properties
   let cryptoData = DataGenerator.shared.generateData()
-  var risingCurrencies = [CryptoCurrency]()
-  var fallingCurrencies = [CryptoCurrency]()
+  var risingCurrencies: [CryptoCurrency]? {
+    return cryptoData != nil ? cryptoData!.filter{ $0.trend == .rising } : [CryptoCurrency]()
+  }
+  var fallingCurrencies: [CryptoCurrency]? {
+    return cryptoData != nil ? cryptoData!.filter{ $0.trend == .falling } : [CryptoCurrency]()
+  }
 
   //MARK:- View Lifecycle
 
@@ -73,15 +77,7 @@ class HomeViewController: UIViewController{
     setView3Data()
     setMostFallingMostRisingData()
   }
-   
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    if cryptoData != nil {
-      risingCurrencies = cryptoData!.filter{ $0.trend == .rising }
-      fallingCurrencies = cryptoData!.filter{ $0.trend == .falling }
-    }
-  }
-  
+     
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     registerForTheme()
@@ -108,24 +104,25 @@ class HomeViewController: UIViewController{
   }
   
   func setView2Data() {
-    if cryptoData != nil  {
-      view2TextLabel.text = risingCurrencies.map{ $0.name }.joined(separator: ", ")
+    if risingCurrencies != nil  {
+      view2TextLabel.text = risingCurrencies!.map{ $0.name }.joined(separator: ", ")
     }
   }
   
   func setView3Data() {
-    if cryptoData != nil  {
-      view3TextLabel.text = fallingCurrencies.map{ $0.name }.joined(separator: ", ")
+    if fallingCurrencies != nil  {
+      view3TextLabel.text = fallingCurrencies!.map{ $0.name }.joined(separator: ", ")
     }
   }
   
   func setMostFallingMostRisingData() {
-    if cryptoData != nil  {
-       let mostRising = risingCurrencies.map{ $0.valueRise }.max()
-       mostRisingDataTextLabel.text = "\(mostRising!)"
-    
-       let mostFalling = fallingCurrencies.map{ $0.valueRise }.min()
-       mostFallingDataTextLabel.text = "\(mostFalling!)"
+    if risingCurrencies != nil {
+       let mostRising = risingCurrencies!.map{ $0.valueRise }.max()
+       mostRisingDataTextLabel.text = mostRising != nil ? "\(mostRising!)" : ""
+    }
+    if fallingCurrencies != nil {
+       let mostFalling = fallingCurrencies!.map{ $0.valueRise }.min()
+       mostFallingDataTextLabel.text = mostFalling != nil ? "\(mostFalling!)" : ""
     }
   }
   
@@ -148,16 +145,22 @@ class HomeViewController: UIViewController{
       switch segue.identifier {
       case allCurrenciesSegueID:
         destinationVC.barChartColor = UIColor.blue
-        destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
-        destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
+        if cryptoData != nil {
+          destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
+          destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
+        }
       case risingCurrenciesSegueID:
-        destinationVC.barChartColor = UIColor.green
-        destinationVC.xAxisData = risingCurrencies.map{ $0.symbol }
-        destinationVC.yAxisData = risingCurrencies.map{ $0.currentValue }
+        if risingCurrencies != nil {
+          destinationVC.barChartColor = UIColor.green
+          destinationVC.xAxisData = risingCurrencies!.map{ $0.symbol }
+          destinationVC.yAxisData = risingCurrencies!.map{ $0.currentValue }
+        }
       case fallingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor.red
-        destinationVC.xAxisData = fallingCurrencies.map{ $0.name }
-        destinationVC.yAxisData = fallingCurrencies.map{ $0.currentValue }
+        if fallingCurrencies != nil {
+          destinationVC.xAxisData = fallingCurrencies!.map{ $0.name }
+          destinationVC.yAxisData = fallingCurrencies!.map{ $0.currentValue }
+        }
       default:
         break
       }
