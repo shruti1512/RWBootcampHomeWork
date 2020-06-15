@@ -44,24 +44,17 @@ protocol Theme {
 struct DarkTheme: Theme {
   
   var backgroundColor: UIColor = .black
-  
   var textColor: UIColor = .white
-  
   var borderColor: UIColor = .white
-  
   var widgetBackgroundColor: UIColor = .lightGray
 }
 
 struct LightTheme: Theme {
 
   var backgroundColor: UIColor = .white
-
   var textColor: UIColor = .black
-
   var borderColor: UIColor = .gray
-  
   var widgetBackgroundColor: UIColor = .systemGray6
-
 }
 
 protocol Themeable {

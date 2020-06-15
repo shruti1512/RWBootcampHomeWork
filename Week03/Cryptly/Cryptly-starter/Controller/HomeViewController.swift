@@ -151,12 +151,12 @@ class HomeViewController: UIViewController{
         }
       case risingCurrenciesSegueID:
         if risingCurrencies != nil {
-          destinationVC.barChartColor = UIColor.green
+          destinationVC.barChartColor = UIColor(red: 101/255, green: 200/255, blue: 22/255, alpha: 1.0)
           destinationVC.xAxisData = risingCurrencies!.map{ $0.symbol }
           destinationVC.yAxisData = risingCurrencies!.map{ $0.currentValue }
         }
       case fallingCurrenciesSegueID:
-        destinationVC.barChartColor = UIColor.red
+        destinationVC.barChartColor = UIColor(red: 214/255, green: 87/255, blue: 69/255, alpha: 1.0)
         if fallingCurrencies != nil {
           destinationVC.xAxisData = fallingCurrencies!.map{ $0.name }
           destinationVC.yAxisData = fallingCurrencies!.map{ $0.currentValue }
@@ -176,7 +176,7 @@ extension HomeViewController: Themeable {
   
   func registerForTheme() {
     NotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
-                                           name: Notification.Name.init("themeChanged"),
+                                           name: .ThemeDidChange,
                                            object: nil)
   }
   

@@ -32,12 +32,16 @@
 
 import UIKit
 
+extension Notification.Name {
+  static let ThemeDidChange = Notification.Name("ThemeDidChange")
+}
+
 class ThemeManager {
     static let shared = ThemeManager()
     
     public var currentTheme: Theme? {
         didSet {
-            NotificationCenter.default.post(name: Notification.Name.init("themeChanged"), object: nil)
+          NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }
     }
     
@@ -47,3 +51,4 @@ class ThemeManager {
         self.currentTheme = theme
     }
 }
+

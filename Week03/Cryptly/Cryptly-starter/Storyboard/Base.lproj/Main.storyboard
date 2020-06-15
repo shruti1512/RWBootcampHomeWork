@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2oH-6U-eHC">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2oH-6U-eHC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Exy-of-qW2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -30,23 +30,23 @@
             <objects>
                 <viewController id="5r6-eT-R08" customClass="HomeViewController" customModule="Cryptly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mvF-6T-uLm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="lTo-BI-sHj">
-                                <rect key="frame" x="20" y="108" width="374" height="734"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CryptoCurrencies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-g0-HX2">
+                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lTo-BI-sHj">
+                                <rect key="frame" x="20" y="144.5" width="335" height="482.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CryptoCurrencies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-g0-HX2">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="126.66666666666667"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oo-MW-3FZ" customClass="CryptoCurrencyView" customModule="Cryptly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="151.66666666666669" width="374" height="127"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="105.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pP-O3-GIK">
-                                                <rect key="frame" x="20" y="20" width="334" height="87"/>
+                                                <rect key="frame" x="20" y="20" width="295" height="65.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -65,10 +65,17 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpI-h7-D97" customClass="CryptoCurrencyView" customModule="Cryptly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="303.66666666666669" width="374" height="126.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="125.5" width="335" height="106"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-income" translatesAutoresizingMaskIntoConstraints="NO" id="euT-bY-F0A">
+                                                <rect key="frame" x="20" y="23" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="GzD-Uq-vFb"/>
+                                                    <constraint firstAttribute="height" constant="60" id="tvw-zO-2DU"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-T8-YB9">
-                                                <rect key="frame" x="20" y="20" width="334" height="86.666666666666671"/>
+                                                <rect key="frame" x="100" y="20" width="215" height="66"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -79,7 +86,9 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="tPy-T8-YB9" secondAttribute="trailing" constant="20" symbolic="YES" id="Jcv-WV-vf7"/>
                                             <constraint firstItem="tPy-T8-YB9" firstAttribute="top" secondItem="DpI-h7-D97" secondAttribute="top" constant="20" symbolic="YES" id="U1G-N9-y0E"/>
-                                            <constraint firstItem="tPy-T8-YB9" firstAttribute="leading" secondItem="DpI-h7-D97" secondAttribute="leading" constant="20" symbolic="YES" id="gKJ-aw-QFW"/>
+                                            <constraint firstItem="euT-bY-F0A" firstAttribute="leading" secondItem="DpI-h7-D97" secondAttribute="leading" constant="20" id="cdu-BB-xcv"/>
+                                            <constraint firstItem="euT-bY-F0A" firstAttribute="centerY" secondItem="DpI-h7-D97" secondAttribute="centerY" id="e72-Be-Z9O"/>
+                                            <constraint firstItem="tPy-T8-YB9" firstAttribute="leading" secondItem="euT-bY-F0A" secondAttribute="trailing" constant="20" id="n3v-jf-i4d"/>
                                             <constraint firstAttribute="bottom" secondItem="tPy-T8-YB9" secondAttribute="bottom" constant="20" symbolic="YES" id="yEq-n0-mKR"/>
                                         </constraints>
                                         <connections>
@@ -87,20 +96,29 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNM-6D-sSb" customClass="CryptoCurrencyView" customModule="Cryptly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="455.33333333333337" width="374" height="127"/>
+                                        <rect key="frame" x="0.0" y="251.5" width="335" height="105.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-Bb-EWS">
-                                                <rect key="frame" x="20" y="20" width="334" height="87"/>
+                                                <rect key="frame" x="100" y="20" width="215" height="65.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-expense" translatesAutoresizingMaskIntoConstraints="NO" id="zXH-s0-w7Y">
+                                                <rect key="frame" x="20" y="22.5" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="hmA-8c-5KM"/>
+                                                    <constraint firstAttribute="height" constant="60" id="wXB-h2-RDo"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="UCh-Bb-EWS" firstAttribute="leading" secondItem="DNM-6D-sSb" secondAttribute="leading" constant="20" symbolic="YES" id="K42-eN-4ax"/>
+                                            <constraint firstItem="UCh-Bb-EWS" firstAttribute="leading" secondItem="zXH-s0-w7Y" secondAttribute="trailing" constant="20" id="K42-eN-4ax"/>
                                             <constraint firstAttribute="trailing" secondItem="UCh-Bb-EWS" secondAttribute="trailing" constant="20" symbolic="YES" id="SgO-5T-9R4"/>
+                                            <constraint firstItem="zXH-s0-w7Y" firstAttribute="centerY" secondItem="DNM-6D-sSb" secondAttribute="centerY" id="cYL-ig-NcX"/>
+                                            <constraint firstItem="zXH-s0-w7Y" firstAttribute="leading" secondItem="DNM-6D-sSb" secondAttribute="leading" constant="20" id="d1a-is-ZZY"/>
                                             <constraint firstAttribute="bottom" secondItem="UCh-Bb-EWS" secondAttribute="bottom" constant="20" symbolic="YES" id="gyB-IS-Qin"/>
                                             <constraint firstItem="UCh-Bb-EWS" firstAttribute="top" secondItem="DNM-6D-sSb" secondAttribute="top" constant="20" symbolic="YES" id="onq-v6-Vmk"/>
                                         </constraints>
@@ -109,19 +127,19 @@
                                         </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="V9U-tj-Tup">
-                                        <rect key="frame" x="0.0" y="607.33333333333337" width="374" height="126.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="377" width="335" height="105.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-U6-ava" customClass="CryptoCurrencyView" customModule="Cryptly" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="178" height="126.66666666666667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="105.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Falling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txh-1e-0d5">
-                                                        <rect key="frame" x="20" y="20" width="138" height="20.333333333333329"/>
+                                                        <rect key="frame" x="20" y="20" width="118.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1X7-fE-FcL">
-                                                        <rect key="frame" x="20" y="86.333333333333258" width="138" height="20.333333333333329"/>
+                                                        <rect key="frame" x="20" y="65" width="118.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -138,16 +156,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ec-AK-Qm2" customClass="CryptoCurrencyView" customModule="Cryptly" customModuleProvider="target">
-                                                <rect key="frame" x="196" y="0.0" width="178" height="126.66666666666667"/>
+                                                <rect key="frame" x="176.5" y="0.0" width="158.5" height="105.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btT-VH-be4">
-                                                        <rect key="frame" x="20" y="86.333333333333258" width="138" height="20.333333333333329"/>
+                                                        <rect key="frame" x="20" y="65" width="118.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Rising" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxR-MA-qYH">
-                                                        <rect key="frame" x="20" y="20" width="138" height="20.333333333333329"/>
+                                                        <rect key="frame" x="20" y="20" width="118.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -170,9 +188,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="lTo-BI-sHj" firstAttribute="top" secondItem="Fco-UW-GoN" secondAttribute="top" constant="20" id="Khz-hs-mdu"/>
                             <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="lTo-BI-sHj" secondAttribute="trailing" constant="20" id="Xvc-u3-pL6"/>
-                            <constraint firstItem="Fco-UW-GoN" firstAttribute="bottom" secondItem="lTo-BI-sHj" secondAttribute="bottom" constant="20" id="p4e-b4-Ygu"/>
+                            <constraint firstItem="zrp-g0-HX2" firstAttribute="top" secondItem="Fco-UW-GoN" secondAttribute="top" constant="40" id="Z6i-Tj-K55"/>
+                            <constraint firstItem="zrp-g0-HX2" firstAttribute="leading" secondItem="Fco-UW-GoN" secondAttribute="leading" constant="20" id="cM1-Az-Hmm"/>
+                            <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="zrp-g0-HX2" secondAttribute="trailing" constant="20" id="el5-jF-sxj"/>
+                            <constraint firstItem="lTo-BI-sHj" firstAttribute="top" secondItem="zrp-g0-HX2" secondAttribute="bottom" constant="40" id="j3x-Jn-UbA"/>
+                            <constraint firstItem="Fco-UW-GoN" firstAttribute="bottom" secondItem="lTo-BI-sHj" secondAttribute="bottom" constant="40" id="p4e-b4-Ygu"/>
                             <constraint firstItem="lTo-BI-sHj" firstAttribute="leading" secondItem="Fco-UW-GoN" secondAttribute="leading" constant="20" id="zei-Le-smH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fco-UW-GoN"/>
@@ -180,7 +201,7 @@
                     <navigationItem key="navigationItem" id="mL2-rx-U9s">
                         <barButtonItem key="rightBarButtonItem" id="ug4-v8-lt1">
                             <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kW6-Ms-UCP">
-                                <rect key="frame" x="343" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                <rect key="frame" x="308" y="6.5" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="switchPressed:" destination="5r6-eT-R08" eventType="valueChanged" id="enD-a4-1Dd"/>
@@ -229,11 +250,11 @@
             <objects>
                 <viewController storyboardIdentifier="BarChartViewController" id="frg-6c-DHO" customClass="BarChartsViewController" customModule="Cryptly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FL1-2M-eer">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqz-jS-Dxz" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20.666666666666657" y="261.66666666666663" width="372.66666666666674" height="372.66666666666663"/>
+                                <rect key="frame" x="19" y="165" width="337.5" height="337.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kqz-jS-Dxz" secondAttribute="height" multiplier="1:1" id="JaD-Gw-1dK"/>
@@ -261,4 +282,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="2ab-mb-a04"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="icons8-expense" width="30" height="30"/>
+        <image name="icons8-income" width="30" height="30"/>
+    </resources>
 </document>
