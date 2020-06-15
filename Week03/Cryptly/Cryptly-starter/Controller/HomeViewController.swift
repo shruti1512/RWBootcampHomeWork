@@ -144,8 +144,8 @@ class HomeViewController: UIViewController{
       
       switch segue.identifier {
       case allCurrenciesSegueID:
-        destinationVC.barChartColor = UIColor.blue
         if cryptoData != nil {
+          destinationVC.barChartColor = UIColor(red: 160/255, green: 230/255, blue: 250/255, alpha: 1.0)
           destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
           destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
         }
