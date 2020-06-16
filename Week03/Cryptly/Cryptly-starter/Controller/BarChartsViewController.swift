@@ -35,30 +35,31 @@ import Charts
 
 class BarChartsViewController: UIViewController {
 
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet private weak var barChartView: BarChartView!
   
       var xAxisData = [String]()
       var yAxisData = [Double]()
       var barChartColor = UIColor()
+      var barChartDescription: String!
 
       override func viewDidLoad() {
-      super.viewDidLoad()
-              
-      barChartView.animate(yAxisDuration: 2.0)
-      barChartView.pinchZoomEnabled = false
-      barChartView.drawBarShadowEnabled = false
-      barChartView.drawBordersEnabled = false
-      barChartView.doubleTapToZoomEnabled = false
-      barChartView.drawGridBackgroundEnabled = true
-      barChartView.chartDescription?.text = ""
-      barChartView.xAxis.labelPosition = .bottom
-      
-      setChart(dataPoints: xAxisData, values: yAxisData)
-      setupViewForCurrentTheme()
+        super.viewDidLoad()
+                
+        barChartView.animate(yAxisDuration: 2.0)
+        barChartView.pinchZoomEnabled = false
+        barChartView.drawBarShadowEnabled = false
+        barChartView.drawBordersEnabled = false
+        barChartView.doubleTapToZoomEnabled = false
+        barChartView.drawGridBackgroundEnabled = true
+        barChartView.chartDescription?.text = ""
+        barChartView.xAxis.labelPosition = .bottom
+        
+        setChart(dataPoints: xAxisData, values: yAxisData)
+        setupViewForCurrentTheme()
     }
     
     
-    func setChart(dataPoints: [String], values: [Double]) {
+    private func setChart(dataPoints: [String], values: [Double]) {
             
       var dataEntries: [BarChartDataEntry] = []
       
@@ -69,21 +70,21 @@ class BarChartsViewController: UIViewController {
       
       barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
       barChartView.xAxis.granularity = 1
-      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "CryptoCurrency current value in USD")
+      let chartDataSet = BarChartDataSet(entries: dataEntries, label: barChartDescription)
       chartDataSet.colors = [barChartColor]
       let chartData = BarChartData(dataSet: chartDataSet)
       barChartView.data = chartData
     }
 
-  func setupViewForCurrentTheme() {
+    private func setupViewForCurrentTheme() {
     
-    guard let currentTheme = ThemeManager.shared.currentTheme else {
-      return
-    }
-    view.backgroundColor = currentTheme.backgroundColor
-    barChartView.legend.textColor = currentTheme.textColor
-    barChartView.xAxis.labelTextColor = currentTheme.textColor
-    barChartView.leftAxis.labelTextColor = currentTheme.textColor
+      guard let currentTheme = ThemeManager.shared.currentTheme else {
+        return
+      }
+      view.backgroundColor = currentTheme.backgroundColor
+      barChartView.legend.textColor = currentTheme.textColor
+      barChartView.xAxis.labelTextColor = currentTheme.textColor
+      barChartView.leftAxis.labelTextColor = currentTheme.textColor
   }
 }
 

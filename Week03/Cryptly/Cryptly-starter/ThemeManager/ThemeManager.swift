@@ -38,15 +38,14 @@ extension Notification.Name {
 
 class ThemeManager {
     static let shared = ThemeManager()
-    
+    private init() {}
+
     public var currentTheme: Theme? {
         didSet {
           NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }
     }
-    
-    private init() {}
-    
+  
     public func set(theme: Theme) {
         self.currentTheme = theme
     }

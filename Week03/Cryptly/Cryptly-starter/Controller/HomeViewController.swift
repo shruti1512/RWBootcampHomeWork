@@ -36,30 +36,30 @@ class HomeViewController: UIViewController{
 
   //MARK:- IBOutlets
   
-  @IBOutlet weak var view1: CryptoCurrencyView!
-  @IBOutlet weak var view2: UIView!
-  @IBOutlet weak var view3: UIView!
-  @IBOutlet weak var headingLabel: UILabel!
-  @IBOutlet weak var view1TextLabel: UILabel!
-  @IBOutlet weak var view2TextLabel: UILabel!
-  @IBOutlet weak var view3TextLabel: UILabel!
-  @IBOutlet weak var themeSwitch: UISwitch!
-  @IBOutlet weak var mostFallingView: UIView!
-  @IBOutlet weak var mostRisingView: UIView!
-  @IBOutlet weak var mostRisingLabel: UILabel!
-  @IBOutlet weak var mostFallingLabel: UILabel!
-  @IBOutlet weak var mostFallingDataTextLabel: UILabel!
-  @IBOutlet weak var mostRisingDataTextLabel: UILabel!
-  let allCurrenciesSegueID = "AllCurrenciesSegue"
-  let risingCurrenciesSegueID = "RisingCurrenciesSegue"
-  let fallingCurrenciesSegueID = "FallingCurrenciesSegue"
+  @IBOutlet private weak var view1: CryptoCurrencyView!
+  @IBOutlet private weak var view2: CryptoCurrencyView!
+  @IBOutlet private weak var view3: CryptoCurrencyView!
+  @IBOutlet private weak var headingLabel: UILabel!
+  @IBOutlet private weak var view1TextLabel: UILabel!
+  @IBOutlet private weak var view2TextLabel: UILabel!
+  @IBOutlet private weak var view3TextLabel: UILabel!
+  @IBOutlet private weak var themeSwitch: UISwitch!
+  @IBOutlet private weak var mostFallingView: CryptoCurrencyView!
+  @IBOutlet private weak var mostRisingView: CryptoCurrencyView!
+  @IBOutlet private weak var mostRisingLabel: UILabel!
+  @IBOutlet private weak var mostFallingLabel: UILabel!
+  @IBOutlet private weak var mostFallingDataTextLabel: UILabel!
+  @IBOutlet private weak var mostRisingDataTextLabel: UILabel!
+  private let allCurrenciesSegueID = "AllCurrenciesSegue"
+  private let risingCurrenciesSegueID = "RisingCurrenciesSegue"
+  private let fallingCurrenciesSegueID = "FallingCurrenciesSegue"
 
   //MARK: - Properties
-  let cryptoData = DataGenerator.shared.generateData()
-  var risingCurrencies: [CryptoCurrency]? {
+  private let cryptoData = DataGenerator.shared.generateData()
+  private var risingCurrencies: [CryptoCurrency]? {
     return cryptoData != nil ? cryptoData!.filter{ $0.trend == .rising } : [CryptoCurrency]()
   }
-  var fallingCurrencies: [CryptoCurrency]? {
+  private var fallingCurrencies: [CryptoCurrency]? {
     return cryptoData != nil ? cryptoData!.filter{ $0.trend == .falling } : [CryptoCurrency]()
   }
 
@@ -91,31 +91,31 @@ class HomeViewController: UIViewController{
 
   //MARK:- View Setup
   
-  func setupLabels() {
+  private func setupLabels() {
     headingLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
     view1TextLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
     view2TextLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
   }
   
-  func setView1Data() {
+  private func setView1Data() {
     if cryptoData != nil  {
       view1TextLabel.text = cryptoData!.map{ $0.name }.joined(separator: ", ")
     }
   }
   
-  func setView2Data() {
+  private func setView2Data() {
     if risingCurrencies != nil  {
       view2TextLabel.text = risingCurrencies!.map{ $0.name }.joined(separator: ", ")
     }
   }
   
-  func setView3Data() {
+  private func setView3Data() {
     if fallingCurrencies != nil  {
       view3TextLabel.text = fallingCurrencies!.map{ $0.name }.joined(separator: ", ")
     }
   }
   
-  func setMostFallingMostRisingData() {
+  private func setMostFallingMostRisingData() {
     if risingCurrencies != nil {
        let mostRising = risingCurrencies!.map{ $0.valueRise }.max()
        mostRisingDataTextLabel.text = mostRising != nil ? "\(mostRising!)" : ""
@@ -148,18 +148,21 @@ class HomeViewController: UIViewController{
           destinationVC.barChartColor = UIColor(red: 160/255, green: 230/255, blue: 250/255, alpha: 1.0)
           destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
           destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
+          destinationVC.barChartDescription = "Current value of all cryptoCurrencies in USD"
         }
       case risingCurrenciesSegueID:
         if risingCurrencies != nil {
           destinationVC.barChartColor = UIColor(red: 101/255, green: 200/255, blue: 22/255, alpha: 1.0)
           destinationVC.xAxisData = risingCurrencies!.map{ $0.symbol }
           destinationVC.yAxisData = risingCurrencies!.map{ $0.currentValue }
+          destinationVC.barChartDescription = "Current value of rising cryptoCurrencies in USD"
         }
       case fallingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor(red: 214/255, green: 87/255, blue: 69/255, alpha: 1.0)
         if fallingCurrencies != nil {
-          destinationVC.xAxisData = fallingCurrencies!.map{ $0.name }
+          destinationVC.xAxisData = fallingCurrencies!.map{ $0.symbol }
           destinationVC.yAxisData = fallingCurrencies!.map{ $0.currentValue }
+          destinationVC.barChartDescription = "Current value of falling cryptoCurrencies in USD"
         }
       default:
         break
