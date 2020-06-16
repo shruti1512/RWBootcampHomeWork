@@ -1,8 +1,8 @@
 # Cryptly App
 [About](#about)<br/>
 [Biography](#bio)<br/>
-[App Details](#app)<br/>
 [Screenshots](#screenshots)<br/>
+[App Details](#app)<br/>
 </br>
 
 ## About
@@ -29,6 +29,10 @@
  - Practise mediation more 
  - Travel around the world
 
+## Screenshots
+<a name = "screenshots" />
+
+<img src="Screenshots/HomeScreenLightTheme.png" width="200" height="400"><img src="Screenshots/HomeScreenDarkTheme.png" width="200" height="400"> <img src="Screenshots/ChartsScreenDarkTheme.png" width="200" height="400">  <img src="Screenshots/ChartsScreenLightTheme.png" width="200" height="400">
 ## App Details
 <a name = "app" /> 
 
@@ -70,9 +74,4 @@
 - [x] The currency data views are interactive. 
 - [x] The app displays the currencies data in the form of  bar charts.
   - [x] Tap on the currency data views and see the current value of the respective currencies.
-
-## Screenshots
-<a name = "screenshots" />
-
-<img src="Screenshots/HomeScreenLightTheme.png" width="200" height="400"><img src="Screenshots/HomeScreenDarkTheme.png" width="200" height="400"> <img src="Screenshots/ChartsScreenDarkTheme.png" width="200" height="400">  <img src="Screenshots/ChartsScreenLightTheme.png" width="200" height="400">
 
