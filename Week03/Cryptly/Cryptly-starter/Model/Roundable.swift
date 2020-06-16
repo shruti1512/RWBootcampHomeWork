@@ -34,7 +34,7 @@ import Foundation
 import UIKit
 
 protocol Roundable: UIView {
-  var cornerRadius: CGFloat { get set }
+  var cornerRadius: CGFloat { get }
   func round()
 }
 
