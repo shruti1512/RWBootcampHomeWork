@@ -37,43 +37,79 @@ class BarChartsViewController: UIViewController {
 
     @IBOutlet private weak var barChartView: BarChartView!
   
-      var xAxisData = [String]()
-      var yAxisData = [Double]()
+      var currencies: [CryptoCurrency]!
       var barChartColor = UIColor()
       var barChartDescription: String!
 
       override func viewDidLoad() {
         super.viewDidLoad()
                 
-        barChartView.animate(yAxisDuration: 2.0)
         barChartView.pinchZoomEnabled = false
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = false
         barChartView.doubleTapToZoomEnabled = false
         barChartView.drawGridBackgroundEnabled = true
         barChartView.chartDescription?.text = ""
-        barChartView.xAxis.labelPosition = .bottom
+        barChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+
+        let currentValues = currencies.map{ $0.currentValue }
+        let previousValues = currencies.map{ $0.previousValue }
+        let currencySymbols = currencies.map{ $0.symbol }
+        setChart(currencySymbols: currencySymbols, currentValues: currentValues, previousValues: previousValues)
         
-        setChart(dataPoints: xAxisData, values: yAxisData)
         setupViewForCurrentTheme()
     }
     
     
-    private func setChart(dataPoints: [String], values: [Double]) {
+  private func setChart(currencySymbols: [String], currentValues: [Double], previousValues: [Double]) {
             
       var dataEntries: [BarChartDataEntry] = []
-      
-      for i in 0..<dataPoints.count {
-        let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+      var dataEntries1: [BarChartDataEntry] = []
+
+      for i in 0..<currencySymbols.count {
+        let dataEntry = BarChartDataEntry(x: Double(i), y: Double(previousValues[i]))
         dataEntries.append(dataEntry)
+        
+        let dataEntry1 = BarChartDataEntry(x: Double(i) , y: currentValues[i])
+        dataEntries1.append(dataEntry1)
       }
       
-      barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-      barChartView.xAxis.granularity = 1
-      let chartDataSet = BarChartDataSet(entries: dataEntries, label: barChartDescription)
-      chartDataSet.colors = [barChartColor]
-      let chartData = BarChartData(dataSet: chartDataSet)
+      let xaxis = barChartView.xAxis
+      xaxis.drawGridLinesEnabled = true
+      xaxis.labelPosition = .bottom
+      xaxis.centerAxisLabelsEnabled = true
+      xaxis.granularity = 1
+      xaxis.valueFormatter = IndexAxisValueFormatter(values: currencySymbols)
+      
+      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Previous Value in USD")
+      chartDataSet.colors = [UIColor.orange]
+      
+      let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "Current Value in USD")
+      chartDataSet1.colors = [UIColor.blue]
+
+      let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
+
+      let chartData = BarChartData(dataSets: dataSets)
       barChartView.data = chartData
+      
+      let groupSpace = 0.3
+      let barSpace = 0.05
+      let barWidth = 0.3
+
+      let groupCount = currencySymbols.count
+      let startPt = 0
+
+      chartData.barWidth = barWidth;
+      barChartView.xAxis.axisMinimum = Double(startPt)
+      let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+//      print("Groupspace: \(gg)")
+      barChartView.xAxis.axisMaximum = Double(startPt) + gg * Double(groupCount)
+
+      chartData.groupBars(fromX: Double(startPt), groupSpace: groupSpace, barSpace: barSpace)
+      barChartView.notifyDataSetChanged()
+
+      barChartView.data = chartData
+      
     }
 
     private func setupViewForCurrentTheme() {
@@ -85,6 +121,8 @@ class BarChartsViewController: UIViewController {
       barChartView.legend.textColor = currentTheme.textColor
       barChartView.xAxis.labelTextColor = currentTheme.textColor
       barChartView.leftAxis.labelTextColor = currentTheme.textColor
+      barChartView.rightAxis.labelTextColor = currentTheme.textColor
+
   }
 }
 

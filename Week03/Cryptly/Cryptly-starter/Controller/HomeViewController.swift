@@ -57,10 +57,10 @@ class HomeViewController: UIViewController{
   //MARK: - Properties
   private let cryptoData = DataGenerator.shared.generateData()
   private var risingCurrencies: [CryptoCurrency]? {
-    return cryptoData != nil ? cryptoData!.filter{ $0.trend == .rising } : [CryptoCurrency]()
+     cryptoData != nil ? cryptoData!.filter{ $0.trend == .rising } : [CryptoCurrency]()
   }
   private var fallingCurrencies: [CryptoCurrency]? {
-    return cryptoData != nil ? cryptoData!.filter{ $0.trend == .falling } : [CryptoCurrency]()
+     cryptoData != nil ? cryptoData!.filter{ $0.trend == .falling } : [CryptoCurrency]()
   }
 
   //MARK:- View Lifecycle
@@ -146,22 +146,19 @@ class HomeViewController: UIViewController{
       case allCurrenciesSegueID:
         if cryptoData != nil {
           destinationVC.barChartColor = UIColor(red: 160/255, green: 230/255, blue: 250/255, alpha: 1.0)
-          destinationVC.xAxisData = cryptoData!.map{ $0.symbol }
-          destinationVC.yAxisData = cryptoData!.map{ $0.currentValue }
+          destinationVC.currencies = cryptoData
           destinationVC.barChartDescription = "Current value of all cryptoCurrencies in USD"
         }
       case risingCurrenciesSegueID:
         if risingCurrencies != nil {
           destinationVC.barChartColor = UIColor(red: 101/255, green: 200/255, blue: 22/255, alpha: 1.0)
-          destinationVC.xAxisData = risingCurrencies!.map{ $0.symbol }
-          destinationVC.yAxisData = risingCurrencies!.map{ $0.currentValue }
+          destinationVC.currencies = risingCurrencies
           destinationVC.barChartDescription = "Current value of rising cryptoCurrencies in USD"
         }
       case fallingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor(red: 214/255, green: 87/255, blue: 69/255, alpha: 1.0)
         if fallingCurrencies != nil {
-          destinationVC.xAxisData = fallingCurrencies!.map{ $0.symbol }
-          destinationVC.yAxisData = fallingCurrencies!.map{ $0.currentValue }
+          destinationVC.currencies = fallingCurrencies
           destinationVC.barChartDescription = "Current value of falling cryptoCurrencies in USD"
         }
       default:
