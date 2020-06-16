@@ -34,7 +34,7 @@ import UIKit
 
 class CryptoCurrencyView: UIView, Roundable {
   
-  var cornerRadius: CGFloat = 10.0
+  let cornerRadius: CGFloat = 10.0
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
