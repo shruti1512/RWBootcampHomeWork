@@ -32,9 +32,8 @@
 ## App Details
 <a name = "app" /> 
 
-### Basic Requirements 
-
-- [x]  Displays prices of cryptocurrencies.
+### Basic Requirements
+- [x] Displays prices of cryptocurrencies.
 - [x] If you tap the button in the upper right corner, it should change to a different color theme.
 - [x] Define the data model for CryptoCurrency. It has the following requirements:
   name(of type string), symbol(of type string), currentValue(of type Double) and previousValue(of type Double).
@@ -46,13 +45,14 @@
   backgroundColor of type UIColor - View’s background colortextColor of type UIColor - Text ColorsborderColor of type UIColor - Border color of views which contain datawidgetBackgroundColor - BackgroundColor of views which contain data
 - [x] Define two themes that conform to this protocol. You can name them anything, but for purposes of this document, we’ll call them **LightTheme** and **DarkTheme**.
 - [x] Use '**ThemeManager**' whenever you need to get (or set) the current theme.
-- [x] Back in Theme.swift, define a new protocol called **Themeable**. It should contain three methods with no parameters: **registerForTheme**(), **unregisterForTheme**(), and **themeChanged**().
+- [x] Back in Theme.swift, define a new protocol called **Themeable**. It should contain three methods with no parameters: **registerForTheme**(), **unregisterForTheme**( ), and **themeChanged**( ).
 - [x] Add an extension to HomeViewController that implements the methods on Themeable protocol. 
-  - [x] **registerForTheme**() should use [NotificationCenter](https://developer.apple.com/documentation/foundation/notificationcenter) to add the current object as an observer for when the “themeChanged” notification occurs. 
+  - [x] **registerForTheme**() should use NotificationCenter to add the current object as an observer for when the “themeChanged” notification occurs. 
   - [x] **unregisterForTheme**() should remove the current object as an observer. 
   - [x] **themeChanged()** should:For view1, view2, view3:Set the backgroundColor to the current theme’s widgetBackgroundColorSet the layer’s border color to the current theme’s borderColorFor view1TextLabel, view2TextLable, view3TextLabel:Set the textColor to the current theme’s textColorFor the main view:Set the backgroundColor to the current theme’s backgroundColor
 - [x] Call **registerForTheme**() in HomeViewController’s **viewWillAppear**(:_), and **unregisterForTheme**() in HomeViewController’s **viewWillDisappear**(:_).Implement **switchPressed**(), to set the theme to dark if the switch is on, or light otherwise.
-- [x] Use higher order functions like **map, filter, reduce**
+- [x] Use higher order functions like **map, filter, reduce**.
+
 
 ### Optional Stretch Goals 
 
