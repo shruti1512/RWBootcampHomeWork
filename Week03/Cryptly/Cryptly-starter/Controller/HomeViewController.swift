@@ -192,26 +192,15 @@ extension HomeViewController: Themeable {
     guard let currentTheme = ThemeManager.shared.currentTheme else {
       return
     }
-    view1.backgroundColor = currentTheme.widgetBackgroundColor
-    view2.backgroundColor = currentTheme.widgetBackgroundColor
-    view3.backgroundColor = currentTheme.widgetBackgroundColor
-    mostRisingView.backgroundColor = currentTheme.widgetBackgroundColor
-    mostFallingView.backgroundColor = currentTheme.widgetBackgroundColor
-
-    view1.layer.borderColor = currentTheme.borderColor.cgColor
-    view2.layer.borderColor = currentTheme.borderColor.cgColor
-    view3.layer.borderColor = currentTheme.borderColor.cgColor
-    mostRisingView.layer.borderColor = currentTheme.borderColor.cgColor
-    mostFallingView.layer.borderColor = currentTheme.borderColor.cgColor
-
-    view1TextLabel.textColor = currentTheme.textColor
-    view2TextLabel.textColor = currentTheme.textColor
-    view3TextLabel.textColor = currentTheme.textColor
-    headingLabel.textColor = currentTheme.textColor
-    mostRisingDataTextLabel.textColor = currentTheme.textColor
-    mostFallingDataTextLabel.textColor = currentTheme.textColor
-    mostRisingLabel.textColor = currentTheme.textColor
-    mostFallingLabel.textColor = currentTheme.textColor
+    
+    let views: [CryptoCurrencyView] = [view1, view2, view3, mostRisingView, mostFallingView]
+    views.forEach{ $0.backgroundColor = currentTheme.widgetBackgroundColor
+                   $0.layer.borderColor = currentTheme.borderColor.cgColor
+    }
+    
+    let labels:[UILabel] = [view1TextLabel, view2TextLabel, view3TextLabel, headingLabel,
+                  mostRisingDataTextLabel, mostFallingDataTextLabel, mostRisingLabel, mostFallingLabel]
+    labels.forEach{ $0.textColor = currentTheme.textColor }
 
     view.backgroundColor = currentTheme.backgroundColor
   }
