@@ -50,17 +50,26 @@ class HomeViewController: UIViewController{
   @IBOutlet private weak var mostFallingLabel: UILabel!
   @IBOutlet private weak var mostFallingDataTextLabel: UILabel!
   @IBOutlet private weak var mostRisingDataTextLabel: UILabel!
+
+  //MARK: - Properties
   private let allCurrenciesSegueID = "AllCurrenciesSegue"
   private let risingCurrenciesSegueID = "RisingCurrenciesSegue"
   private let fallingCurrenciesSegueID = "FallingCurrenciesSegue"
 
-  //MARK: - Properties
   private let cryptoData = DataGenerator.shared.generateData()
+  
   private var risingCurrencies: [CryptoCurrency]? {
-     cryptoData != nil ? cryptoData!.filter{ $0.trend == .rising } : [CryptoCurrency]()
+    guard let cryptoData = cryptoData else {
+      return [CryptoCurrency]()
+    }
+    return cryptoData.filter{ $0.trend == .rising }
   }
+  
   private var fallingCurrencies: [CryptoCurrency]? {
-     cryptoData != nil ? cryptoData!.filter{ $0.trend == .falling } : [CryptoCurrency]()
+    guard let cryptoData = cryptoData else {
+      return [CryptoCurrency]()
+    }
+    return cryptoData.filter{ $0.trend == .falling }
   }
 
   //MARK:- View Lifecycle
@@ -98,31 +107,38 @@ class HomeViewController: UIViewController{
   }
   
   private func setView1Data() {
-    if cryptoData != nil  {
-      view1TextLabel.text = cryptoData!.map{ $0.name }.joined(separator: ", ")
+    if let cryptoData = cryptoData  {
+      view1TextLabel.text = cryptoData.map{ $0.name }.joined(separator: ", ")
     }
   }
   
   private func setView2Data() {
-    if risingCurrencies != nil  {
-      view2TextLabel.text = risingCurrencies!.map{ $0.name }.joined(separator: ", ")
+    if let risingCurrencies = risingCurrencies {
+      view2TextLabel.text = risingCurrencies.map{ $0.name }.joined(separator: ", ")
     }
   }
   
   private func setView3Data() {
-    if fallingCurrencies != nil  {
-      view3TextLabel.text = fallingCurrencies!.map{ $0.name }.joined(separator: ", ")
+    if let fallingCurrencies = fallingCurrencies  {
+      view3TextLabel.text = fallingCurrencies.map{ $0.name }.joined(separator: ", ")
     }
   }
   
   private func setMostFallingMostRisingData() {
-    if risingCurrencies != nil {
-       let mostRising = risingCurrencies!.map{ $0.valueRise }.max()
-       mostRisingDataTextLabel.text = mostRising != nil ? "\(mostRising!)" : ""
+    mostRisingDataTextLabel.text = ""
+    mostFallingDataTextLabel.text = ""
+    
+    if let risingCurrencies = risingCurrencies {
+       let mostRising = risingCurrencies.map{ $0.valueRise }.max()
+       if let mostRising = mostRising {
+          mostRisingDataTextLabel.text = String(mostRising)
+       }
     }
-    if fallingCurrencies != nil {
-       let mostFalling = fallingCurrencies!.map{ $0.valueRise }.min()
-       mostFallingDataTextLabel.text = mostFalling != nil ? "\(mostFalling!)" : ""
+    if let fallingCurrencies = fallingCurrencies {
+       let mostFalling = fallingCurrencies.map{ $0.valueRise }.min()
+       if let mostFalling = mostFalling {
+          mostFallingDataTextLabel.text = String(mostFalling)
+       }
     }
   }
   
@@ -144,20 +160,20 @@ class HomeViewController: UIViewController{
       
       switch segue.identifier {
       case allCurrenciesSegueID:
-        if cryptoData != nil {
+        if let cryptoData = cryptoData {
           destinationVC.barChartColor = UIColor(red: 160/255, green: 230/255, blue: 250/255, alpha: 1.0)
           destinationVC.currencies = cryptoData
           destinationVC.barChartDescription = "Current value of all cryptoCurrencies in USD"
         }
       case risingCurrenciesSegueID:
-        if risingCurrencies != nil {
+        if let risingCurrencies = risingCurrencies {
           destinationVC.barChartColor = UIColor(red: 101/255, green: 200/255, blue: 22/255, alpha: 1.0)
           destinationVC.currencies = risingCurrencies
           destinationVC.barChartDescription = "Current value of rising cryptoCurrencies in USD"
         }
       case fallingCurrenciesSegueID:
         destinationVC.barChartColor = UIColor(red: 214/255, green: 87/255, blue: 69/255, alpha: 1.0)
-        if fallingCurrencies != nil {
+        if let fallingCurrencies = fallingCurrencies {
           destinationVC.currencies = fallingCurrencies
           destinationVC.barChartDescription = "Current value of falling cryptoCurrencies in USD"
         }
