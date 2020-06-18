@@ -8,4 +8,13 @@ target 'FindRestaurants' do
   # Pods for FindRestaurants
 pod 'Cosmos', '~> 22.1'
 
+plugin 'cocoapods-keys', {
+  :project => "FindRestaurants",
+  :target => "FindRestaurants",
+  :keys => [
+    "FindRestaurantsGoogleMapsAPIKey"
+  ]
+}
+
+
 end
