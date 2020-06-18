@@ -36,10 +36,12 @@ struct Restaurant {
   
   var distanceFromCurrentLocation: Double? {
     
-    let location = CLLocation(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
-    let currentLocation = CLLocation(latitude: LocationManager.shared.currentLocation!.latitude,
-                                     longitude: LocationManager.shared.currentLocation!.longitude)
-    let distanceInMetres = currentLocation.distance(from: location)
+    guard let userLoc = LocationManager.shared.currentLocation else {
+      return nil
+    }
+    let placeLocation = CLLocation(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
+    let currentLocation = CLLocation(latitude: userLoc.latitude, longitude: userLoc.longitude)
+    let distanceInMetres = currentLocation.distance(from: placeLocation)
     return round(100 * distanceInMetres * 0.000621371) / 100
 
   }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Keys
 
 class RestaurantTableViewController: UITableViewController {
 
@@ -40,7 +41,10 @@ class RestaurantTableViewController: UITableViewController {
 
   @objc func getPlacesForLocation() {
     
-    let parameterModel = PlacesAPIParameter(location: LocationManager.shared.currentLocation!,
+    guard let currentLocation = LocationManager.shared.currentLocation else {
+      return 
+    }
+    let parameterModel = PlacesAPIParameter(location: currentLocation,
                                             radius: "5000", type: "restaurant", keyword: "burrito")
     NetworkServices.getPlacesDataFor(parameterModel) { [weak self] (placesAPIModel, error) in
       guard let self = self, let placesAPIModel = placesAPIModel else {

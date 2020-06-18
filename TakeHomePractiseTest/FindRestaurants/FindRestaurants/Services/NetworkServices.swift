@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Keys
 
 enum NetworkError: Error {
   case invalidResponse
@@ -18,11 +19,13 @@ enum NetworkError: Error {
 class NetworkServices {
     
   typealias PlacesAPIDataCompletion = (PlaceSearchAPIModel?, NetworkError?) -> ()
-
+  
   static func getPlacesDataFor(_ parameters: PlacesAPIParameter, completion: @escaping PlacesAPIDataCompletion) {
         
     //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=34.1010979,-118.1261898&radius=5000&type=restaurant&keyword=burrito&key=AIzaSyCV-K9JmLTaUad1TVTzIMwcumpR7HkP-qs
         
+    let apiKey = FindRestaurantsKeys().findRestaurantsGoogleMapsAPIKey
+    
     var urlBuilder = URLComponents()
     urlBuilder.scheme = "https"
     urlBuilder.host = GoogleMapsAPI.placesAPIHost
@@ -32,7 +35,7 @@ class NetworkServices {
       URLQueryItem(name: "radius", value: parameters.radius),
       URLQueryItem(name: "type", value: parameters.type),
       URLQueryItem(name: "keyword", value: parameters.keyword),
-      URLQueryItem(name: "key", value: GoogleMapsAPI.apiKey)
+      URLQueryItem(name: "key", value: apiKey)
     ]
   
     guard let url = urlBuilder.url else {
@@ -70,7 +73,7 @@ class NetworkServices {
           }
           
           guard let mime = response.mimeType, mime == "application/json" else {
-            print("Wrong MIME type!")
+            print("Wrong MIME type! The data returned is not json.")
             completion(nil, .invalidResponse)
             return
           }
