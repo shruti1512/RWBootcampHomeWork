@@ -145,12 +145,8 @@ class HomeViewController: UIViewController{
   //MARK:- IBActions
 
   @IBAction func switchPressed(_ sender: Any) {
-    if themeSwitch.isOn {
-      ThemeManager.shared.set(theme: DarkTheme())
-    }
-    else {
-      ThemeManager.shared.set(theme: LightTheme())
-    }
+    let theme: Theme = themeSwitch.isOn ? DarkTheme() : LightTheme()
+    ThemeManager.shared.set(theme: theme)
   }
 
   //MARK: - Navigation

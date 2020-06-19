@@ -36,6 +36,7 @@ class CryptoCurrencyView: UIView, Roundable {
   
   let cornerRadius: CGFloat = 10.0
 
+  //used this initializer as the view is directly embedded from storyboard and we are not creating it programmatically
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     backgroundColor = .systemGray6
