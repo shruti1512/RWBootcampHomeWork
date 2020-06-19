@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CompatibilitySlider_Start" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do you feel about..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPk-A6-VfC">
+                                <rect key="frame" x="20" y="20" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-Jp-sEx" userLabel="Center Stack View">
+                                <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Vq-3f-XV9" userLabel="Characters Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPF-rp-6Hn">
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
+                                                <state key="normal" image="terrible"/>
+                                                <connections>
+                                                    <action selector="emojiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jkn-qB-kQE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-cD-s7t">
+                                                <rect key="frame" x="67" y="0.0" width="67" height="30"/>
+                                                <state key="normal" image="bad"/>
+                                                <connections>
+                                                    <action selector="emojiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="43m-Av-6XL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyo-UT-Va0">
+                                                <rect key="frame" x="134" y="0.0" width="67" height="30"/>
+                                                <state key="normal" image="meh"/>
+                                                <connections>
+                                                    <action selector="emojiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LeI-5z-Ht0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unz-Ln-SVp">
+                                                <rect key="frame" x="201" y="0.0" width="67" height="30"/>
+                                                <state key="normal" image="good"/>
+                                                <connections>
+                                                    <action selector="emojiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="roq-1q-OmU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3No-GM-2QE">
+                                                <rect key="frame" x="268" y="0.0" width="67" height="30"/>
+                                                <state key="normal" image="great"/>
+                                                <connections>
+                                                    <action selector="emojiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lTP-U2-s1F"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qva-iw-efA">
+                                        <rect key="frame" x="-2" y="50" width="339" height="31"/>
+                                        <connections>
+                                            <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OJB-PN-gwH"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hJW-sh-AVH" userLabel="Stars Stack View">
+                                <rect key="frame" x="99.5" y="60.5" width="176.5" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="xxM-eR-Pe8">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Ncp-Zo-7JY"/>
+                                            <constraint firstAttribute="height" constant="50" id="PXz-M0-xif"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ITEM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yar-uD-3oE">
+                                        <rect key="frame" x="60" y="0.0" width="56.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="Q30-xt-i6I">
+                                        <rect key="frame" x="126.5" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="BFm-q9-ls6"/>
+                                            <constraint firstAttribute="height" constant="50" id="sng-VX-bds"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-P6-8nd">
+                                <rect key="frame" x="154.5" y="587" width="66" height="30"/>
+                                <state key="normal" title="Next Item"/>
+                                <connections>
+                                    <action selector="didPressNextItemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MS9-8c-dV0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hJW-sh-AVH" firstAttribute="top" secondItem="vPk-A6-VfC" secondAttribute="bottom" constant="20" id="Apz-BQ-4RT"/>
+                            <constraint firstItem="d1w-P6-8nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cwt-lV-X4U"/>
+                            <constraint firstItem="ziH-Jp-sEx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="EPU-wy-FJd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vPk-A6-VfC" secondAttribute="trailing" id="FcY-f0-Wvi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ziH-Jp-sEx" secondAttribute="trailing" constant="20" id="Hlz-hb-VwL"/>
+                            <constraint firstItem="hJW-sh-AVH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JWA-M2-tRR"/>
+                            <constraint firstItem="vPk-A6-VfC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NLS-GK-Gu3"/>
+                            <constraint firstItem="ziH-Jp-sEx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NSI-th-PJe"/>
+                            <constraint firstItem="vPk-A6-VfC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="R0Q-jS-uF6"/>
+                            <constraint firstItem="vPk-A6-VfC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="X9Y-48-yiu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d1w-P6-8nd" secondAttribute="bottom" constant="50" id="q9u-bX-x2j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="compatibilityItemLabel" destination="yar-uD-3oE" id="4Pa-pD-xpU"/>
+                        <outlet property="questionLabel" destination="vPk-A6-VfC" id="a1h-Ts-g2X"/>
+                        <outlet property="slider" destination="Qva-iw-efA" id="BKW-Si-S2y"/>
+                        <outletCollection property="emojiBtns" destination="pPF-rp-6Hn" collectionClass="NSMutableArray" id="cQt-e2-6C6"/>
+                        <outletCollection property="emojiBtns" destination="CKp-cD-s7t" collectionClass="NSMutableArray" id="P8q-4k-6su"/>
+                        <outletCollection property="emojiBtns" destination="tyo-UT-Va0" collectionClass="NSMutableArray" id="0sq-sb-CI4"/>
+                        <outletCollection property="emojiBtns" destination="unz-Ln-SVp" collectionClass="NSMutableArray" id="SgR-go-Jzf"/>
+                        <outletCollection property="emojiBtns" destination="3No-GM-2QE" collectionClass="NSMutableArray" id="9Mw-YK-mjh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bad" width="30" height="30"/>
+        <image name="good" width="30" height="30"/>
+        <image name="great" width="30" height="30"/>
+        <image name="meh" width="30" height="30"/>
+        <image name="star" width="1000" height="1000"/>
+        <image name="terrible" width="30" height="30"/>
+    </resources>
+</document>
