@@ -17,10 +17,12 @@ import Foundation
 class Person {
     var id: Int
     var items: [String: Float]
+    var profileImage: String
 
-    init(id: Int, items: [String: Float]) {
-        self.id = id
-        self.items = items
+    init(id: Int, profileImage: String, items: [String: Float]) {
+      self.id = id
+      self.profileImage = profileImage
+      self.items = items
     }
 }
 

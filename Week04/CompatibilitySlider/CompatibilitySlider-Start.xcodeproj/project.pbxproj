@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33363C47249DBCD400CA379A /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33363C46249DBCD400CA379A /* CollectionViewDataSource.swift */; };
+		33363C49249DBD7000CA379A /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33363C48249DBD7000CA379A /* CollectionViewDelegate.swift */; };
+		335135AC249D8A54007EFBB9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335135AB249D8A54007EFBB9 /* HomeViewController.swift */; };
 		337843C3249C86F300855C83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337843C2249C86F300855C83 /* Extensions.swift */; };
+		3384A1F0249D58F90047358D /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3384A1EF249D58F90047358D /* CustomAlert.storyboard */; };
+		3384A1F2249D596D0047358D /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384A1F1249D596D0047358D /* AlertService.swift */; };
+		3384A1F4249D597E0047358D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384A1F3249D597E0047358D /* AlertViewController.swift */; };
+		3384A1FE249D7C390047358D /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384A1FC249D7C390047358D /* AvatarCollectionViewCell.swift */; };
 		C3017C402499C83A00B1E49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3017C3F2499C83A00B1E49A /* AppDelegate.swift */; };
 		C3017C422499C83A00B1E49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3017C412499C83A00B1E49A /* SceneDelegate.swift */; };
-		C3017C442499C83A00B1E49A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3017C432499C83A00B1E49A /* ViewController.swift */; };
+		C3017C442499C83A00B1E49A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3017C432499C83A00B1E49A /* GameViewController.swift */; };
 		C3017C472499C83A00B1E49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3017C452499C83A00B1E49A /* Main.storyboard */; };
 		C3017C4C2499C83B00B1E49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3017C4B2499C83B00B1E49A /* Assets.xcassets */; };
 		C3017C4F2499C83B00B1E49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3017C4D2499C83B00B1E49A /* LaunchScreen.storyboard */; };
@@ -37,11 +44,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33363C46249DBCD400CA379A /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		33363C48249DBD7000CA379A /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
+		335135AB249D8A54007EFBB9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		337843C2249C86F300855C83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3384A1EF249D58F90047358D /* CustomAlert.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
+		3384A1F1249D596D0047358D /* AlertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		3384A1F3249D597E0047358D /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		3384A1FC249D7C390047358D /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3017C3C2499C83A00B1E49A /* CompatibilitySlider-Start.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CompatibilitySlider-Start.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3017C3F2499C83A00B1E49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3017C412499C83A00B1E49A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C3017C432499C83A00B1E49A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3017C432499C83A00B1E49A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C3017C462499C83A00B1E49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3017C4B2499C83B00B1E49A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3017C4E2499C83B00B1E49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +106,9 @@
 		337843BD249C868200855C83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C3017C432499C83A00B1E49A /* ViewController.swift */,
+				335135AB249D8A54007EFBB9 /* HomeViewController.swift */,
+				C3017C432499C83A00B1E49A /* GameViewController.swift */,
+				3384A1F3249D597E0047358D /* AlertViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -100,7 +116,10 @@
 		337843BE249C868900855C83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3384A1F1249D596D0047358D /* AlertService.swift */,
 				C3017C722499C91700B1E49A /* Person.swift */,
+				33363C46249DBCD400CA379A /* CollectionViewDataSource.swift */,
+				33363C48249DBD7000CA379A /* CollectionViewDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				C3017C452499C83A00B1E49A /* Main.storyboard */,
+				3384A1EF249D58F90047358D /* CustomAlert.storyboard */,
 				C3017C4D2499C83B00B1E49A /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -128,6 +148,14 @@
 				337843C2249C86F300855C83 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3384A1F7249D69F90047358D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3384A1FC249D7C390047358D /* AvatarCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C3017C332499C83A00B1E49A = {
@@ -156,6 +184,7 @@
 				337843BC249C867600855C83 /* AppDelegate */,
 				337843C1249C86DB00855C83 /* Extensions */,
 				337843BE249C868900855C83 /* Model */,
+				3384A1F7249D69F90047358D /* View */,
 				337843BD249C868200855C83 /* Controller */,
 				337843C0249C86A400855C83 /* Resources */,
 				337843BF249C869200855C83 /* Storyboard */,
@@ -286,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3384A1F0249D58F90047358D /* CustomAlert.storyboard in Resources */,
 				C3017C4F2499C83B00B1E49A /* LaunchScreen.storyboard in Resources */,
 				C3017C4C2499C83B00B1E49A /* Assets.xcassets in Resources */,
 				C3017C472499C83A00B1E49A /* Main.storyboard in Resources */,
@@ -314,10 +344,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				337843C3249C86F300855C83 /* Extensions.swift in Sources */,
+				3384A1F4249D597E0047358D /* AlertViewController.swift in Sources */,
 				C3017C732499C91700B1E49A /* Person.swift in Sources */,
-				C3017C442499C83A00B1E49A /* ViewController.swift in Sources */,
+				C3017C442499C83A00B1E49A /* GameViewController.swift in Sources */,
+				335135AC249D8A54007EFBB9 /* HomeViewController.swift in Sources */,
+				33363C47249DBCD400CA379A /* CollectionViewDataSource.swift in Sources */,
+				3384A1FE249D7C390047358D /* AvatarCollectionViewCell.swift in Sources */,
 				C3017C402499C83A00B1E49A /* AppDelegate.swift in Sources */,
+				3384A1F2249D596D0047358D /* AlertService.swift in Sources */,
 				C3017C422499C83A00B1E49A /* SceneDelegate.swift in Sources */,
+				33363C49249DBD7000CA379A /* CollectionViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,13 +527,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A9MF56EMP8;
+				DEVELOPMENT_TEAM = PSFNNZ46DN;
 				INFOPLIST_FILE = "CompatibilitySlider-Start/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CompatibilitySlider-Start";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrutiapps.CompatibilitySlider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

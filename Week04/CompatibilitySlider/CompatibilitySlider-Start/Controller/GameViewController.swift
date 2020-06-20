@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
 
   //MARK: - IBOutlets
   
@@ -16,35 +16,41 @@ class ViewController: UIViewController {
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private var emojiBtns: [UIButton]!
-      
-  //MARK: - Instance Properties
+    @IBOutlet private var profileImgView: UIImageView!
 
-    var compatibilityItems = ["Cats", "Dogs", "Nature", "Travel"] // Add more!
+  //MARK: - Properties
+
+    var compatibilityItems = ["Cats", "Dogs", "Nature", "Travel"]
     var currentItemIndex = 0 {
       didSet {
         compatibilityItemLabel.text = compatibilityItems[currentItemIndex]
       }
     }
     
+    var person1Image: String!
+    var person2Image: String!
+
     var sliderSlice: Float = 0
-    var person1 = Person(id: 1, items: [:])
-    var person2 = Person(id: 2, items: [:])
+    var person1: Person!
+    var person2: Person!
     var currentPerson: Person? {
       didSet {
-        let personName = "Person" + String(currentPerson!.id)
-        let quesText = ", what do you think about..."
-        questionLabel.text = personName + quesText
+        profileImgView.image = UIImage(named: currentPerson!.profileImage)
       }
     }
 
-  //MARK: - ViewController Lifecycle
+  //MARK: - ViewController Lifecycle Methods
 
     override func viewDidLoad() {
       super.viewDidLoad()
+      self.navigationController?.setNavigationBarHidden(true, animated: true)
+      profileImgView.round()
       sliderSlice = slider.maximumValue / Float(emojiBtns.count)
+      person1 = Person(id: 1, profileImage: person1Image, items: [:])
+      person2 = Person(id: 2, profileImage: person2Image, items: [:])
       startGameForPerson(person: person1)
    }
-
+  
   //MARK: - IBActions
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -71,10 +77,10 @@ class ViewController: UIViewController {
       
       if currentItemIndex == compatibilityItems.count-1 {
          if currentPerson == person2 {
-            showAlertForCompatibility()
+            showAlertForCompatibilityResults()
          }
          else {
-          startGameForPerson(person: person2)
+          showAlertForPerson2Turn()
         }
       }
       else {
@@ -82,7 +88,7 @@ class ViewController: UIViewController {
       }
     }
 
-  //MARK: - Game Logic
+  //MARK: - Game Logic Methods
 
     func scaleEmojiBtn(_ emoji: UIButton) {
       emojiBtns.forEach{ $0.transform = CGAffineTransform.identity }
@@ -97,6 +103,7 @@ class ViewController: UIViewController {
     }
   
     func calculateCompatibility() -> String {
+      
         var percentagesForAllItems: [Double] = []
         for (key, person1Rating) in person1.items {
             let person2Rating = person2.items[key] ?? 0
@@ -106,30 +113,49 @@ class ViewController: UIViewController {
 
         let sumOfAllPercentages = percentagesForAllItems.reduce(0, +)
         let matchPercentage = sumOfAllPercentages/Double(compatibilityItems.count)
-//        print("matchPercentage: \(matchPercentage)")
         let matchDouble = 100 - (matchPercentage * 100).rounded()
-//        print("matchDouble: \(matchDouble)")
         let formatter = NumberFormatter()
         let matchString = formatter.cleanNumberString(from: matchDouble as NSNumber) + "%"
-//        print("matchString: \(matchString)")
         return matchString
     }
 
     
-  //MARK: - Show Alert For Score
+  //MARK: - Show Compatibilty Result Alert Method
 
-    func showAlertForCompatibility() {
+    func showAlertForCompatibilityResults() {
+      
       let score = calculateCompatibility()
-      let alert = UIAlertController(title: "Results", message: "You two are \(score) compatible.", preferredStyle: .alert)
-      let action = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-        guard let self = self else {
-          return
-        }
-        self.startGameForPerson(person: self.person1)
+      
+      let alertService = AlertService()
+      let alertVC = alertService.alert(title: "Compatibility",
+                                       body: "\(score)",
+                                       imageLeft: person1Image,
+                                       imageRight: person2Image,
+                                       actionButtonTitle: "Start new match",
+                                       dismissButtonTitle: "Cancel") { [weak self] in
+          if let self = self {
+            self.navigationController?.popToRootViewController(animated: true)
+          }
       }
-      alert.addAction(action)
-      present(alert, animated: true, completion: nil)
+      present(alertVC, animated: true)
     }
+  
+    func showAlertForPerson2Turn() {
+
+      let alertService = AlertService()
+      let alertVC = alertService.alert(title: "Thanks!",
+                                       body: "Now its your friend's turn.",
+                                       imageLeft: person2Image,
+                                       imageRight: nil,
+                                       actionButtonTitle: "Continue",
+                                       dismissButtonTitle: nil) { [weak self] in
+          if let self = self {
+            self.startGameForPerson(person: self.person2)
+          }
+      }
+      present(alertVC, animated: true)
+    }
+
   
 }
 
