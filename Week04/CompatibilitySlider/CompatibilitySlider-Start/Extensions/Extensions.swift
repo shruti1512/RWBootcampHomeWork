@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jay Strawn. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension ClosedRange {
   
@@ -24,7 +24,15 @@ extension NumberFormatter {
     formatter.minimumFractionDigits = 0
     formatter.maximumFractionDigits = 2
     formatter.numberStyle = .decimal
-    let cleanString = (formatter.string(from: number) ?? "n/a") + "%"
+    let cleanString = (formatter.string(from: number) ?? "n/a")
     return cleanString
   }
 }
+
+extension UIView {
+    func round() {
+      clipsToBounds = true
+      layer.cornerRadius = CGFloat(roundf(Float(self.frame.size.width / 2.0)))
+  }
+}
+
