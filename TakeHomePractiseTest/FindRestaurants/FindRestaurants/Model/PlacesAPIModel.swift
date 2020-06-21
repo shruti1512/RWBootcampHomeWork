@@ -48,7 +48,7 @@ struct Restaurant {
 
 extension Restaurant: Decodable {
   
-  // To define custom mapping for JSON keys, i.e, different names to the keys JSON keys
+  // To define custom mapping for JSON keys, i.e, different names for the JSON keys
   enum CodingKeys: String, CodingKey {
       case name, priceLevel, rating, geometry
       case address = "vicinity" // Map the JSON key "vicinity" to the Swift property name "address"

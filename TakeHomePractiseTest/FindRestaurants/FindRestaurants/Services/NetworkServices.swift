@@ -80,7 +80,8 @@ class NetworkServices {
 
           do {
             let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase //Decode the JSON by setting the keyEncodingStrategy of our decoder to .convertFromSnakeCase
+            //Decode the JSON by setting the keyEncodingStrategy of our decoder to .convertFromSnakeCase
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
 //            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
 //            print(jsonObject)
             let parsedJSON: PlaceSearchAPIModel = try decoder.decode(PlaceSearchAPIModel.self, from: data)
