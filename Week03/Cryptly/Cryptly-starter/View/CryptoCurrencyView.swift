@@ -34,11 +34,22 @@ import UIKit
 
 class CryptoCurrencyView: UIView, Roundable {
   
-  let cornerRadius: CGFloat = 10.0
+  //this initializer gets called when the view is created programmatically in code
+  init() {
+    super.init(frame: .zero)
+    setupView()
+  }
 
-  //used this initializer as the view is directly embedded from storyboard and we are not creating it programmatically
+  //this initializer gets called when the view is loaded/embedded from IB
+
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+    setupView()
+  }
+  
+  func setupView() {
+    
+    round()
     backgroundColor = .systemGray6
     layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1.0
@@ -46,6 +57,5 @@ class CryptoCurrencyView: UIView, Roundable {
     layer.shadowOffset = CGSize(width: 0, height: 2)
     layer.shadowRadius = 4
     layer.shadowOpacity = 0.8
-    round()
   }
 }

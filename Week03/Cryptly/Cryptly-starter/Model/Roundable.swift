@@ -33,12 +33,17 @@
 import Foundation
 import UIKit
 
-protocol Roundable: UIView {
+protocol Roundable where Self: UIView {
   var cornerRadius: CGFloat { get }
   func round()
 }
 
 extension Roundable {
+  
+  var cornerRadius: CGFloat {
+    return 10
+  }
+
   func round() {
     self.layer.cornerRadius = cornerRadius
   }
