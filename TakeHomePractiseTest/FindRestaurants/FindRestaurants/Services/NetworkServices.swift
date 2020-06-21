@@ -22,7 +22,7 @@ class NetworkServices {
   
   static func getPlacesDataFor(_ parameters: PlacesAPIParameter, completion: @escaping PlacesAPIDataCompletion) {
         
-    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=34.1010979,-118.1261898&radius=5000&type=restaurant&keyword=burrito&key=AIzaSyCV-K9JmLTaUad1TVTzIMwcumpR7HkP-qs
+    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=lat,-long&radius=5000&type=restaurant&keyword=burrito&key=API_KEY
         
     let apiKey = FindRestaurantsKeys().findRestaurantsGoogleMapsAPIKey
     
@@ -80,6 +80,7 @@ class NetworkServices {
 
           do {
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase //Decode the JSON by setting the keyEncodingStrategy of our decoder to .convertFromSnakeCase
 //            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
 //            print(jsonObject)
             let parsedJSON: PlaceSearchAPIModel = try decoder.decode(PlaceSearchAPIModel.self, from: data)

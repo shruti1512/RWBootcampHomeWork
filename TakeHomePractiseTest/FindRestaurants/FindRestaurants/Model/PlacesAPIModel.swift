@@ -9,16 +9,6 @@
 import Foundation
 import CoreLocation
 
-//MARK: - PriceLevel Enumeration
-
-enum PriceLevel: Int {
-  case Free = 0
-  case Inexpensive = 1
-  case Moderate = 2
-  case Expensive = 3
-  case VeryExpensive = 4
-}
-
 //MARK: - PlaceSearchAPIModel Model
 
 struct PlaceSearchAPIModel: Decodable {
@@ -28,10 +18,19 @@ struct PlaceSearchAPIModel: Decodable {
 //MARK: - Restaurant Model
 
 struct Restaurant {
+  
+  enum PriceLevel: Int, Decodable {
+    case Free = 0
+    case Inexpensive = 1
+    case Moderate = 2
+    case Expensive = 3
+    case VeryExpensive = 4
+  }
+
   let name: String
   let address: String
-  let priceLevel: Int?
-  let rating: Float?
+  let rating: Float? // Define a key as optional if it can be returned as `nil` or if it does not always exist in the JSON.
+  let priceLevel: PriceLevel?
   var geometry: Geometry
   
   var distanceFromCurrentLocation: Double? {
@@ -42,18 +41,17 @@ struct Restaurant {
     let placeLocation = CLLocation(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
     let currentLocation = CLLocation(latitude: userLoc.latitude, longitude: userLoc.longitude)
     let distanceInMetres = currentLocation.distance(from: placeLocation)
-    return round(100 * distanceInMetres * 0.000621371) / 100
-
+    let meterToMiles: Double = 0.000621371
+    return round(100 * distanceInMetres * meterToMiles) / 100
   }
 }
 
 extension Restaurant: Decodable {
+  
+  // To define custom mapping for JSON keys, i.e, different names to the keys JSON keys
   enum CodingKeys: String, CodingKey {
-      case name
-      case address = "vicinity"
-      case priceLevel = "price_level"
-      case rating
-      case geometry
+      case name, priceLevel, rating, geometry
+      case address = "vicinity" // Map the JSON key "vicinity" to the Swift property name "address"
   }
 }
 

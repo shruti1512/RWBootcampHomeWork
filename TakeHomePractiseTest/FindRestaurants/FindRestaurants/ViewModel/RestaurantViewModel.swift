@@ -48,8 +48,7 @@ class RestaurantViewModel {
 
     var priceText = ""
     if let priceLevel = restaurant.priceLevel {
-      let priceType = PriceLevel(rawValue: priceLevel)
-      switch priceType {
+      switch priceLevel {
         case .Free:
           priceText = "Free"
         case .Inexpensive:
@@ -60,8 +59,6 @@ class RestaurantViewModel {
           priceText = "$$$"
         case .VeryExpensive:
           priceText = "$$$$"
-        default:
-          break
         }
     }
 
