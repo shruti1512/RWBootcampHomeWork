@@ -45,19 +45,13 @@ enum ColorModelType: String {
   }
 }
 
-class ColorModel {
+struct ColorModel {
+  
   var name: String
   var type: ColorModelType
   var colorComponents: [ColorComponent]
   var wikiUrlString: String
-  
-  init(name: String, type: ColorModelType, colorComponents: [ColorComponent], wikiUrlString: String) {
-    self.name = name
-    self.type = type
-    self.colorComponents = colorComponents
-    self.wikiUrlString = wikiUrlString
-  }
-  
+    
   public static func getColorModel(for type: ColorModelType) -> ColorModel {
     return ColorModel(name: type.rawValue.capitalized,
                       type: type,
