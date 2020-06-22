@@ -50,7 +50,7 @@ func setupUIControls() {
     
   @IBAction func hitMeBtnPressed() {
     
-    game.calculateRoundScore(for: currentValue)
+    game.calculateScoreRound(for: currentValue)
     showAlertForScore()
   }
   
@@ -79,11 +79,11 @@ func showAlertForScore() {
     
     game.addBonus(points: points)
 
-    let message = "You scored \(game.roundScore) points"
+    let message = "You scored \(game.scoreRound) points"
     let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: "OK", style: .default, handler: {
       action in
-        self.game.calculateGameScore()
+        self.game.calculateScoreTotal()
         self.game.startNewRound()
         self.updateView()
     })
@@ -100,7 +100,7 @@ func showAlertForScore() {
     currentValue = 50
     slider.value = Float(currentValue)
     targetLabel.text = String(game.targetValue)
-    scoreLabel.text = String(game.gameScore)
+    scoreLabel.text = String(game.scoreTotal)
     roundLabel.text = String(game.round)
     slider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
   }

@@ -17,31 +17,31 @@ struct BullsEyeGame {
     //only the setter is private!
     private(set) var targetValue = 0
     private(set) var round = 0
-    private(set) var gameScore = 0
-    private(set) var roundScore = 0 
+    private(set) var scoreTotal = 0
+    private(set) var scoreRound = 0
 
     mutating func startNewRound() {
         round += 1
+        scoreRound = 0
         targetValue = BullsEyeGame.randomNumberGenerator(in: 1...100)
     }
      
     mutating func startNewGame() {
-        roundScore = 0
-        gameScore = 0
+        scoreTotal = 0
         round = 0
         startNewRound()
     }
     
-    mutating func calculateRoundScore(for guessValue: Int) {
+    mutating func calculateScoreRound(for guessValue: Int) {
         let difference = abs(guessValue.difference(target: targetValue))
-        roundScore = 100 - difference
+        scoreRound = 100 - difference
     }
     
     mutating func addBonus(points: Int) {
-        roundScore += points
+        scoreRound += points
     }
     
-    mutating func calculateGameScore() {
-        gameScore +=  roundScore
+    mutating func calculateScoreTotal() {
+        scoreTotal +=  scoreRound
     }
 }
