@@ -15,7 +15,7 @@ struct ColorDefaults {
     static let min: CGFloat = 0.0
     static let rgbMax: CGFloat = 255.0
     static let hueMax: CGFloat = 366.0
-    static let saturationMax: CGFloat = 100.0
+  static let satbrightMax: CGFloat = 100.0
     static let alpha: CGFloat = 1.0
 }
 

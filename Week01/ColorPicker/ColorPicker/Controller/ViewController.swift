@@ -62,6 +62,7 @@ class ViewController: UIViewController {
      //set default selected color model to 'RGB'
      currentColorModel = rgbColorModel
   }
+  
   //MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,18 +76,10 @@ class ViewController: UIViewController {
   private func setColorModels() {
     
     //create 'RGB' color model
-    let redColor = ColorValue(name: ColorStrings.red, minRange: ColorDefaults.min, maxRange: ColorDefaults.rgbMax)
-    let greenColor = ColorValue(name: ColorStrings.green, minRange:  ColorDefaults.min, maxRange:  ColorDefaults.rgbMax)
-    let blueColor = ColorValue(name: ColorStrings.blue, minRange:  ColorDefaults.min, maxRange:  ColorDefaults.rgbMax)
-    rgbColorModel = ColorModel(name: ColorStrings.rgb, type: .rgb,
-                               colorValues: [redColor, greenColor, blueColor], wikiUrlString: WikiURLStrings.rgbURL)
+    rgbColorModel = ColorModel.getColorModel(for: .rgb)
 
     //create 'HSB' color model
-    let hueVal = ColorValue(name: ColorStrings.hue, minRange:  ColorDefaults.min, maxRange: ColorDefaults.hueMax)
-    let saturationVal = ColorValue(name: ColorStrings.saturation, minRange:  ColorDefaults.min, maxRange: ColorDefaults.saturationMax)
-    let brightnessVal = ColorValue(name: ColorStrings.brightness, minRange:  ColorDefaults.min, maxRange: ColorDefaults.saturationMax)
-    hsbColorModel = ColorModel(name: ColorStrings.hsb, type: .hsb,
-                               colorValues: [hueVal, saturationVal, brightnessVal], wikiUrlString: WikiURLStrings.hsbURL)
+    hsbColorModel = ColorModel.getColorModel(for: .hsb)
   }
   
   private func setUIControls() {
@@ -94,6 +87,7 @@ class ViewController: UIViewController {
     let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
     UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .highlighted)
+    
     segmentedControl.createBorder(color: borderColorWhite, width: BorderValues.borderWidth, cornerRadius: BorderValues.segmentedControlCornerRadius)
     
     previewView.createBorder(color: borderColorWhite, width: BorderValues.borderWidth, cornerRadius: BorderValues.cornerRadius)
@@ -166,21 +160,21 @@ class ViewController: UIViewController {
           let userColor = colors[index]
         var color: UIColor!
           if currentColorModel.type == .rgb {
-              color = getColor(firstValue: userColor.color1, secondValue: userColor.color2, thirdValue: userColor.color3)
-              let colorTuple = color.rgba
-              let rgbMax = rgbColorModel.colorValues[0].maxRange
-              firstColorComponentSlider.value = Float((colorTuple.red * rgbMax).rounded())
-              secondColorComponentSlider.value = Float((colorTuple.green * rgbMax).rounded())
-              thirdColorComponentSlider.value = Float((colorTuple.blue * rgbMax).rounded())
+            let red = currentColorModel.colorComponents.first!
+            color = getColor(firstValue: userColor.color1, secondValue: userColor.color2, thirdValue: userColor.color3)
+            let colorTuple = color.rgba
+            firstColorComponentSlider.value = Float((colorTuple.red * red.range.upperBound).rounded())
+            secondColorComponentSlider.value = Float((colorTuple.green * red.range.upperBound).rounded())
+            thirdColorComponentSlider.value = Float((colorTuple.blue * red.range.upperBound).rounded())
           }
           else {
-              color = getColor(firstValue: userColor.color1, secondValue: userColor.color2, thirdValue: userColor.color3)
-              let colorTuple = color.hsba
-              let hueMax = hsbColorModel.colorValues[0].maxRange
-              let saturationMax = hsbColorModel.colorValues[1].maxRange
-              firstColorComponentSlider.value = Float((colorTuple.hue * hueMax).rounded())
-              secondColorComponentSlider.value = Float((colorTuple.saturation * saturationMax).rounded())
-              thirdColorComponentSlider.value = Float((colorTuple.brightness * saturationMax).rounded())
+            let hue = currentColorModel.colorComponents.first!
+            let brightness = currentColorModel.colorComponents.last!
+            color = getColor(firstValue: userColor.color1, secondValue: userColor.color2, thirdValue: userColor.color3)
+            let colorTuple = color.hsba
+            firstColorComponentSlider.value = Float((colorTuple.hue * hue.range.upperBound).rounded())
+            secondColorComponentSlider.value = Float((colorTuple.saturation * brightness.range.upperBound).rounded())
+            thirdColorComponentSlider.value = Float((colorTuple.brightness * brightness.range.upperBound).rounded())
           }
           firstColorNumberLabel.text = String(Int(firstColorComponentSlider.value))
           secondColorNumberLabel.text = String(Int(secondColorComponentSlider.value))
@@ -202,15 +196,19 @@ class ViewController: UIViewController {
     let thirdSelectedColorInt = Int(thirdColorNumberLabel.text!)
     let thirdSelectedColorFloat = CGFloat(thirdSelectedColorInt!)
     
-    let colorValues = currentColorModel.colorValues
-    let firstColorVal = firstSelectedColorFloat/CGFloat(colorValues[0].maxRange)
-    let secondColorVal = secondSelectedColorFloat/CGFloat(colorValues[1].maxRange)
-    let thirdColorVal = thirdSelectedColorFloat/CGFloat(colorValues[2].maxRange)
+    let colorComponents = currentColorModel.colorComponents
+    guard let firstColorComponent = colorComponents.first, let lastColorComponent = colorComponents.last else {
+      return
+    }
+    let firstColorVal = firstSelectedColorFloat/CGFloat(firstColorComponent.range.upperBound)
+    let secondColorVal = secondSelectedColorFloat/CGFloat(lastColorComponent.range.upperBound)
+    let thirdColorVal = thirdSelectedColorFloat/CGFloat(lastColorComponent.range.upperBound)
     
     let color = getColor(firstValue: firstColorVal, secondValue: secondColorVal, thirdValue: thirdColorVal)
 
     if view == self.view {
-        currentUserColor = UserColor(name: userColorName, model: currentColorModel.type, color1: firstColorVal, color2: secondColorVal, color3: thirdColorVal)
+        currentUserColor = UserColor(name: userColorName, model: currentColorModel.type,
+                                     color1: firstColorVal, color2: secondColorVal, color3: thirdColorVal)
        view.backgroundColor = color
     }
     else {
@@ -316,22 +314,22 @@ class ViewController: UIViewController {
     
   private func resetSliders() {
       
-    let colorValues = currentColorModel.colorValues
+    let colorComponents = currentColorModel.colorComponents
       
-    let firstColor = colorValues[0]
-    firstColorComponentSlider.minimumValue = Float(firstColor.minRange)
-    firstColorComponentSlider.maximumValue = Float(firstColor.maxRange)
-    firstColorComponentLabel.text = firstColor.name
+    let firstColorComponent = colorComponents[0]
+    firstColorComponentSlider.minimumValue = Float(firstColorComponent.range.lowerBound)
+    firstColorComponentSlider.maximumValue = Float(firstColorComponent.range.upperBound)
+    firstColorComponentLabel.text = firstColorComponent.name
       
-    let secondColor = colorValues[1]
-    secondColorComponentSlider.minimumValue = Float(secondColor.minRange)
-    secondColorComponentSlider.maximumValue = Float(secondColor.maxRange)
-    secondColorComponentLabel.text = secondColor.name
+    let secondColorComponent = colorComponents[1]
+    secondColorComponentSlider.minimumValue = Float(secondColorComponent.range.lowerBound)
+    secondColorComponentSlider.maximumValue = Float(secondColorComponent.range.upperBound)
+    secondColorComponentLabel.text = secondColorComponent.name
 
-    let thirdColor = colorValues[2]
-    thirdColorComponentSlider.minimumValue = Float(thirdColor.minRange)
-    thirdColorComponentSlider.maximumValue = Float(thirdColor.maxRange)
-    thirdColorComponentLabel.text = thirdColor.name
+    let thirdColorComponent = colorComponents[2]
+    thirdColorComponentSlider.minimumValue = Float(thirdColorComponent.range.lowerBound)
+    thirdColorComponentSlider.maximumValue = Float(thirdColorComponent.range.upperBound)
+    thirdColorComponentLabel.text = thirdColorComponent.name
   }
          
 }

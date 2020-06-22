@@ -9,27 +9,66 @@
 import Foundation
 import CoreGraphics
 
-struct ColorModel {
-  
-  enum ColorModelType {
-    case rgb
-    case hsb
-  }
+struct ColorComponent {
   var name: String
-  var type: ColorModelType
-  var colorValues: [ColorValue]
-  var wikiUrlString: String
+  var range: ClosedRange<CGFloat>
 }
 
-struct ColorValue {
+enum ColorModelType: String {
+  
+  case rgb = "rgb"
+  case hsb = "hsb"
+  
+  func getColorComponents() -> [ColorComponent] {
+    switch self {
+    case .rgb:
+      let red   = ColorComponent(name: ColorStrings.red,   range: (ColorDefaults.min...ColorDefaults.rgbMax))
+      let green   = ColorComponent(name: ColorStrings.green,   range: (ColorDefaults.min...ColorDefaults.rgbMax))
+      let blue   = ColorComponent(name: ColorStrings.blue,   range: (ColorDefaults.min...ColorDefaults.rgbMax))
+      return [red, green, blue]
+    
+    case .hsb:
+      let hue   = ColorComponent(name: ColorStrings.hue,   range: (ColorDefaults.min...ColorDefaults.hueMax))
+      let saturation = ColorComponent(name: ColorStrings.saturation, range: (ColorDefaults.min...ColorDefaults.satbrightMax))
+      let brightness  = ColorComponent(name: ColorStrings.brightness,  range: (ColorDefaults.min...ColorDefaults.satbrightMax))
+      return [hue, saturation, brightness]
+    }
+  }
+  
+  func getWikiUrlString() -> String {
+    switch self {
+    case .rgb:
+      return WikiURLStrings.rgbURL
+    case .hsb:
+      return WikiURLStrings.hsbURL
+    }
+  }
+}
+
+class ColorModel {
   var name: String
-  var minRange: CGFloat
-  var maxRange: CGFloat
+  var type: ColorModelType
+  var colorComponents: [ColorComponent]
+  var wikiUrlString: String
+  
+  init(name: String, type: ColorModelType, colorComponents: [ColorComponent], wikiUrlString: String) {
+    self.name = name
+    self.type = type
+    self.colorComponents = colorComponents
+    self.wikiUrlString = wikiUrlString
+  }
+  
+  public static func getColorModel(for type: ColorModelType) -> ColorModel {
+    return ColorModel(name: type.rawValue.capitalized,
+                      type: type,
+                      colorComponents: type.getColorComponents(),
+                      wikiUrlString: type.getWikiUrlString())
+  }
 }
 
 struct UserColor {
-  var name: String
-  var model: ColorModel.ColorModelType
+  var name:   String
+  var model:  ColorModelType
   var color1: CGFloat
   var color2: CGFloat
   var color3: CGFloat
