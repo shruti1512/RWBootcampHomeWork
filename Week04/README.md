@@ -9,6 +9,7 @@
 <a name = "about" /> 
 
 **Compatibility App -** It is a mini compatibility app that gathers responses of two players on a few topics and depending on their respective responses match their compatibility to each other.
+**Bonus** - The app includes avatar collection view for profile images, custom alert view and unit tests for Compatibility logic.
 
 **Comparison Shopper Project** - This project inlcudes a few bug fixes.
 
