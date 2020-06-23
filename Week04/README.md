@@ -1,4 +1,4 @@
-#  App
+#  Compatibilty App & ComparsionShopper App(Bug fixes)
 [About](#about)<br/>
 [Biography](#bio)<br/>
 [Screenshots](#screenshots)<br/>
@@ -8,7 +8,9 @@
 ## About
 <a name = "about" /> 
 
+**Compatibility App -** It is a mini compatibility app that gathers responses of two players on a few topics and depending on their respective responses match their compatibility to each other.
 
+**Comparison Shopper Project** - This project inlcudes a few bug fixes.
 
 ## Biography 
 <a name = "bio" /> 
@@ -75,10 +77,11 @@
 
 #### Additional Features 
 
-- [x] App displays a list of avatars on the home screen for the user to choose for person1 and person2.
-- [x] A profile image is displayed for the player on the game screen.
+- [x] App displays a **list of avatars** on the home screen for the user to choose for person1 and person2.
+- [x] **A profile image** is displayed for the player on the game screen.
 - [x] A custom alert view appears for player1 when player1 has finished playing.
-- [x] A custom alert view appears with the players profile images of both the players and their compatibilty score.
+- [x] **A custom alert view** appears with the players profile images of both the players and their compatibilty score.
+- [x] **Unit Tests** for Compatibility game logic.
 
 
 
@@ -102,7 +105,7 @@
 
   Steps for crash resoluton -  
 
-  1. The code was trying to access house1 which was nil as it was not initilaized. Type command 'po house1' in the debug console and it ertuens nil. 
+  1. The code was trying to access house1 which was nil as it was not initilaized. Type command 'po house1' in the debug console and it returns nil. 
 
   ​       Fix - Initialize house1 using the memberwise initializer.
 
