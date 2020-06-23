@@ -35,7 +35,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="63R-D5-xfa">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select profile images for Person1 and Person2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spo-LE-4Qk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select profile images for Player1 and Player2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spo-LE-4Qk">
                                 <rect key="frame" x="20" y="64" width="335" height="53"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -292,7 +292,7 @@
         <image name="female_001" width="211" height="227.5"/>
         <image name="good" width="30" height="30"/>
         <image name="great" width="30" height="30"/>
-        <image name="icons8-checkmark" width="75" height="75"/>
+        <image name="icons8-checkmark" width="30" height="30"/>
         <image name="meh" width="30" height="30"/>
         <image name="star" width="1000" height="1000"/>
         <image name="terrible" width="30" height="30"/>

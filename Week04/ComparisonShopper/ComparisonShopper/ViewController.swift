@@ -33,6 +33,12 @@ class ViewController: UIViewController {
     }
 
     func setUpLeftSideUI() {
+      /* There were four issues for the crash.
+      1. The code was trying to access house1 which was nil as it was not initilaized.
+      2. The code was trying to access address property of house1 which was nil as it was not set.
+      3. roomLabelLeft was nil as the respective IBOutlet wasn't hooked up in IB..
+      4. setUpLeftSideUI() was called before the properties for house1 object were set and thus the code here was trying to access the properties of a nil object
+      */
       guard let house1 = house1 else {
         return
       }
@@ -42,6 +48,7 @@ class ViewController: UIViewController {
     }
 
     func setUpRightSideUI() {
+      /* The data for house2 details was not visible after adding the item because the properties (titleLabelRight, imageViewRight, priceLabelRight, roomLabelRight) all had alpha 0.0. */
       let uiControls: [UIView] = [titleLabelRight, imageViewRight, priceLabelRight, roomLabelRight]
         if house2 == nil {
           uiControls.forEach { $0.alpha = 0.0 }

@@ -90,7 +90,7 @@
 
 - Uses Auto Layout to line up the  UI elements on screen.
 
-- Uses extensions for UIView, NumberFormatter.
+- Uses Extensions for UIView, NumberFormatter.
 
   
 
@@ -99,6 +99,29 @@
 #### Basic Requirements 
 
 - [x] Fix the crash that appears when the app is opened. Add breakpoints and use lldb to see if anything is nil. You can also use lldb commands after a crash to view values at the time of the crash.
+
+  Steps for crash resoluton -  
+
+  1. The code was trying to access house1 which was nil as it was not initilaized. Type command 'po house1' in the debug console and it ertuens nil. 
+
+  ​       Fix - Initialize house1 using the memberwise initializer.
+
+  2. address property of house1 was nil.
+
+  ​       Fix - Initialize house1 using the memberwise initializer.
+
+  3. setUpLeftSideUI() was called before the properties for house1 were set and thus the code here was trying to access the properties of a nil object.
+
+     Fix - Call setUpLeftSideUI() after initializing the house1 structure object.
+
+  4. property roomLabelLeft was nil as the respective IBOutlet wasn't hooked up in IB.
+
+     Fix - Connect the property roomLabelLeft in the IB.
+
 - [x] Fix the bug - If the user adds a second house to compare, none of the labels or images
   show up. Add breakpoints to make sure the correct code is running!
+
+  Steps for bug fix - 
+
+  The data for house2 details was not visible after adding the item because the properties (titleLabelRight, imageViewRight, priceLabelRight, roomLabelRight) all had alpha 0.0. Set the alpha to 1.0.
 
