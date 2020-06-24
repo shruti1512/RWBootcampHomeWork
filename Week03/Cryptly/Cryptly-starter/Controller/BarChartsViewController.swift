@@ -102,7 +102,6 @@ class BarChartsViewController: UIViewController {
       chartData.barWidth = barWidth;
       barChartView.xAxis.axisMinimum = Double(startPt)
       let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-//      print("Groupspace: \(gg)")
       barChartView.xAxis.axisMaximum = Double(startPt) + gg * Double(groupCount)
 
       chartData.groupBars(fromX: Double(startPt), groupSpace: groupSpace, barSpace: barSpace)

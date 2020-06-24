@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3376137224A2D50E00B5728D /* AvatarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376137124A2D50E00B5728D /* AvatarList.swift */; };
 		33B7EA8A24A1643100E0321A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7EA8924A1643100E0321A /* AppDelegate.swift */; };
 		33B7EA8C24A1643100E0321A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7EA8B24A1643100E0321A /* SceneDelegate.swift */; };
 		33B7EAA124A1643300E0321A /* CompatibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7EAA024A1643300E0321A /* CompatibilityTests.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3376137124A2D50E00B5728D /* AvatarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarList.swift; sourceTree = "<group>"; };
 		33B7EA8624A1643100E0321A /* Compatibility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Compatibility.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33B7EA8924A1643100E0321A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33B7EA8B24A1643100E0321A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				33B7EAC424A164C500E0321A /* Person.swift */,
 				33B7EAC524A164C500E0321A /* CollectionViewDelegate.swift */,
 				33B7EAC624A164C500E0321A /* ComptibilityLogic.swift */,
+				3376137124A2D50E00B5728D /* AvatarList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				33B7EAC924A164C500E0321A /* Person.swift in Sources */,
 				33B7EACB24A164C500E0321A /* ComptibilityLogic.swift in Sources */,
 				33B7EA8A24A1643100E0321A /* AppDelegate.swift in Sources */,
+				3376137224A2D50E00B5728D /* AvatarList.swift in Sources */,
 				33B7EAC024A164B200E0321A /* Extensions.swift in Sources */,
 				33B7EA8C24A1643100E0321A /* SceneDelegate.swift in Sources */,
 				33B7EACE24A164CD00E0321A /* AvatarCollectionViewCell.swift in Sources */,

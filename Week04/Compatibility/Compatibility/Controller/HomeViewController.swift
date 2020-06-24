@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
   
   //MARK: - Properties
-   private var avatars = [String]()
+   let avatarList = AvatarList()
    private var person1Image, person2Image: String!
    private var dataSource: CollectionViewDataSource!
    private var delegate: CollectionViewDelegate!
@@ -65,25 +65,14 @@ class HomeViewController: UIViewController {
 
     func setupCollectionViewDataSource() {
       
-      var maleAvatars = [String]()
-      for i in 1...8 {
-        let imageName = "male_00\(i)"
-        maleAvatars.append(imageName)
-      }
-      var femaleAvatars = [String]()
-      for i in 1...8 {
-        let imageName = "female_00\(i)"
-        femaleAvatars.append(imageName)
-      }
-      avatars += maleAvatars + femaleAvatars
-      let dataSource = CollectionViewDataSource(models: avatars, reuseIdentifier: "AvatarCollectionViewCell")
+      let dataSource = CollectionViewDataSource(models: avatarList.avatars, reuseIdentifier: "AvatarCollectionViewCell")
       self.dataSource = dataSource
       collectionView.dataSource = self.dataSource
     }
    
     func setupCollectionViewDelegate() {
       
-      let delegate = CollectionViewDelegate(dataSourceArray: avatars, sectionInsets: sectionInsets, itemsPerRow: 4) {
+      let delegate = CollectionViewDelegate(dataSourceArray: avatarList.avatars, sectionInsets: sectionInsets, itemsPerRow: 4) {
                       (person1Image, person2Image) in
                               self.person1Image = person1Image
                               self.person2Image = person2Image

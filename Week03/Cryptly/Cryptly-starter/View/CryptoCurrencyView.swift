@@ -41,7 +41,6 @@ class CryptoCurrencyView: UIView, Roundable {
   }
 
   //this initializer gets called when the view is loaded/embedded from IB
-
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     setupView()
