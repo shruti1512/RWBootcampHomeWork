@@ -7,18 +7,8 @@
 //
 
 import Foundation
-//import UIKit
-//import Cosmos
-
-/*
-@objc public protocol RestaurantViewModelView {
-  @objc optional var restaurantNameLbl: UILabel { get }
-  @objc optional var restaurantAddressLbl: UILabel { get }
-  @objc optional var restaurantRatingView: CosmosView { get }
-  @objc optional var restauarantRatingLbl: UILabel { get }
-  @objc optional var restaurantCaptionLbl: UILabel { get }
-}
-*/
+import UIKit
+import Cosmos
 
 class RestaurantViewModel {
   
@@ -71,20 +61,21 @@ class RestaurantViewModel {
 
 }
 
-/*
+
 extension RestaurantViewModel {
 
-  public func configure(_ view: RestaurantViewModelView) {
-    view.restaurantNameLbl?.text = nameText
-    view.restaurantAddressLbl?.text = addressText
-    view.restauarantRatingLbl?.text = ratingText
+  public func configureTableViewCell(withIdentifier identifier: String,  in tableView: UITableView) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as! RestaurantTableViewCell
+    cell.nameLbl?.text = nameText
+    cell.addressLbl?.text = addressText
+    cell.ratingLbl?.text = ratingText
     if let ratingDouble =  ratingDouble {
-      view.restaurantRatingView?.rating = ratingDouble
+      cell.ratingView?.rating = ratingDouble
     }
     else {
-      view.restaurantRatingView?.isHidden = true
+      cell.ratingView?.isHidden = true
     }
-    view.restaurantCaptionLbl?.text = captionText
+    cell.captionLbl?.text = captionText
+    return cell
   }
 }
-*/

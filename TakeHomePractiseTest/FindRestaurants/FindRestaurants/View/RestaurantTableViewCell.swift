@@ -24,30 +24,3 @@ class RestaurantTableViewCell: UITableViewCell {
   }
   
 }
-
-/*
-// MARK: - RestaurantViewModelView
-extension RestaurantTableViewCell: RestaurantViewModelView {
-  
-  public var restaurantNameLbl: UILabel {
-    return nameLbl
-  }
-  
-  public var restaurantAddressLbl: UILabel {
-    return addressLbl
-  }
-  
-  public var restaurantRatingView: CosmosView {
-    return ratingView
-  }
-
-  public var restaurantRatingLabel: UILabel {
-    return ratingLbl
-  }
-
-  public var restaurantCaptionLabel: UILabel {
-    return captionLbl
-  }
-
-}
- */

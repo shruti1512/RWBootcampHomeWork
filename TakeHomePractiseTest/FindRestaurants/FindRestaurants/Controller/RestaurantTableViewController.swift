@@ -23,8 +23,7 @@ class RestaurantTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "Burrito Places"
-    let locationMngr = LocationManager.shared
-    locationMngr.requestUserAuthorization()
+    requestUserAuthorizationForLocation()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,11 @@ class RestaurantTableViewController: UITableViewController {
   
   //MARK: - Get Places Data from NetworkService
 
+  func requestUserAuthorizationForLocation() {
+    let locationMngr = LocationManager.shared
+    locationMngr.requestUserAuthorization()
+  }
+  
   @objc func getPlacesForLocation() {
     
     guard let currentLocation = LocationManager.shared.currentLocation else {

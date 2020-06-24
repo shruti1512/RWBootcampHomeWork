@@ -15,12 +15,12 @@ class TableViewDataSouce: NSObject, UITableViewDataSource {
   private let reuseIdentifier: String
 
   init(places: [Restaurant], reuseIdentifier: String) {
-    self.places = places
-    self.reuseIdentifier = reuseIdentifier
+      self.places = places
+      self.reuseIdentifier = reuseIdentifier
   }
 
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+      return 1
   }
   
   func tableView(_ tableView: UITableView,
@@ -31,22 +31,11 @@ class TableViewDataSouce: NSObject, UITableViewDataSource {
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-      let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! RestaurantTableViewCell
-
       let restaurant = places[indexPath.row]
       let restaurantViewModel = RestaurantViewModel(restaurant: restaurant)
-      cell.nameLbl?.text = restaurantViewModel.nameText
-      cell.addressLbl?.text = restaurantViewModel.addressText
-      cell.ratingLbl?.text = restaurantViewModel.ratingText
-      if let ratingDouble =  restaurantViewModel.ratingDouble {
-        cell.ratingView?.rating = ratingDouble
-      }
-      else {
-        cell.ratingView?.isHidden = true
-      }
-      cell.captionLbl?.text = restaurantViewModel.captionText
-
+      let cell = restaurantViewModel.configureTableViewCell(withIdentifier: reuseIdentifier, in: tableView)
       return cell
   }
 
+  
 }
