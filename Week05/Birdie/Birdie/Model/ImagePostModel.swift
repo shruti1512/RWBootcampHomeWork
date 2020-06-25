@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ImagePost: MediaPost {
+struct ImagePost: MediaPost, Equatable {
     var textBody: String?
     var userName: String
     var timestamp: Date

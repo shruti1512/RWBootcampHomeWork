@@ -32,7 +32,10 @@ class CompatibilityTests: XCTestCase {
     sut = ComptibilityLogic(person1: person1, person2: person2, compatibilityItems: compatibilityItems)
 
     //2. When
-    let score = sut.calculateCompatibilityScore()
+    guard let score = sut.calculateCompatibilityScore() else {
+      XCTAssertNil("score is nil.")
+      return
+    }
     
     //3. Then
     XCTAssertEqual(score, "100%", "Calculated score is incorrect. Expected: 100% and Actual: \(score)")
@@ -46,8 +49,11 @@ class CompatibilityTests: XCTestCase {
     sut = ComptibilityLogic(person1: person1, person2: person2, compatibilityItems: compatibilityItems)
 
     //2. When
-    let score = sut.calculateCompatibilityScore()
-    
+    guard let score = sut.calculateCompatibilityScore() else {
+      XCTAssertNil("score is nil.")
+      return
+    }
+
     //3. Then
     XCTAssertEqual(score, "0%", "Calculated score is incorrect. Expected: 0% and Actual: \(score)")
   }
@@ -60,8 +66,11 @@ class CompatibilityTests: XCTestCase {
     sut = ComptibilityLogic(person1: person1, person2: person2, compatibilityItems: compatibilityItems)
 
     //2. When
-    let score = sut.calculateCompatibilityScore()
-    
+    guard let score = sut.calculateCompatibilityScore() else {
+      XCTAssertNil("score is nil.")
+      return
+    }
+
     //3. Then
     XCTAssertEqual(score, "50%", "Calculated score is incorrect. Expected: 50% and Actual: \(score)")
   }
@@ -74,8 +83,11 @@ class CompatibilityTests: XCTestCase {
     sut = ComptibilityLogic(person1: person1, person2: person2, compatibilityItems: compatibilityItems)
 
     //2. When
-    let score = sut.calculateCompatibilityScore()
-    
+    guard let score = sut.calculateCompatibilityScore() else {
+      XCTAssertNil("score is nil.")
+      return
+    }
+
     //3. Then
     XCTAssertEqual(score, "25%", "Calculated score is incorrect. Expected: 25% and Actual: \(score)")
   }
@@ -88,8 +100,11 @@ class CompatibilityTests: XCTestCase {
     sut = ComptibilityLogic(person1: person1, person2: person2, compatibilityItems: compatibilityItems)
 
     //2. When
-    let score = sut.calculateCompatibilityScore()
-    
+    guard let score = sut.calculateCompatibilityScore() else {
+      XCTAssertNil("score is nil.")
+      return
+    }
+
     //3. Then
     XCTAssertEqual(score, "75%", "Calculated score is incorrect. Expected: 75% and Actual: \(score)")
   }

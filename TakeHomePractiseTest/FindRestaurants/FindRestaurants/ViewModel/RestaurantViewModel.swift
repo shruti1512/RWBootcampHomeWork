@@ -65,6 +65,7 @@ class RestaurantViewModel {
 extension RestaurantViewModel {
 
   public func configureTableViewCell(withIdentifier identifier: String,  in tableView: UITableView) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as! RestaurantTableViewCell
     cell.nameLbl?.text = nameText
     cell.addressLbl?.text = addressText

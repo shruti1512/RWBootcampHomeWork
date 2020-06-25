@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TextPost: MediaPost {
+struct TextPost: MediaPost, Equatable {
     var textBody: String?
     var userName: String
     var timestamp: Date

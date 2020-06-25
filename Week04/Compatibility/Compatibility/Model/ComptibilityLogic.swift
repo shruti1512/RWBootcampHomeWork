@@ -10,9 +10,9 @@ import Foundation
 
 class ComptibilityLogic {
   
-  let person1: Person!
-  let person2: Person!
-  let compatibilityItems: [String]!
+  let person1: Person
+  let person2: Person
+  let compatibilityItems: [String]
   
   init(person1: Person, person2: Person, compatibilityItems: [String]) {
     self.person1 = person1
@@ -21,7 +21,7 @@ class ComptibilityLogic {
   }
   
   func calculateCompatibilityScore() -> String {
-    
+        
       var percentagesForAllItems: [Double] = []
       for (key, person1Rating) in person1.items {
           let person2Rating = person2.items[key] ?? 0

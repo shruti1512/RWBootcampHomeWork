@@ -20,7 +20,6 @@ class GameViewController: UIViewController {
   var compatibility: ComptibilityLogic!
 
 //MARK: - Properties
-
   var compatibilityItems = ["Cats", "Dogs", "Nature", "Travel"]
   var currentItemIndex = 0 {
     didSet {
@@ -117,8 +116,8 @@ class GameViewController: UIViewController {
 
     func showAlertForCompatibilityResults() {
       
-      let score = compatibility.calculateCompatibilityScore()
-      
+      guard let score = compatibility.calculateCompatibilityScore() else { return }
+
       let alertService = AlertService()
       let alertVC = alertService.alert(title: "Compatibility",
                                        body: "\(score)",

@@ -1,43 +1,67 @@
 //
-//  MediaPostViewModel.swift
-//  Birdie
+//  RestaurantViewModel.swift
+//  FindRestaurants
 //
-//  Created by Jay Strawn on 6/18/20.
-//  Copyright © 2020 Jay Strawn. All rights reserved.
+//  Created by Shruti Sharma on 6/17/20.
+//  Copyright © 2020 Shruti Sharma. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class MediaPostsViewModel {
-    static let shared = MediaPostsViewModel()
+class MediaPostViewModel {
+  
+  // MARK: - Instance Properties
+  let mediaPost: MediaPost
+  let userNameText: String
+  let timestampText: Date
+  let bodyText: String?
+  var postImage: UIImage?
+  let dateFormat = "E, d MMM h:mm a"
 
-    func setUpTableViewCell(for post: MediaPost, in tableview: UITableView) -> UITableViewCell {
-        if let post = post as? TextPost {
-            let cell = tableview.dequeueReusableCell(withIdentifier: "textCell") as! TextPostTableViewCell
-            cell.nameLabel.text = post.userName
-            cell.timestampLabel.text = post.timestamp.toString()
-            cell.textBodyLabel.text = post.textBody
-            return cell
-        } else if let post = post as? ImagePost {
-            let cell = tableview.dequeueReusableCell(withIdentifier: "imageCell") as! ImagePostTableViewCell
-            cell.nameLabel.text = post.userName
-            cell.timestampLabel.text = post.timestamp.toString()
-            cell.textBodyLabel.text = post.textBody
-            cell.postImageView.image = post.image
-            return cell
-        } else {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = post.textBody
-            return cell
-        }
-    }
+  // MARK: - Object Lifecycle
+  public convenience init(textPost: TextPost) {
+    self.init(mediaPost: textPost)
+  }
+  
+  public convenience init(imagePost: ImagePost) {
+    self.init(mediaPost: imagePost)
+    self.postImage = imagePost.image
+  }
+  
+  private init(mediaPost: MediaPost) {
+    self.mediaPost = mediaPost
+    self.userNameText = mediaPost.userName
+    self.timestampText = mediaPost.timestamp
+    self.bodyText = mediaPost.textBody
+  }
+
 }
 
-extension Date {
-    func toString(withFormat format: String = "d MMM, HH:mm") -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        let str = dateFormatter.string(from: self)
-        return str
+
+extension MediaPostViewModel {
+
+  public func configureTableViewCell(_ cellType: TableViewCellType,  in tableView: UITableView) -> UITableViewCell {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = dateFormat
+    let dateToString = dateFormatter.string(from: timestampText)
+    
+    switch cellType {
+    case .textPostCell:
+      let textCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue) as! TextPostTableViewCell
+      textCell.titleLabel?.text = userNameText
+      textCell.bodyLabel?.text = bodyText
+      textCell.timestampLabel?.text = dateToString
+      return textCell
+    case .imagePostCell:
+      let imageCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue) as! ImagePostTableViewCell
+      imageCell.titleLabel?.text = userNameText
+      imageCell.bodyLabel?.text = bodyText
+      imageCell.postImageView.image = postImage
+      imageCell.timestampLabel.text = dateToString
+      return imageCell
     }
+    
+  }
 }

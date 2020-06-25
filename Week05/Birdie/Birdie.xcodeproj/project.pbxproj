@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3358DB9C24A3F54700403596 /* PostDraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358DB9B24A3F54700403596 /* PostDraftViewController.swift */; };
+		3358DB9E24A449CF00403596 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3358DB9D24A449CF00403596 /* Extensions.swift */; };
 		3376137A24A30EC600B5728D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3376137624A30EC600B5728D /* Main.storyboard */; };
 		3376137B24A30EC600B5728D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3376137824A30EC600B5728D /* LaunchScreen.storyboard */; };
+		3376138024A3185600B5728D /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376137E24A3185500B5728D /* TableViewDataSource.swift */; };
+		3376138324A3197100B5728D /* MediaPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376138224A3197100B5728D /* MediaPostViewModel.swift */; };
+		3376138524A31BCF00B5728D /* TextPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376138424A31BCF00B5728D /* TextPostTableViewCell.swift */; };
+		3376138724A31BF400B5728D /* ImagePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376138624A31BF400B5728D /* ImagePostTableViewCell.swift */; };
+		3376138924A33E9400B5728D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376138824A33E9400B5728D /* ImagePicker.swift */; };
 		C3C9D35E249B324B001F55A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D35D249B324B001F55A6 /* AppDelegate.swift */; };
 		C3C9D360249B324B001F55A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D35F249B324B001F55A6 /* SceneDelegate.swift */; };
-		C3C9D362249B324B001F55A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D361249B324B001F55A6 /* ViewController.swift */; };
+		C3C9D362249B324B001F55A6 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D361249B324B001F55A6 /* PostsViewController.swift */; };
 		C3C9D36A249B324C001F55A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C9D369249B324C001F55A6 /* Assets.xcassets */; };
 		C3C9D393249B3448001F55A6 /* TextPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D392249B3448001F55A6 /* TextPostModel.swift */; };
 		C3C9D395249B3453001F55A6 /* ImagePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D394249B3453001F55A6 /* ImagePostModel.swift */; };
@@ -37,12 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3358DB9B24A3F54700403596 /* PostDraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraftViewController.swift; sourceTree = "<group>"; };
+		3358DB9D24A449CF00403596 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3376137724A30EC600B5728D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3376137924A30EC600B5728D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3376137E24A3185500B5728D /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		3376138224A3197100B5728D /* MediaPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPostViewModel.swift; sourceTree = "<group>"; };
+		3376138424A31BCF00B5728D /* TextPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostTableViewCell.swift; sourceTree = "<group>"; };
+		3376138624A31BF400B5728D /* ImagePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostTableViewCell.swift; sourceTree = "<group>"; };
+		3376138824A33E9400B5728D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C3C9D35A249B324B001F55A6 /* Birdie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birdie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C9D35D249B324B001F55A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C9D35F249B324B001F55A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C3C9D361249B324B001F55A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3C9D361249B324B001F55A6 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		C3C9D369249B324C001F55A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3C9D36E249B324C001F55A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3C9D373249B324C001F55A6 /* BirdieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BirdieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +142,7 @@
 				3376137324A30DC400B5728D /* Storyboard */,
 				3376137424A30DD200B5728D /* Resources */,
 				C3C9D36E249B324C001F55A6 /* Info.plist */,
+				3358DB9D24A449CF00403596 /* Extensions.swift */,
 			);
 			path = Birdie;
 			sourceTree = "<group>";
@@ -160,6 +175,8 @@
 		C3C9D391249B326C001F55A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3376138424A31BCF00B5728D /* TextPostTableViewCell.swift */,
+				3376138624A31BF400B5728D /* ImagePostTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +184,7 @@
 		C3C9D398249B3479001F55A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3376137E24A3185500B5728D /* TableViewDataSource.swift */,
 				C3C9D39A249B3711001F55A6 /* MediaPostsHandler.swift */,
 				C3C9D396249B346E001F55A6 /* MediaPostProtocol.swift */,
 				C3C9D392249B3448001F55A6 /* TextPostModel.swift */,
@@ -178,7 +196,9 @@
 		C3C9D399249B3484001F55A6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C3C9D361249B324B001F55A6 /* ViewController.swift */,
+				C3C9D361249B324B001F55A6 /* PostsViewController.swift */,
+				3376138824A33E9400B5728D /* ImagePicker.swift */,
+				3358DB9B24A3F54700403596 /* PostDraftViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,6 +206,7 @@
 		C3C9D39E249B3C30001F55A6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3376138224A3197100B5728D /* MediaPostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -321,13 +342,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3376138924A33E9400B5728D /* ImagePicker.swift in Sources */,
+				3376138324A3197100B5728D /* MediaPostViewModel.swift in Sources */,
+				3376138024A3185600B5728D /* TableViewDataSource.swift in Sources */,
 				C3C9D393249B3448001F55A6 /* TextPostModel.swift in Sources */,
 				C3C9D395249B3453001F55A6 /* ImagePostModel.swift in Sources */,
-				C3C9D362249B324B001F55A6 /* ViewController.swift in Sources */,
+				3358DB9C24A3F54700403596 /* PostDraftViewController.swift in Sources */,
+				3376138724A31BF400B5728D /* ImagePostTableViewCell.swift in Sources */,
+				C3C9D362249B324B001F55A6 /* PostsViewController.swift in Sources */,
 				C3C9D397249B346E001F55A6 /* MediaPostProtocol.swift in Sources */,
 				C3C9D39B249B3711001F55A6 /* MediaPostsHandler.swift in Sources */,
+				3376138524A31BCF00B5728D /* TextPostTableViewCell.swift in Sources */,
 				C3C9D35E249B324B001F55A6 /* AppDelegate.swift in Sources */,
 				C3C9D360249B324B001F55A6 /* SceneDelegate.swift in Sources */,
+				3358DB9E24A449CF00403596 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,13 +527,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A9MF56EMP8;
+				DEVELOPMENT_TEAM = PSFNNZ46DN;
 				INFOPLIST_FILE = Birdie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Birdie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrutiapps.Compatibility;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
