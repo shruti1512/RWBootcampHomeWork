@@ -44,12 +44,12 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     
       if let textPost = mediaPost as? TextPost {
          let mediaPostViewModel = MediaPostViewModel(textPost: textPost)
-        let cell = mediaPostViewModel.configureTableViewCellWithReuseIdentifier(.textPostCell, in: tableView)
+         let cell = mediaPostViewModel.configureTableViewCellWithReuseIdentifier(.textPostCell, in: tableView)
          return cell
       }
       else if let imagePost = mediaPost as? ImagePost {
          let mediaPostViewModel = MediaPostViewModel(imagePost: imagePost)
-        let cell = mediaPostViewModel.configureTableViewCellWithReuseIdentifier(.imagePostCell, in: tableView)
+         let cell = mediaPostViewModel.configureTableViewCellWithReuseIdentifier(.imagePostCell, in: tableView)
          return cell
       }
       return UITableViewCell()

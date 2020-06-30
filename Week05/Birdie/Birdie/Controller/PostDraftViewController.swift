@@ -72,9 +72,8 @@ class PostDraftViewController: UIViewController {
   private func setupView() {
     textField.becomeFirstResponder()
     addAccessory()
-    textView.layer.borderColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0).cgColor
-    textView.layer.borderWidth = 1.0
-    textView.layer.cornerRadius = 5
+    textView.roundWithCornerRadius(5.0, borderWidth: 1.0,
+                                   borderColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0))
     postBtn.isEnabled = false
     sendButton.isEnabled = false
   }
