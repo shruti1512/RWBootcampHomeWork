@@ -1,8 +1,8 @@
 # Birdie App
 [About](#about)<br/>
 [Biography](#bio)<br/>
-[App Details](#app)<br/>
 [Screenshots](#screenshots)<br/>
+[App Details](#app)<br/>
 </br>
 ## About
 <a name = "about" />This app allows user to create media posts giving a title, body and a date. The user can also upload image from camera or photo library in the phone.
@@ -22,6 +22,10 @@
 - Workout more often 
 - Practise mediation more 
 - Travel around the world
+
+## Screenshots
+<a name = "screenshots" />
+<img src="Screenshots/PostsScreen.png" width="200" height="400"> <img src="Screenshots/ImagePostDraft.png" width="200" height="400"><img src="Screenshots/TextPostDraft.png" width="200" height="400"><img src="Screenshots/SortPosts.png" width="200" height="400"><img src="Screenshots/FilterPosts.png" width="200" height="400">
 
 ## App Details
 <a name = "app" />
@@ -45,11 +49,4 @@
 - [x] Adds functionality to filter posts based on multiple filter cases.
 - [x] Adds functionality for maximum character limit for title/username and text body for the post.
 - [x] Adds functionality to delete posts.
-
-## Screenshots
-<a name = "screenshots" />
-
-
-
-<img src="Screenshots/PostsScreen.png" width="300" height="500"> <img src="Screenshots/ImagePostDraft.png" width="300" height="500"><img src="Screenshots/TextPostDraft.png" width="300" height="500"><img src="Screenshots/SortPosts.png" width="300" height="500"><img src="Screenshots/FilterPosts.png" width="300" height="500">
 
