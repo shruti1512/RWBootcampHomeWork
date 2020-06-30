@@ -94,25 +94,30 @@ class PostDraftViewController: UIViewController {
     
       textView.inputAccessoryView = accessory
       textField.inputAccessoryView = accessory
-
-      NSLayoutConstraint.activate([
-        lineView.leadingAnchor.constraint(equalTo: accessory.leadingAnchor),
-        lineView.trailingAnchor.constraint(equalTo: accessory.trailingAnchor),
-        lineView.topAnchor.constraint(equalTo: accessory.topAnchor),
-        lineView.heightAnchor.constraint(equalToConstant: 1),
-        charactersLbl.centerYAnchor.constraint(equalTo: accessory.centerYAnchor),
-        charactersLbl.centerXAnchor.constraint(equalTo: accessory.centerXAnchor),
-        pictureBtn.leadingAnchor.constraint(equalTo:
-        accessory.leadingAnchor, constant: 20),
-        pictureBtn.centerYAnchor.constraint(equalTo:
-        accessory.centerYAnchor),
-        sendButton.trailingAnchor.constraint(equalTo:
-        accessory.trailingAnchor, constant: -20),
-        sendButton.centerYAnchor.constraint(equalTo:
-        accessory.centerYAnchor)
-      ])
+    
+      addConstraintsToAccessoryView()
   }
 
+  private func addConstraintsToAccessoryView() {
+    
+    NSLayoutConstraint.activate([
+      lineView.leadingAnchor.constraint(equalTo: accessory.leadingAnchor),
+      lineView.trailingAnchor.constraint(equalTo: accessory.trailingAnchor),
+      lineView.topAnchor.constraint(equalTo: accessory.topAnchor),
+      lineView.heightAnchor.constraint(equalToConstant: 1),
+      charactersLbl.centerYAnchor.constraint(equalTo: accessory.centerYAnchor),
+      charactersLbl.centerXAnchor.constraint(equalTo: accessory.centerXAnchor),
+      pictureBtn.leadingAnchor.constraint(equalTo:
+      accessory.leadingAnchor, constant: 20),
+      pictureBtn.centerYAnchor.constraint(equalTo:
+      accessory.centerYAnchor),
+      sendButton.trailingAnchor.constraint(equalTo:
+      accessory.trailingAnchor, constant: -20),
+      sendButton.centerYAnchor.constraint(equalTo:
+      accessory.centerYAnchor)
+    ])
+  }
+  
   //MARK: - Add Media Post
   private func addMediaPostWithDetails(userName: String, body: String) {
     

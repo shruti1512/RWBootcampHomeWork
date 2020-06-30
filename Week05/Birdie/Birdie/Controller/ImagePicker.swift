@@ -9,15 +9,21 @@
 import Foundation
 import UIKit
 
+//MARK: - ImagePickerDelegate Protocol Declaration
+
 public protocol ImagePickerDelegate: class {
     func didSelect(image: UIImage?)
 }
 
 open class ImagePicker: NSObject {
 
+  //MARK: - Properties
+
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
+
+  //MARK: - Intializer
 
     public init(presentationController: UIViewController, delegate: ImagePickerDelegate) {
         self.pickerController = UIImagePickerController()
@@ -32,6 +38,8 @@ open class ImagePicker: NSObject {
         self.pickerController.mediaTypes = ["public.image"]
     }
 
+  //MARK: - Get UIAlertAction To Show ALert View For ImagePicker
+
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
         guard UIImagePickerController.isSourceTypeAvailable(type) else {
             return nil
@@ -42,6 +50,8 @@ open class ImagePicker: NSObject {
             self.presentationController?.present(self.pickerController, animated: true)
         }
     }
+
+  //MARK: - Present ImagePicker
 
     public func present(from sourceView: UIView) {
 
@@ -68,12 +78,16 @@ open class ImagePicker: NSObject {
         self.presentationController?.present(alertController, animated: true)
     }
 
+  //MARK: - PickertController DidSelectImage
+
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
 
         self.delegate?.didSelect(image: image)
     }
 }
+
+//MARK: - UIImagePickerControllerDelegate
 
 extension ImagePicker: UIImagePickerControllerDelegate {
 
@@ -89,6 +103,8 @@ extension ImagePicker: UIImagePickerControllerDelegate {
         self.pickerController(picker, didSelect: image)
     }
 }
+
+//MARK: - UINavigationControllerDelegate
 
 extension ImagePicker: UINavigationControllerDelegate {
 
