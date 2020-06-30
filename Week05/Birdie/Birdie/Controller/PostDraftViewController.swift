@@ -10,38 +10,41 @@ import UIKit
 
 class PostDraftViewController: UIViewController {
 
+  //MARK: - IBOutlets
+  
   @IBOutlet private weak var textView: UITextView!
   @IBOutlet private weak var textField: UITextField!
   @IBOutlet private weak var imgView: UIImageView!
   @IBOutlet private weak var postBtn: UIButton!
 
-  var maxCharLimitForPost = 240
-  var maxCharLimitForUsernameOrTitle = 25
+  //MARK: - Properties
 
-  var selectedImage: UIImage!
-  var imagePicker: ImagePicker!
+  private var maxCharLimitForPost = 240
+  private var maxCharLimitForUsernameOrTitle = 25
+  private var selectedImage: UIImage!
+  private var imagePicker: ImagePicker!
 
-  lazy var accessory: UIView = {
+  private lazy var accessory: UIView = {
       let accessoryView = UIView(frame: .zero)
       accessoryView.backgroundColor = .white
       return accessoryView
   }()
   
-  lazy var lineView: UIView = {
+  private lazy var lineView: UIView = {
       let lineView = UIView(frame: .zero)
       lineView.backgroundColor = .lightGray
       lineView.alpha = 0.7
       return lineView
   }()
 
-  lazy var charactersLbl: UILabel = {
+  private lazy var charactersLbl: UILabel = {
       let charactersLbl = UILabel(frame: .zero)
       charactersLbl.text = "240"
       charactersLbl.textColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
       return charactersLbl
   }()
 
-  lazy var pictureBtn: UIButton = {
+  private lazy var pictureBtn: UIButton = {
       let pictureBtn = UIButton(type: .custom)
       pictureBtn.setImage(#imageLiteral(resourceName: "icons8-picture"), for: .normal)
       pictureBtn.addTarget(self, action:
@@ -49,7 +52,7 @@ class PostDraftViewController: UIViewController {
       return pictureBtn
   }()
 
-  lazy var sendButton: UIButton! = {
+  private lazy var sendButton: UIButton! = {
       let sendButton = UIButton(type: .custom)
       sendButton.setImage(#imageLiteral(resourceName: "icons8-send"), for: .normal)
       sendButton.addTarget(self, action:
@@ -57,21 +60,26 @@ class PostDraftViewController: UIViewController {
       return sendButton
   }()
 
+  //MARK: - View Lifecycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
   }
   
-  func setupView() {
+  //MARK: - View Setup
+
+  private func setupView() {
     textField.becomeFirstResponder()
     addAccessory()
     textView.layer.borderColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0).cgColor
     textView.layer.borderWidth = 1.0
     textView.layer.cornerRadius = 5
     postBtn.isEnabled = false
+    sendButton.isEnabled = false
   }
 
-  func addAccessory() {
+  private func addAccessory() {
       accessory.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 45)
     
       accessory.translatesAutoresizingMaskIntoConstraints = false
@@ -106,18 +114,8 @@ class PostDraftViewController: UIViewController {
       ])
   }
 
-  @objc func pictureBtnTapped(sender: UIButton) {
-    
-    self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-    imagePicker.present(from: sender)
-  }
-
-  @IBAction func sendButtonTapped(_ sender: Any) {
-    guard let textBody = textView.text, let titleText = textField.text else { return }
-    self.addMediaPostWithDetails(userName: titleText, body: textBody)
-  }
-  
-  func addMediaPostWithDetails(userName: String, body: String) {
+  //MARK: - Add Media Post
+  private func addMediaPostWithDetails(userName: String, body: String) {
     
     var mediaPost: MediaPost
     if let selectedImage = self.selectedImage {
@@ -130,34 +128,41 @@ class PostDraftViewController: UIViewController {
     MediaPostsHandler.shared.addMediaPost(mediaPost: mediaPost)
     dismiss(animated: true, completion: nil)
   }
-  
+
+  //MARK: - IBActions
+
+  @objc private func pictureBtnTapped(sender: UIButton) {
+    
+    self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    imagePicker.present(from: sender)
+  }
+
+  @IBAction func sendButtonTapped(_ sender: Any) {
+    guard let textBody = textView.text, let titleText = textField.text else { return }
+    self.addMediaPostWithDetails(userName: titleText, body: textBody)
+  }
+    
   @IBAction func cancelBtnTapped(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)
   }
   
   @IBAction func textFieldEditingChanged(_ sender: UITextField) {
     let charsTyped = (maxCharLimitForUsernameOrTitle - sender.text!.count)
-    if charsTyped == maxCharLimitForUsernameOrTitle {
-      postBtn.isEnabled = false
-    }
-    else {
-      postBtn.isEnabled = true
-    }
+    postBtn.isEnabled = !(charsTyped == maxCharLimitForUsernameOrTitle)
+    sendButton.isEnabled = !(charsTyped == maxCharLimitForUsernameOrTitle)
     charactersLbl.text = String(charsTyped)
   }
   
 }
 
+// MARK:- UITextViewDelegate
+
 extension PostDraftViewController: UITextViewDelegate {
   
   func textViewDidChange(_ textView: UITextView) {
     let charsTyped = (maxCharLimitForPost - textView.text.count)
-    if charsTyped == maxCharLimitForPost {
-      postBtn.isEnabled = false
-    }
-    else {
-      postBtn.isEnabled = true
-    }
+    postBtn.isEnabled = !(charsTyped == maxCharLimitForPost)
+    sendButton.isEnabled = !(charsTyped == maxCharLimitForPost)
     charactersLbl.text = String(charsTyped)
   }
   
@@ -185,6 +190,8 @@ extension PostDraftViewController: UITextViewDelegate {
 
 }
 
+// MARK:- ImagePickerDelegate
+
 extension PostDraftViewController: ImagePickerDelegate {
   
   func didSelect(image: UIImage?) {
@@ -194,6 +201,8 @@ extension PostDraftViewController: ImagePickerDelegate {
 
 }
 
+// MARK:- UIScrollViewDelegate
+
 extension PostDraftViewController: UIScrollViewDelegate {
 
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -202,6 +211,8 @@ extension PostDraftViewController: UIScrollViewDelegate {
   }
   
 }
+
+// MARK:- UITextFieldDelegate
 
 extension PostDraftViewController: UITextFieldDelegate {
   

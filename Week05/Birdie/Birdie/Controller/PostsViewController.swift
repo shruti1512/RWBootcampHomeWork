@@ -12,33 +12,33 @@ class PostsViewController: UIViewController {
   
   //MARK: - IBOutlets
   
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet private weak var tableView: UITableView!
+  @IBOutlet private weak var searchBar: UISearchBar!
 
   //MARK: - Properties
 
-    lazy var addBtn: UIButton = {
+    private lazy var addBtn: UIButton = {
         let addBtn = UIButton(frame: .zero)
         addBtn.setImage(#imageLiteral(resourceName: "icons8-add"), for: .normal)
-        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(didPressAddButton), for: .touchUpInside)
         addBtn.showsTouchWhenHighlighted = true
         return addBtn
     }()
 
-    enum ActionSheetType: String {
+    private enum ActionSheetType: String {
       case sort = "Sort By"
       case filter = "Filter By"
     }
   
-    var mediaPosts = [MediaPost]() {
+    private var mediaPosts = [MediaPost]() {
       didSet {
         guard let dataSource = dataSource else { return }
         dataSource.models = mediaPosts
         tableView.reloadData()
       }
     }
-    var dataSource: TableViewDataSource?
-    let mediaPostsHandler = MediaPostsHandler.shared
+    private var dataSource: TableViewDataSource?
+    private let mediaPostsHandler = MediaPostsHandler.shared
   
   //MARK: - View Life Cycle
 
@@ -62,13 +62,13 @@ class PostsViewController: UIViewController {
   
   //MARK: - Set up View
 
-    func setupView() {
+    private func setupView() {
       navigationItem.leftBarButtonItem = editButtonItem
       tableView.allowsSelectionDuringEditing = true
       addFloatingButton()
     }
   
-    func addFloatingButton() {
+    private func addFloatingButton() {
       
       view.addSubview(addBtn)
       addBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ class PostsViewController: UIViewController {
   
   //MARK: - IBActions
 
-    @objc func addBtnClicked() {
+    @objc private func didPressAddButton() {
       performSegue(withIdentifier: "PostDraftScreen", sender: nil)
     }
   
@@ -106,7 +106,7 @@ class PostsViewController: UIViewController {
 
   //MARK: - Show Action Sheet for Sort & Filter
 
-    func showActionSheetFor(_ sheetType: ActionSheetType) {
+    private func showActionSheetFor(_ sheetType: ActionSheetType) {
       
       let alert = UIAlertController(title: nil, message: sheetType.rawValue, preferredStyle: .actionSheet)
       
@@ -142,13 +142,14 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UISearchBarDelegate {
   
+  
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     editButtonItem.isEnabled = false
     searchBar.showsCancelButton = true
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    guard let searchTerm = searchBar.text else { return }
+    guard let searchTerm = searchBar.text, !searchTerm.isEmpty else { return }
     let searchResults = MediaPostsHandler.shared.searchMediaPostsBy(searchTerm)
     mediaPosts = searchResults
     self.tableView.reloadData()
@@ -163,5 +164,5 @@ extension PostsViewController: UISearchBarDelegate {
     searchBar.resignFirstResponder()
     mediaPosts = MediaPostsHandler.shared.mediaPosts
   }
-
+  
 }

@@ -21,13 +21,19 @@ enum MediaPostsFilterAttribute: String, CaseIterable {
 
 class MediaPostsHandler: NSObject {
   
+  //MARK: - Properties
+
     static let shared = MediaPostsHandler()
     var mediaPosts: [MediaPost] = []
+
+  //MARK: - Intializer
 
     private override init() {
       super.init()
       self.addDummyPostsData()
     }
+
+  //MARK: - Add Dummy Post Data
 
     private func addDummyPostsData() {
       let imagePost1 = ImagePost(textBody: "I love debugging software!", userName: "Jeff", timestamp: Date(timeIntervalSince1970: 10000), image: UIImage(named: "chop")!)
@@ -39,15 +45,21 @@ class MediaPostsHandler: NSObject {
         mediaPosts = mediaPosts.sorted(by: { $0.timestamp > $1.timestamp })
     }
   
+    //MARK: - Delete Post
+  
     func deletePost(at index: Int) {
         mediaPosts.remove(at: index)
     }
   
+  //MARK: - Add Post
+
     func addMediaPost(mediaPost: MediaPost) {
       mediaPosts.append(mediaPost)
       mediaPosts.sort { $0.timestamp > $1.timestamp }
     }
   
+  //MARK: - Sort Posts
+
     func sortPostsBy(_ sortType: MediaPostsSortAttribute) {
       if sortType == .dateNewestFirst {
         mediaPosts.sort {$0.timestamp > $1.timestamp }
@@ -57,7 +69,10 @@ class MediaPostsHandler: NSObject {
       }
     }
     
+  //MARK: - Filter Posts
+
   func filterPostsBy(_ filterType: MediaPostsFilterAttribute) -> [MediaPost] {
+    
     switch filterType {
       case .allPosts:
         return self.mediaPosts
@@ -70,7 +85,10 @@ class MediaPostsHandler: NSObject {
     }
   }
 
+  //MARK: - Search Posts
+
   func searchMediaPostsBy(_ searchTerm: String) -> [MediaPost] {
+    
     let filteredPosts = mediaPosts.filter { post in
       var postBodySearchResult = false
       if let textBody = post.textBody {

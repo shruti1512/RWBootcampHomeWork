@@ -16,11 +16,17 @@ enum TableViewCellReuseIdentier: String {
 
 class TableViewDataSource: NSObject, UITableViewDataSource {
   
+  //MARK: - Properties
+  
   var models: [MediaPost]
+
+  //MARK: - Intializer
 
   init(models: [MediaPost]) {
       self.models = models
   }
+
+  //MARK: - UITableViewDataSource
 
   func numberOfSections(in tableView: UITableView) -> Int {
       return 1
@@ -49,15 +55,14 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
       return UITableViewCell()
   }
   
-    //Implement this method to show swipe to delete feature in table view
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      
-        models.remove(at: indexPath.row)
-        MediaPostsHandler.shared.deletePost(at: indexPath.row)
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-
-    }
+  //Implement this method to show swipe to delete feature in table view
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+      models.remove(at: indexPath.row)
+      MediaPostsHandler.shared.deletePost(at: indexPath.row)
+      tableView.beginUpdates()
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      tableView.endUpdates()
+  }
 
 }

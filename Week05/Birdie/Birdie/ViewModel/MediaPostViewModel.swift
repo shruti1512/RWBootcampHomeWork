@@ -18,7 +18,7 @@ class MediaPostViewModel {
   let bodyText: String?
   var postImage: UIImage?
 
-  // MARK: - Object Lifecycle
+  // MARK: - Initializer 
   public convenience init(textPost: TextPost) {
     self.init(mediaPost: textPost)
   }
@@ -37,7 +37,7 @@ class MediaPostViewModel {
 
 }
 
-//MARK: - Configure TableViewCell
+//MARK: - Configure TableViewCell Based on ReuseIdentifier
 
 extension MediaPostViewModel {
 
