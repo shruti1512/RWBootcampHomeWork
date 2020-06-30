@@ -10,8 +10,12 @@ import UIKit
 
 class PostsViewController: UIViewController {
   
+  //MARK: - IBOutlets
+  
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
+
+  //MARK: - Properties
 
     lazy var addBtn: UIButton = {
         let addBtn = UIButton(frame: .zero)
@@ -36,13 +40,15 @@ class PostsViewController: UIViewController {
     var dataSource: TableViewDataSource?
     let mediaPostsHandler = MediaPostsHandler.shared
   
+  //MARK: - View Life Cycle
+
     override func viewDidLoad() {
       super.viewDidLoad()
-      setUpTableView()
-      addFloatingButton()
+      setupView()
+      setupData()
       searchBar.showsCancelButton = true
     }
-
+  
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       self.mediaPosts = MediaPostsHandler.shared.mediaPosts
@@ -54,21 +60,17 @@ class PostsViewController: UIViewController {
       tableView.setEditing(editing, animated: true)
     }
   
-    func setUpTableView() {
-      
+  //MARK: - Set up View
+
+    func setupView() {
       navigationItem.leftBarButtonItem = editButtonItem
       tableView.allowsSelectionDuringEditing = true
-
-      //set up data source
-      let dataSource = TableViewDataSource(models: mediaPosts)
-      self.dataSource = dataSource
-      self.tableView.dataSource = self.dataSource
+      addFloatingButton()
     }
-    
+  
     func addFloatingButton() {
       
       view.addSubview(addBtn)
-      
       addBtn.translatesAutoresizingMaskIntoConstraints = false
       
       let safeArea = view.safeAreaLayoutGuide
@@ -79,7 +81,17 @@ class PostsViewController: UIViewController {
         addBtn.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0)
       ])
     }
+
+  //MARK: - Set up Data
+
+    private func setupData() {
+      let dataSource = TableViewDataSource(models: mediaPosts)
+      self.dataSource = dataSource
+      self.tableView.dataSource = self.dataSource
+    }
   
+  //MARK: - IBActions
+
     @objc func addBtnClicked() {
       performSegue(withIdentifier: "PostDraftScreen", sender: nil)
     }
@@ -91,6 +103,8 @@ class PostsViewController: UIViewController {
     @IBAction func didPressFilterBarButtonItem(_ sender: Any) {
       showActionSheetFor(.filter)
     }
+
+  //MARK: - Show Action Sheet for Sort & Filter
 
     func showActionSheetFor(_ sheetType: ActionSheetType) {
       
@@ -112,7 +126,7 @@ class PostsViewController: UIViewController {
         filterCases.forEach { (filterCase) in
           let action = UIAlertAction(title: filterCase.rawValue, style: .default) { [weak self] action in
             guard let self = self else { return }
-            self.mediaPosts = MediaPostsHandler.shared.mediaPosts
+            self.mediaPosts = MediaPostsHandler.shared.filterPostsBy(filterCase)
           }
           alert.addAction(action)
         }
@@ -123,6 +137,8 @@ class PostsViewController: UIViewController {
     }
     
 }
+
+//MARK: - UISearchBarDelegate
 
 extension PostsViewController: UISearchBarDelegate {
   

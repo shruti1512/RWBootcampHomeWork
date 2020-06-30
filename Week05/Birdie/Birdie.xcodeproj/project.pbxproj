@@ -94,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334E916F24AAC6EE00F9D30F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3358DB9D24A449CF00403596 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3376137324A30DC400B5728D /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,13 +144,13 @@
 			children = (
 				C3C9D390249B325C001F55A6 /* AppDelegate */,
 				C3C9D398249B3479001F55A6 /* Model */,
+				334E916F24AAC6EE00F9D30F /* Extensions */,
 				C3C9D391249B326C001F55A6 /* View */,
 				C3C9D39E249B3C30001F55A6 /* ViewModel */,
 				C3C9D399249B3484001F55A6 /* Controller */,
 				3376137324A30DC400B5728D /* Storyboard */,
 				3376137424A30DD200B5728D /* Resources */,
 				C3C9D36E249B324C001F55A6 /* Info.plist */,
-				3358DB9D24A449CF00403596 /* Extensions.swift */,
 			);
 			path = Birdie;
 			sourceTree = "<group>";
@@ -458,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -512,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

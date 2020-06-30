@@ -74,7 +74,7 @@ class MediaPostsHandler: NSObject {
     let filteredPosts = mediaPosts.filter { post in
       var postBodySearchResult = false
       if let textBody = post.textBody {
-        postBodySearchResult = textBody.contains(searchTerm)
+        postBodySearchResult = textBody.localizedCaseInsensitiveContains(searchTerm)
       }
       let postTitleSearchResult = post.userName.contains(searchTerm)
       return postTitleSearchResult || postBodySearchResult
