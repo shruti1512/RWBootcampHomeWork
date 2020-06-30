@@ -192,7 +192,6 @@
         <!--Post Draft View Controller-->
         <scene sceneID="me6-yM-Rzj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E8U-ni-8Q5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="yfs-Ux-Oft" customClass="PostDraftViewController" customModule="Birdie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NrP-OG-xAs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -233,6 +232,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
+                                                    <action selector="textFieldEditingChanged:" destination="yfs-Ux-Oft" eventType="editingChanged" id="npg-Wm-MgI"/>
                                                     <outlet property="delegate" destination="yfs-Ux-Oft" id="i5f-gy-0h5"/>
                                                 </connections>
                                             </textField>
@@ -268,6 +268,9 @@
                                 <rect key="frame" x="358" y="64" width="36" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="yfs-Ux-Oft" eventType="touchUpInside" id="wVn-Kz-str"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -297,6 +300,7 @@
                         <outlet property="textView" destination="6Vc-nw-LG9" id="k71-iN-AQE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8U-ni-8Q5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1860.8695652173915" y="138.61607142857142"/>
         </scene>

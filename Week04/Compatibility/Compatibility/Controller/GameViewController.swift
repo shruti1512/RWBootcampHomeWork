@@ -116,7 +116,7 @@ class GameViewController: UIViewController {
 
     func showAlertForCompatibilityResults() {
       
-      guard let score = compatibility.calculateCompatibilityScore() else { return }
+      let score = compatibility.calculateCompatibilityScore()
 
       let alertService = AlertService()
       let alertVC = alertService.alert(title: "Compatibility",

@@ -10,7 +10,7 @@ import Foundation
 
 class AvatarList {
   
-  let avatars: [String]!
+  var avatars = [String]()
   
   init() {
     var maleAvatars = [String]()

@@ -17,7 +17,6 @@ class MediaPostViewModel {
   let timestampText: Date
   let bodyText: String?
   var postImage: UIImage?
-  let dateFormat = "E, d MMM h:mm a"
 
   // MARK: - Object Lifecycle
   public convenience init(textPost: TextPost) {
@@ -38,30 +37,27 @@ class MediaPostViewModel {
 
 }
 
+//MARK: - Configure TableViewCell
 
 extension MediaPostViewModel {
 
-  public func configureTableViewCell(_ cellType: TableViewCellType,  in tableView: UITableView) -> UITableViewCell {
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = dateFormat
-    let dateToString = dateFormatter.string(from: timestampText)
-    
-    switch cellType {
+  public func configureTableViewCellWithReuseIdentifier(_ identfier: TableViewCellReuseIdentier,  in tableView: UITableView) -> UITableViewCell {
+        
+    switch identfier {
     case .textPostCell:
-      let textCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue) as! TextPostTableViewCell
-      textCell.titleLabel?.text = userNameText
-      textCell.bodyLabel?.text = bodyText
-      textCell.timestampLabel?.text = dateToString
-      return textCell
+      let textCell = tableView.dequeueReusableCell(withIdentifier: identfier.rawValue) as! TextPostTableViewCell
+        textCell.titleLabel?.text = userNameText
+        textCell.bodyLabel?.text = bodyText
+        textCell.timestampLabel?.text = timestampText.toString()
+        return textCell
     case .imagePostCell:
-      let imageCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue) as! ImagePostTableViewCell
-      imageCell.titleLabel?.text = userNameText
-      imageCell.bodyLabel?.text = bodyText
-      imageCell.postImageView.image = postImage
-      imageCell.timestampLabel.text = dateToString
-      return imageCell
+      let imageCell = tableView.dequeueReusableCell(withIdentifier: identfier.rawValue) as! ImagePostTableViewCell
+        imageCell.titleLabel?.text = userNameText
+        imageCell.bodyLabel?.text = bodyText
+        imageCell.postImageView.image = postImage
+        imageCell.timestampLabel.text = timestampText.toString()
+        return imageCell
     }
-    
   }
+  
 }

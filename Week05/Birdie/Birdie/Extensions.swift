@@ -11,14 +11,19 @@ import UIKit
 
 extension UIView {
   
-    func roundWithCornerRadius(_ cornerRadius: CGFloat) {
-      layer.masksToBounds = true
-      layer.cornerRadius = cornerRadius
+  func roundWithCornerRadius(_ cornerRadius: CGFloat) {
+    layer.masksToBounds = true
+    layer.cornerRadius = cornerRadius
   }
   
-  func makeCircular() {
-    layer.masksToBounds = true
-    layer.cornerRadius = CGFloat(roundf(Float(self.frame.size.width / 2.0)))
-  }
+}
 
+extension Date {
+  
+  func toString(withFormat format: String = "d MMM, HH:mm") -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    let str = dateFormatter.string(from: self)
+    return str
+  }
 }
