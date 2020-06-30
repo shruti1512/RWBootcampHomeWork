@@ -41,14 +41,15 @@
 - [x] Move the logic in cellForRowAt into a ViewModel.
 
 ### Additional Features
-- [x] Adds functionality to sort posts based on multiple filters.
-- [x] Adds functionality to filter posts based on multiple filters.
+- [x] Adds functionality to sort posts based on multiple sort cases.
+- [x] Adds functionality to filter posts based on multiple filter cases.
 - [x] Adds functionality for maximum character limit for title/username and text body for the post.
+- [x] Adds functionality to delete posts.
 
 ## Screenshots
 <a name = "screenshots" />
 
-### iPhone
 
 
-### iPad
+<img src="Screenshots/PostsScreen.png" width="300" height="500"> <img src="Screenshots/ImagePostDraft.png" width="300" height="500"><img src="Screenshots/TextPostDraft.png" width="300" height="500"><img src="Screenshots/SortPosts.png" width="300" height="500"><img src="Screenshots/FilterPosts.png" width="300" height="500">
+
