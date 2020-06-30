@@ -167,8 +167,6 @@ extension PostDraftViewController: UITextViewDelegate {
   }
   
   func textViewDidBeginEditing(_ textView: UITextView) {
-    pictureBtn.isHidden = false
-    sendButton.isHidden = false
     charactersLbl.text = String(maxCharLimitForPost)
     if textView.textColor == .lightGray {
        textView.text = ""
@@ -218,8 +216,6 @@ extension PostDraftViewController: UITextFieldDelegate {
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
     charactersLbl.text = String(maxCharLimitForUsernameOrTitle)
-    pictureBtn.isHidden = true
-    sendButton.isHidden = true
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
