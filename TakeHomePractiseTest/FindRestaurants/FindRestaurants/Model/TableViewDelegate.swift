@@ -9,24 +9,20 @@
 import Foundation
 import UIKit
 
-protocol TableViewDelegateProtocol: class {
-  func performOperationForSelectedPlace(place: Restaurant)
-}
-
 class TableViewDelegate: NSObject, UITableViewDelegate {
   
-  weak var tableDelegate: TableViewDelegateProtocol?
-  var places: [Restaurant]
+  typealias SelectionHandler = (Int) -> Void
 
-  init(places: [Restaurant]) {
+  var places: [Restaurant]
+  let onSelection: SelectionHandler
+
+  init(places: [Restaurant], onSelection: @escaping SelectionHandler) {
     self.places = places
+    self.onSelection = onSelection
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let restaurant = places[indexPath.row]
-    if let tableDelegate = tableDelegate {
-      tableDelegate.performOperationForSelectedPlace(place: restaurant)
-    }
+    onSelection(indexPath.row)
   }
 
 }

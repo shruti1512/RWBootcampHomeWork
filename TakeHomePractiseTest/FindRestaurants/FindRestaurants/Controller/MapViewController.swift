@@ -14,11 +14,13 @@ class MapViewController: UIViewController {
   @IBOutlet private var mapView: MKMapView!
   @IBOutlet private var nameLbl: UILabel!
 
-  var place: Restaurant!
+  var place: Restaurant?
+  let annotationType = "Restaurant"
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      guard let place = place else { return }
       navigationItem.title = place.name
       nameLbl.text = place.name
       
@@ -32,7 +34,7 @@ class MapViewController: UIViewController {
       
       // Show restauarnt annotation on map
       let clLocation = CLLocationCoordinate2DMake(placeLocation.latitude, placeLocation.longitude)
-      let annotation = RestaurantAnnotation(coordinate: clLocation, title: place.name, type: "Restaurant")
+      let annotation = RestaurantAnnotation(coordinate: clLocation, title: place.name, type: annotationType)
       mapView.addAnnotation(annotation)
 
     }

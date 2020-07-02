@@ -11,6 +11,8 @@ import Cosmos
 
 class RestaurantTableViewCell: UITableViewCell {
 
+  static let reuseIdentifier = String(describing: RestaurantTableViewCell.self)
+  
   @IBOutlet weak var nameLbl: UILabel!
   @IBOutlet weak var addressLbl: UILabel!
   @IBOutlet weak var ratingView: CosmosView!

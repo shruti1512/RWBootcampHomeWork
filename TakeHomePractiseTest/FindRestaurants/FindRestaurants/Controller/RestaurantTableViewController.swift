@@ -17,12 +17,16 @@ class RestaurantTableViewController: UITableViewController {
   var selectedPlace: Restaurant!
   var dataSource: TableViewDataSouce!
   var delegate: TableViewDelegate!
+  let radius = "5000"
+  let placeType = "restaurant"
+  let keyword = "burrito"
+  let navigationBarTitle = "Burrito Places"
 
   //MARK: - View Controller Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationItem.title = "Burrito Places"
+    self.navigationItem.title = navigationBarTitle
     requestUserAuthorizationForLocation()
   }
   
@@ -45,22 +49,26 @@ class RestaurantTableViewController: UITableViewController {
   
   @objc func getPlacesForLocation() {
     
-    guard let currentLocation = LocationManager.shared.currentLocation else {
-      return 
-    }
-    let parameterModel = PlacesAPIParameter(location: currentLocation,
-                                            radius: "5000", type: "restaurant", keyword: "burrito")
-    NetworkServices.getPlacesDataFor(parameterModel) { [weak self] (placesAPIModel, error) in
+    guard let currentLocation = LocationManager.shared.currentLocation else { return }
+    
+      let parameterModel = PlacesAPIParameter(location: currentLocation,
+                                              radius: radius,
+                                              type: placeType,
+                                              keyword: keyword)
+      NetworkServices.getPlacesDataFor(parameterModel) { [weak self] (placesAPIModel, error) in
       guard let self = self, let placesAPIModel = placesAPIModel else {
         return
       }
       self.restaurants = placesAPIModel.results
-      let dataSource = TableViewDataSouce(places: self.restaurants, reuseIdentifier: "RestaurantTableViewCell")
+      let dataSource = TableViewDataSouce(places: self.restaurants,
+                                          reuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
       self.dataSource = dataSource
       self.tableView.dataSource = self.dataSource
 
-      let delegate = TableViewDelegate(places: self.restaurants)
-      delegate.tableDelegate = self
+      let delegate = TableViewDelegate(places: self.restaurants) { (selectedRow) in
+        self.selectedPlace = self.restaurants[selectedRow]
+        self.performSegue(withIdentifier: "MapVC", sender: nil)
+      }
       self.delegate = delegate
       self.tableView.delegate = delegate
       
@@ -106,13 +114,3 @@ extension RestaurantTableViewController: LocationProtocol {
   
 }
 
-//MARK: - TableViewDelegateProtocol
-
-extension RestaurantTableViewController: TableViewDelegateProtocol {
-  
-  func performOperationForSelectedPlace(place: Restaurant) {
-    selectedPlace = place
-    performSegue(withIdentifier: "MapVC", sender: nil)
-  }
-  
-}
