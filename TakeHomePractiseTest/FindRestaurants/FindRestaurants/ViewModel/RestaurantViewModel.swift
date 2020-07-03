@@ -20,6 +20,12 @@ class RestaurantViewModel {
   let ratingText: String
   let ratingDouble: Double?
   let captionText: String?
+  let FREE_TEXT = "Free"
+  let INEXPENSIVE_TEXT = "$"
+  let MODERATE_TEXT = "$$"
+  let EXPENSIVE_TEXT = "$$$"
+  let VERY_EXPENSIVE_TEXT = "$$$$"
+
 
   // MARK: - Intializer
   
@@ -42,15 +48,15 @@ class RestaurantViewModel {
     if let priceLevel = restaurant.priceLevel {
       switch priceLevel {
         case .Free:
-          priceText = "Free"
+          priceText = FREE_TEXT
         case .Inexpensive:
-          priceText = "$"
+          priceText = INEXPENSIVE_TEXT
         case .Moderate:
-          priceText = "$$"
+          priceText = MODERATE_TEXT
         case .Expensive:
-          priceText = "$$$"
+          priceText = EXPENSIVE_TEXT
         case .VeryExpensive:
-          priceText = "$$$$"
+          priceText = VERY_EXPENSIVE_TEXT
         }
     }
 
@@ -70,7 +76,9 @@ extension RestaurantViewModel {
 
   public func configureTableViewCell(withIdentifier identifier: String,  in tableView: UITableView) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as! RestaurantTableViewCell
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? RestaurantTableViewCell else {
+      fatalError("Could not create cell")
+    }
     cell.nameLbl?.text = nameText
     cell.addressLbl?.text = addressText
     cell.ratingLbl?.text = ratingText
