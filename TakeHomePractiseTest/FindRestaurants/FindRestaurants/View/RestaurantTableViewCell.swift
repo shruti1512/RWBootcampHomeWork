@@ -11,13 +11,19 @@ import Cosmos
 
 class RestaurantTableViewCell: UITableViewCell {
 
+  //MARK: - Properties
+
   static let reuseIdentifier = String(describing: RestaurantTableViewCell.self)
   
+  //MARK: - IBOutlets
+
   @IBOutlet weak var nameLbl: UILabel!
   @IBOutlet weak var addressLbl: UILabel!
   @IBOutlet weak var ratingView: CosmosView!
   @IBOutlet weak var ratingLbl: UILabel!
   @IBOutlet weak var captionLbl: UILabel!
+
+  //MARK: - Intializer
 
   override func awakeFromNib() {
     super.awakeFromNib()

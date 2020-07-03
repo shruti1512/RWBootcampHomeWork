@@ -13,6 +13,7 @@ import Cosmos
 class RestaurantViewModel {
   
   // MARK: - Instance Properties
+  
   let restaurant: Restaurant
   let nameText: String
   let addressText: String
@@ -20,7 +21,8 @@ class RestaurantViewModel {
   let ratingDouble: Double?
   let captionText: String?
 
-  // MARK: - Object Lifecycle
+  // MARK: - Intializer
+  
   public init(restaurant: Restaurant) {
     
     self.restaurant = restaurant
@@ -61,6 +63,8 @@ class RestaurantViewModel {
 
 }
 
+
+// MARK: - Configure Table View Cell
 
 extension RestaurantViewModel {
 

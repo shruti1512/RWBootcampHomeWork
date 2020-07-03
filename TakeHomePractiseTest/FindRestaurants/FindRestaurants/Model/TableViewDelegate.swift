@@ -11,7 +11,7 @@ import UIKit
 
 class TableViewDelegate: NSObject, UITableViewDelegate {
   
-  typealias SelectionHandler = (Int) -> Void
+  typealias SelectionHandler = () -> Void
 
   var places: [Restaurant]
   let onSelection: SelectionHandler
@@ -22,7 +22,7 @@ class TableViewDelegate: NSObject, UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    onSelection(indexPath.row)
+    onSelection()
   }
 
 }

@@ -11,13 +11,19 @@ import UIKit
 
 class TableViewDataSouce: NSObject, UITableViewDataSource {
   
+  //MARK: - Properties
+  
   var places: [Restaurant]
   private let reuseIdentifier: String
+
+  //MARK: - Intializer
 
   init(places: [Restaurant], reuseIdentifier: String) {
       self.places = places
       self.reuseIdentifier = reuseIdentifier
   }
+
+  //MARK: - UITableViewDataSource
 
   func numberOfSections(in tableView: UITableView) -> Int {
       return 1

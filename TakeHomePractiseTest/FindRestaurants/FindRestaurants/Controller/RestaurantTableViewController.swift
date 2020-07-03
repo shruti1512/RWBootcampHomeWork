@@ -14,9 +14,8 @@ class RestaurantTableViewController: UITableViewController {
   //MARK: - Properties
   
   var restaurants = [Restaurant]()
-  var selectedPlace: Restaurant!
-  var dataSource: TableViewDataSouce!
-  var delegate: TableViewDelegate!
+  var selectedPlace: Restaurant?
+  var dataSource: TableViewDataSouce?
   let radius = "5000"
   let placeType = "restaurant"
   let keyword = "burrito"
@@ -40,13 +39,15 @@ class RestaurantTableViewController: UITableViewController {
     unregisterForLocation()
   }
   
-  //MARK: - Get Places Data from NetworkService
+  //MARK: - Request User Authorization From Location Manager
 
   func requestUserAuthorizationForLocation() {
     let locationMngr = LocationManager.shared
     locationMngr.requestUserAuthorization()
   }
   
+  //MARK: - Fetch Places Data from NetworkService Manager
+
   @objc func getPlacesForLocation() {
     
     guard let currentLocation = LocationManager.shared.currentLocation else { return }
@@ -63,15 +64,7 @@ class RestaurantTableViewController: UITableViewController {
       let dataSource = TableViewDataSouce(places: self.restaurants,
                                           reuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
       self.dataSource = dataSource
-      self.tableView.dataSource = self.dataSource
-
-      let delegate = TableViewDelegate(places: self.restaurants) { (selectedRow) in
-        self.selectedPlace = self.restaurants[selectedRow]
-        self.performSegue(withIdentifier: "MapVC", sender: nil)
-      }
-      self.delegate = delegate
-      self.tableView.delegate = delegate
-      
+      self.tableView.dataSource = self.dataSource      
       self.tableView.reloadData()
     }
   }
@@ -83,9 +76,12 @@ class RestaurantTableViewController: UITableViewController {
   //MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let destinationVC = segue.destination as? MapViewController {
-      destinationVC.place = selectedPlace
+    guard let destinationVC = segue.destination as? MapViewController,
+      let cell = sender as? RestaurantTableViewCell else {
+        return
     }
+    guard let selectedIndexPath = self.tableView.indexPath(for: cell) else { return }
+    destinationVC.place = self.restaurants[selectedIndexPath.row]
   }
   
 }

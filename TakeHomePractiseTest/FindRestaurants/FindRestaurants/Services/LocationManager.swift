@@ -9,19 +9,27 @@
 import Foundation
 import CoreLocation
 
+//MARK: - LocationProtocol Declaration
+
 protocol LocationProtocol {
   func registerForLocationSuccess()
   func registerForLocationFailed()
   func unregisterForLocation()
 }
 
+//MARK: - Notification.Name
+
 extension Notification.Name {
   static let UserLocationFetchSuccessful = Notification.Name("UserLocationFetchSuccessful")
   static let UserLocationFetchFailed = Notification.Name("UserLocationFetchFailed")
 }
 
+//MARK: - LocationManager
+
 class LocationManager: NSObject {
   
+  //MARK:  Properties
+
   static let shared = LocationManager()
   let manager = CLLocationManager()
   
@@ -31,10 +39,14 @@ class LocationManager: NSObject {
       }
   }
   
+  //MARK: - Initilaizer
+
   private override init() {
     super.init()
   }
   
+  //MARK: - Request User Authorization for Location Services
+
   public func requestUserAuthorization() {
     
     manager.desiredAccuracy = kCLLocationAccuracyHundredMeters

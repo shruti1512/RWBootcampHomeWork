@@ -11,43 +11,49 @@ import MapKit
 
 class MapViewController: UIViewController {
 
+  //MARK: - IBOutlets
+
   @IBOutlet private var mapView: MKMapView!
   @IBOutlet private var nameLbl: UILabel!
+
+  //MARK: - Properties
 
   var place: Restaurant?
   let annotationType = "Restaurant"
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      guard let place = place else { return }
-      navigationItem.title = place.name
-      nameLbl.text = place.name
-      
-      let placeLocation = place.geometry.location
-      let initialLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
-      mapView.centerToLocation(initialLocation)
-      mapView.showsUserLocation = true
-      
-      mapView.register(RestaurantAnnotationView.self,
-                       forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-      
-      // Show restauarnt annotation on map
-      let clLocation = CLLocationCoordinate2DMake(placeLocation.latitude, placeLocation.longitude)
-      let annotation = RestaurantAnnotation(coordinate: clLocation, title: place.name, type: annotationType)
-      mapView.addAnnotation(annotation)
+  //MARK: - View Life Cycle
 
-    }
+  override func viewDidLoad() {
+      super.viewDidLoad()
+    
+    guard let place = place else { return }
+    navigationItem.title = place.name
+    nameLbl.text = place.name
+    
+    let placeLocation = place.geometry.location
+    let initialLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
+    mapView.centerToLocation(initialLocation)
+    mapView.showsUserLocation = true
+    
+    mapView.register(RestaurantAnnotationView.self,
+                     forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    
+    // Show restauarnt annotation on map
+    let clLocation = CLLocationCoordinate2DMake(placeLocation.latitude, placeLocation.longitude)
+    let annotation = RestaurantAnnotation(coordinate: clLocation, title: place.name, type: annotationType)
+    mapView.addAnnotation(annotation)
+
+  }
+  
 }
 
 
+//MARK: - MKMapViewDelegate
+
 extension MapViewController: MKMapViewDelegate {
     
-  func mapView(
-    _ mapView: MKMapView,
-    annotationView view: MKAnnotationView,
-    calloutAccessoryControlTapped control: UIControl
-  ) {
+  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
+    
     guard let restaurant = view.annotation as? RestaurantAnnotation else {
       return
     }
@@ -57,17 +63,20 @@ extension MapViewController: MKMapViewDelegate {
     ]
     restaurant.mapItem?.openInMaps(launchOptions: launchOptions)
   }
+  
 }
 
+//MARK: - MKMapView
+
 private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
+  
+  func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {
+    
     let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
+    center: location.coordinate,
+    latitudinalMeters: regionRadius,
+    longitudinalMeters: regionRadius)
     setRegion(coordinateRegion, animated: true)
   }
+  
 }

@@ -20,6 +20,8 @@ class NetworkServices {
     
   typealias PlacesAPIDataCompletion = (PlaceSearchAPIModel?, NetworkError?) -> ()
   
+  //MARK: - Fetch Nearby Places Data Using Google Maps API
+
   static func getPlacesDataFor(_ parameters: PlacesAPIParameter, completion: @escaping PlacesAPIDataCompletion) {
         
     //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=lat,-long&radius=5000&type=restaurant&keyword=burrito&key=API_KEY
@@ -80,7 +82,6 @@ class NetworkServices {
 
           do {
             let decoder = JSONDecoder()
-            //Decode the JSON by setting the keyEncodingStrategy of our decoder to .convertFromSnakeCase
             decoder.keyDecodingStrategy = .convertFromSnakeCase
 //            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
 //            print(jsonObject)

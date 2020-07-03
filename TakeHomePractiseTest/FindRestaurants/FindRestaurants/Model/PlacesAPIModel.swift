@@ -61,7 +61,7 @@ struct Geometry: Decodable {
   let location: Location
 }
 
-//MARK: - PlacesAPIParameter Model
+//MARK: - PlacesAPIParameter Wrapper Model
 
 struct PlacesAPIParameter {
   let location: Location

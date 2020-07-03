@@ -11,6 +11,8 @@ import MapKit
 
 class RestaurantAnnotationView: MKMarkerAnnotationView {
 
+  //MARK: - Properties
+
   override var annotation: MKAnnotation? {
     willSet {
       
