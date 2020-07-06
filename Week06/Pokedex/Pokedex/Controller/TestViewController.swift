@@ -30,28 +30,30 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
-}
+class TestViewController: UIViewController {
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
+        // Do any additional setup after loading the view.
+    }
+    
 
-extension Pokemon: Hashable {
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+  override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.willTransition(to: newCollection, with: coordinator)
   }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

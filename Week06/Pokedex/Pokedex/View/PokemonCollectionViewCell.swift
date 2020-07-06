@@ -30,28 +30,35 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
+protocol PokemonCollectionViewCellDelegate : class {
+    func deleteCollectionViewCell(_ cell: PokemonCollectionViewCell)
 }
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
+@IBDesignable class PokemonCollectionViewCell: UICollectionViewCell {
 
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
+  static let reuseIdentifier = String(describing: PokemonCollectionViewCell.self)
+  static let nib = String(describing: PokemonCollectionViewCell.self)
 
-extension Pokemon: Hashable {
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+  @IBOutlet weak var label: UILabel!
+  @IBOutlet weak var imgView: UIImageView!
+  @IBOutlet weak var deleteIcon: UIButton!
+  weak var delegate: PokemonCollectionViewCellDelegate?
+  var isEditing: Bool = false {
+    didSet {
+      deleteIcon.isHidden = !isEditing
+    }
   }
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  @IBAction func deleteIconPressed(_ sender: UIButton) {
+    
+    guard let delegate = delegate else { return }
+    delegate.deleteCollectionViewCell(self)
+  }
+  
 }

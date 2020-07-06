@@ -30,28 +30,46 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
-}
+class CollectionViewLayoutModel: NSObject {
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
+  let numberOfItemsPerRow: CGFloat
+  let collectionView: UICollectionView
+  let groupSize: NSCollectionLayoutSize
+  let contentInsets: NSDirectionalEdgeInsets
+  let orthogonalScrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior?
 
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
-
-extension Pokemon: Hashable {
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+  init(collectionView: UICollectionView,
+       numberOfItemsPerRow: CGFloat,
+       contentInsets: NSDirectionalEdgeInsets,
+       groupSize: NSCollectionLayoutSize,
+       orthogonalScrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior?) {
+    
+    self.collectionView = collectionView
+    self.numberOfItemsPerRow = numberOfItemsPerRow
+    self.contentInsets = contentInsets
+    self.groupSize = groupSize
+    self.orthogonalScrollingBehavior = orthogonalScrollingBehavior
   }
+  
+  func configureCompositionalLayout() {
+
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0/numberOfItemsPerRow),
+                                          heightDimension: .fractionalHeight(1.0))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+    item.contentInsets = contentInsets
+
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+    let section = NSCollectionLayoutSection(group: group)
+    if let orthogonalScrollingBehavior = orthogonalScrollingBehavior {
+      section.orthogonalScrollingBehavior =  orthogonalScrollingBehavior
+    }
+
+    collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
+
+  }
+
 }
+

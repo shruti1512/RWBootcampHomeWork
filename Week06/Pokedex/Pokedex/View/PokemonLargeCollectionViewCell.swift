@@ -30,28 +30,21 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
-}
+@IBDesignable class PokemonLargeCollectionViewCell: UICollectionViewCell {
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
+  static let reuseIdentifier = String(describing: PokemonLargeCollectionViewCell.self)
+  static let nib = String(describing: PokemonLargeCollectionViewCell.self)
 
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
+  @IBOutlet weak var nameLbl: UILabel!
+  @IBOutlet weak var expLbl: UILabel!
+  @IBOutlet weak var weightLbl: UILabel!
+  @IBOutlet weak var heightLbl: UILabel!
+  @IBOutlet weak var imgView: UIImageView!
 
-extension Pokemon: Hashable {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
 }

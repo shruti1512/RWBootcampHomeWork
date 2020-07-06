@@ -32,26 +32,12 @@
 
 import Foundation
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
-}
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
-
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
-
-extension Pokemon: Hashable {
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

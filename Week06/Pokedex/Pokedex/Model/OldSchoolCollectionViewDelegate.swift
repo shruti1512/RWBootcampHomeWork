@@ -30,28 +30,50 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum PokemonSortCase: String, CaseIterable {
-  case height
-  case weight
-  case baseExp
+protocol OldSchoolCollectionViewCellSelection: class {
+  func performActionOnCellSelection(at indexPath: IndexPath)
 }
 
-struct Pokemon {
-  let id: Int
-  let baseExp: Int
-  let height: Int
-  let weight: Int
-  let image: String
-  let name: String
-}
+class OldSchoolCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+  
+  //MARK: - Properties
+  let numberOfItemsInARow: CGFloat
+  let interItemSpacing: CGFloat
+  let sectionInsets: UIEdgeInsets
+  weak var viewControllerDelegate: OldSchoolCollectionViewCellSelection?
+  
+  //MARK: - Intializer
 
-//We need not add any uuid property in the Pokemon struct to make it hashable since the 'id' property for each pokemon is unique and this can be used as a hash value for the Pokemon object
-
-extension Pokemon: Hashable {
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+  init(numberOfItemsInARow: CGFloat, interItemSpacing: CGFloat, sectionInsets: UIEdgeInsets) {
+    self.numberOfItemsInARow = numberOfItemsInARow
+    self.interItemSpacing = interItemSpacing
+    self.sectionInsets = sectionInsets
   }
+
+
+  //MARK: -  UICollectionViewDelegateFlowLayout
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    let paddingSpace = ((numberOfItemsInARow-1) * interItemSpacing) + sectionInsets.left + sectionInsets.right
+    let totalWidth = collectionView.bounds.width
+    let availableWidth = totalWidth - paddingSpace
+    let itemWidth = availableWidth/numberOfItemsInARow
+    let itemSize = CGSize(width: itemWidth, height: itemWidth)
+    return itemSize
+  }
+  
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return interItemSpacing
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                      insetForSectionAt section: Int) -> UIEdgeInsets {
+    return sectionInsets
+  }
+  
 }

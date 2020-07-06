@@ -35,6 +35,7 @@ import Foundation
 class PokemonGenerator {
   
   public static let shared = PokemonGenerator()
+  var pokemons: [Pokemon]?
   
   private init () { }
   
@@ -46,21 +47,35 @@ class PokemonGenerator {
       let rows = csv.rows
       for row in rows {
         let pokeID = Int(row["id"] ?? "") ?? 0
+        let image = row["id"] ?? ""
         let name = row["identifier"] ?? ""
         let weight = Int(row["weight"] ?? "") ?? 0
         let height = Int(row["height"] ?? "") ?? 0
         let baseExp = Int(row["base_experience"] ?? "") ?? 0
         
-        /*
-        let pokemon = Pokemon(pokemonID: pokeID, pokemonName: name.capitalized, baseExp: baseExp, height: height, weight: weight)
-        */
+        let pokemon = Pokemon(id: pokeID, baseExp: baseExp, height: height, weight: weight, image: image, name: name)
         
-        //pokemons.append(pokemon)
+        pokemons.append(pokemon)
       }
+      self.pokemons = pokemons
       return pokemons
     } catch let error {
       print("\(error.localizedDescription)")
     }
     return pokemons
   }
+  
+  func sortPokemansBy(sortCase: PokemonSortCase) -> [Pokemon]? {
+  var pokeomArray = generatePokemons()
+    switch sortCase {
+      case .baseExp:
+        pokeomArray.sort{ $0.baseExp < $1.baseExp }
+      case .weight:
+        pokeomArray.sort{ $0.weight > $1.weight }
+      case .height:
+        pokeomArray.sort{ $0.height < $1.height }
+    }
+    return pokeomArray
+  }
+
 }
