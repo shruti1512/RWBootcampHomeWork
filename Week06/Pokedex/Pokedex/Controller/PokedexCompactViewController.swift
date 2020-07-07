@@ -62,6 +62,16 @@ class PokedexCompactViewController: UIViewController {
     setupView()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    isEditing = false
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupCollectionViewForEditMode()
+  }
+  
   override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
     super.willTransition(to: newCollection, with: coordinator)
      let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
@@ -98,33 +108,21 @@ class PokedexCompactViewController: UIViewController {
     //allow multiple deletion
     collectionView.allowsMultipleSelection = true
   }
-    
-//  //MARK: - View Editing
-//  override func setEditing(_ editing: Bool, animated: Bool) {
-//
-//    super.setEditing(editing, animated: animated)
-//
-//    isEditing ? collectionView.startWiggle() : collectionView.stopWiggle()
-//    collectionView.enableDragging(isEditing)
-//
-//    //show hide delete icons in collection view based on editing state
-//    for cell in collectionView.visibleCells {
-//      guard let pokemonCell = cell as? PokemonCollectionViewCell else { return }
-//      pokemonCell.isEditing = isEditing
-//    }
-//  }
+     
+  func setupCollectionViewForEditMode() {
+    //show hide delete icons in collection view based on editing state
+    for cell in collectionView.visibleCells {
+      guard let pokemonCell = cell as? PokemonCollectionViewCell else { return }
+      pokemonCell.isEditing = isEditing
+    }
+  }
   
   @IBAction private func editButtonClicked( _ sender: UIButton) {
     isEditing = !isEditing
     isEditing ? collectionView.startWiggle() : collectionView.stopWiggle()
     isEditing ? sender.setTitle("Done", for: .normal) : sender.setTitle("Edit", for: .normal)
     collectionView.enableDragging(isEditing)
-
-    //show hide delete icons in collection view based on editing state
-    for cell in collectionView.visibleCells {
-      guard let pokemonCell = cell as? PokemonCollectionViewCell else { return }
-      pokemonCell.isEditing = isEditing
-    }
+    setupCollectionViewForEditMode()
   }
   
   @IBAction private func filterButtonClicked( _ sender: UIButton) {
