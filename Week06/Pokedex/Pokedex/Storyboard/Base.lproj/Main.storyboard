@@ -69,11 +69,11 @@
                             <constraint firstItem="nVx-bH-q6Q" firstAttribute="trailing" secondItem="Hu4-Pu-s6W" secondAttribute="trailing" id="4wY-1N-h20"/>
                             <constraint firstItem="xmN-FV-oZb" firstAttribute="trailing" secondItem="qcC-HM-hTM" secondAttribute="trailing" id="6Md-ka-Nkn"/>
                             <constraint firstItem="qcC-HM-hTM" firstAttribute="top" secondItem="nVx-bH-q6Q" secondAttribute="bottom" constant="70" id="H6l-Ok-lFZ">
-                                <variation key="heightClass=compact" constant="10"/>
+                                <variation key="heightClass=compact" constant="30"/>
                             </constraint>
                             <constraint firstItem="R2U-eA-Prs" firstAttribute="top" secondItem="nVx-bH-q6Q" secondAttribute="bottom" id="IEk-Kd-OuJ"/>
                             <constraint firstItem="xmN-FV-oZb" firstAttribute="bottom" secondItem="qcC-HM-hTM" secondAttribute="bottom" constant="70" id="MUW-1c-WGC">
-                                <variation key="heightClass=compact" constant="10"/>
+                                <variation key="heightClass=compact" constant="30"/>
                             </constraint>
                             <constraint firstItem="nVx-bH-q6Q" firstAttribute="top" secondItem="xmN-FV-oZb" secondAttribute="top" id="eih-Xy-7Oc"/>
                             <constraint firstItem="nVx-bH-q6Q" firstAttribute="leading" secondItem="Hu4-Pu-s6W" secondAttribute="leading" id="j2a-3d-n7W"/>
