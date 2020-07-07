@@ -56,9 +56,7 @@ protocol PokemonCollectionViewCellDelegate : class {
   }
   
   @IBAction func deleteIconPressed(_ sender: UIButton) {
-    
-    guard let delegate = delegate else { return }
-    delegate.deleteCollectionViewCell(self)
+    delegate?.deleteCollectionViewCell(self)
   }
   
 }

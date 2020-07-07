@@ -50,11 +50,6 @@ class PokedexLargeViewController: UIViewController {
       setupCollectionView()
     }
     
-//  required init?(coder: NSCoder) {
-//    super.init(coder: coder)
-//    print("PokedexLargeViewController")
-//  }
-
     func setupCollectionView() {
       
       //register collection view with custom cell nib
@@ -62,7 +57,7 @@ class PokedexLargeViewController: UIViewController {
                                    forCellWithReuseIdentifier: cellReuseIdentifer)
 
       //configure collection view layout
-      let itemContentInsets = NSDirectionalEdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8)
+      let itemContentInsets = NSDirectionalEdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 3)
       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(1.0))
       collectionViewLayoutModel = CollectionViewLayoutModel(collectionView: self.collectionView,
                                                             numberOfItemsPerRow: 1.0,

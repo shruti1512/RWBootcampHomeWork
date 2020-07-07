@@ -32,17 +32,12 @@
 
 import UIKit
 
-protocol OldSchoolCollectionViewCellSelection: class {
-  func performActionOnCellSelection(at indexPath: IndexPath)
-}
-
 class OldSchoolCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
   
   //MARK: - Properties
   let numberOfItemsInARow: CGFloat
   let interItemSpacing: CGFloat
   let sectionInsets: UIEdgeInsets
-  weak var viewControllerDelegate: OldSchoolCollectionViewCellSelection?
   
   //MARK: - Intializer
 

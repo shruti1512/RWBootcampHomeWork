@@ -56,17 +56,11 @@ class PokedexCompactViewController: UIViewController {
 
 
   //MARK: - View Life Cycle
-
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    print("PokedexCompactViewController")
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
   }
-  
   
   override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
     super.willTransition(to: newCollection, with: coordinator)
