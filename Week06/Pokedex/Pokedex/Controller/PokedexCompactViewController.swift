@@ -110,12 +110,17 @@ class PokedexCompactViewController: UIViewController {
   }
      
   func setupCollectionViewForEditMode() {
+    
     //show hide delete icons in collection view based on editing state
     for cell in collectionView.visibleCells {
       guard let pokemonCell = cell as? PokemonCollectionViewCell else { return }
       pokemonCell.isEditing = isEditing
     }
   }
+  
+  // MARK: - IBActions
+  
+  // Edit Button Action Event
   
   @IBAction private func editButtonClicked( _ sender: UIButton) {
     isEditing = !isEditing
@@ -124,6 +129,8 @@ class PokedexCompactViewController: UIViewController {
     collectionView.enableDragging(isEditing)
     setupCollectionViewForEditMode()
   }
+  
+  // Filter Button Action Event
   
   @IBAction private func filterButtonClicked( _ sender: UIButton) {
     

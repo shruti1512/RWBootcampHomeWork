@@ -34,11 +34,15 @@ import UIKit
 
 class CollectionViewDataSource: NSObject {
   
+  // MARK: - Properties
+  
   var dataSource: UICollectionViewDiffableDataSource<Section, Pokemon>?
   let dataArray: [Pokemon]?
   let cellReuseIdentifier: String?
   let collectionView: UICollectionView?
   let sections: [Section]?
+
+  // MARK: - Intializer
 
   init(dataArray: [Pokemon], sections: [Section], collectionView: UICollectionView, cellReuseIdentifier: String) {
     self.dataArray = dataArray
@@ -47,6 +51,8 @@ class CollectionViewDataSource: NSObject {
     self.cellReuseIdentifier = cellReuseIdentifier
   }
   
+
+  // MARK: - Configure Collection View Data Source
 
   func configureCollectionViewDataSource() {
     
@@ -77,6 +83,8 @@ class CollectionViewDataSource: NSObject {
     configureSnapshot()
   }
  
+  // MARK: - Configure Data Snapshot for Cellction View
+
   func configureSnapshot() {
     
     guard let dataArray = dataArray, let sections = sections, let dataSource = dataSource else { return }

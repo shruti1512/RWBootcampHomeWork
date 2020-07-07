@@ -34,40 +34,51 @@ import UIKit
 
 class CollectionViewLayoutModel: NSObject {
 
+  // MARK: - Properties
+  
   let numberOfItemsPerRow: CGFloat
-  let collectionView: UICollectionView
   let groupSize: NSCollectionLayoutSize
-  let contentInsets: NSDirectionalEdgeInsets
+  let itemInsets: NSDirectionalEdgeInsets
+  let sectionInsets: NSDirectionalEdgeInsets
   let orthogonalScrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior?
 
-  init(collectionView: UICollectionView,
-       numberOfItemsPerRow: CGFloat,
-       contentInsets: NSDirectionalEdgeInsets,
+  // MARK: - Intializer
+
+  init(numberOfItemsPerRow: CGFloat,
+       itemInsets: NSDirectionalEdgeInsets,
+       sectionInsets: NSDirectionalEdgeInsets,
        groupSize: NSCollectionLayoutSize,
        orthogonalScrollingBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior?) {
     
-    self.collectionView = collectionView
     self.numberOfItemsPerRow = numberOfItemsPerRow
-    self.contentInsets = contentInsets
+    self.itemInsets = itemInsets
+    self.sectionInsets = sectionInsets
     self.groupSize = groupSize
     self.orthogonalScrollingBehavior = orthogonalScrollingBehavior
   }
   
-  func configureCompositionalLayout() {
+  // MARK: - Configure Compositional Layout
 
+  func configureCompositionalLayout() -> UICollectionViewLayout {
+
+    //configure item
     let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0/numberOfItemsPerRow),
                                           heightDimension: .fractionalHeight(1.0))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = contentInsets
+    item.contentInsets = itemInsets
 
+    //configure group
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
+    //configure section
     let section = NSCollectionLayoutSection(group: group)
     if let orthogonalScrollingBehavior = orthogonalScrollingBehavior {
       section.orthogonalScrollingBehavior =  orthogonalScrollingBehavior
     }
-
-    collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
+    section.contentInsets = sectionInsets
+    
+    //set collectionview layout
+    return UICollectionViewCompositionalLayout(section: section)
 
   }
 

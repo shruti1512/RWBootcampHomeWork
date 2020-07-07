@@ -51,11 +51,11 @@ class OldSchoolCollectionViewDataSource: NSObject, UICollectionViewDataSource {
   //MARK:- UICollectionViewDataSource
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    1
+      1
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return models.count
+     models.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

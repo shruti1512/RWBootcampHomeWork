@@ -38,18 +38,26 @@ enum Section {
 
 class PokedexLargeViewController: UIViewController {
     
+  // MARK: - IBOutelts
+  
     @IBOutlet private weak var collectionView: UICollectionView!
   
+  // MARK: - Properties
+
     let pokemonArray = PokemonGenerator.shared.generatePokemons()
     var collectionViewDataSource: CollectionViewDataSource?
     var collectionViewLayoutModel: CollectionViewLayoutModel?
     let cellReuseIdentifer = PokemonLargeCollectionViewCell.reuseIdentifier
+
+  // MARK: - View Life Cycle
 
     override func viewDidLoad() {
       super.viewDidLoad()
       setupCollectionView()
     }
     
+  // MARK: - Setup Collection View
+
     func setupCollectionView() {
       
       //register collection view with custom cell nib
@@ -57,17 +65,19 @@ class PokedexLargeViewController: UIViewController {
                                    forCellWithReuseIdentifier: cellReuseIdentifer)
 
       //configure collection view layout
-      let itemContentInsets = NSDirectionalEdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 3)
+      let itemInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5)
+      let sectionInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 10)
       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(1.0))
-      collectionViewLayoutModel = CollectionViewLayoutModel(collectionView: self.collectionView,
-                                                            numberOfItemsPerRow: 1.0,
-                                                            contentInsets: itemContentInsets,
+      collectionViewLayoutModel = CollectionViewLayoutModel(numberOfItemsPerRow: 1.0,
+                                                            itemInsets: itemInsets,
+                                                            sectionInsets: sectionInsets,
                                                             groupSize: groupSize,
                                                             orthogonalScrollingBehavior: .groupPaging)
-      collectionViewLayoutModel!.configureCompositionalLayout()
+      collectionView.collectionViewLayout = collectionViewLayoutModel!.configureCompositionalLayout()
       
       //configure collection view datasource
-      collectionViewDataSource = CollectionViewDataSource(dataArray: pokemonArray, sections: [.main],
+      let testArray = Array(pokemonArray.prefix(through: 5))
+      collectionViewDataSource = CollectionViewDataSource(dataArray: testArray, sections: [.main],
                                                 collectionView: self.collectionView,
                                                 cellReuseIdentifier: cellReuseIdentifer)
       collectionViewDataSource!.configureCollectionViewDataSource()
