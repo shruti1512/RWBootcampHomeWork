@@ -66,15 +66,13 @@
 		1255797924AFB8FA004C616F /* SandwichSaturation */ = {
 			isa = PBXGroup;
 			children = (
-				1255797A24AFB8FA004C616F /* AppDelegate.swift */,
-				1255797C24AFB8FA004C616F /* SceneDelegate.swift */,
+				332C4C0A24C0ED1700B11336 /* AppDelegate */,
 				12A0791224AFDD810097F149 /* Model */,
 				1255799424AFCBDE004C616F /* View */,
 				12A0790F24AFDC2F0097F149 /* ViewControllers */,
-				1255798524AFB8FC004C616F /* Assets.xcassets */,
-				1255799024AFC717004C616F /* SandwichArt.xcassets */,
-				1255798724AFB8FC004C616F /* LaunchScreen.storyboard */,
-				1255798A24AFB8FC004C616F /* Info.plist */,
+				332C4C0B24C0ED2300B11336 /* Resources */,
+				332C4C0C24C0ED3000B11336 /* Storyboard */,
+				332C4C0D24C0ED3D00B11336 /* SupportingFiles */,
 			);
 			path = SandwichSaturation;
 			sourceTree = "<group>";
@@ -83,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				1255798224AFB8FA004C616F /* Main.storyboard */,
-				1255799224AFCBD7004C616F /* SandwichCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -104,6 +101,41 @@
 				12A0791324AFDD8E0097F149 /* SandwichData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		332C4C0A24C0ED1700B11336 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1255797A24AFB8FA004C616F /* AppDelegate.swift */,
+				1255797C24AFB8FA004C616F /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		332C4C0B24C0ED2300B11336 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1255798524AFB8FC004C616F /* Assets.xcassets */,
+				1255799024AFC717004C616F /* SandwichArt.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		332C4C0C24C0ED3000B11336 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1255798724AFB8FC004C616F /* LaunchScreen.storyboard */,
+				1255799224AFCBD7004C616F /* SandwichCell.swift */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		332C4C0D24C0ED3D00B11336 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1255798A24AFB8FC004C616F /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9Y8CR6448;
-				INFOPLIST_FILE = SandwichSaturation/Info.plist;
+				INFOPLIST_FILE = SandwichSaturation/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9Y8CR6448;
-				INFOPLIST_FILE = SandwichSaturation/Info.plist;
+				INFOPLIST_FILE = SandwichSaturation/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
