@@ -8,7 +8,11 @@
 <a name = "about" />This app list sandwiches based on sauce amount. The initial data is seeded from json file and persisted in the database. The user can add, edit, search, filter and delete sandwiches.
 
 ## Screenshots
-<a name = "screenshots" />
+<a name = "screenshots" />  
+
+
+
+<img src="Screenshots/list_grid_togglegif.gif" width="200" height="400"> <img src="Screenshots/sort_toggle.gif" width="200" height="400"> <img src="Screenshots/sauce_toggle.gif" width="200" height="400"> <img src="Screenshots/text_filter.gif" width="200" height="400"> <img src="Screenshots/edit_mode.gif" width="200" height="400"> <img src="Screenshots/new_sandwich.gif" width="200" height="400"> <img src="Screenshots/update_details.gif" width="200" height="400">
 
 ## App Details
 <a name = "app" /> 
@@ -37,7 +41,7 @@ I would prefer to go with the second option. Here the app is shipped with a pref
 - [x] Allow users to delete sandwiches from the table view. When deleted, be sure they are deleted from Core Data.
 
 ### Additional Features
-- [x] The user can chnage the layout of sandwiches view to grid or list.
+- [x] The user can change the layout of sandwiches view to grid or list. Modified the entire starter code for this.
 - [x] The user can edit a sandwich.
 - [x] The user can sort sandwiches.
 
