@@ -12,7 +12,7 @@ class SandwichCell: UITableViewCell {
   @IBOutlet weak var thumbnail: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var sauceLabel: UILabel!
-  var sandwich: SandwichData?
+  var sandwich: Sandwich?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -28,7 +28,7 @@ class SandwichCell: UITableViewCell {
     
     thumbnail.image = UIImage.init(imageLiteralResourceName: sandwich.imageName)
     nameLabel.text = sandwich.name
-    sauceLabel.text = sandwich.sauceAmount.description
+    sauceLabel.text = sandwich.sauceAmount.amount
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

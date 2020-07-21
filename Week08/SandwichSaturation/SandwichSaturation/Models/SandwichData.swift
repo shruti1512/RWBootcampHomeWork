@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SauceAmount: Decodable {
+enum SauceAmount: String, Decodable {
   case any
   case none
   case tooMuch
@@ -36,7 +36,7 @@ extension SauceAmount: CaseIterable { }
 
 extension SauceAmount: RawRepresentable {
   typealias RawValue = String
-  
+
   init?(rawValue: RawValue) {
     switch rawValue {
     case "Either": self = .any
@@ -45,7 +45,7 @@ extension SauceAmount: RawRepresentable {
     default: return nil
     }
   }
-  
+
   var rawValue: String {
     switch self {
     case .any: return "Either"
@@ -54,3 +54,4 @@ extension SauceAmount: RawRepresentable {
     }
   }
 }
+

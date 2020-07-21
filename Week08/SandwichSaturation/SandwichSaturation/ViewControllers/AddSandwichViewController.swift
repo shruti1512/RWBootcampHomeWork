@@ -12,18 +12,43 @@ class AddSandwichViewController: UIViewController {
   
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var imageView: UIImageView!
-  let imageName: String
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
+  @IBOutlet weak var navigationBar: UINavigationBar!
+  
+  var imageName: String
   var sauceAmount: SauceAmount!
+  var sandwich: Sandwich?
+  var isDataUpdated = false
+  var dataSource: SandwichDataSource?
+  let dataManager = DataManager.shared
   
   required init?(coder: NSCoder) {
     imageName = AddSandwichViewController.randomImageName()
     sauceAmount = SauceAmount.none
-
     super.init(coder: coder)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    loadSandwich()
+  }
+  
+  func loadSandwich() {
+    
+    guard let sandwich = sandwich else { return }
+    navigationBar.topItem?.title = "Edit Sandwich"
+    imageName = sandwich.imageName
+    nameField.text = sandwich.name
+    sauceAmount = sandwich.sauceAmount.sauceAmount
+    var index = 0
+    while index < segmentedControl.numberOfSegments {
+      let title = segmentedControl.titleForSegment(at: index)
+      if title == sauceAmount?.rawValue {
+        segmentedControl.selectedSegmentIndex = index
+        break
+      }
+      index += 1
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -44,36 +69,88 @@ class AddSandwichViewController: UIViewController {
   }
   
   @IBAction func savePressed(_ sender: Any) {
+    
     guard let sandwichName = nameField.text,
       !sandwichName.isEmpty else {
-        let alert = UIAlertController(title: "Missing Name",
-                                      message: "You need to enter a sandwich name!",
-                                      preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-        
+        showAlertForMissingSandwichName()
         return
     }
     
-    let newSandwich = SandwichData(name: sandwichName,
-                               sauceAmount: sauceAmount,
-                               imageName: imageName)
-    saveSandwich(sandwich: newSandwich)
-
-    dismiss(animated: true, completion: nil)
-  }
-  
-  func saveSandwich(sandwich: SandwichData) {
-    guard let navController = presentingViewController as? UINavigationController,
-      let dataSource = navController.topViewController as? SandwichDataSource else {
-        print("Oh noes! The datasource is missing and I don't know where to put these sandwiches!")
-        fatalError()
+    guard let sauceAmount = sauceAmount else {
+      dismiss(animated: true, completion: nil)
+      return
     }
     
-    dataSource.saveSandwich(sandwich)
+    if let sandwich = sandwich {
+      if (sandwich.name != sandwichName) || (sandwich.sauceAmount.sauceAmount != sauceAmount) {
+        editSandwich(sandwich, withName: sandwichName, sauceAmount: sauceAmount)
+      }
+      else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+    else {
+      let newSandwich = SandwichData(name: sandwichName,
+                                     sauceAmount: sauceAmount,
+                                     imageName: imageName)
+      saveSandwich(sandwich: newSandwich)
+    }
+  
   }
+  
+  func showAlertForMissingSandwichName() {
+    let alert = UIAlertController(title: "Missing Name",
+                                  message: "You need to enter a sandwich name!",
+                                  preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(okAction)
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  func showAlertForSandwichAlreadyExist() {
+    let alert = UIAlertController(title: "Sandwich already exists",
+                                  message: "You need to create a sandwich with different name or sauce!",
+                                  preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(okAction)
+    self.present(alert, animated: true, completion: nil)
+  }
+
+  func saveSandwich(sandwich: SandwichData) {
+    guard let dataSource = dataSource else {
+      print("Oh no! The datasource is missing and I don't know where to put these sandwiches!")
+      fatalError()
+    }
+    let doesSandwichExist = dataManager.checkIfSandwichExists(sandwich)
+    if doesSandwichExist {
+      showAlertForSandwichAlreadyExist()
+    }
+    else {
+      dataSource.saveSandwich(sandwich)
+      dismiss(animated: true, completion: nil)
+    }
+
+  }
+  
+  func editSandwich(_ sandwich: Sandwich, withName name: String, sauceAmount: SauceAmount) {
+    guard let dataSource = dataSource else {
+      print("Oh no! The datasource is missing and I don't know where to put these sandwiches!")
+      fatalError()
+    }
+    let sandwichData = SandwichData(name: name, sauceAmount: sauceAmount, imageName: sandwich.imageName)
+    let doesSandwichExist = dataManager.checkIfSandwichExists(sandwichData)
+    if doesSandwichExist {
+      showAlertForSandwichAlreadyExist()
+    }
+    else {
+      dataSource.editSandwich(sandwich, withName: name, sauceAmount: sauceAmount)
+      dismiss(animated: true, completion: nil)
+    }
+
+  }
+  
 }
 
 extension AddSandwichViewController: UITextFieldDelegate {

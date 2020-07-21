@@ -11,13 +11,21 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+  let IS_DATA_PRELOADED_KEY = "isDataPreloaded"
+  let userDefaults = UserDefaults.standard
+  let dataMgr = DataManager.shared
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    // Override point for customization after application launch
+    
+    let isDataPreloadedInDB = userDefaults.bool(forKey: IS_DATA_PRELOADED_KEY)
+    if  !isDataPreloadedInDB {
+      dataMgr.preloadDatabaseWithDefaultData()
+      userDefaults.set(!isDataPreloadedInDB, forKey: IS_DATA_PRELOADED_KEY)
+    }
     return true
   }
-
+    
   // MARK: UISceneSession Lifecycle
 
   func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

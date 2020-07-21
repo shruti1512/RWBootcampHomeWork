@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SandwichListCell" id="gTV-IL-0wX" customClass="SandwichListCell" customModule="SandwichSaturation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="132"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="132"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHB-Qx-ldM" userLabel="ContentView">
+                        <rect key="frame" x="0.0" y="0.0" width="323" height="132"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="7Qr-vK-u2d">
+                                <rect key="frame" x="8" y="33.5" width="307" height="65"/>
+                                <subviews>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qum-xU-95C">
+                                        <rect key="frame" x="-25" y="20.5" width="25" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="FbY-WU-Ilt"/>
+                                            <constraint firstAttribute="width" constant="25" id="k5e-uT-wIs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sandwich10" translatesAutoresizingMaskIntoConstraints="NO" id="1AL-lE-Xak">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="S4Y-KA-Ai8"/>
+                                            <constraint firstAttribute="width" constant="65" id="t6X-9F-WM0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="N4v-CX-eYe">
+                                        <rect key="frame" x="74" y="8" width="233" height="49.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6q-76-axk">
+                                                <rect key="frame" x="0.0" y="0.0" width="233" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sauce" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-Bs-xla">
+                                                <rect key="frame" x="0.0" y="29" width="233" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7Qr-vK-u2d" firstAttribute="leading" secondItem="cHB-Qx-ldM" secondAttribute="leading" constant="8" id="5sf-sC-ajO"/>
+                            <constraint firstItem="7Qr-vK-u2d" firstAttribute="centerY" secondItem="cHB-Qx-ldM" secondAttribute="centerY" id="V9V-Jo-vJD"/>
+                            <constraint firstAttribute="trailing" secondItem="7Qr-vK-u2d" secondAttribute="trailing" constant="8" id="asK-qJ-Hms"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="cHB-Qx-ldM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2Vz-df-sRK"/>
+                <constraint firstAttribute="trailing" secondItem="cHB-Qx-ldM" secondAttribute="trailing" id="dch-j4-Y51"/>
+                <constraint firstAttribute="bottom" secondItem="cHB-Qx-ldM" secondAttribute="bottom" id="hd3-Dg-7Ia"/>
+                <constraint firstItem="cHB-Qx-ldM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tKc-lg-sMH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="323" height="132"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="checkboxImageView" destination="Qum-xU-95C" id="9RM-Tv-9go"/>
+                <outlet property="nameLabel" destination="f6q-76-axk" id="MXf-Wf-2bo"/>
+                <outlet property="sauceLabel" destination="jXi-Bs-xla" id="azb-AD-2i9"/>
+                <outlet property="thumbnail" destination="1AL-lE-Xak" id="Xqh-OF-kYr"/>
+            </connections>
+            <point key="canvasLocation" x="335.50724637681162" y="160.04464285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="sandwich10" width="343" height="274.33334350585938"/>
+    </resources>
+</document>
