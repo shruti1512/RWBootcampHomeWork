@@ -12,7 +12,6 @@
 		1255797F24AFB8FA004C616F /* SandwichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255797E24AFB8FA004C616F /* SandwichViewController.swift */; };
 		1255798424AFB8FA004C616F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1255798224AFB8FA004C616F /* Main.storyboard */; };
 		1255798624AFB8FC004C616F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1255798524AFB8FC004C616F /* Assets.xcassets */; };
-		1255798924AFB8FC004C616F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1255798724AFB8FC004C616F /* LaunchScreen.storyboard */; };
 		1255799124AFC717004C616F /* SandwichArt.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1255799024AFC717004C616F /* SandwichArt.xcassets */; };
 		12A0791124AFDC5C0097F149 /* AddSandwichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0791024AFDC5C0097F149 /* AddSandwichViewController.swift */; };
 		12A0791424AFDD8E0097F149 /* SandwichData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A0791324AFDD8E0097F149 /* SandwichData.swift */; };
@@ -33,6 +32,7 @@
 		3350D7D824C6ADE200009966 /* SandwichListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7D324C6ADE100009966 /* SandwichListCell.xib */; };
 		3350D7D924C6ADE200009966 /* SandwichCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7D424C6ADE100009966 /* SandwichCollectionCell.xib */; };
 		3350D7DB24C6AEB800009966 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3350D7DA24C6AEB800009966 /* Constants.swift */; };
+		3350D7DE24C6B80A00009966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7DC24C6B80A00009966 /* LaunchScreen.storyboard */; };
 		3389C1DD24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3389C1DB24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift */; };
 		3389C1DE24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3389C1DC24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,6 @@
 		1255797E24AFB8FA004C616F /* SandwichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandwichViewController.swift; sourceTree = "<group>"; };
 		1255798324AFB8FA004C616F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1255798524AFB8FC004C616F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1255798824AFB8FC004C616F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1255798A24AFB8FC004C616F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1255799024AFC717004C616F /* SandwichArt.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SandwichArt.xcassets; sourceTree = "<group>"; };
 		12A0791024AFDC5C0097F149 /* AddSandwichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSandwichViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		3350D7D324C6ADE100009966 /* SandwichListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SandwichListCell.xib; sourceTree = "<group>"; };
 		3350D7D424C6ADE100009966 /* SandwichCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SandwichCollectionCell.xib; sourceTree = "<group>"; };
 		3350D7DA24C6AEB800009966 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3350D7DD24C6B80A00009966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3389C1DB24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sandwich+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3389C1DC24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SandwichSauceAmount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +156,8 @@
 		332C4C0C24C0ED3000B11336 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				3350D7DC24C6B80A00009966 /* LaunchScreen.storyboard */,
 				1255798224AFB8FA004C616F /* Main.storyboard */,
-				1255798724AFB8FC004C616F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -274,8 +274,8 @@
 				3350D7D924C6ADE200009966 /* SandwichCollectionCell.xib in Resources */,
 				1255799124AFC717004C616F /* SandwichArt.xcassets in Resources */,
 				12A0791824B2CC9A0097F149 /* sandwiches.json in Resources */,
-				1255798924AFB8FC004C616F /* LaunchScreen.storyboard in Resources */,
 				1255798624AFB8FC004C616F /* Assets.xcassets in Resources */,
+				3350D7DE24C6B80A00009966 /* LaunchScreen.storyboard in Resources */,
 				3350D7D824C6ADE200009966 /* SandwichListCell.xib in Resources */,
 				1255798424AFB8FA004C616F /* Main.storyboard in Resources */,
 			);
@@ -323,10 +323,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		1255798724AFB8FC004C616F /* LaunchScreen.storyboard */ = {
+		3350D7DC24C6B80A00009966 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1255798824AFB8FC004C616F /* Base */,
+				3350D7DD24C6B80A00009966 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

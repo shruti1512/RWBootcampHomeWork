@@ -139,6 +139,10 @@ class SandwichViewController: UIViewController {
     ])
   }
   
+  private func updateAddBtnHiddenState(isHidden: Bool) {
+    addBtn.isHidden = isHidden
+  }
+  
   //MARK: - Setup Data Models
   
   private func loadSandwiches() {
@@ -152,7 +156,7 @@ class SandwichViewController: UIViewController {
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
     
-    addBtn.isEnabled = !isEditing
+    updateAddBtnHiddenState(isHidden: isEditing)
     
     if isEditing {
       navigationItem.rightBarButtonItems = nil
@@ -220,7 +224,7 @@ class SandwichViewController: UIViewController {
     
     //update isEditing and refresh add bar button item state
     isEditing.toggle()
-    addBtn.isEnabled = !isEditing
+    updateAddBtnHiddenState(isHidden: isEditing)
     collectionViewDataSource?.isEditing = isEditing
     
     //reload collection view to show/hide delete icons on cells
@@ -232,7 +236,6 @@ class SandwichViewController: UIViewController {
     
     //filter sandwiches based on user input search text in the data source
     collectionViewDataSource?.filterContentForSearchText(searchText,
-                                                         isFiltering: isFiltering,
                                                          sauceAmount: sauceAmount)
   }
   
@@ -275,13 +278,21 @@ extension SandwichViewController: UISearchResultsUpdating {
   
   func updateSearchResults(for searchController: UISearchController) {
     
-    let searchBar = searchController.searchBar
-    guard let searchText = searchBar.text else { return }
-    
-    let sauceRawValue = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-    let sauceAmount = SauceAmount(rawValue: sauceRawValue)
-    
-    filterContentForSearchText(searchText, sauceAmount: sauceAmount)
+    if !searchController.isActive {
+      print("Cancelled")
+      collectionViewDataSource?.filterContentForSearchText("", sauceAmount: nil)
+      updateAddBtnHiddenState(isHidden: false)
+    }
+    else {
+      updateAddBtnHiddenState(isHidden: true)
+      let searchBar = searchController.searchBar
+      guard let searchText = searchBar.text else { return }
+      
+      let sauceRawValue = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+      let sauceAmount = SauceAmount(rawValue: sauceRawValue)
+      
+      filterContentForSearchText(searchText, sauceAmount: sauceAmount)
+    }
   }
 }
 
@@ -290,6 +301,8 @@ extension SandwichViewController: UISearchResultsUpdating {
 extension SandwichViewController: UISearchBarDelegate {
   
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    
+    updateAddBtnHiddenState(isHidden: true)
     
     userDefaults.set(selectedScope, forKey: Constants.userDefaultsKeyFilterIndex)
     

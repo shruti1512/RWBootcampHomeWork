@@ -47,7 +47,6 @@ class CollectionViewDataSource: NSObject {
   let collectionView: UICollectionView?
   let sections: [Section]?
   var sortIsAscending = true
-  var isFiltering = false
   var isEditing = false
   
   // MARK: - Initializer
@@ -118,7 +117,7 @@ class CollectionViewDataSource: NSObject {
     
     var snapshot = DataSnapshot()
     snapshot.appendSections([.main])
-    snapshot.appendItems(isFiltering ? filteredSandwiches : sandwiches)
+    snapshot.appendItems(sandwiches)
     dataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
   }
     
@@ -156,14 +155,13 @@ class CollectionViewDataSource: NSObject {
   // MARK: - Filter & Search Sandiwches
 
   func filterContentForSearchText(_ searchText: String,
-                                  isFiltering: Bool,
                                   sauceAmount: SauceAmount? = nil) {
     
     //get filtered sandwiches from the database and apply the new snapshot
 
-    filteredSandwiches = dataManager.filterSandwichesForSearchText(searchText,
-                                                                   sauceAmount: sauceAmount)
-    self.isFiltering = isFiltering
+    sandwiches = dataManager.filterSandwichesForSearchText(searchText,
+                                                           sauceAmount: sauceAmount,
+                                                           sortIsAscending: sortIsAscending)
     applySnapshot()
   }
 

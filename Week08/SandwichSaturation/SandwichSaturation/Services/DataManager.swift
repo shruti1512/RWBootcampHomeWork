@@ -116,19 +116,34 @@ class DataManager {
   //MARK: - Filter Sandwich Models Based on Search Term and Sauce In Database
 
   func filterSandwichesForSearchText(_ searchText: String,
-                                     sauceAmount: SauceAmount? = nil) -> [Sandwich] {
-    
-    guard let sauceAmount = sauceAmount else { return [] }
+                                     sauceAmount: SauceAmount? = nil,
+                                     sortIsAscending: Bool) -> [Sandwich] {
     
     var filteredSandwiches = [Sandwich]()
-    
+
+    let sortDescriptor = NSSortDescriptor(key: #keyPath(Sandwich.name),
+                                          ascending: sortIsAscending,
+                                          selector: #selector(NSString.caseInsensitiveCompare))
+
+    guard let sauceAmount = sauceAmount else {
+      filteredSandwiches = coreDataMgr.fetch(Sandwich.self,
+                                             predicate: nil,
+                                             sort: sortDescriptor) ?? []
+
+      return  filteredSandwiches
+    }
+            
     if sauceAmount == .any {
       let predicateSearchText = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
       if searchText.isEmpty {
-        filteredSandwiches = coreDataMgr.fetch(Sandwich.self, predicate: nil, sort: nil) ?? []
+        filteredSandwiches = coreDataMgr.fetch(Sandwich.self,
+                                               predicate: nil,
+                                               sort: sortDescriptor) ?? []
       }
       else {
-        filteredSandwiches = coreDataMgr.fetch(Sandwich.self, predicate: predicateSearchText, sort: nil) ?? []
+        filteredSandwiches = coreDataMgr.fetch(Sandwich.self,
+                                               predicate: predicateSearchText,
+                                               sort: sortDescriptor) ?? []
       }
     }
     else {
@@ -138,12 +153,16 @@ class DataManager {
       let predicateSauceAmount = NSPredicate(format: "sauceAmount = %@", sauceAmountModel)
       
       if searchText.isEmpty {
-        filteredSandwiches = coreDataMgr.fetch(Sandwich.self, predicate: predicateSauceAmount, sort: nil) ?? []
+        filteredSandwiches = coreDataMgr.fetch(Sandwich.self,
+                                               predicate: predicateSauceAmount,
+                                               sort: sortDescriptor) ?? []
       }
       else {
         let predicateSearchText = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateSauceAmount, predicateSearchText])
-        filteredSandwiches = coreDataMgr.fetch(Sandwich.self, predicate: compoundPredicate, sort: nil) ?? []
+        filteredSandwiches = coreDataMgr.fetch(Sandwich.self,
+                                               predicate: compoundPredicate,
+                                               sort: sortDescriptor) ?? []
       }
     }
     return filteredSandwiches
