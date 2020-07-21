@@ -11,17 +11,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  let IS_DATA_PRELOADED_KEY = "isDataPreloaded"
-  let userDefaults = UserDefaults.standard
-  let dataMgr = DataManager.shared
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch
     
-    let isDataPreloadedInDB = userDefaults.bool(forKey: IS_DATA_PRELOADED_KEY)
+    let userDefaults = UserDefaults.standard
+    let dataMgr = DataManager.shared
+
+    let isDataPreloadedInDB = userDefaults.bool(forKey: Constants.userDefaultsKeyIsDataPreloaded)
     if  !isDataPreloadedInDB {
       dataMgr.preloadDatabaseWithDefaultData()
-      userDefaults.set(!isDataPreloadedInDB, forKey: IS_DATA_PRELOADED_KEY)
+      userDefaults.set(!isDataPreloadedInDB, forKey: Constants.userDefaultsKeyIsDataPreloaded)
     }
     return true
   }

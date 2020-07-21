@@ -8,6 +8,8 @@
 
 import UIKit
 
+//MARK: - SandwichDataSource Protocol
+
 protocol SandwichDataSource {
   func saveSandwich(_: SandwichData)
   func editSandwich(_ sandwich: Sandwich, withName
@@ -27,6 +29,8 @@ enum Sort {
   case ascending
   case descending
 }
+
+//MARK: - SandwichViewController class implementation
 
 class SandwichViewController: UIViewController {
   
@@ -61,34 +65,19 @@ class SandwichViewController: UIViewController {
       collectionView.delegate = self
     }
   }
-  
   @IBOutlet private var deleteBarBtn: UIBarButtonItem!
   @IBOutlet private var listGridBarBtn: UIBarButtonItem!
   @IBOutlet private var sortBarBtn: UIBarButtonItem!
   
   //MARK: - Properties
   
-  struct Constants {
-    private init() { }
-    static let userDefaultsKey = "selectedFilterIndex"
-    static let addSegueIdentifier = "AddSandwichSegue"
-    static let editSegueIdentifier = "EditSandwichSegue"
-    static let listCellReuseIdentifier = SandwichListCell.reuseIdentifier
-    static let gridCellReuseIdentifier = SandwichCollectionCell.reuseIdentifier
-    static let gridIcon = "square.grid.2x2"
-    static let listIcon = "list.bullet"
-    static let ascendingIcon = "icons8-ascending-sort"
-    static let descendingIcon = "icons8-descending-sort"
-    static let searchPlaceholder = "Filter Sandwiches"
-  }
-  
   private var selectedLayout = Layout.grid
   private var sortIsAscending = true
   private var sandwiches = [Sandwich]()
   private let userDefaults = UserDefaults.standard
   
-  var collectionViewDataSource: CollectionViewDataSource?
-  var collectionViewLayoutModel: CollectionViewLayoutModel?
+  private var collectionViewDataSource: CollectionViewDataSource?
+  private var collectionViewLayoutModel: CollectionViewLayoutModel?
   
   private let searchController = UISearchController(searchResultsController: nil)
   private lazy var addBtn: UIButton = {
@@ -128,7 +117,7 @@ class SandwichViewController: UIViewController {
     self.navigationItem.searchController = searchController
     self.navigationItem.hidesSearchBarWhenScrolling = false
     definesPresentationContext = true
-    let selectedScoreIndex = userDefaults.integer(forKey: Constants.userDefaultsKey)
+    let selectedScoreIndex = userDefaults.integer(forKey: Constants.userDefaultsKeyFilterIndex)
     searchController.searchBar.selectedScopeButtonIndex = selectedScoreIndex
     searchController.searchBar.delegate = self
     
@@ -173,7 +162,8 @@ class SandwichViewController: UIViewController {
       navigationItem.rightBarButtonItem = nil
       navigationItem.rightBarButtonItems = [listGridBarBtn, sortBarBtn]
     }
-        
+    
+    //reload collection view to show/hide delete icons on cells
     collectionViewDataSource?.isEditing = isEditing
     collectionView.allowsMultipleSelection = true
     collectionView.reloadData()
@@ -192,7 +182,7 @@ class SandwichViewController: UIViewController {
     
     let currentLayout = selectedLayout
     
-    //change bar button item image
+    //change bar button item image based on user selection
     let gridBtn = sender as! UIBarButtonItem
     gridBtn.image = currentLayout == .grid ?
       UIImage(systemName: Constants.gridIcon) : UIImage(systemName: Constants.listIcon)
@@ -200,7 +190,8 @@ class SandwichViewController: UIViewController {
     //refresh current selected layout
     selectedLayout = currentLayout == .grid ? .list : .grid
     
-    //invalidate collection view layout and reapply current snapshot
+    //invalidate previous layout and reconfigure new layout based on the
+    //and reapply current data snapshot to the data source
     let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
     layout?.invalidateLayout()
     collectionView.collectionViewLayout = collectionViewLayoutModel.configureLayout(for: selectedLayout)
@@ -209,28 +200,37 @@ class SandwichViewController: UIViewController {
   }
   
   @IBAction private func sortBarButton(_ sender: Any) {
-    sortIsAscending.toggle() //toggles the boolean value
     
+    sortIsAscending.toggle()
+    
+    //update the sort bar button item image based on user selection
     let sortBtn = sender as! UIBarButtonItem
     sortBtn.image = sortIsAscending ? UIImage(named: Constants.descendingIcon) :
       UIImage(named: Constants.ascendingIcon)
     
+    //sort sandwiches in the data source
     collectionViewDataSource?.sortSandwiches(sortIsAscending: sortIsAscending)
   }
   
   @IBAction private func deleteSelectedItems() {
+    
+    //delete selcted cells from the data source
     guard let selectedIndexPaths = collectionView.indexPathsForSelectedItems else { return }
     collectionViewDataSource?.deleteItems(at: selectedIndexPaths)
     
+    //update isEditing and refresh add bar button item state
     isEditing.toggle()
     addBtn.isEnabled = !isEditing
     collectionViewDataSource?.isEditing = isEditing
+    
+    //reload collection view to show/hide delete icons on cells
     collectionView.reloadData()
   }
   
   private func filterContentForSearchText(_ searchText: String,
                                           sauceAmount: SauceAmount? = nil) {
     
+    //filter sandwiches based on user input search text in the data source
     collectionViewDataSource?.filterContentForSearchText(searchText,
                                                          isFiltering: isFiltering,
                                                          sauceAmount: sauceAmount)
@@ -290,7 +290,9 @@ extension SandwichViewController: UISearchResultsUpdating {
 extension SandwichViewController: UISearchBarDelegate {
   
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    userDefaults.set(selectedScope, forKey: Constants.userDefaultsKey)
+    
+    userDefaults.set(selectedScope, forKey: Constants.userDefaultsKeyFilterIndex)
+    
     let sauceAmount = SauceAmount(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
   }
@@ -301,7 +303,7 @@ extension SandwichViewController: UISearchBarDelegate {
 extension SandwichViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if isEditing {
+    if isEditing || isFiltering {
       return
     }
     

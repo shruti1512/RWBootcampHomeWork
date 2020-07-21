@@ -10,11 +10,15 @@ import UIKit
 
 class AddSandwichViewController: UIViewController {
   
+  //MARK: - IBOutlets
+
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var navigationBar: UINavigationBar!
   
+  //MARK: - Properties
+
   var imageName: String
   var sauceAmount: SauceAmount!
   var sandwich: Sandwich?
@@ -22,17 +26,27 @@ class AddSandwichViewController: UIViewController {
   var dataSource: SandwichDataSource?
   let dataManager = DataManager.shared
   
+  //MARK: - Initializer
+
   required init?(coder: NSCoder) {
     imageName = AddSandwichViewController.randomImageName()
     sauceAmount = SauceAmount.none
     super.init(coder: coder)
   }
   
+  //MARK: - View Lifecycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     loadSandwich()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    imageView.image = UIImage.init(imageLiteralResourceName: imageName)
+  }
+  
+  //MARK: - Set up data
+
   func loadSandwich() {
     
     guard let sandwich = sandwich else { return }
@@ -51,15 +65,13 @@ class AddSandwichViewController: UIViewController {
     }
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    imageView.image = UIImage.init(imageLiteralResourceName: imageName)
-  }
-  
   class func randomImageName() -> String {
     let sandwichNum = Int.random(in: 1...15)
     return "sandwich\(sandwichNum)"
   }
   
+  //MARK: - IBActions
+
   @IBAction func sauceAmountChanged(_ sender: UISegmentedControl) {
     sauceAmount = SauceAmount(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "None")
   }
@@ -98,6 +110,8 @@ class AddSandwichViewController: UIViewController {
   
   }
   
+  //MARK: - Show AlertViewController
+
   func showAlertForMissingSandwichName() {
     let alert = UIAlertController(title: "Missing Name",
                                   message: "You need to enter a sandwich name!",
@@ -117,6 +131,8 @@ class AddSandwichViewController: UIViewController {
     alert.addAction(okAction)
     self.present(alert, animated: true, completion: nil)
   }
+
+  //MARK: - Save & Edit Sandwich
 
   func saveSandwich(sandwich: SandwichData) {
     guard let dataSource = dataSource else {
@@ -148,12 +164,14 @@ class AddSandwichViewController: UIViewController {
       dataSource.editSandwich(sandwich, withName: name, sauceAmount: sauceAmount)
       dismiss(animated: true, completion: nil)
     }
-
   }
   
 }
 
+//MARK: - UITextFieldDelegate
+
 extension AddSandwichViewController: UITextFieldDelegate {
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return false

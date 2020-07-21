@@ -18,14 +18,24 @@ typealias CompletionHandler = (Bool, DatabaseError?) -> Void
 
 class CoreDataManager {
   
+  //MARK: - Database Schema Model Name
+
   private var modelName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
   
-  init() { }
+  //MARK: - Intialize with Custom Database Schema Model Name
+  
+  convenience init(modelName: String) {
+    
+    self.init()
+    self.modelName = modelName
+  }
+
+  //MARK: - Create PersistantContainer
   
   lazy var persistantContainer: NSPersistentContainer = {
     
     guard let modelUrl = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
-      fatalError("Databse with name \(modelName) does not exist in the bundle.")
+      fatalError("Databse with schema name \(modelName) does not exist in the bundle.")
     }
     
     guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl) else {
@@ -42,15 +52,15 @@ class CoreDataManager {
     return container
   }()
   
+  //MARK: - Create Managed Object Context
+
   var context: NSManagedObjectContext {
+    
     return persistantContainer.viewContext
   }
-  
-  convenience init(modelName: String) {
-    self.init()
-    self.modelName = modelName
-  }
-  
+    
+  //MARK: - Add Managed Object in Current Context
+
   func addManagedObject<M: NSManagedObject>(_ type: M.Type) -> M? {
     
     _ = context
@@ -61,6 +71,8 @@ class CoreDataManager {
     return modelObject
   }
   
+  //MARK: - Save Current Context
+
   func saveData() {
     
     if context.hasChanges {
@@ -73,6 +85,8 @@ class CoreDataManager {
     }
   }
   
+  //MARK: - Fetch Managed Object Models from Context
+
   func fetch<M: NSManagedObject>(_ type: M.Type, predicate: NSPredicate?=nil, sort: NSSortDescriptor?=nil) -> [M]? {
     
     var fetched: [M]?
@@ -91,7 +105,10 @@ class CoreDataManager {
     return fetched
   }
   
+  //MARK: - Delete Managed Object Model from Context
+
   func delete<M: NSManagedObject>(_ modelObject: M) {
+    
     context.delete(modelObject)
   }
   

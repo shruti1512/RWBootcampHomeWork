@@ -12,7 +12,7 @@ enum FileError: String, Error {
   case fileNotFound
 }
 
-//JSON Parser class to decode json from a json file in bundle
+//This class is used to decode json from a json file located in bundle
 
 class JSONParser<Model: Decodable>  {
   

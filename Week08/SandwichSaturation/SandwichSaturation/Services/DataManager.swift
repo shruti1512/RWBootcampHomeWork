@@ -10,12 +10,18 @@ import Foundation
 
 class DataManager {
   
+  //MARK: - Properties
+  
   static let shared = DataManager()
-  private init() { }
   var sandwichSauceModels = [SandwichSauceAmount]()
   var sandwiches = [Sandwich]()
-
   private let coreDataMgr = CoreDataManager()
+
+  //MARK: - Intializer
+
+  private init() { }
+
+  //MARK: - Preload Data From JSON Into Database
 
   func preloadDatabaseWithDefaultData() {
     
@@ -49,13 +55,19 @@ class DataManager {
     coreDataMngr.saveData()
   }
   
+  //MARK: - Fetch Sandwich Sauce Models From Database
+
   func fetchSandwichSauceModels() -> [SandwichSauceAmount] {
+    
     let sauceModels = coreDataMgr.fetch(SandwichSauceAmount.self) ?? []
     self.sandwichSauceModels = sauceModels
     return sauceModels
   }
   
+  //MARK: - Fetch Sandwich Models From Database
+
   func fetchSandwichModels(isAscending: Bool = true) -> [Sandwich] {
+    
     let sortDescriptor = NSSortDescriptor(key: #keyPath(Sandwich.name),
                                           ascending: isAscending,
                                           selector: #selector(NSString.caseInsensitiveCompare))
@@ -63,12 +75,17 @@ class DataManager {
     return sandwiches
   }
   
+  //MARK: - Check for Sandwich Model In Database
+
   func checkIfSandwichExists(_ sandwich: SandwichData) -> Bool {
+    
     let filterdArray = sandwiches.filter { $0.name == sandwich.name && $0.sauceAmount.sauceAmount == sandwich.sauceAmount }
     let doesObjectAreadyExist = filterdArray.count > 0
     return doesObjectAreadyExist
   }
   
+  //MARK: - Save Sandwich Model In Database
+
   func saveSandwich(_ sandwichData: SandwichData) -> Sandwich? {
     
     let sandwich = coreDataMgr.addManagedObject(Sandwich.self)
@@ -84,7 +101,10 @@ class DataManager {
     return sandwich
   }
 
+  //MARK: - Edit Sandwich Model and Update Database
+
   func editSandwich(_ sandwich: Sandwich, withSauce sauceAmount: SauceAmount)  -> Sandwich? {
+    
     if let sauceAmountModel = sandwichSauceModels.filter({  $0.sauceAmount == sauceAmount }).first {
       sandwich.sauceAmount = sauceAmountModel
       coreDataMgr.saveData()
@@ -92,6 +112,8 @@ class DataManager {
     }
     return nil
   }
+
+  //MARK: - Filter Sandwich Models Based on Search Term and Sauce In Database
 
   func filterSandwichesForSearchText(_ searchText: String,
                                      sauceAmount: SauceAmount? = nil) -> [Sandwich] {
@@ -127,34 +149,20 @@ class DataManager {
     return filteredSandwiches
   }
 
+  //MARK: - Delete Sandwich Model from Database
+
   func deleteSandwich(_ sandwich: Sandwich) {
+    
     coreDataMgr.delete(sandwich)
     coreDataMgr.saveData()
   }
   
+  //MARK: - Delete Multiple Sandwich Models from Database
+
   func deleteSandwiches(_ sandwiches: [Sandwich]) {
+    
     sandwiches.forEach {
       deleteSandwich($0)
-    }
-  }
-  
-  func getSandwich(before sandwich: Sandwich) -> Sandwich? {
-    
-    let sandwichAfter = sandwiches.last {
-      $0.name.caseInsensitiveCompare(sandwich.name) == ComparisonResult.orderedAscending
-    }
-    return sandwichAfter
-  }
-
-  func getSandwich(after sandwich: Sandwich) -> Sandwich? {
-    
-    let sandwichesDescending = sandwiches.sorted { $0.name > $1.name }
-    if let sandichAfter = sandwichesDescending.first(where: { $0.name < sandwich.name }) {
-      return sandichAfter
-    }
-    else {
-      let sandichAfter = sandwichesDescending.first
-      return sandichAfter
     }
   }
 

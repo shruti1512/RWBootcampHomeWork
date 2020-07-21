@@ -75,6 +75,7 @@ class CollectionViewDataSource: NSObject {
     
       switch self.layout {
         
+        //Set up data for grid collection view cells
         case .grid:
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SandwichCollectionCell.reuseIdentifier,
                                                         for: indexPath)  as! SandwichCollectionCell
@@ -94,6 +95,7 @@ class CollectionViewDataSource: NSObject {
           }
           return cell
         
+        //Set up data for list collection view cells
         case .list:
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SandwichListCell.reuseIdentifier,
                                                         for: indexPath)  as! SandwichListCell
@@ -134,15 +136,19 @@ class CollectionViewDataSource: NSObject {
     
     guard let dataSource = dataSource else { return }
     
+    //delete sandwich items from the database and the new snapshot
+    //apply the updated snapshot
+
     let selectedItems = indexPaths.compactMap{ dataSource.itemIdentifier(for: $0) }
     var currentSnapshot = dataSource.snapshot()
     currentSnapshot.deleteItems(selectedItems)
     dataSource.apply(currentSnapshot, animatingDifferences: true)
     
     dataManager.deleteSandwiches(selectedItems)
-//    sandwiches = dataManager.fetchSandwichModels()
   }
   
+  // MARK: - Get Item Identifier for Sandiwch Model from Current Snapshot
+
   func itemIdentifer(for indexPath: IndexPath) -> Sandwich? {
     return dataSource?.itemIdentifier(for: indexPath)
   }
@@ -153,6 +159,8 @@ class CollectionViewDataSource: NSObject {
                                   isFiltering: Bool,
                                   sauceAmount: SauceAmount? = nil) {
     
+    //get filtered sandwiches from the database and apply the new snapshot
+
     filteredSandwiches = dataManager.filterSandwichesForSearchText(searchText,
                                                                    sauceAmount: sauceAmount)
     self.isFiltering = isFiltering
@@ -162,6 +170,9 @@ class CollectionViewDataSource: NSObject {
   // MARK: - Sort Sandiwches
 
   func sortSandwiches(sortIsAscending: Bool) {
+    
+    //get sorted sandwiches from the database and apply the new snapshot
+
     self.sortIsAscending = sortIsAscending
     sandwiches = dataManager.fetchSandwichModels(isAscending: sortIsAscending)
     applySnapshot()
@@ -175,8 +186,12 @@ extension CollectionViewDataSource: SandwichDataSource {
   
   func saveSandwich(_ sandwichData: SandwichData) {
         
+    //insert the new sandwich item in the database
+
     guard let newlyAddedSandwich = dataManager.saveSandwich(sandwichData),
       let dataSource = dataSource  else { return }
+    
+    //insert the new sandwich item in the snapshot
     
     var snapshot = dataSource.snapshot()    
     let names = snapshot.itemIdentifiers.map{ $0.name.lowercased() }
@@ -195,20 +210,27 @@ extension CollectionViewDataSource: SandwichDataSource {
     else {
       snapshot.appendItems([newlyAddedSandwich])
     }
+    
+    //apply updated snasphot
+    
     dataSource.apply(snapshot, animatingDifferences: true)
-
-//    sandwiches = dataManager.fetchSandwichModels(isAscending: sortIsAscending)
   }
     
   func editSandwich(_ sandwich: Sandwich, withName newName: String, sauceAmount: SauceAmount) {
     
+    //edit and save sanwich in the database
+
     guard let editedSandwich = dataManager.editSandwich(sandwich, withSauce: sauceAmount),
     let dataSource = dataSource else {
       return
     }
     
+    //reload the edited sanwich items in the snapshot
+    
     var snapshot = dataSource.snapshot()
     snapshot.reloadItems([editedSandwich])
+    
+    //if the sandwich name has been changed then move the new sandwich in the correct sort order
     
     if sandwich.name != newName {
       sandwich.name = newName
@@ -233,9 +255,8 @@ extension CollectionViewDataSource: SandwichDataSource {
       }
     }
     
+    //apply updated snasphot
     dataSource.apply(snapshot, animatingDifferences: true)
-
-//    sandwiches = dataManager.fetchSandwichModels(isAscending: sortIsAscending)
   }
   
 }
