@@ -72,7 +72,8 @@ class ViewController: UIViewController {
   
   private func loadData() {
     
-    game.loadCategoryAndClues {
+    game.loadCategoryAndClues { [weak self] in
+      guard let self = self else { return }
       self.setupViewsForNetworking(isHidden: false)
       self.updateViewForData()
     }
@@ -80,7 +81,8 @@ class ViewController: UIViewController {
   
   private func loadDataForNextQuestion() {
     
-    game.loadCategoryAndClues {
+    game.loadCategoryAndClues { [weak self] in
+      guard let self = self else { return }
       DispatchQueue.main.asyncAfter(deadline: .now() + self.animationDelay) {
         self.updateViewForData()
       }
@@ -89,7 +91,11 @@ class ViewController: UIViewController {
   
   private func updateViewForData() {
         
-    UIView.transition(with: self.view, duration: animationDuration, options: .transitionCrossDissolve, animations: {
+    UIView.transition(with: self.view, duration: animationDuration,
+                      options: .transitionCrossDissolve,
+                      animations: { [weak self] in
+      guard let self = self else { return }
+                        
       self.view.isUserInteractionEnabled = true
       self.tableView.reloadData()
       self.categoryLabel.text = self.game.category?.title.uppercased()
@@ -108,6 +114,8 @@ class ViewController: UIViewController {
     tableView.isHidden = isHidden
   }
   
+  //MARK: - Animate Score & Correct Answer
+
   private func highlightCorrectAnswer() {
     
     for (index, cell) in tableView.visibleCells.enumerated() {
@@ -120,6 +128,14 @@ class ViewController: UIViewController {
   }
   
   func animateScoreLabel() {
+    
+    UIView.animate(withDuration: 1.0, animations: {
+      self.scoreLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+    }) { _ in
+      UIView.animate(withDuration: 1.0) {
+         self.scoreLabel.transform = .identity
+      }
+    }
   }
   
   //MARK: - IBAction
@@ -137,10 +153,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     return game.clues.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier,
                                                    for: indexPath) as? ClueTableViewCell else {
                                                     fatalError("Cell could not be dequeued")
@@ -154,10 +172,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     return UITableView.automaticDimension
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     guard let cell = tableView.cellForRow(at: indexPath) as? ClueTableViewCell else {
       return
     }
@@ -182,12 +202,17 @@ extension ViewController: ClueTableViewCellDelegate {
     loadDataForNextQuestion()
     
     guard let clue = selectedClue else { return }
-    game.calculateScore(forClue: clue) {
+    
+    game.calculateScore(forClue: clue) { [weak self] in
+      
+      guard let self = self else { return }
       self.view.isUserInteractionEnabled = false
-      $0 == true ? soundManager.playCorrectAnswerAudio() : soundManager.playWrongAnswerAudio()
+      $0 == true ? soundManager.playCorrectAnswerAudio() : soundManager.playIncorrectAnswerAudio()
       $0 == false ? cell.updateForWrongAnswer() : ()
       self.highlightCorrectAnswer()
+      let previousScore = Int(scoreLabel.text!)
       self.scoreLabel.text = String(game.score)
+      previousScore != game.score ? self.animateScoreLabel() : ()
     }
   }
   

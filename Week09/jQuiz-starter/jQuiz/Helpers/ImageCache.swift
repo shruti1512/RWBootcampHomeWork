@@ -29,8 +29,7 @@ extension UIImageView {
           self.transition(toImage: image)
         }
       }
-      //if image doesn't exist in cache then download from the network
-        
+      //if image doesn't exist in cache, download from the network
       else {
         URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
           
@@ -38,13 +37,13 @@ extension UIImageView {
             let response = response as? HTTPURLResponse,
             (200..<300).contains(response.statusCode) else { return }
           
-          //save the downloaded image in the cache
+          //save the downloaded image in cache
           
             guard let downloadedImage = UIImage(data: data) else { return }
             let cachedResponse = CachedURLResponse(response: response, data: data)
             cache.storeCachedResponse(cachedResponse, for: request)
             
-            //load the downloaded image in the imageview on main thread
+            //load the downloaded image in imageview on main thread
 
             DispatchQueue.main.async {
               self.transition(toImage: downloadedImage)

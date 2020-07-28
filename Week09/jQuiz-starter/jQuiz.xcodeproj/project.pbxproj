@@ -137,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				335AC2A424CA549600DBBDE1 /* Clue.swift */,
-				335AC2A524CA549600DBBDE1 /* SoundManager.swift */,
 				335AC2B224CA93C700DBBDE1 /* GameModel.swift */,
 			);
 			path = Models;
@@ -154,6 +153,7 @@
 		335AC2A124CA530C00DBBDE1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				335AC2A524CA549600DBBDE1 /* SoundManager.swift */,
 				335AC2A824CA54A000DBBDE1 /* NetworkingHandler.swift */,
 			);
 			path = Services;

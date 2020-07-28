@@ -10,10 +10,11 @@ import AVFoundation
 
 class SoundManager: NSObject {
   
-  public static let shared = SoundManager()
+  //MARK: - Properties
   
+  public static let shared = SoundManager()
   private let jeopardyAudioFileName = "Jeopardy-theme-song.mp3"
-  private let wrongAnswerAudioFileName = "Wrong-answer-sound-effect.mp3"
+  private let incorrectAnswerAudioFileName = "Wrong-answer-sound-effect.mp3"
   private let correctAnswerAudioFileName = "correct_answer.mp3"
 
   private lazy var themeAudioPlayer: AVAudioPlayer? = {
@@ -33,7 +34,7 @@ class SoundManager: NSObject {
   
   private lazy var wrongAnsAudioPlayer: AVAudioPlayer? = {
     
-    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: wrongAnswerAudioFileName)  {
+    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: incorrectAnswerAudioFileName)  {
       do {
         let audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
         audioPlayer.prepareToPlay()
@@ -76,6 +77,8 @@ class SoundManager: NSObject {
     }
   }
   
+  //MARK: - Play/Stop Audio Players
+
   public func playThemeSound() {
     themeAudioPlayer?.play()
   }
@@ -84,13 +87,15 @@ class SoundManager: NSObject {
     themeAudioPlayer?.stop()
   }
 
-  public func playWrongAnswerAudio() {
+  public func playIncorrectAnswerAudio() {
     wrongAnsAudioPlayer?.play()
   }
   
   public func playCorrectAnswerAudio() {
     correctAnsAudioPlayer?.play()
   }
+
+  //MARK: - Set up Theme Audio User Preference
 
   public func toggleThemeSoundPreference() {
     

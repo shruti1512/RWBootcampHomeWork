@@ -15,6 +15,7 @@ struct CategoryWrapper: Decodable {
 struct Category: Codable {
   let id: Int
   let title: String
+  let cluesCount: Int?
 }
 
 struct Clue: Codable {

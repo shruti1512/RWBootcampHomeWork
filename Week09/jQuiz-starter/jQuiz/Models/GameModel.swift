@@ -15,6 +15,7 @@ class GameModel {
   
   private let maxClueCount = 4
   private var cluesCompletionHandler: CompletionHandler?
+  private let networkMgr = Networking.shared
 
   public var score = 0
   public var category: Category?
@@ -24,14 +25,21 @@ class GameModel {
   
   public func loadCategoryAndClues(onCompletion: CompletionHandler? = nil) {
     
-    cluesCompletionHandler = onCompletion
+    if onCompletion != nil {
+      cluesCompletionHandler = onCompletion
+    }
     
-    Networking.getCategoryID { (category, error) in
-      guard let category = category else { return }
+    networkMgr.getCategoryID { [weak self] (category, error) in
+
+      guard let category = category, let self = self else { return }
       self.category = category
       print("categoryID: \(category.id)")
       
-      Networking.getCluesForQuestion(withCategoryID: self.category!.id) { (clues, error) in
+      let categoryID = String(category.id)
+      let cluesCount = category.cluesCount ?? 0
+      let offset = cluesCount <= self.maxClueCount ? "0" : String(cluesCount - self.maxClueCount)
+      
+      self.networkMgr.getCluesForQuestion(withCategoryID: categoryID, offset: offset) { (clues, error) in
         guard let clues = clues else { return }
         self.checkForValidClues(inArray: clues)
       }
@@ -57,7 +65,7 @@ class GameModel {
       loadCategoryAndClues()
     }
     else {
-      self.setupQuestionAndAnswer()
+      setupQuestionAndAnswer()
     }
     
   }
@@ -65,7 +73,7 @@ class GameModel {
   private func setupQuestionAndAnswer() {
     let randomID = Int.random(in: 0..<maxClueCount)
     correctAnsClueIndex = randomID
-    self.correctAnswerClue = self.clues[randomID]
+    correctAnswerClue = clues[randomID]
     guard let cluesCompletionHandler = cluesCompletionHandler else {
       return
     }
@@ -78,10 +86,9 @@ class GameModel {
     var isCorrectAnswer = false
     guard let correctAnswerClue = correctAnswerClue else { return }
     if clue.answer == correctAnswerClue.answer {
-      if let points = correctAnswerClue.points {
-        score += points
-        isCorrectAnswer.toggle()
-      }
+      let points = correctAnswerClue.points ?? 200
+      score += points
+      isCorrectAnswer.toggle()
     }
     onCompletion(isCorrectAnswer)
   }

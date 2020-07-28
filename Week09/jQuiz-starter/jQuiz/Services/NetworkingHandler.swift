@@ -17,21 +17,36 @@ enum NetworkError: Error {
 
 class Networking {
   
+  //MARK: - Properties
+
   typealias CategoryCompletionHandler = (Category?, NetworkError?) -> Void
   typealias ClueCompletionHandler = ([Clue]?, NetworkError?) -> Void
-
-  static let sharedInstance = Networking()
   
-  public static func getCategoryID(withCompletion completion: @escaping CategoryCompletionHandler) {
+  let categoryIdURL = "http://www.jservice.io/api/random"
+  let cluesURL = "http://www.jservice.io/api/clues/?category="
+  let cluesURLScheme = "http"
+  let cluesURLHost = "www.jservice.io"
+  let cluesURLPath = "/api/clues/"
+  let cluesURLQueryItemCategory = "category"
+  let cluesURLQueryItemOffset = "offset"
+
+  //MARK: - Shared Instance
+
+  public static let shared = Networking()
+  private init() { }
+  
+  //MARK: - Get Catgeory From JService API
+
+  public func getCategoryID(withCompletion completion: @escaping CategoryCompletionHandler) {
     
-    guard let url = URL(string: "http://www.jservice.io/api/random") else {
+    guard let url = URL(string: categoryIdURL) else {
       completion(nil, .failedRequest)
       return
     }
     
     URLSession.shared.dataTask(with: url) { (data, response, error) in
       
-      //Execute completion handler on main thread
+      //Executing completion handler on main thread
       DispatchQueue.main.async {
         
         guard error == nil else {
@@ -65,13 +80,9 @@ class Networking {
         }
         
         do {
-//          let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-//          print(jsonObject)
-
           let decoder = JSONDecoder()
           decoder.keyDecodingStrategy = .convertFromSnakeCase
           let parsedJSON: [CategoryWrapper] = try decoder.decode([CategoryWrapper].self, from: data)
-//          print(parsedJSON)
           guard let firstObject = parsedJSON.first else {
             completion(nil, .invalidData)
             return
@@ -87,17 +98,28 @@ class Networking {
     
   }
   
-  public static func getCluesForQuestion(withCategoryID categoryID: Int,
-                                  withCompletion completion: @escaping ClueCompletionHandler) {
+  //MARK: - Get Clues From JService API
+  
+  public func getCluesForQuestion(withCategoryID categoryID: String,
+                                         offset: String,
+                                         onCompletion completion: @escaping ClueCompletionHandler) {
     
-    guard let url = URL(string: "http://www.jservice.io/api/clues/?category=\(categoryID)") else {
+    var urlBuilder = URLComponents()
+    urlBuilder.scheme = cluesURLScheme
+    urlBuilder.host = cluesURLHost
+    urlBuilder.path = cluesURLPath
+    urlBuilder.queryItems = [
+      URLQueryItem(name: cluesURLQueryItemCategory, value: categoryID),
+      URLQueryItem(name: cluesURLQueryItemOffset, value: offset)]
+    
+    guard let url = urlBuilder.url else {
       completion(nil, .failedRequest)
       return
     }
-    
+
     URLSession.shared.dataTask(with: url) { (data, response, error) in
       
-      //Execute completion handler on main thread
+      //Executing completion handler on main thread
       DispatchQueue.main.async {
         
         guard error == nil else {
@@ -131,12 +153,11 @@ class Networking {
         }
         
         do {
-//          let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-//          print(jsonObject)
+          let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+          print(jsonObject)
 
           let decoder = JSONDecoder()
           let parsedJSON: [Clue] = try decoder.decode([Clue].self, from: data)
-//          print(parsedJSON)
           completion(parsedJSON, nil)
           
         } catch {
