@@ -38,7 +38,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IW7-gs-GWY">
                                                 <rect key="frame" x="0.0" y="26.66666666666665" width="394" height="103.33333333333331"/>
-                                                <mutableString key="text">Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question</mutableString>
+                                                <string key="text">Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question Question</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
                                 <rect key="frame" x="25" y="797" width="50" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="X2y-g7-wgz"/>
                                     <constraint firstAttribute="width" constant="50" id="rsE-cp-MDa"/>
@@ -121,6 +121,6 @@
     </scenes>
     <resources>
         <image name="background" width="1662" height="1601"/>
-        <image name="icons8-no-audio" width="25" height="25"/>
+        <image name="icons8-no-audio" width="32" height="32"/>
     </resources>
 </document>

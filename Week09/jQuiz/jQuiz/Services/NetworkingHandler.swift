@@ -153,8 +153,8 @@ class Networking {
         }
         
         do {
-          let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-          print(jsonObject)
+//          let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+//          print(jsonObject)
 
           let decoder = JSONDecoder()
           let parsedJSON: [Clue] = try decoder.decode([Clue].self, from: data)
