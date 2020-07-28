@@ -12,7 +12,12 @@ class SoundManager: NSObject {
   
   //MARK: - Properties
   
+  private struct Keys {
+    static let themeSound = "themeSound"
+  }
+  
   public static let shared = SoundManager()
+  
   private let jeopardyAudioFileName = "Jeopardy-theme-song.mp3"
   private let incorrectAnswerAudioFileName = "Wrong-answer-sound-effect.mp3"
   private let correctAnswerAudioFileName = "correct_answer.mp3"
@@ -70,10 +75,10 @@ class SoundManager: NSObject {
       // Since UserDefaults.standard.bool(forKey: "sound") will default to "false" if it has not been set
       // You might want to use `object`, because if an object has not been set yet it will be nil
       // Then if it's nil you know it's the user's first time launching the app
-      UserDefaults.standard.object(forKey: "sound") as? Bool
+      UserDefaults.standard.object(forKey: Keys.themeSound) as? Bool
     }
     set {
-      UserDefaults.standard.set(newValue, forKey: "sound")
+      UserDefaults.standard.set(newValue, forKey: Keys.themeSound)
     }
   }
   
