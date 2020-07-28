@@ -22,13 +22,17 @@ class Networking {
   typealias CategoryCompletionHandler = (Category?, NetworkError?) -> Void
   typealias ClueCompletionHandler = ([Clue]?, NetworkError?) -> Void
   
-  let categoryIdURL = "http://www.jservice.io/api/random"
-  let cluesURL = "http://www.jservice.io/api/clues/?category="
-  let cluesURLScheme = "http"
-  let cluesURLHost = "www.jservice.io"
-  let cluesURLPath = "/api/clues/"
-  let cluesURLQueryItemCategory = "category"
-  let cluesURLQueryItemOffset = "offset"
+  private struct URLs {
+    
+    private init() { }
+    static let categoryIdURL = "http://www.jservice.io/api/random"
+    static let cluesURL = "http://www.jservice.io/api/clues/?category="
+    static let cluesURLScheme = "http"
+    static let cluesURLHost = "www.jservice.io"
+    static let cluesURLPath = "/api/clues/"
+    static let cluesURLQueryItemCategory = "category"
+    static let cluesURLQueryItemOffset = "offset"
+  }
 
   //MARK: - Shared Instance
 
@@ -39,7 +43,7 @@ class Networking {
 
   public func getCategoryID(withCompletion completion: @escaping CategoryCompletionHandler) {
     
-    guard let url = URL(string: categoryIdURL) else {
+    guard let url = URL(string: URLs.categoryIdURL) else {
       completion(nil, .failedRequest)
       return
     }
@@ -105,12 +109,12 @@ class Networking {
                                          onCompletion completion: @escaping ClueCompletionHandler) {
     
     var urlBuilder = URLComponents()
-    urlBuilder.scheme = cluesURLScheme
-    urlBuilder.host = cluesURLHost
-    urlBuilder.path = cluesURLPath
+    urlBuilder.scheme = URLs.cluesURLScheme
+    urlBuilder.host = URLs.cluesURLHost
+    urlBuilder.path = URLs.cluesURLPath
     urlBuilder.queryItems = [
-      URLQueryItem(name: cluesURLQueryItemCategory, value: categoryID),
-      URLQueryItem(name: cluesURLQueryItemOffset, value: offset)]
+      URLQueryItem(name: URLs.cluesURLQueryItemCategory, value: categoryID),
+      URLQueryItem(name: URLs.cluesURLQueryItemOffset, value: offset)]
     
     guard let url = urlBuilder.url else {
       completion(nil, .failedRequest)

@@ -12,19 +12,23 @@ class SoundManager: NSObject {
   
   //MARK: - Properties
   
+  public static let shared = SoundManager()
+
   private struct Keys {
+    private init() { }
     static let themeSound = "themeSound"
   }
-  
-  public static let shared = SoundManager()
-  
-  private let jeopardyAudioFileName = "Jeopardy-theme-song.mp3"
-  private let incorrectAnswerAudioFileName = "Wrong-answer-sound-effect.mp3"
-  private let correctAnswerAudioFileName = "correct_answer.mp3"
+    
+  private struct AudioFiles {
+    private init() { }
+    static let jeopardyAudioFileName = "Jeopardy-theme-song.mp3"
+    static let incorrectAnswerAudioFileName = "Wrong-answer-sound-effect.mp3"
+    static let correctAnswerAudioFileName = "correct_answer.mp3"
+  }
 
   private lazy var themeAudioPlayer: AVAudioPlayer? = {
     
-    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: jeopardyAudioFileName)  {
+    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: AudioFiles.jeopardyAudioFileName)  {
       do {
         let audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
         audioPlayer.prepareToPlay()
@@ -39,7 +43,7 @@ class SoundManager: NSObject {
   
   private lazy var wrongAnsAudioPlayer: AVAudioPlayer? = {
     
-    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: incorrectAnswerAudioFileName)  {
+    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: AudioFiles.incorrectAnswerAudioFileName)  {
       do {
         let audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
         audioPlayer.prepareToPlay()
@@ -56,7 +60,7 @@ class SoundManager: NSObject {
 
   private lazy var correctAnsAudioPlayer: AVAudioPlayer? = {
     
-    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: correctAnswerAudioFileName)  {
+    if let soundUrl = Bundle.main.url(forAuxiliaryExecutable: AudioFiles.correctAnswerAudioFileName)  {
       do {
         let audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
         audioPlayer.prepareToPlay()
