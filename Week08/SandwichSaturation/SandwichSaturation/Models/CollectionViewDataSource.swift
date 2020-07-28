@@ -43,7 +43,6 @@ class CollectionViewDataSource: NSObject {
   var layout = Layout.grid
   var dataSource: DataSource?
   var sandwiches = [Sandwich]()
-  var filteredSandwiches = [Sandwich]()
   let collectionView: UICollectionView?
   let sections: [Section]?
   var sortIsAscending = true

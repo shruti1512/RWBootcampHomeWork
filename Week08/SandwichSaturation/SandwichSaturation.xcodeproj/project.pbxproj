@@ -27,11 +27,9 @@
 		332C4C5724C3CFC900B11336 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C4C5524C3CFC900B11336 /* CollectionViewDataSource.swift */; };
 		332C4C5824C3CFC900B11336 /* CollectionViewLayoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C4C5624C3CFC900B11336 /* CollectionViewLayoutModel.swift */; };
 		3350D7D524C6ADE200009966 /* SandwichListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3350D7D024C6ADE100009966 /* SandwichListCell.swift */; };
-		3350D7D624C6ADE200009966 /* SandwichCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3350D7D124C6ADE100009966 /* SandwichCell.swift */; };
 		3350D7D724C6ADE200009966 /* SandwichCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3350D7D224C6ADE100009966 /* SandwichCollectionCell.swift */; };
 		3350D7D824C6ADE200009966 /* SandwichListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7D324C6ADE100009966 /* SandwichListCell.xib */; };
 		3350D7D924C6ADE200009966 /* SandwichCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7D424C6ADE100009966 /* SandwichCollectionCell.xib */; };
-		3350D7DB24C6AEB800009966 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3350D7DA24C6AEB800009966 /* Constants.swift */; };
 		3350D7DE24C6B80A00009966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3350D7DC24C6B80A00009966 /* LaunchScreen.storyboard */; };
 		3389C1DD24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3389C1DB24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift */; };
 		3389C1DE24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3389C1DC24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift */; };
@@ -60,11 +58,9 @@
 		332C4C5524C3CFC900B11336 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		332C4C5624C3CFC900B11336 /* CollectionViewLayoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayoutModel.swift; sourceTree = "<group>"; };
 		3350D7D024C6ADE100009966 /* SandwichListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandwichListCell.swift; sourceTree = "<group>"; };
-		3350D7D124C6ADE100009966 /* SandwichCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandwichCell.swift; sourceTree = "<group>"; };
 		3350D7D224C6ADE100009966 /* SandwichCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandwichCollectionCell.swift; sourceTree = "<group>"; };
 		3350D7D324C6ADE100009966 /* SandwichListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SandwichListCell.xib; sourceTree = "<group>"; };
 		3350D7D424C6ADE100009966 /* SandwichCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SandwichCollectionCell.xib; sourceTree = "<group>"; };
-		3350D7DA24C6AEB800009966 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3350D7DD24C6B80A00009966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3389C1DB24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sandwich+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3389C1DC24C55A8600C85B6D /* SandwichSauceAmount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SandwichSauceAmount+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -185,7 +181,6 @@
 			children = (
 				332C4C4924C21D6B00B11336 /* UIView+Extension.swift */,
 				332C4C2624C0FC7800B11336 /* Extensions.swift */,
-				3350D7DA24C6AEB800009966 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -205,9 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				3350D7D024C6ADE100009966 /* SandwichListCell.swift */,
-				3350D7D124C6ADE100009966 /* SandwichCell.swift */,
-				3350D7D224C6ADE100009966 /* SandwichCollectionCell.swift */,
 				3350D7D324C6ADE100009966 /* SandwichListCell.xib */,
+				3350D7D224C6ADE100009966 /* SandwichCollectionCell.swift */,
 				3350D7D424C6ADE100009966 /* SandwichCollectionCell.xib */,
 			);
 			path = Views;
@@ -299,12 +293,10 @@
 				332C4C4724C2167A00B11336 /* SandwichSauceAmount+CoreDataClass.swift in Sources */,
 				3389C1DD24C55A8600C85B6D /* Sandwich+CoreDataProperties.swift in Sources */,
 				332C4C4A24C21D6B00B11336 /* UIView+Extension.swift in Sources */,
-				3350D7DB24C6AEB800009966 /* Constants.swift in Sources */,
 				332C4C1624C0F39600B11336 /* JSONParser.swift in Sources */,
 				1255797B24AFB8FA004C616F /* AppDelegate.swift in Sources */,
 				332C4C4624C2167A00B11336 /* Sandwich+CoreDataClass.swift in Sources */,
 				1255797D24AFB8FA004C616F /* SceneDelegate.swift in Sources */,
-				3350D7D624C6ADE200009966 /* SandwichCell.swift in Sources */,
 				332C4C2424C0F8C500B11336 /* CoreDataManager.swift in Sources */,
 				1255797F24AFB8FA004C616F /* SandwichViewController.swift in Sources */,
 				332C4C5724C3CFC900B11336 /* CollectionViewDataSource.swift in Sources */,

@@ -35,7 +35,7 @@ class CoreDataManager {
   lazy var persistantContainer: NSPersistentContainer = {
     
     guard let modelUrl = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
-      fatalError("Databse with schema name \(modelName) does not exist in the bundle.")
+      fatalError("Databsae with schema name \(modelName) does not exist in the bundle.")
     }
     
     guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelUrl) else {

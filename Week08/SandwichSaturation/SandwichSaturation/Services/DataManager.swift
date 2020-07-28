@@ -17,7 +17,7 @@ class DataManager {
   var sandwiches = [Sandwich]()
   private let coreDataMgr = CoreDataManager()
 
-  //MARK: - Intializer
+  //MARK: - Object Lifecycle
 
   private init() { }
 
@@ -25,7 +25,7 @@ class DataManager {
 
   func preloadDatabaseWithDefaultData() {
     
-    let sandwichesData: [SandwichData] = JSONParser().loadDataFromJSONFile("sandwiches") ?? []
+    let sandwichesData: [SandwichData] = JSONParser.loadDataFromJSONFile("sandwiches") ?? []
     let coreDataMngr = CoreDataManager()
     
     //save default sauce amount data into database

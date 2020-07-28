@@ -16,7 +16,8 @@ enum FileError: String, Error {
 
 class JSONParser<Model: Decodable>  {
   
-   func loadDataFromJSONFile( _ fileName: String) -> [Model]? {
+   static func loadDataFromJSONFile( _ fileName: String) -> [Model]? {
+    
     guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
       print("JSON file \(fileName) not found in Bundle.")
       print("\(FileError.fileNotFound) : \(fileName)")

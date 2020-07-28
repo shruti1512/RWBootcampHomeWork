@@ -12,22 +12,20 @@ import UIKit
 
 protocol SandwichDataSource {
   func saveSandwich(_: SandwichData)
-  func editSandwich(_ sandwich: Sandwich, withName
-    newName: String, sauceAmount: SauceAmount)
+  func editSandwich(_ sandwich: Sandwich,
+                    withName newName: String,
+                    sauceAmount: SauceAmount)
 }
 
-enum Layout: CGFloat {
+//MARK: - Enumerations
+
+public enum Layout: CGFloat {
   case list = 1.0
   case grid = 3.0
 }
 
-enum Section {
+public enum Section {
   case main
-}
-
-enum Sort {
-  case ascending
-  case descending
 }
 
 //MARK: - SandwichViewController class implementation
@@ -88,6 +86,20 @@ class SandwichViewController: UIViewController {
     return addBtn
   }()
   
+  private struct Constants {
+    private init() { }
+    static let userDefaultsKeyFilterIndex = "selectedFilterIndex"
+    static let addSegueIdentifier = "AddSandwichSegue"
+    static let editSegueIdentifier = "EditSandwichSegue"
+    static let listCellReuseIdentifier = SandwichListCell.reuseIdentifier
+    static let gridCellReuseIdentifier = SandwichCollectionCell.reuseIdentifier
+    static let gridIcon = "square.grid.2x2"
+    static let listIcon = "list.bullet"
+    static let ascendingIcon = "icons8-ascending-sort"
+    static let descendingIcon = "icons8-descending-sort"
+    static let searchPlaceholder = "Filter Sandwiches"
+  }
+
   //MARK: - View Lifecycle
   
   required init?(coder: NSCoder) {
@@ -231,14 +243,6 @@ class SandwichViewController: UIViewController {
     collectionView.reloadData()
   }
   
-  private func filterContentForSearchText(_ searchText: String,
-                                          sauceAmount: SauceAmount? = nil) {
-    
-    //filter sandwiches based on user input search text in the data source
-    collectionViewDataSource?.filterContentForSearchText(searchText,
-                                                         sauceAmount: sauceAmount)
-  }
-  
   // MARK: - Search Controller
   
   private var isFiltering: Bool {
@@ -291,7 +295,7 @@ extension SandwichViewController: UISearchResultsUpdating {
       let sauceRawValue = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
       let sauceAmount = SauceAmount(rawValue: sauceRawValue)
       
-      filterContentForSearchText(searchText, sauceAmount: sauceAmount)
+      collectionViewDataSource?.filterContentForSearchText(searchText, sauceAmount: sauceAmount)
     }
   }
 }
@@ -307,7 +311,9 @@ extension SandwichViewController: UISearchBarDelegate {
     userDefaults.set(selectedScope, forKey: Constants.userDefaultsKeyFilterIndex)
     
     let sauceAmount = SauceAmount(rawValue: searchBar.scopeButtonTitles![selectedScope])
-    filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
+    collectionViewDataSource?.filterContentForSearchText(searchBar.text!,
+                                                         sauceAmount: sauceAmount)
+
   }
 }
 
