@@ -12,7 +12,7 @@
 
 
 
-<img src="Screenshots/list_grid_togglegif.gif" width="200" height="400"> <img src="Screenshots/sort_toggle.gif" width="200" height="400"> <img src="Screenshots/sauce_toggle.gif" width="200" height="400"> <img src="Screenshots/text_filter.gif" width="200" height="400"> <img src="Screenshots/edit_mode.gif" width="200" height="400"> <img src="Screenshots/new_sandwich.gif" width="200" height="400"> <img src="Screenshots/update_details.gif" width="200" height="400">
+<img src="Screenshots/jQuiz.gif" width="200" height="400"> 
 
 ## App Details
 <a name = "app" /> 
