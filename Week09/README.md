@@ -1,11 +1,11 @@
-# SandwichSaturation App
+# JQuiz App
 [About](#about)<br/>
 [Screenshots](#screenshots)<br/>
 [App Details](#app)<br/>
 </br>
 
 ## About
-<a name = "about" />This app list sandwiches based on sauce amount. The initial data is seeded from json file and persisted in the database. The user can add, edit, search, filter and delete sandwiches.
+<a name = "about" />This is a game wherein multiple questions and clues from different categories are displayed. If the users selects correct answer the score is updated accordingly. The game fetcehs dat from jservice api.
 
 ## Screenshots
 <a name = "screenshots" />  
