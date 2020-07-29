@@ -20,8 +20,7 @@ extension UIImageView {
     let request = URLRequest(url: imageURL)
     
     //check for image data in URLCache
-    
-    DispatchQueue.global(qos: .userInitiated).async {
+    DispatchQueue.global(qos: .utility).async {
       if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
         
         //load cached image in the imageview
