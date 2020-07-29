@@ -19,8 +19,8 @@ class Networking {
   
   //MARK: - Properties
 
-  typealias CategoryCompletionHandler = (Category?, NetworkError?) -> Void
-  typealias ClueCompletionHandler = ([Clue]?, NetworkError?) -> Void
+  typealias CategoryCompletionHandler = (Result<Category, NetworkError>) -> Void
+  typealias ClueCompletionHandler = (Result<[Clue], NetworkError>) -> Void
   
   private struct URLs {
     
@@ -44,7 +44,7 @@ class Networking {
   public func getCategoryID(withCompletion completion: @escaping CategoryCompletionHandler) {
     
     guard let url = URL(string: URLs.categoryIdURL) else {
-      completion(nil, .failedRequest)
+      completion(.failure(.failedRequest))
       return
     }
     
@@ -55,31 +55,31 @@ class Networking {
         
         guard error == nil else {
           print("Failed request: \(error!.localizedDescription)")
-          completion(nil, .failedRequest)
+          completion(.failure(.failedRequest))
           return
         }
         
         guard let data = data else {
           print("No data returned")
-          completion(nil, .noData)
+          completion(.failure(.noData))
           return
         }
         
         guard let response = response as? HTTPURLResponse else {
           print("Server error")
-          completion(nil, .invalidResponse)
+          completion(.failure(.invalidResponse))
           return
         }
         
         guard (200...229).contains(response.statusCode) else {
           print("Failure response: \(response.statusCode)")
-          completion(nil, .failedRequest)
+          completion(.failure(.failedRequest))
           return
         }
         
         guard let mime = response.mimeType, mime == "application/json" else {
           print("Wrong MIME type! The data returned is not json.")
-          completion(nil, .invalidResponse)
+          completion(.failure(.invalidResponse))
           return
         }
         
@@ -88,14 +88,14 @@ class Networking {
           decoder.keyDecodingStrategy = .convertFromSnakeCase
           let parsedJSON: [CategoryWrapper] = try decoder.decode([CategoryWrapper].self, from: data)
           guard let firstObject = parsedJSON.first else {
-            completion(nil, .invalidData)
+            completion(.failure(.invalidData))
             return
           }
-          completion(firstObject.category, nil)
+          completion(.success(firstObject.category))
           
         } catch {
           print("Unable to decode response: \(error.localizedDescription)")
-          completion(nil, .invalidData)
+          completion(.failure(.invalidData))
         }
       }
     }.resume()
@@ -117,7 +117,7 @@ class Networking {
       URLQueryItem(name: URLs.cluesURLQueryItemOffset, value: offset)]
     
     guard let url = urlBuilder.url else {
-      completion(nil, .failedRequest)
+      completion(.failure(.failedRequest))
       return
     }
 
@@ -128,31 +128,31 @@ class Networking {
         
         guard error == nil else {
           print("Failed request: \(error!.localizedDescription)")
-          completion(nil, .failedRequest)
+          completion(.failure(.failedRequest))
           return
         }
         
         guard let data = data else {
           print("No data returned")
-          completion(nil, .noData)
+          completion(.failure(.noData))
           return
         }
         
         guard let response = response as? HTTPURLResponse else {
           print("Server error")
-          completion(nil, .invalidResponse)
+          completion(.failure(.invalidResponse))
           return
         }
         
         guard (200...229).contains(response.statusCode) else {
           print("Failure response: \(response.statusCode)")
-          completion(nil, .failedRequest)
+          completion(.failure(.failedRequest))
           return
         }
         
         guard let mime = response.mimeType, mime == "application/json" else {
           print("Wrong MIME type! The data returned is not json.")
-          completion(nil, .invalidResponse)
+          completion(.failure(.invalidResponse))
           return
         }
         
@@ -162,11 +162,11 @@ class Networking {
 
           let decoder = JSONDecoder()
           let parsedJSON: [Clue] = try decoder.decode([Clue].self, from: data)
-          completion(parsedJSON, nil)
+          completion(.success(parsedJSON))
           
         } catch {
           print("Unable to decode response: \(error.localizedDescription)")
-          completion(nil, .invalidData)
+          completion(.failure(.invalidData))
         }
       }
     }.resume()

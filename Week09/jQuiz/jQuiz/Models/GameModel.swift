@@ -16,7 +16,7 @@ class GameModel {
   private let maxClueCount = 4
   private var cluesCompletionHandler: CompletionHandler?
   private let networkMgr = Networking.shared
-
+  
   public var score = 0
   public var category: Category?
   public var clues = [Clue]()
@@ -29,19 +29,31 @@ class GameModel {
       cluesCompletionHandler = onCompletion
     }
     
-    networkMgr.getCategoryID { [weak self] (category, error) in
-
-      guard let category = category, let self = self else { return }
-      self.category = category
-      print("categoryID: \(category.id)")
+    networkMgr.getCategoryID { [weak self] result in
       
-      let categoryID = String(category.id)
-      let cluesCount = category.cluesCount ?? 0
-      let offset = cluesCount <= self.maxClueCount ? "0" : String(cluesCount - self.maxClueCount)
-      
-      self.networkMgr.getCluesForQuestion(withCategoryID: categoryID, offset: offset) { (clues, error) in
-        guard let clues = clues else { return }
-        self.checkForValidClues(inArray: clues)
+      switch result {
+        
+      case .success(let category):
+        guard let self = self else { return }
+        self.category = category
+        print("categoryID: \(category.id)")
+        
+        let categoryID = String(category.id)
+        let cluesCount = category.cluesCount ?? 0
+        let offset = cluesCount <= self.maxClueCount ? "0" : String(cluesCount - self.maxClueCount)
+        
+        self.networkMgr.getCluesForQuestion(withCategoryID: categoryID,
+                                            offset: offset) { [weak self] result in
+                                              
+                                              switch result {
+                                              case .success(let clues):
+                                                self?.checkForValidClues(inArray: clues)
+                                              case .failure(let error):
+                                                print("Network error: \(error)")
+                                              }
+        }
+      case .failure(let error):
+        print("Network error: \(error)")
       }
     }
   }
@@ -49,7 +61,7 @@ class GameModel {
   private func checkForValidClues(inArray dataArray: [Clue]) {
     
     clues.removeAll()
-
+    
     var clueCount = 0
     var index = 0
     repeat {
@@ -81,7 +93,7 @@ class GameModel {
   }
   
   public func calculateScore(forClue clue: Clue,
-                      onCompletion: ScoreCompletionHandler) {
+                             onCompletion: ScoreCompletionHandler) {
     
     var isCorrectAnswer = false
     guard let correctAnswerClue = correctAnswerClue else { return }
