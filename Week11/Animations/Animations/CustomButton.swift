@@ -39,7 +39,7 @@ enum CustomButtonType: String, CaseIterable {
     case .scale: return UIImage(named: "icons8-scale") ?? UIImage(systemName:"pencil.circle.fill")!
     case .translate:  return UIImage(named: "icons8-translate") ??  UIImage(systemName:"pencil.circle.fill")!
     case .rotate:  return UIImage(named: "icons8-rotate") ??  UIImage(systemName:"pencil.circle.fill")!
-    case .play:  return UIImage(named: "icons8-play") ??  UIImage(systemName:"pencil.circle.fill")!
+    case .play:  return UIImage(named: "icons8-circled-play") ??  UIImage(systemName:"pencil.circle.fill")!
     }
   }
 }
