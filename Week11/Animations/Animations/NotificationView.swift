@@ -21,7 +21,7 @@ class NotificationView: UIView {
   }
   
   private func setupView() {
-    backgroundColor = .systemGray6
+    backgroundColor = .systemGray5
     layer.cornerRadius = 5
     addNotificationLabel()
     addCheckmarkImageView()
@@ -56,7 +56,7 @@ class NotificationView: UIView {
   private lazy var checkMarkImageView: UIImageView = {
     let checkMark = UIImageView()
     checkMark.image = UIImage(systemName: "checkmark.circle.fill")
-    checkMark.tintColor = .green
+    checkMark.tintColor = UIColor(red: 82/255, green: 167/255, blue: 85/255, alpha: 1.0)
     return checkMark
   }()
 
