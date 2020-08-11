@@ -14,6 +14,7 @@
 		334EB83724DF39A900342329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 334EB83624DF39A900342329 /* Assets.xcassets */; };
 		334EB83A24DF39A900342329 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334EB83824DF39A900342329 /* LaunchScreen.storyboard */; };
 		334EB84424DFCBAA00342329 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EB84324DFCBAA00342329 /* CustomButton.swift */; };
+		334EB84624E215FC00342329 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EB84524E215FC00342329 /* NotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		334EB83924DF39A900342329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		334EB83B24DF39A900342329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		334EB84324DFCBAA00342329 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		334EB84524E215FC00342329 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				334EB83624DF39A900342329 /* Assets.xcassets */,
 				334EB83824DF39A900342329 /* LaunchScreen.storyboard */,
 				334EB83B24DF39A900342329 /* Info.plist */,
+				334EB84524E215FC00342329 /* NotificationView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				334EB82E24DF39A700342329 /* AppDelegate.swift in Sources */,
 				334EB83024DF39A700342329 /* SceneDelegate.swift in Sources */,
 				334EB84424DFCBAA00342329 /* CustomButton.swift in Sources */,
+				334EB84624E215FC00342329 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
