@@ -27,7 +27,7 @@ class ViewController: UIViewController {
   }()
     
   private lazy var notificationView: NotificationView = {
-    let notification = NotificationView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+    let notification = NotificationView(frame: .zero)
     notification.translatesAutoresizingMaskIntoConstraints = false
     return notification
   }()
@@ -37,14 +37,6 @@ class ViewController: UIViewController {
   private lazy var menuView: UIView = {
     let menu = UIView()
     menu.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(menu)
-    let safeArea = self.view.safeAreaLayoutGuide
-    NSLayoutConstraint.activate([
-      menu.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-      menu.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-      menu.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-      menu.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4)
-    ])
     return menu
   }()
   
@@ -61,30 +53,47 @@ class ViewController: UIViewController {
     spiderWeb.contentMode = .scaleAspectFill
     return spiderWeb
   }()
-  
+    
   //MARK: - View Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupViews()
+  }
+  
+  //MARK: - View Setup
+
+  func setupViews() {
     addBackground()
+    addMenuView()
     addAnimationObject()
     addNotificationView()
     addMenuViewButtons()
   }
   
-  //MARK: - View Setup
-
+  func addMenuView() {
+    view.addSubview(menuView)
+    let safeArea = self.view.safeAreaLayoutGuide
+    NSLayoutConstraint.activate([
+      menuView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+      menuView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+      menuView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+      menuView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4)
+    ])
+  }
+  
   func addNotificationView() {
     
     view.addSubview(notificationView)
+    let notifcationHeight: CGFloat = 40
     let topAnchor = notificationView.topAnchor.constraint(equalTo: view.topAnchor,
-                                                            constant: -notificationView.frame.height)
+                                                            constant: -notifcationHeight)
     topAnchor.identifier = hedaerTopConstraintID
     NSLayoutConstraint.activate([
       topAnchor,
       notificationView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
       notificationView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-      notificationView.heightAnchor.constraint(equalToConstant: notificationView.frame.height)
+      notificationView.heightAnchor.constraint(equalToConstant: notifcationHeight)
     ])
   }
   
@@ -136,8 +145,8 @@ class ViewController: UIViewController {
     let centerXAnchor = button.centerXAnchor.constraint(equalTo: menuView.centerXAnchor)
     centerXAnchor.identifier = centerXConstraintID + (button.customButtonType?.rawValue)!
 
-    let bottomAnchor = button.bottomAnchor.constraint(equalTo: menuView.bottomAnchor, constant: -20) //
-    bottomAnchor.identifier = menuButtonBottomConstraintID + (button.customButtonType?.rawValue)! //
+    let bottomAnchor = button.bottomAnchor.constraint(equalTo: menuView.bottomAnchor, constant: -20)
+    bottomAnchor.identifier = menuButtonBottomConstraintID + (button.customButtonType?.rawValue)! 
 
     let widthAnchor: NSLayoutConstraint
     let heightAnchor: NSLayoutConstraint
