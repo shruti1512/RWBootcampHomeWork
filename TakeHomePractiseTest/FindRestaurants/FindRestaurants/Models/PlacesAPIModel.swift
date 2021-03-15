@@ -17,16 +17,39 @@ struct PlaceSearchAPIModel: Decodable {
 
 //MARK: - Restaurant Model
 
+let freeText = "Free"
+let inexpensiveText = "$"
+let moderateText = "$$"
+let expensiveText = "$$$"
+let veryExpensiveText = "$$$$"
+
+enum PriceLevel: Int, Decodable {
+  
+  case Free = 0
+  case Inexpensive = 1
+  case Moderate = 2
+  case Expensive = 3
+  case VeryExpensive = 4
+  
+  var priceText: String {
+    switch self {
+      case .Free:
+        return freeText
+      case .Inexpensive:
+        return inexpensiveText
+      case .Moderate:
+        return moderateText
+      case .Expensive:
+        return expensiveText
+      case .VeryExpensive:
+        return veryExpensiveText
+      }
+  }
+}
+
+
 struct Restaurant {
   
-  enum PriceLevel: Int, Decodable {
-    case Free = 0
-    case Inexpensive = 1
-    case Moderate = 2
-    case Expensive = 3
-    case VeryExpensive = 4
-  }
-
   let name: String
   let address: String
   let rating: Float? // Define a key as optional if it can be returned as `nil` or if it does not always exist in the JSON.
@@ -75,6 +98,11 @@ struct PlacesAPIParameter {
 struct Location {
   var latitude: Double = 0
   var longitude: Double = 0
+  
+  var location: CLLocation {
+    return CLLocation(latitude: latitude, longitude: longitude)
+  }
+
 }
 
 extension Location: Decodable {

@@ -9,16 +9,11 @@
 import Foundation
 import Keys
 
-enum NetworkError: Error {
-  case invalidResponse
-  case noData
-  case failedRequest
-  case invalidData
-}
+//Class marked as final to prevent inheritance from other classes
 
-class NetworkServices {
+final class APIClient {
     
-  typealias PlacesAPIDataCompletion = (PlaceSearchAPIModel?, NetworkError?) -> ()
+  typealias PlacesAPIDataCompletion = (Result<PlaceSearchAPIModel, NetworkError>) -> Void
   
   //MARK: - Fetch Nearby Places Data Using Google Maps API
 
@@ -41,7 +36,7 @@ class NetworkServices {
     ]
   
     guard let url = urlBuilder.url else {
-      completion(nil, .failedRequest)
+      completion(.failure(.invalidURL))
       return
     }
     print("url: \(url)")
@@ -52,45 +47,42 @@ class NetworkServices {
       DispatchQueue.main.async {
         guard error == nil else {
             print("Failed request from Google Maps Nearby Places API: \(error!.localizedDescription)")
-            completion(nil, .failedRequest)
+            completion(.failure(.failedRequest))
             return
           }
           
           guard let data = data else {
             print("No data returned from Google Maps Nearby Places API")
-            completion(nil, .noData)
+            completion(.failure(.noData))
             return
           }
 
           guard let response = response as? HTTPURLResponse else {
             print("Server error")
-            completion(nil, .invalidResponse)
+            completion(.failure(.invalidResponse))
             return
           }
           
           guard (200...229).contains(response.statusCode) else {
             print("Failure response from Google Maps Nearby Places API: \(response.statusCode)")
-            completion(nil, .failedRequest)
+            completion(.failure(.failedRequest))
             return
           }
           
           guard let mime = response.mimeType, mime == "application/json" else {
             print("Wrong MIME type! The data returned is not json.")
-            completion(nil, .invalidResponse)
+            completion(.failure(.invalidResponse))
             return
           }
 
           do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-//            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-//            print(jsonObject)
             let parsedJSON: PlaceSearchAPIModel = try decoder.decode(PlaceSearchAPIModel.self, from: data)
-//            print(parsedJSON.results)
-            completion(parsedJSON, nil)
+            completion(.success(parsedJSON))
           } catch {
             print("Unable to decode Google Maps Nearby Places API response: \(error.localizedDescription)")
-            completion(nil, .invalidData)
+            completion(.failure(.decodingFailure))
           }
         }
     }.resume()

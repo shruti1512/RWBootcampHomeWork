@@ -72,7 +72,7 @@ class ViewController: UIViewController {
   
   private func loadData() {
     
-    game.loadCategoryAndClues { [weak self] in
+    game.fetchCategory() { [weak self] in
       guard let self = self else { return }
       self.setupViewsForNetworking(isHidden: false)
       self.updateViewForData()
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
   
   private func loadDataForNextQuestion() {
     
-    game.loadCategoryAndClues { [weak self] in
+    game.fetchCategory() { [weak self] in
       guard let self = self else { return }
       DispatchQueue.main.asyncAfter(deadline: .now() + self.animationDelay) {
         self.updateViewForData()

@@ -24,14 +24,24 @@ class AddSandwichViewController: UIViewController {
   var sandwich: Sandwich?
   var isDataUpdated = false
   var dataSource: SandwichDataSource?
-  let dataManager = DataManager.shared
+  public var dataManager: DataManager? = nil
   
   //MARK: - Initializer
 
   required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  convenience init() {
+    fatalError("init() has not been implemented")
+  }
+  
+  required init?(dataManager: DataManager, dataSource: SandwichDataSource) {
+    self.dataManager = dataManager
+    self.dataSource = dataSource
     imageName = AddSandwichViewController.randomImageName()
     sauceAmount = SauceAmount.none
-    super.init(coder: coder)
+    super.init(nibName: nil, bundle: nil)
   }
   
   //MARK: - View Lifecycle
@@ -139,15 +149,14 @@ class AddSandwichViewController: UIViewController {
       print("Oh no! The datasource is missing and I don't know where to put these sandwiches!")
       fatalError()
     }
-    let doesSandwichExist = dataManager.checkIfSandwichExists(sandwich)
-    if doesSandwichExist {
+    if let doesSandwichExist = dataManager?.checkIfSandwichExists(sandwich),
+       doesSandwichExist == true {
       showAlertForSandwichAlreadyExist()
     }
     else {
       dataSource.saveSandwich(sandwich)
       dismiss(animated: true, completion: nil)
     }
-
   }
   
   func editSandwich(_ sandwich: Sandwich, withName name: String, sauceAmount: SauceAmount) {
@@ -156,8 +165,8 @@ class AddSandwichViewController: UIViewController {
       fatalError()
     }
     let sandwichData = SandwichData(name: name, sauceAmount: sauceAmount, imageName: sandwich.imageName)
-    let doesSandwichExist = dataManager.checkIfSandwichExists(sandwichData)
-    if doesSandwichExist {
+    if let doesSandwichExist = dataManager?.checkIfSandwichExists(sandwichData),
+       doesSandwichExist == true {
       showAlertForSandwichAlreadyExist()
     }
     else {

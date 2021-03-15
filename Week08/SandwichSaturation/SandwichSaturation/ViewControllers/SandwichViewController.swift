@@ -49,16 +49,7 @@ class SandwichViewController: UIViewController {
       //configure collection view layout
       collectionViewLayoutModel = CollectionViewLayoutModel()
       collectionView.collectionViewLayout = collectionViewLayoutModel!.configureLayout(for: .grid)
-      
-      //configure collectionview data source
-      collectionViewDataSource = CollectionViewDataSource(sandwiches: sandwiches,
-                                                          sections: [.main],
-                                                          collectionView: self.collectionView)
-      collectionViewDataSource!.configureDataSource(forLayout: .grid)
-      
-      //apply snapshot for collectionview data source
-      collectionViewDataSource!.applySnapshot(animatingDifferences: false)
-      
+                  
       //set collection view delegate
       collectionView.delegate = self
     }
@@ -100,16 +91,29 @@ class SandwichViewController: UIViewController {
     static let searchPlaceholder = "Filter Sandwiches"
   }
 
+  public var dataManager: DataManager?
   //MARK: - View Lifecycle
   
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    loadSandwiches()
-  }
+//  required init?(coder: NSCoder) {
+//    super.init(coder: coder)
+//    loadSandwiches()
+//  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    loadSandwiches()
     setupView()
+    reloadData()
+  }
+  
+  private func reloadData() {
+    //configure collectionview data source
+    collectionViewDataSource = CollectionViewDataSource(sandwiches: sandwiches,
+                                                        sections: [.main],
+                                                        collectionView: self.collectionView,
+                                                        dataManager: dataManager)
+    collectionViewDataSource!.configureDataSource(forLayout: .grid)
+    collectionViewDataSource!.applySnapshot(animatingDifferences: false)
   }
   
   //MARK: - Setup View
@@ -158,9 +162,8 @@ class SandwichViewController: UIViewController {
   //MARK: - Setup Data Models
   
   private func loadSandwiches() {
-    let dataMgr = DataManager.shared
-    sandwiches = dataMgr.fetchSandwichModels()
-    let _ = dataMgr.fetchSandwichSauceModels()
+    sandwiches = dataManager?.fetchSandwichModels() ?? []
+    let _ = dataManager?.fetchSandwichSauceModels()
   }
   
   //MARK: - Editing Mode
@@ -263,6 +266,7 @@ class SandwichViewController: UIViewController {
       return
     }
     destinationVC.dataSource = collectionViewDataSource
+    destinationVC.dataManager = self.dataManager
     
     switch segue.identifier {
     case Constants.editSegueIdentifier:
@@ -322,13 +326,16 @@ extension SandwichViewController: UISearchBarDelegate {
 extension SandwichViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if isEditing || isFiltering {
-      return
-    }
-    
+    if isEditing || isFiltering { return }
     let cell = collectionView.cellForItem(at: indexPath)
-    DispatchQueue.main.async { [weak self] in
-      self?.performSegue(withIdentifier: Constants.editSegueIdentifier, sender: cell)
-    }
+    guard let dataManager = dataManager,
+          let addSandwichVC = AddSandwichViewController(dataManager: dataManager,
+                                                        dataSource: collectionViewDataSource as! SandwichDataSource) else { return }
+    self.navigationController?.present(addSandwichVC, animated: true)
+    
+//    DispatchQueue.main.async { [weak self] in
+//      self?.performSegue(withIdentifier: Constants.editSegueIdentifier, sender: cell)
+//    }
   }
 }
+

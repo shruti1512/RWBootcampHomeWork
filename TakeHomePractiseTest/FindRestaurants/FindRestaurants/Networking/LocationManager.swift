@@ -41,9 +41,7 @@ class LocationManager: NSObject {
   
   //MARK: - Initilaizer
 
-  private override init() {
-    super.init()
-  }
+  private override init() { }
   
   //MARK: - Request User Authorization for Location Services
 

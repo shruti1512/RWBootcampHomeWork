@@ -33,6 +33,7 @@ class SoundManager: NSObject {
         let audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
         audioPlayer.prepareToPlay()
         audioPlayer.numberOfLoops = -1
+        audioPlayer.volume = 0.2
         return audioPlayer
       } catch {
         print(error)

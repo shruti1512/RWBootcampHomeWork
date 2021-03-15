@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAS-RK-zPl" userLabel="Top View">
-                                <rect key="frame" x="20" y="0.0" width="335" height="40"/>
+                                <rect key="frame" x="20" y="0.0" width="780" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecL-1J-QMX">
-                                        <rect key="frame" x="110" y="8.5" width="115" height="23.5"/>
+                                        <rect key="frame" x="304" y="12.5" width="172.5" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G77-Hf-SKS">
-                                <rect key="frame" x="20" y="50" width="295" height="32"/>
+                                <rect key="frame" x="150" y="100" width="580" height="32"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="RGB"/>
@@ -54,13 +54,13 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="93R-OO-yFV">
-                                <rect key="frame" x="20" y="217" width="335" height="233"/>
+                                <rect key="frame" x="20" y="413" width="780" height="354"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yTw-sd-8xd" userLabel="Slider1-Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="71"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="780" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-zv-0gt">
-                                                <rect key="frame" x="150.5" y="0.0" width="34.5" height="21"/>
+                                                <rect key="frame" x="367" y="0.0" width="46" height="28"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,16 +70,16 @@
                                                 </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-CR-Cx2" userLabel="StackView">
-                                                <rect key="frame" x="29" y="41" width="277" height="30"/>
+                                                <rect key="frame" x="102" y="48" width="576" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="WbM-IX-2Vn">
-                                                        <rect key="frame" x="-2" y="0.0" width="229" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="496" height="31"/>
                                                         <connections>
                                                             <action selector="firstColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wzX-2t-fIb"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxn-Cq-pp5">
-                                                        <rect key="frame" x="245" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="512" y="0.0" width="64" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="fCE-Dk-Gr1">
@@ -100,10 +100,10 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-uc-NHl" userLabel="Slider2-StackView">
-                                        <rect key="frame" x="0.0" y="91" width="335" height="61"/>
+                                        <rect key="frame" x="0.0" y="138" width="780" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weo-Up-oeG">
-                                                <rect key="frame" x="140.5" y="0.0" width="54" height="21"/>
+                                                <rect key="frame" x="354" y="0.0" width="72" height="28"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,16 +113,16 @@
                                                 </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JJO-Cw-ojV" userLabel="StackView">
-                                                <rect key="frame" x="29" y="31" width="277" height="30"/>
+                                                <rect key="frame" x="102" y="48" width="576" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="xU9-c7-hYP">
-                                                        <rect key="frame" x="-2" y="0.0" width="229" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="496" height="31"/>
                                                         <connections>
                                                             <action selector="secondColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jqh-Uo-ETw"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veQ-6M-77T">
-                                                        <rect key="frame" x="245" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="512" y="0.0" width="64" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="dkB-QF-FXU">
@@ -143,10 +143,10 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-bi-f5J" userLabel="Slider3-StackView">
-                                        <rect key="frame" x="0.0" y="172" width="335" height="61"/>
+                                        <rect key="frame" x="0.0" y="276" width="780" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Km-Cy-eWK">
-                                                <rect key="frame" x="148" y="0.0" width="39.5" height="21"/>
+                                                <rect key="frame" x="363.5" y="0.0" width="53" height="28"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,16 +156,16 @@
                                                 </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-PB-qPu" userLabel="StackView">
-                                                <rect key="frame" x="29" y="31" width="277" height="30"/>
+                                                <rect key="frame" x="102" y="48" width="576" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="lfC-Cr-eut">
-                                                        <rect key="frame" x="-2" y="0.0" width="229" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="496" height="31"/>
                                                         <connections>
                                                             <action selector="thirdColorSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="qcn-cK-Kue"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-lq-DMw">
-                                                        <rect key="frame" x="245" y="0.0" width="32" height="30"/>
+                                                        <rect key="frame" x="512" y="0.0" width="64" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="ktG-aj-Nc1">
@@ -194,15 +194,15 @@
                                 <variation key="heightClass=regular-widthClass=regular" spacing="60"/>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2n-0f-6a6" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="980" width="820" height="200"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="WtS-nW-tgJ"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S14-g5-z5Q">
-                                <rect key="frame" x="20" y="610" width="100" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S14-g5-z5Q">
+                                <rect key="frame" x="20" y="1103" width="100" height="37"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Set Color" backgroundImage="Button-Normal">
@@ -214,8 +214,8 @@
                                     <action selector="setColorBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSj-co-Fqg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-BG-3UV">
-                                <rect key="frame" x="255" y="610" width="100" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-BG-3UV">
+                                <rect key="frame" x="700" y="1103" width="100" height="37"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Reset" backgroundImage="Button-Normal">
@@ -228,7 +228,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95T-4c-8o5">
-                                <rect key="frame" x="167.5" y="607" width="40" height="40"/>
+                                <rect key="frame" x="390" y="1100" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="95T-4c-8o5" secondAttribute="height" multiplier="1:1" id="4ZU-1M-01Z"/>
@@ -236,7 +236,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-wK-ROe" userLabel="Info Button">
-                                <rect key="frame" x="325" y="50" width="30" height="30"/>
+                                <rect key="frame" x="770" y="100" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="S3O-4B-vW6"/>
                                     <constraint firstAttribute="width" constant="30" id="WQQ-Hc-Jh1"/>
@@ -247,22 +247,22 @@
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-nC-sA5" userLabel="Recents Stack View">
-                                <rect key="frame" x="-66.5" y="503.5" width="508" height="73.5"/>
+                                <rect key="frame" x="156.5" y="996.5" width="507.5" height="73.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-eb-Phi">
-                                        <rect key="frame" x="0.0" y="24" width="88" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="24" width="87.5" height="25.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YpA-MC-0Th">
-                                        <rect key="frame" x="108" y="0.0" width="400" height="73.5"/>
+                                        <rect key="frame" x="107.5" y="0.0" width="400" height="73.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="8xF-17-A5Y">
                                                 <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y8-Sx-TfP" userLabel="Recent Btn1">
+                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y8-Sx-TfP" userLabel="Recent Btn1">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -285,7 +285,7 @@
                                                             <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0R-dg-alw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mde-8i-dYl" userLabel="Recent Btn2">
+                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mde-8i-dYl" userLabel="Recent Btn2">
                                                         <rect key="frame" x="90" y="0.0" width="40" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -308,7 +308,7 @@
                                                             <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c9K-YY-nAg"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovT-M8-UxI" userLabel="Recent Btn3">
+                                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovT-M8-UxI" userLabel="Recent Btn3">
                                                         <rect key="frame" x="180" y="0.0" width="40" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -331,7 +331,7 @@
                                                             <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75f-mY-DDV"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-XD-ydB" userLabel="Recent Btn4">
+                                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-XD-ydB" userLabel="Recent Btn4">
                                                         <rect key="frame" x="270" y="0.0" width="40" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -342,7 +342,7 @@
                                                             <action selector="recentColorBtnBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GHB-wZ-D47"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSS-px-A77" userLabel="Recent Btn5">
+                                                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSS-px-A77" userLabel="Recent Btn5">
                                                         <rect key="frame" x="360" y="0.0" width="40" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -408,7 +408,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6J-b8-efK">
-                                <rect key="frame" x="153" y="576" width="69.5" height="21"/>
+                                <rect key="frame" x="285" y="1107.5" width="85" height="25.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -419,6 +419,7 @@
                                 </variation>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FnO-BG-3UV" secondAttribute="bottom" constant="20" id="0BT-fP-Mrb">
@@ -468,7 +469,6 @@
                             <constraint firstItem="95T-4c-8o5" firstAttribute="top" secondItem="W6J-b8-efK" secondAttribute="bottom" constant="10" id="scB-7R-5Oc"/>
                             <constraint firstItem="95T-4c-8o5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zYe-xk-HrS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="4hH-4g-4QQ"/>
@@ -518,11 +518,11 @@
             <objects>
                 <viewController id="4Tk-y0-hOr" customClass="InfoViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z9x-I1-M6I">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvA-ZR-s2d">
-                                <rect key="frame" x="20" y="20" width="335" height="570"/>
+                                <rect key="frame" x="20" y="20" width="780" height="1063"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -530,7 +530,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97D-6G-OKa">
-                                <rect key="frame" x="137.5" y="610" width="100" height="37"/>
+                                <rect key="frame" x="360" y="1103" width="100" height="37"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Close" backgroundImage="Button-Normal">
@@ -544,6 +544,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gTC-qb-Efv"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tvA-ZR-s2d" firstAttribute="leading" secondItem="gTC-qb-Efv" secondAttribute="leading" constant="20" id="Gd6-1U-QbZ"/>
@@ -553,7 +554,6 @@
                             <constraint firstItem="tvA-ZR-s2d" firstAttribute="top" secondItem="gTC-qb-Efv" secondAttribute="top" constant="20" id="seA-g0-irC"/>
                             <constraint firstItem="gTC-qb-Efv" firstAttribute="trailing" secondItem="tvA-ZR-s2d" secondAttribute="trailing" constant="20" id="trm-Yb-SBU"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gTC-qb-Efv"/>
                     </view>
                     <connections>
                         <outlet property="webView" destination="tvA-ZR-s2d" id="iSq-tc-F5I"/>

@@ -39,9 +39,11 @@ class TableViewDataSouce: NSObject, UITableViewDataSource {
     
       let restaurant = places[indexPath.row]
       let restaurantViewModel = RestaurantViewModel(restaurant: restaurant)
-      let cell = restaurantViewModel.configureTableViewCell(withIdentifier: reuseIdentifier, in: tableView)
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? RestaurantTableViewCell else {
+        fatalError("Could not create cell")
+      }
+      cell.restaurantViewModel = restaurantViewModel
       return cell
   }
-
   
 }

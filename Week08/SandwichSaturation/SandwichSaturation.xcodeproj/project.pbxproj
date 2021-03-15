@@ -97,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				332C4C0A24C0ED1700B11336 /* AppDelegate */,
-				332C4C2524C0FC6700B11336 /* Helper */,
+				332C4C2524C0FC6700B11336 /* Extensions */,
 				332C4C2224C0F8B100B11336 /* Services */,
 				12A0791224AFDD810097F149 /* Models */,
 				3350D7CF24C6ADE100009966 /* Views */,
@@ -176,13 +176,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		332C4C2524C0FC6700B11336 /* Helper */ = {
+		332C4C2524C0FC6700B11336 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				332C4C4924C21D6B00B11336 /* UIView+Extension.swift */,
 				332C4C2624C0FC7800B11336 /* Extensions.swift */,
 			);
-			path = Helper;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		332C4C4024C2150500B11336 /* CoreDataEntityModels */ = {

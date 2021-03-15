@@ -12,14 +12,14 @@ class DataManager {
   
   //MARK: - Properties
   
-  static let shared = DataManager()
+//  static let shared = DataManager()
   var sandwichSauceModels = [SandwichSauceAmount]()
   var sandwiches = [Sandwich]()
   private let coreDataMgr = CoreDataManager()
 
   //MARK: - Object Lifecycle
 
-  private init() { }
+  init() { }
 
   //MARK: - Preload Data From JSON Into Database
 

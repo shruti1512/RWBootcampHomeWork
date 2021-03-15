@@ -39,7 +39,7 @@ class CollectionViewDataSource: NSObject {
   typealias DataSource = UICollectionViewDiffableDataSource<Section, Sandwich>
   typealias DataSnapshot = NSDiffableDataSourceSnapshot<Section, Sandwich>
   
-  let dataManager = DataManager.shared
+  let dataManager: DataManager?
   var layout = Layout.grid
   var dataSource: DataSource?
   var sandwiches = [Sandwich]()
@@ -52,11 +52,12 @@ class CollectionViewDataSource: NSObject {
   
   init(sandwiches: [Sandwich],
        sections: [Section],
-       collectionView: UICollectionView) {
-    
+       collectionView: UICollectionView,
+       dataManager: DataManager?) {
     self.sandwiches = sandwiches
     self.sections = sections
     self.collectionView = collectionView
+    self.dataManager = dataManager
   }
   
   
@@ -142,7 +143,7 @@ class CollectionViewDataSource: NSObject {
     currentSnapshot.deleteItems(selectedItems)
     dataSource.apply(currentSnapshot, animatingDifferences: true)
     
-    dataManager.deleteSandwiches(selectedItems)
+    dataManager?.deleteSandwiches(selectedItems)
   }
   
   // MARK: - Get Item Identifier for Sandiwch Model from Current Snapshot
@@ -158,9 +159,9 @@ class CollectionViewDataSource: NSObject {
     
     //get filtered sandwiches from the database and apply the new snapshot
 
-    sandwiches = dataManager.filterSandwichesForSearchText(searchText,
+    sandwiches = dataManager?.filterSandwichesForSearchText(searchText,
                                                            sauceAmount: sauceAmount,
-                                                           sortIsAscending: sortIsAscending)
+                                                           sortIsAscending: sortIsAscending) ?? []
     applySnapshot()
   }
 
@@ -171,7 +172,7 @@ class CollectionViewDataSource: NSObject {
     //get sorted sandwiches from the database and apply the new snapshot
 
     self.sortIsAscending = sortIsAscending
-    sandwiches = dataManager.fetchSandwichModels(isAscending: sortIsAscending)
+    sandwiches = dataManager?.fetchSandwichModels(isAscending: sortIsAscending) ?? []
     applySnapshot()
   }
 
@@ -185,7 +186,7 @@ extension CollectionViewDataSource: SandwichDataSource {
         
     //insert the new sandwich item in the database
 
-    guard let newlyAddedSandwich = dataManager.saveSandwich(sandwichData),
+    guard let newlyAddedSandwich = dataManager?.saveSandwich(sandwichData),
       let dataSource = dataSource  else { return }
     
     //insert the new sandwich item in the snapshot
@@ -217,7 +218,7 @@ extension CollectionViewDataSource: SandwichDataSource {
     
     //edit and save sanwich in the database
 
-    guard let editedSandwich = dataManager.editSandwich(sandwich, withSauce: sauceAmount),
+    guard let editedSandwich = dataManager?.editSandwich(sandwich, withSauce: sauceAmount),
     let dataSource = dataSource else {
       return
     }

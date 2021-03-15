@@ -11,20 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  private struct Keys {
-    static let isDataPreloaded = "isDataPreloaded"
-  }
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
-    let userDefaults = UserDefaults.standard
-    let dataMgr = DataManager.shared
-
-    let isDataPreloadedInDB = userDefaults.bool(forKey: Keys.isDataPreloaded)
-    if  !isDataPreloadedInDB {
-      dataMgr.preloadDatabaseWithDefaultData()
-      userDefaults.set(!isDataPreloadedInDB, forKey: Keys.isDataPreloaded)
-    }
     return true
   }
     
